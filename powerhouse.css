@@ -1,0 +1,366 @@
+/*
+ * powerhouse.css
+ *
+ * PowerHouse CSS
+ *
+ * Author: Kyle W T Sherman
+ *
+ * Time-stamp: <2012-02-25 20:07:39 (kyle)>
+ */
+
+/* @font-face { */
+/*     font-family: comic-font; */
+/*     src: url('open-comic-font.ttf'); */
+/* } */
+
+html {
+    font-family: "Comic Sans MS", sans-serif;
+    /* font-family: comic-font, "Comic Sans MS", sans-serif; */
+    font-size: 1.1em;
+    margin: 0;
+    overflow-y: scroll; /* force scroll bar to appear to prevent jumping */
+    padding: 0;
+}
+
+body {
+    background-color: #0D3E5F; /* dark blue */
+    /* background-color: #0D3E7F; /\* dark blue *\/ */
+    /* background-color: #0E162B; /\* dark blue *\/ */
+    color: #FEC530; /* yellow */
+    /* margin: 0 1em 0 1em; */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    min-height: 100%;
+    padding: 0 2em;
+}
+
+.main {
+}
+
+.title {
+    font-size: xx-large;
+    margin: 0.5em 0 0 0;
+}
+
+.menu {
+    margin: 0.5em 0 0 5.0em;
+}
+
+a, a:link, a:visited {
+    color: #CE6C10; /* dark orange */
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover, a:active {
+    color: #F78132; /* light orange */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+    height: auto;
+    padding: 1em;
+    width: auto;
+}
+
+.image { }
+
+.image img {
+    border: 0;
+    height: auto;
+    padding: 1em;
+    width: auto;
+}
+
+.right-img { }
+
+.right-img img {
+    border: 0;
+    float: right;
+    max-width: 30%;
+    padding: 0em 1em;
+    width: auto;
+}
+
+.shadow {
+    border: 1px solid #000000;
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 3px 3px 4px #000;
+}
+
+.popup {
+    background-color: #FEF5C0; /* light yellow */
+    color: #000000; /* black */
+    border: 1px solid #000000;
+    font-family: sans-serif;
+    font-size: 0.8em;
+    margin: 1em 0 0 0;
+    max-width: 480px;
+    padding: 0.2em;
+    position: absolute;
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 3px 3px 4px #000;
+    z-index: 10;
+}
+
+.left {
+    float: left;
+    min-width: 49%;
+    padding: 0;
+    text-align: left;
+    width: 49%;
+}
+
+.right {
+    float: right;
+    min-width: 49%;
+    padding: 0;
+    text-align: left;
+    width: 49%;
+}
+
+.footer {
+    margin: 0;
+    padding: 1em 0 0 0;
+    text-align: left;
+    width: 98%;
+}
+
+.section {
+    margin: 1em 0 0 0;
+    padding: 0.2em;
+}
+
+.selection {
+    background-color: #0D3E7F; /* dark blue */
+    border: 1px solid #000000;
+    margin: 1em 0 0 0;
+    padding: 0.2em;
+    position: absolute;
+    /* width: -moz-max-content; */
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 3px 3px 4px #000;
+    z-index: 1;
+}
+
+.selection img {
+    border: 0;
+    height: auto;
+    padding: 1px;
+    vertical-align: middle;
+    width: 16px;
+}
+
+/* td.selectionNormal { */
+/*     width: 100%; */
+/* } */
+
+/* td.selectionHighlight { */
+/*     background-color: #3D6E8F; */
+/*     width: 100%; */
+/* } */
+
+#selectFramework img {
+    border: 0;
+    height: auto;
+    padding: 1px;
+    vertical-align: middle;
+    width: 24px;
+}
+
+.leftSelection {
+    float: left;
+    padding: 0;
+    text-align: left;
+}
+
+.rightSelection {
+    float: right;
+    padding: 0 0 0 1em;
+    text-align: left;
+}
+
+/* .leftSelection { */
+/*     border: 1px solid #000000; */
+/*     float: right; */
+/*     margin: 1em 0 0 0; */
+/*     padding: 0.2em; */
+/*     position: absolute; */
+/*     width: -moz-max-content; */
+/*     -moz-box-shadow: 3px 3px 4px #000; */
+/*     -webkit-box-shadow: 3px 3px 4px #000; */
+/*     box-shadow: 3px 3px 4px #000; */
+/* } */
+
+/* .rightSelection { */
+/*     border: 1px solid #000000; */
+/*     float: left; */
+/*     margin: 1em 0 0 0; */
+/*     padding: 0.2em; */
+/*     position: absolute; */
+/*     width: -moz-max-content; */
+/*     -moz-box-shadow: 3px 3px 4px #000; */
+/*     -webkit-box-shadow: 3px 3px 4px #000; */
+/*     box-shadow: 3px 3px 4px #000; */
+/* } */
+
+td {
+    min-width: 1.5em;
+}
+
+.edit { }
+
+.edit img {
+    border: 0;
+    height: auto;
+    padding: 1px;
+    vertical-align: middle;
+    width: 24px;
+}
+
+.button {
+    color: #CE6C10; /* dark orange */
+    font-weight: bold;
+    text-decoration: none;
+}
+.selectedButton, a.selectedButton, a.selectedButton:link,
+a.selectedButton:visited, a.selectedButton:hover, a.selectedButton:active {
+    color: #F78132; /* light orange */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.takenButton {
+    color: #AE4C00; /* darker orange */
+    /* color: #6CCE10; /\* dark green *\/ */
+    font-weight: bold;
+    text-decoration: none;
+}
+/* .selectedTakenButton, a.selectedTakenButton, a.selectedTakenButton:link, */
+/* a.selectedTakenButton:visited, a.selectedTakenButton:hover, a.selectedTakenButton:active { */
+/*     color: #81F732; /\* light green *\/ */
+/*     font-weight: bold; */
+/*     text-decoration: none; */
+/* } */
+
+.disabledButton, a.disabledButton, a.disabledButton:link,
+a.disabledButton:visited, a.disabledButton:hover, a.disabledButton:active {
+    color: #5C5C5C; /* dark gray */
+    /* color: #CE3C3C; /\* dark red *\/ */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lockedButton, a.lockedButton, a.lockedButton:link,
+a.lockedButton:visited, a.lockedButton:hover, a.lockedButton:active {
+    color: #AE4C00; /* darker orange */
+    /* color: #FEC530; /\* yellow *\/ */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.buttonNote {
+    color: #FEC530; /* yellow */
+    font-size: smaller;
+}
+a.buttonNote, a.buttonNote:link, a.buttonNote:visited {
+    color: #FEC530; /* yellow */
+    font-size: smaller;
+    font-weight: bold;
+    text-decoration: none;
+}
+a.buttonNote:hover, a.buttonNote:active {
+    color: #FEF550; /* light yellow */
+    font-size: smaller;
+    font-weight: bold;
+    text-decoration: none;
+}
+.selectedButtonNote, a.selectedButtonNote, a.selectedButtonNote:link,
+a.selectedButtonNote:visited, a.selectedButtonNote:hover, a.selectedButtonNote:active {
+    color: #FEF550; /* light yellow */
+    font-size: smaller;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.buttonText {
+    color: #FEC530; /* yellow */
+}
+a.buttonText, a.buttonText:link, a.buttonText:visited {
+    color: #FEC530; /* yellow */
+    font-weight: bold;
+    text-decoration: none;
+}
+a.buttonText:hover, a.buttonText:active {
+    color: #FEF550; /* light yellow */
+    font-weight: bold;
+    text-decoration: none;
+}
+.selectedButtonText, a.selectedButtonText, a.selectedButtonText:link,
+a.selectedButtonText:visited, a.selectedButtonText:hover, a.selectedButtonText:active {
+    color: #FEF550; /* light yellow */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.note {
+    color: #FEC530; /* yellow */
+    font-size: smaller;
+    font-weight: normal;
+}
+
+.spec {
+    color: #FEC530; /* yellow */
+    font-size: x-small;
+    font-weight: normal;
+}
+
+.advantage {
+    color: #FEC530; /* yellow */
+    font-size: smaller;
+}
+
+.link {
+    color: #FEC530; /* yellow */
+    font-size: small;
+}
+
+.linkRef {
+    color: #FEC530; /* yellow */
+    font-size: xx-small;
+}
+
+textarea {
+    border: 1px solid black;
+    /* font-family: monospace; */
+    height: 44em;
+    margin: 0 1em;
+    padding: .2em;
+    /* white-space: pre; */
+    overflow: auto;
+    width: 97%;
+}
+
+.preview {
+    border: 1px solid black;
+    font-family: sans-serif;
+    /* height: 44em; */
+    margin: 0 1em;
+    padding: .2em;
+    /* overflow: auto; */
+    /* width: 97%; */
+}
+
+.invisible a {
+    color: #0D3E5F; /* dark blue */
+    font-size: small;
+}
+
+/*
+ * End of File
+ */

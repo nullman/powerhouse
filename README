@@ -1,0 +1,49 @@
+PowerHouse README
+-----------------
+
+Version: 0.9.0 (2012-02-21)
+Website: http://powerhouse.nullware.com
+
+PowerHouse is an HTML/Javascript character builder for Champions Online™
+players. It is similar to and inspired by championBuilder, written by Moritz
+Hartmeier and maintained by Roxstar, which is a Java application that performs
+a similar function.
+
+Copyright ©2010-2012 Kyle W. T. Sherman
+
+Text descriptions and graphics are Copyright ©2009-2012 Cryptic Studios,
+Inc. and are used as per their terms of service.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+Champions Online is a registered trademark of Cryptic Studios, Inc.
+Champions Online and all related content is ©2009 Cryptic Studios, Inc.
+All Rights Reserved.
+For information regarding the rights reserved by Cryptic Studios, please read
+the full Terms of Service, specifically (but not limited to) section
+3. Champions Online game content and materials are trademarks and copyrights
+of Cryptic Studios, Inc. or its licensors and used with permission. All rights
+reserved.
+
+Special thanks to Lohr and all of the contributors at Champions Online Wiki
+for their hard work.
+
+I belong to the great and pants-less WildCards Super Group.  We are part of
+the Unrepentant gaming community. If you are looking for a mature fun-loving
+group, give us a try.
+
+
+Running PowerHouse Locally
+--------------------------
+
+If you would like to run PowerHouse on your computer, download the ZIP file
+from the main site.  Unzip it on your computer and use your browser to open
+the powerhouse.html file.

@@ -1,0 +1,146 @@
+2012-02-27  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * Released version 0.9.2.
+
+        * powerhouse.html, powerhouse.js (advantagePoints): Modified advantage
+        points left indicator to show current number selected and total
+        allowed.
+
+2012-02-24  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js (dataDump), powerhouse-data.js, powerhouse.css: Added
+        a DataDump function that lists all of the data arrays in a new window.
+
+2012-02-23  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.html, powerhouse.js (): Automated version setting in
+        about view.
+
+        * powerhouse.html: Fixed power level 11 label (thanks Devil Lord
+        Laser).
+
+        * Released version 0.9.1.
+
+        * powerhouse.js (popup, showPositionSection): Made pop-up window edge
+        margin larger.
+
+2012-02-22  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js (selectFramework, start): Long pop-up lists are now
+        two columns in order to fit more items on the screen.
+
+        * powerhouse-data.js: Fixed bug with Force Sheathe advantage points.
+
+        * powerhouse-data.js: Fixed bug with Molecular Self-Assembly
+        description.
+
+        * powerhouse-data.js: Fixed bug with Gatling Gun tier.
+
+        * powerhouse.js (selectAdvantage): Fixed bug with old pop-up forms not
+        getting cleared and conflicting with new ones.
+
+        * powerhouse.html: Corrected power numbers.
+
+        * powerhouse.js (forumPreview, forumExport): Flipped powers and talent
+        sections on preview and export views.
+
+        * powerhouse-data.js: Fixed bug with Enrage and Aggressor powers in
+        Might and Earth power sets.
+
+        * powerhouse.js (numToCharCode): Fixed bug in number to character
+        conversion.
+
+2012-02-21  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Ebon Sorcery, Radiant Sorcery, Bestial
+        Supernatural, and Infernal Supernatural Power Frameworks.
+
+2012-02-20  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Added code to handle power groups (counting powers that exist in
+        multiple frameworks correctly).
+
+        * powerhouse-data.js: Added Arcane Sorcery and Primal Sorcery Power
+        Frameworks.
+
+2012-02-19  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Celestial and Darkness Power Frameworks.
+
+2012-02-17  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Might Power Framework.
+
+2012-02-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Earth Power Framework.
+
+2012-02-10  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Added ability to restore the last known build (from a
+        browser cookie).
+
+        * powerhouse-data.js: Added Heavy Weapon Power Framework.
+
+2012-02-09  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Telekinesis and Telepathy Power Frameworks.
+
+2012-02-08  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Added ability to swap fields (thanks Lukas for the idea).
+
+2012-02-05  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Single Blade and Unarmed Power Frameworks.
+
+2012-02-03  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * (Thanks to Lukas Smith for these suggestions.)
+
+        * powerhouse-data.js: Added level indicators.
+
+        * powerhouse-data.js: Renamed "Link" to "Link to this build" to make
+        it more clear what it is used for.
+
+        * powerhouse-data.js, powerhouse.html: Changed "Forum" view to "Export" view.
+
+        * powerhouse.js: Fixed bug allowing more than on Energy Builder and
+        Ultimate Power to be selected.
+
+        * powerhouse-data.js: Added Fighting Claws Power Framework.
+
+2012-02-02  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Reworked how repeated powers and advantages are
+        initialized.
+
+        * powerhouse-data.js: Added Dual Blades Power Framework.
+
+2012-02-01  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Munitions and Power Armor Power Frameworks.
+
+2012-01-31  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Archery and Gadgeteering Power Frameworks.
+
+2012-01-30  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.html: Added help section.
+
+2012-01-29  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Wind and Ice Power Frameworks.
+
+2012-01-28  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added Force Power Framework.
+
+        * powerhouse-data.js: Added missing Innate Talents.
+
+        * powerhouse-data.js: Added newer Travel Powers.
+
+2012-01-27  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js, powerhouse-data.js: Updated code to handle three Super Stats.
