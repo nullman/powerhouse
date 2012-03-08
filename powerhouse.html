@@ -111,17 +111,17 @@
         <div class="section">
           <div id="leftName" class="left">
             <div id="sectionDisplayName">
-              <a id="displayName" onclick="editName()">Name:&nbsp; <span id="fieldName" class="buttonText"> </span></a>
+              <a id="displayName" class="button" onclick="editName()">Name:&nbsp; <span id="fieldName" class="buttonText"> </span></a>
             </div>
             <div id="sectionEditName" style="display:none">
               <form id="formName" onsubmit="changeName(); return false;">
-                <a id="cancelName" onclick="cancelName()">Name:</a>&nbsp; <input id="editName" type="text" size="40" value="" />
+                <a id="cancelName" class="button" onclick="cancelName()">Name:</a>&nbsp; <input id="editName" type="text" size="40" value="" />
               </form>
             </div>
           </div>
           <div id="rightArchetype" class="right">
             <div id="sectionArchetype">
-              <a id="archetype" onclick="selectArchetype()">Archetype:&nbsp; <span id="fieldArchetype" class="buttonText"> </span></a>
+              <a id="archetype" class="button" onclick="selectArchetype()">Archetype:&nbsp; <span id="fieldArchetype" class="buttonText"> </span></a>
             </div>
           </div>
           <div style="clear:both"></div>
@@ -322,7 +322,17 @@
       </div>
 
       <div id="viewExport" style="display:none">
-        <h3>Forum Export</h3>
+        <div id="leftName" class="left">
+          <h3>Forum Export</h3>
+        </div>
+        <div id="rightType" class="right" style="padding-top:1.2em">
+          <span class="note">
+            Export Type:&nbsp;
+            <a id="exportType_co" class="button" onclick="selectForumExportType('co')">CO</a>&nbsp;
+            <a id="exportType_phpbbs" class="button" onclick="selectForumExportType('phpbbs')">phpBBS</a>
+          </span>
+        </div>
+        <div style="clear:both"></div>
         <textarea id="forumText" class="shadow" cols="80" rows="50">
         </textarea>
       </div>
@@ -341,6 +351,7 @@
             <li><a href="#help-archetype">Select Archetype</a></li>
             <li><a href="#help-abilities">Select Abilities</a></li>
             <li><a href="#help-save">Save Character</a></li>
+            <li><a href="#help-export">Forum Preview and Export</a></li>
             <li><a href="#help-reset">Reset</a></li>
           </ul>
         </p>
@@ -433,6 +444,17 @@
           "<b>Restore previous build</b>" found at the bottom right.  This will restore<br />
           the last known state.
         </p>
+        <h3 id="help-export">Forum Preview and Export</h3>
+        <p>
+          To see what the forum export will look like, select the "<b>Preview</b>" view at<br />
+          the top of the page.
+        </p>
+        <p>
+          To generate the forum export text, first select the "<b>Export</b>" view at the<br />
+          top of the page.  Then pick the type of export: "<b>CO</b>" (Champions Online)<br />
+          or "<b>phpBBS</b>".  Finally, just copy and paste the text found in the text box<br />
+          onto a forum page.
+        </p>
         <h3 id="help-reset">Reset</h3>
         <p>
           To reset (clear) your edits, just click on the "<b>PowerHouse</b>" text in the<br />
@@ -519,10 +541,10 @@
         <br />
         <div class="left">
           <!-- <div class="link"><a id="buildLinkBookmark" class="right" onclick="void(0)">Add Bookmark</a></div> -->
-          <span class="link"><a id="buildLink" href=".">Link to this build</a></span>
+          <span class="link"><a id="buildLink" class="button" href=".">Link to this build</a></span>
         </div>
         <div class="right">
-          <span class="link"><a id="restorePrevBuild" onclick="restorePrevBuild()">Restore previous build</a></span>
+          <span class="link"><a id="restorePrevBuild" class="button" onclick="restorePrevBuild()">Restore previous build</a></span>
         </div>
         <div style="clear:both"></div>
       </div>
