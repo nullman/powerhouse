@@ -5,11 +5,11 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-02-27 19:53:50 (kyle)>
+ * Time-stamp: <2012-03-04 13:32:21 (kyle)>
  *============================================================================*/
 
 var version = '0.9.3';
-var releaseDate = '2012-02-27';
+var releaseDate = '2012-03-04';
 var buildVersion = 1;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -1516,7 +1516,8 @@ function forumEntry(type, first, second, third) {
         result += '[b][color=#f78112]'+first+'[/color][/b]';
         if (second) {
             result += ' [b][color=#fec530]'+second+'[/color][/b]';
-            if (third) result += ' [b][size=85][color=#ce6c10]'+third+'[/color][/size][/b]';
+            //if (third) result += ' [b][size=85][color=#ce6c10]'+third+'[/color][/size][/b]';
+            if (third) result += ' [color=#ce6c10]'+third+'[/color]';
         }
         result += '\n';
     }
@@ -1540,15 +1541,19 @@ window['forumAdvantageText'] = forumAdvantageText;
 function forumPreview() {
     var forumPreview = document.getElementById('forumPreview');
     var result = new Array();
-    result.push('<b><a href="'+siteUrl+'">'+siteName+'</a></b> &nbsp; ');
-    result.push('<b><a href="'+phBuildLink+'"><span style="color:#c3320b">(Link to this build)</span></a></b><br /><br />');
-    result.push(forumEntry(1, 'Name:', phName)+'<br />');
-    result.push(forumEntry(1, 'Archetype:', phArchetype.name)+'<br />');
-    result.push(forumEntry(1, 'Super Stats:')+'<br />');
+    result.push('<b><a href="'+siteUrl+'"><span style="color:#f78112">'+siteName+'</span></a></b> &nbsp; ');
+    result.push('<b><a href="'+phBuildLink+'"><span style="color:#8dcdff">(Link to this build)</span></a></b><br />');
+    result.push('<br />');
+    result.push(forumEntry(1, 'Name:', phName));
+    result.push('<br />');
+    result.push(forumEntry(1, 'Archetype:', phArchetype.name));
+    result.push('<br />');
+    result.push(forumEntry(1, 'Super Stats:'));
     result.push(forumEntry(1, 'Level 6:', forumName(phSuperStat[1].name), '(Primary)'));
     result.push(forumEntry(1, 'Level 10:', forumName(phSuperStat[2].name), '(Secondary)'));
-    result.push(forumEntry(1, 'Level 15:', forumName(phSuperStat[3].name), '(Secondary)')+'<br />');
-    result.push(forumEntry(1, 'Talents:')+'<br />');
+    result.push(forumEntry(1, 'Level 15:', forumName(phSuperStat[3].name), '(Secondary)'));
+    result.push('<br />');
+    result.push(forumEntry(1, 'Talents:'));
     result.push(forumEntry(1, 'Level 1:', forumName(phInnateTalent[1].name)));
     if (phArchetype.id > 1) {
         result.push(forumEntry(1, 'Level 7:', forumName(phTalent[1].name)));
@@ -1556,16 +1561,18 @@ function forumPreview() {
         result.push(forumEntry(1, 'Level 15:', forumName(phTalent[3].name)));
         result.push(forumEntry(1, 'Level 20:', forumName(phTalent[4].name)));
         result.push(forumEntry(1, 'Level 25:', forumName(phTalent[5].name)));
-        result.push(forumEntry(1, 'Level 30:', forumName(phTalent[6].name))+'<br />');
+        result.push(forumEntry(1, 'Level 30:', forumName(phTalent[6].name)));
+        result.push('<br />');
     } else {
         result.push(forumEntry(1, 'Level 6:', forumName(phTalent[1].name)));
         result.push(forumEntry(1, 'Level 9:', forumName(phTalent[2].name)));
         result.push(forumEntry(1, 'Level 12:', forumName(phTalent[3].name)));
         result.push(forumEntry(1, 'Level 15:', forumName(phTalent[4].name)));
         result.push(forumEntry(1, 'Level 18:', forumName(phTalent[5].name)));
-        result.push(forumEntry(1, 'Level 21:', forumName(phTalent[6].name))+'<br />');
+        result.push(forumEntry(1, 'Level 21:', forumName(phTalent[6].name)));
+        result.push('<br />');
     }
-    result.push(forumEntry(1, 'Powers:')+'<br />');
+    result.push(forumEntry(1, 'Powers:'));
     result.push(forumEntry(1, 'Level 1:', forumName(phPower[1].name), forumAdvantageText(1, 1, phPowerAdvantage[1])));
     result.push(forumEntry(1, 'Level 1:', forumName(phPower[2].name), forumAdvantageText(1, 2, phPowerAdvantage[2])));
     result.push(forumEntry(1, 'Level 6:', forumName(phPower[3].name), forumAdvantageText(1, 3, phPowerAdvantage[3])));
@@ -1577,7 +1584,8 @@ function forumPreview() {
         result.push(forumEntry(1, 'Level 22:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
         result.push(forumEntry(1, 'Level 27:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
         result.push(forumEntry(1, 'Level 32:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
-        result.push(forumEntry(1, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11]))+'<br />');
+        result.push(forumEntry(1, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push('<br />');
     } else {
         result.push(forumEntry(1, 'Level 20:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
         result.push(forumEntry(1, 'Level 23:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
@@ -1585,27 +1593,50 @@ function forumPreview() {
         result.push(forumEntry(1, 'Level 29:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
         result.push(forumEntry(1, 'Level 32:', forumName(phPower[12].name), forumAdvantageText(1, 12, phPowerAdvantage[12])));
         result.push(forumEntry(1, 'Level 35:', forumName(phPower[13].name), forumAdvantageText(1, 13, phPowerAdvantage[13])));
-        result.push(forumEntry(1, 'Level 38:', forumName(phPower[14].name), forumAdvantageText(1, 14, phPowerAdvantage[14]))+'<br />');
+        result.push(forumEntry(1, 'Level 38:', forumName(phPower[14].name), forumAdvantageText(1, 14, phPowerAdvantage[14])));
+        result.push('<br />');
     }
-    result.push(forumEntry(1, 'Travel Powers:')+'<br />');
+    result.push(forumEntry(1, 'Travel Powers:'));
     result.push(forumEntry(1, 'Level 6:', forumName(phTravelPower[1].name), forumAdvantageText(2, 1, phTravelPowerAdvantage[1])));
     result.push(forumEntry(1, 'Level 35:', forumName(phTravelPower[2].name), forumAdvantageText(2, 2, phTravelPowerAdvantage[2])));
     forumPreview.innerHTML = result.join('');
 }
 window['forumPreview'] = forumPreview;
 
-// forum export text
+// forum export
+var forumExportType = 'co';
+function setForumExportType(forumType) {
+    forumExportType = forumType;
+    setCookie('forumType', forumType, 30);
+}
+window['setForumExportType'] = setForumExportType;
+function selectForumExportType(forumType) {
+    document.getElementById('exportType_'+forumExportType).setAttribute('class', 'button');
+    setForumExportType(forumType);
+    document.getElementById('exportType_'+forumExportType).setAttribute('class', 'selectedButton');
+    showView('Export');
+}
+window['selectForumExportType'] = selectForumExportType;
 function forumExport() {
+    var forumType = getCookie('forumType');
+    if (forumType == undefined) forumType = forumExportType;
+    setForumExportType(forumType);
+    document.getElementById('exportType_'+forumType).setAttribute('class', 'selectedButton');
     var forumText = document.getElementById('forumText');
     var result = new Array();
-    result.push('[b][url='+siteUrl+']'+siteName+'[/url][/b] ');
-    result.push('[b][url='+phBuildLink+'][color=#c3320b](Link to this build)[/color][/url][/b]\n\n');
-    result.push(forumEntry(2, 'Name:', phName)+'\n');
-    result.push(forumEntry(2, 'Archetype:', phArchetype.name)+'\n');
+    if (forumType == 'co') result.push('[font="Comic Sans MS"]');
+    result.push('[b][url='+siteUrl+'][color=#f78112]'+siteName+'[/color][/url][/b] ');
+    result.push('[b][url='+phBuildLink+'][color=#8dcdff](Link to this build)[/color][/url][/b]\n');
+    result.push('\n');
+    result.push(forumEntry(2, 'Name:', phName));
+    result.push('\n');
+    result.push(forumEntry(2, 'Archetype:', phArchetype.name));
+    result.push('\n');
     result.push(forumEntry(2, 'Super Stats:'));
     result.push(forumEntry(2, 'Level 6:', forumName(phSuperStat[1].name), '(Primary)'));
     result.push(forumEntry(2, 'Level 10:', forumName(phSuperStat[2].name), '(Secondary)'));
-    result.push(forumEntry(2, 'Level 15:', forumName(phSuperStat[3].name), '(Secondary)')+'\n');
+    result.push(forumEntry(2, 'Level 15:', forumName(phSuperStat[3].name), '(Secondary)'));
+    result.push('\n');
     result.push(forumEntry(2, 'Talents:'));
     result.push(forumEntry(2, 'Level 1:', forumName(phInnateTalent[1].name)));
     if (phArchetype.id > 1) {
@@ -1614,14 +1645,16 @@ function forumExport() {
         result.push(forumEntry(2, 'Level 15:', forumName(phTalent[3].name)));
         result.push(forumEntry(2, 'Level 20:', forumName(phTalent[4].name)));
         result.push(forumEntry(2, 'Level 25:', forumName(phTalent[5].name)));
-        result.push(forumEntry(2, 'Level 30:', forumName(phTalent[6].name))+'\n');
+        result.push(forumEntry(2, 'Level 30:', forumName(phTalent[6].name)));
+        result.push('\n');
     } else {
         result.push(forumEntry(2, 'Level 6:', forumName(phTalent[1].name)));
         result.push(forumEntry(2, 'Level 9:', forumName(phTalent[2].name)));
         result.push(forumEntry(2, 'Level 12:', forumName(phTalent[3].name)));
         result.push(forumEntry(2, 'Level 15:', forumName(phTalent[4].name)));
         result.push(forumEntry(2, 'Level 18:', forumName(phTalent[5].name)));
-        result.push(forumEntry(2, 'Level 21:', forumName(phTalent[6].name))+'\n');
+        result.push(forumEntry(2, 'Level 21:', forumName(phTalent[6].name)));
+        result.push('\n');
     }
     result.push(forumEntry(2, 'Powers:'));
     result.push(forumEntry(2, 'Level 1:', forumName(phPower[1].name), forumAdvantageText(1, 1, phPowerAdvantage[1])));
@@ -1635,7 +1668,8 @@ function forumExport() {
         result.push(forumEntry(2, 'Level 22:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
         result.push(forumEntry(2, 'Level 27:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
         result.push(forumEntry(2, 'Level 32:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
-        result.push(forumEntry(2, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11]))+'\n');
+        result.push(forumEntry(2, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push('\n');
     } else {
         result.push(forumEntry(2, 'Level 20:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
         result.push(forumEntry(2, 'Level 23:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
@@ -1643,11 +1677,13 @@ function forumExport() {
         result.push(forumEntry(2, 'Level 29:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
         result.push(forumEntry(2, 'Level 32:', forumName(phPower[12].name), forumAdvantageText(1, 12, phPowerAdvantage[12])));
         result.push(forumEntry(2, 'Level 35:', forumName(phPower[13].name), forumAdvantageText(1, 13, phPowerAdvantage[13])));
-        result.push(forumEntry(2, 'Level 38:', forumName(phPower[14].name), forumAdvantageText(1, 14, phPowerAdvantage[14]))+'\n');
+        result.push(forumEntry(2, 'Level 38:', forumName(phPower[14].name), forumAdvantageText(1, 14, phPowerAdvantage[14])));
+        result.push('\n');
     }
     result.push(forumEntry(2, 'Travel Powers:'));
     result.push(forumEntry(2, 'Level 6:', forumName(phTravelPower[1].name), forumAdvantageText(2, 1, phTravelPowerAdvantage[1])));
     result.push(forumEntry(2, 'Level 35:', forumName(phTravelPower[2].name), forumAdvantageText(2, 2, phTravelPowerAdvantage[2])));
+    if (forumType == 'co') result.push('[/font]');
     forumText.innerHTML = result.join('');
 }
 window['forumExport'] = forumExport;

@@ -1,3 +1,25 @@
+2012-03-07  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * Released version 0.9.3.
+
+2012-03-02  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js (forumExport, setForumExportType)
+        (selectForumExportType), powerhouse.html: Added multiple forum export
+        options.  You can choose CO or phpBBS.  The choice is persisted in a
+        cookie.
+
+2012-02-29  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js (forumPreview, forumExport): Changed export font to MS
+        Comic.  Removed size tag from export since it does not work on the CO
+        forums.
+
+2012-02-28  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.css: Changed button styles to use the pointer cursor
+        instead of the browser default.
+
 2012-02-27  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * Released version 0.9.2.

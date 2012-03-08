@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-02-25 20:07:39 (kyle)>
+ * Time-stamp: <2012-03-01 15:39:29 (kyle)>
  */
 
 /* @font-face { */
@@ -49,11 +49,13 @@ body {
 
 a, a:link, a:visited {
     color: #CE6C10; /* dark orange */
+    cursor: pointer;
     font-weight: bold;
     text-decoration: none;
 }
 a:hover, a:active {
     color: #F78132; /* light orange */
+    cursor: pointer;
     font-weight: bold;
     text-decoration: none;
 }
@@ -244,6 +246,7 @@ a.selectedButton:visited, a.selectedButton:hover, a.selectedButton:active {
 /* .selectedTakenButton, a.selectedTakenButton, a.selectedTakenButton:link, */
 /* a.selectedTakenButton:visited, a.selectedTakenButton:hover, a.selectedTakenButton:active { */
 /*     color: #81F732; /\* light green *\/ */
+/*     cursor: pointer; */
 /*     font-weight: bold; */
 /*     text-decoration: none; */
 /* } */
@@ -348,7 +351,9 @@ textarea {
 
 .preview {
     border: 1px solid black;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: 1em;
     /* height: 44em; */
     margin: 0 1em;
     padding: .2em;

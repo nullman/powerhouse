@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-02-27 01:37:07 (kyle)>
+ * Time-stamp: <2012-03-01 13:49:21 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -4078,21 +4078,21 @@ dataArchetypeGroup[dataArchetypeGroup.length] = new ArchetypeGroup(dataArchetype
 //==============================================================================
 
 // helper lookup functions
-var dataArchetypeGroupFromName = new Array();
+var dataArchetypeGroupIdFromName = new Array();
 for (i=0; i<dataArchetypeGroup.length; i++) {
-    dataArchetypeGroupFromName[dataArchetypeGroup[i].name] = dataArchetypeGroup[i].id;
+    dataArchetypeGroupIdFromName[dataArchetypeGroup[i].name] = dataArchetypeGroup[i].id;
 }
-var dataSuperStatFromName = new Array();
+var dataSuperStatIdFromName = new Array();
 for (i=0; i<dataSuperStat.length; i++) {
-    dataSuperStatFromName[dataSuperStat[i].name] = dataSuperStat[i].id;
+    dataSuperStatIdFromName[dataSuperStat[i].name] = dataSuperStat[i].id;
 }
-var dataInnateTalentFromName = new Array();
+var dataInnateTalentIdFromName = new Array();
 for (i=0; i<dataInnateTalent.length; i++) {
-    dataInnateTalentFromName[dataInnateTalent[i].name] = dataInnateTalent[i].id;
+    dataInnateTalentIdFromName[dataInnateTalent[i].name] = dataInnateTalent[i].id;
 }
-var dataPowerFromName = new Array();
+var dataPowerIdFromName = new Array();
 for (i=0; i<dataPower.length; i++) {
-    dataPowerFromName[dataPower[i].name] = dataPower[i].id;
+    dataPowerIdFromName[dataPower[i].name] = dataPower[i].id;
 }
 
 // archetype class
@@ -4101,24 +4101,24 @@ Archetype = function(id, name, desc, group, superStat, innateTalent, power, tip)
     this.id = id;
     this.name = name;
     this.desc = desc;
-    this.group = dataArchetypeGroupFromName[group];
+    this.group = dataArchetypeGroupIdFromName[group];
     this.superStat = new Array();
     if (superStat != null) {
         for (i=0; i<superStat.length; i++) {
-            this.superStat[i+1] = dataSuperStatFromName[superStat[i]];
+            this.superStat[i+1] = dataSuperStatIdFromName[superStat[i]];
         }
     }
-    this.innateTalent = dataInnateTalentFromName[innateTalent];
+    this.innateTalent = dataInnateTalentIdFromName[innateTalent];
     this.power = new Array();
     if (power != null) {
         for (i=0; i<power.length; i++) {
             if (power[i] instanceof Array) {
                 this.power[i+1] = new Array();
                 for (j=0; j<power[i].length; j++) {
-                    this.power[i+1][j+1] = dataPowerFromName[power[i][j]];
+                    this.power[i+1][j+1] = dataPowerIdFromName[power[i][j]];
                 }
             } else {
-                this.power[i+1] = dataPowerFromName[power[i]];
+                this.power[i+1] = dataPowerIdFromName[power[i]];
             }
         }
     }
