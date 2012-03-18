@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-03-01 15:39:29 (kyle)>
+ * Time-stamp: <2012-03-08 01:30:50 (kyle)>
  */
 
 /* @font-face { */
@@ -18,15 +18,15 @@ html {
     /* font-family: comic-font, "Comic Sans MS", sans-serif; */
     font-size: 1.1em;
     margin: 0;
-    overflow-y: scroll; /* force scroll bar to appear to prevent jumping */
+    overflow-y: scroll;    /* force scroll bar to appear to prevent jumping */
     padding: 0;
 }
 
 body {
-    background-color: #0D3E5F; /* dark blue */
-    /* background-color: #0D3E7F; /\* dark blue *\/ */
-    /* background-color: #0E162B; /\* dark blue *\/ */
-    color: #FEC530; /* yellow */
+    background-color: #0D3E5F;          /* dark blue */
+    /* background-color: #0D3E7F;          /\* dark blue *\/ */
+    /* background-color: #0E162B;          /\* dark blue *\/ */
+    color: #FEC530;                     /* yellow */
     /* margin: 0 1em 0 1em; */
     margin-left: auto;
     margin-right: auto;
@@ -48,13 +48,13 @@ body {
 }
 
 a, a:link, a:visited {
-    color: #CE6C10; /* dark orange */
+    color: #CE6C10;                     /* dark orange */
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
 }
 a:hover, a:active {
-    color: #F78132; /* light orange */
+    color: #F78132;                     /* light orange */
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
@@ -94,8 +94,8 @@ img {
 }
 
 .popup {
-    background-color: #FEF5C0; /* light yellow */
-    color: #000000; /* black */
+    background-color: #FEF5C0;          /* light yellow */
+    color: #000000;                     /* black */
     border: 1px solid #000000;
     font-family: sans-serif;
     font-size: 0.8em;
@@ -138,7 +138,7 @@ img {
 }
 
 .selection {
-    background-color: #0D3E7F; /* dark blue */
+    background-color: #0D3E7F;          /* dark blue */
     border: 1px solid #000000;
     margin: 1em 0 0 0;
     padding: 0.2em;
@@ -226,20 +226,20 @@ td {
 }
 
 .button {
-    color: #CE6C10; /* dark orange */
+    color: #CE6C10;                     /* dark orange */
     font-weight: bold;
     text-decoration: none;
 }
 .selectedButton, a.selectedButton, a.selectedButton:link,
 a.selectedButton:visited, a.selectedButton:hover, a.selectedButton:active {
-    color: #F78132; /* light orange */
+    color: #F78132;                     /* light orange */
     font-weight: bold;
     text-decoration: none;
 }
 
 .takenButton {
-    color: #AE4C00; /* darker orange */
-    /* color: #6CCE10; /\* dark green *\/ */
+    color: #AE4C00;                   /* darker orange */
+    /* color: #6CCE10;                   /\* dark green *\/ */
     font-weight: bold;
     text-decoration: none;
 }
@@ -253,88 +253,88 @@ a.selectedButton:visited, a.selectedButton:hover, a.selectedButton:active {
 
 .disabledButton, a.disabledButton, a.disabledButton:link,
 a.disabledButton:visited, a.disabledButton:hover, a.disabledButton:active {
-    color: #5C5C5C; /* dark gray */
-    /* color: #CE3C3C; /\* dark red *\/ */
+    color: #5C5C5C;                     /* dark gray */
+    /* color: #CE3C3C;                     /\* dark red *\/ */
     font-weight: bold;
     text-decoration: none;
 }
 
 .lockedButton, a.lockedButton, a.lockedButton:link,
 a.lockedButton:visited, a.lockedButton:hover, a.lockedButton:active {
-    color: #AE4C00; /* darker orange */
-    /* color: #FEC530; /\* yellow *\/ */
+    color: #AE4C00;                     /* darker orange */
+    /* color: #FEC530;                     /\* yellow *\/ */
     font-weight: bold;
     text-decoration: none;
 }
 
 .buttonNote {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: smaller;
 }
 a.buttonNote, a.buttonNote:link, a.buttonNote:visited {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: smaller;
     font-weight: bold;
     text-decoration: none;
 }
 a.buttonNote:hover, a.buttonNote:active {
-    color: #FEF550; /* light yellow */
+    color: #FEF550;                     /* light yellow */
     font-size: smaller;
     font-weight: bold;
     text-decoration: none;
 }
 .selectedButtonNote, a.selectedButtonNote, a.selectedButtonNote:link,
 a.selectedButtonNote:visited, a.selectedButtonNote:hover, a.selectedButtonNote:active {
-    color: #FEF550; /* light yellow */
+    color: #FEF550;                     /* light yellow */
     font-size: smaller;
     font-weight: bold;
     text-decoration: none;
 }
 
 .buttonText {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
 }
 a.buttonText, a.buttonText:link, a.buttonText:visited {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-weight: bold;
     text-decoration: none;
 }
 a.buttonText:hover, a.buttonText:active {
-    color: #FEF550; /* light yellow */
+    color: #FEF550;                     /* light yellow */
     font-weight: bold;
     text-decoration: none;
 }
 .selectedButtonText, a.selectedButtonText, a.selectedButtonText:link,
 a.selectedButtonText:visited, a.selectedButtonText:hover, a.selectedButtonText:active {
-    color: #FEF550; /* light yellow */
+    color: #FEF550;                     /* light yellow */
     font-weight: bold;
     text-decoration: none;
 }
 
 .note {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: smaller;
     font-weight: normal;
 }
 
 .spec {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: x-small;
     font-weight: normal;
 }
 
 .advantage {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: smaller;
 }
 
 .link {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: small;
 }
 
 .linkRef {
-    color: #FEC530; /* yellow */
+    color: #FEC530;                     /* yellow */
     font-size: xx-small;
 }
 
@@ -362,8 +362,48 @@ textarea {
 }
 
 .invisible a {
-    color: #0D3E5F; /* dark blue */
+    color: #0D3E5F;                     /* dark blue */
     font-size: small;
+}
+
+/*
+ * Print
+ */
+
+@media print {
+    .title, .menu, .link, .invisible {
+        display: none;
+    }
+    html {
+        font-family: calibri, tahoma, arial, sans-serif;
+        font-size: 0.8em;
+    }
+    body {
+        background-color: #FFFFFF;      /* white */
+        color: #000000;                 /* black */
+    }
+    a, a:link, a:visited, .button, a.button, .buttonNote, a.buttonNote, .buttonText, a.buttonText, .note, .spec, .advantage, .linkRef {
+        color: #000000;                 /* black */
+        font-weight: normal;
+    }
+    .spec {
+        font-size: smaller;
+    }
+    .preview {
+        font-family: calibri, tahoma, arial, sans-serif;
+        font-size: 0.8em;
+    }
+}
+
+/*
+ * Mobile Devices
+ */
+
+@media handheld {
+    .left, .right {
+        float: none;
+        padding: 0;
+    }
 }
 
 /*
