@@ -1,7 +1,7 @@
 PowerHouse README
 -----------------
 
-Version: 0.9.3 (2012-02-29)
+Version: 0.9.4 (2012-03-11)
 Website: http://powerhouse.nullware.com
 
 PowerHouse is an HTML/Javascript character builder for Champions Online™
@@ -44,6 +44,6 @@ group, give us a try.
 Running PowerHouse Locally
 --------------------------
 
-If you would like to run PowerHouse on your computer, download the ZIP file
-from the main site.  Unzip it on your computer and use your browser to open
-the powerhouse.html file.
+If you would like to run PowerHouse on your computer, download the ZIP or TGZ
+file from the main site.  Uncompress it on your computer and use your browser
+to open the powerhouse.html file.

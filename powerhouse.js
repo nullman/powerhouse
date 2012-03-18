@@ -5,11 +5,11 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-03-04 13:32:21 (kyle)>
+ * Time-stamp: <2012-03-12 00:08:05 (kyle)>
  *============================================================================*/
 
-var version = '0.9.3';
-var releaseDate = '2012-03-04';
+var version = '0.9.4';
+var releaseDate = '2012-03-11';
 var buildVersion = 1;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -42,8 +42,8 @@ function getCookie(name)
 }
 window['getCookie'] = getCookie;
 
-// encode and decode numbers to url codes
-// invalid codes default to 0
+// encode number to url code
+// valid number range is 0-61 (invalid numbers default to 0)
 function numToCharCode(num) {
     var code = 0;
     if (num >= 0 && num <= 9) code = num+48;
@@ -52,6 +52,8 @@ function numToCharCode(num) {
     return String.fromCharCode(code);
 }
 window['numToCharCode'] = numToCharCode;
+// decode url code to number
+// invalid codes default to 0
 function codeToNum(code) {
     var num = 0;
     if (code >= 48 && code <= 57) num = code-48;

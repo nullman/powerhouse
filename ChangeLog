@@ -1,3 +1,16 @@
+2012-03-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Changes to The Radiant archetype.
+
+        * powerhouse-data.js: Added new travel powers (Distortion Superspeed,
+        Displacement Superspeed, Distortion Acrobatics, Displacement
+        Acrobatics, Mach Speed, Athletics).  Fixed some description changes in
+        others.
+
+        * Added image for Snowball Roll.
+
+        * powerhouse.css: Added print and mobile media css sections.
+
 2012-03-07  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * Released version 0.9.3.
