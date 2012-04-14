@@ -1,6 +1,51 @@
+2012-04-13  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * Released version 0.9.6.
+
+2012-04-09  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added images for travel powers (Distortion
+        Superspeed, Displacement Superspeed, Distortion Acrobatics,
+        Displacement Acrobatics).
+
+2012-04-07  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * Released version 0.9.5.
+
+        * powerhouse.js, powerhouse-data.js: Finished version 2 updates.
+        Power advantages are now two characters in length.  Added version
+        update logic for the new Break the Trigger advantage in the Bullet
+        Beatdown power.
+
+2012-03-31  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Added applyVersionUpdate function and updated
+        parseUrlParams function to apply version updates at load time.
+
+        * powerhouse-data.js: Added dataVersionUpdate class to store version
+        update information.  Added initial version update that moves archetype
+        number to front of data field.
+
+2012-03-18  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Updated Inertial Dampening Field description to
+        indicate it is a form.
+
+        * powerhouse-data.js: Added Break the Trigger advantage to Bullet
+        Beatdown.
+
+        * powerhouse-data.js: Updated The Specialist archetype (recovery super
+        stat is now ego, strength super stat added).
+
+        * powerhouse-data.js: Updated The Soldier archetype (ego and dex super
+        stat order reversed).
+
+        * Released version 0.9.4.
+
 2012-03-11  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse-data.js: Changes to The Radiant archetype.
+        * powerhouse-data.js: Updated The Radiant archetype (different
+        powers).
 
         * powerhouse-data.js: Added new travel powers (Distortion Superspeed,
         Displacement Superspeed, Distortion Acrobatics, Displacement
@@ -17,16 +62,13 @@
 
 2012-03-02  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse.js (forumExport, setForumExportType)
-        (selectForumExportType), powerhouse.html: Added multiple forum export
-        options.  You can choose CO or phpBBS.  The choice is persisted in a
-        cookie.
+        * powerhouse.js, powerhouse.html: Added multiple forum export options.
+        You can choose CO or phpBBS.  The choice is persisted in a cookie.
 
 2012-02-29  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse.js (forumPreview, forumExport): Changed export font to MS
-        Comic.  Removed size tag from export since it does not work on the CO
-        forums.
+        * powerhouse.js: Changed export font to MS Comic.  Removed size tag
+        from export since it does not work on the CO forums.
 
 2012-02-28  Kyle W T Sherman  <kylewsherman@gmail.com>
 
@@ -37,14 +79,13 @@
 
         * Released version 0.9.2.
 
-        * powerhouse.html, powerhouse.js (advantagePoints): Modified advantage
-        points left indicator to show current number selected and total
-        allowed.
+        * powerhouse.html, powerhouse.js: Modified advantage points left
+        indicator to show current number selected and total allowed.
 
 2012-02-24  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse.js (dataDump), powerhouse-data.js, powerhouse.css: Added
-        a DataDump function that lists all of the data arrays in a new window.
+        * powerhouse.js, powerhouse-data.js, powerhouse.css: Added a DataDump
+        function that lists all of the data arrays in a new window.
 
 2012-02-23  Kyle W T Sherman  <kylewsherman@gmail.com>
 
@@ -56,13 +97,12 @@
 
         * Released version 0.9.1.
 
-        * powerhouse.js (popup, showPositionSection): Made pop-up window edge
-        margin larger.
+        * powerhouse.js: Made pop-up window edge margin larger.
 
 2012-02-22  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse.js (selectFramework, start): Long pop-up lists are now
-        two columns in order to fit more items on the screen.
+        * powerhouse.js: Long pop-up lists are now two columns in order to fit
+        more items on the screen.
 
         * powerhouse-data.js: Fixed bug with Force Sheathe advantage points.
 
@@ -71,19 +111,18 @@
 
         * powerhouse-data.js: Fixed bug with Gatling Gun tier.
 
-        * powerhouse.js (selectAdvantage): Fixed bug with old pop-up forms not
-        getting cleared and conflicting with new ones.
+        * powerhouse.js: Fixed bug with old pop-up forms not getting cleared
+        and conflicting with new ones.
 
         * powerhouse.html: Corrected power numbers.
 
-        * powerhouse.js (forumPreview, forumExport): Flipped powers and talent
-        sections on preview and export views.
+        * powerhouse.js: Flipped powers and talent sections on preview and
+        export views.
 
         * powerhouse-data.js: Fixed bug with Enrage and Aggressor powers in
         Might and Earth power sets.
 
-        * powerhouse.js (numToCharCode): Fixed bug in number to character
-        conversion.
+        * powerhouse.js: Fixed bug in number to character conversion.
 
 2012-02-21  Kyle W T Sherman  <kylewsherman@gmail.com>
 

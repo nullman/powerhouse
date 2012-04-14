@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-03-11 17:03:07 (kyle)>
+ * Time-stamp: <2012-04-08 17:14:25 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -20,7 +20,7 @@ SuperStat = function(id, name, desc, tip) {
     this.desc = desc;
     this.tip = tip;
     this.code = function() {
-        return numToCharCode(this.id);
+        return numToUrlCode(this.id);
     }
     this.equals = function(obj) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
@@ -55,7 +55,7 @@ InnateTalent = function(id, name, desc, extra, tip) {
     this.extra = extra;
     this.tip = tip;
     this.code = function() {
-        return numToCharCode(this.id);
+        return numToUrlCode(this.id);
     }
     this.equals = function(obj) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
@@ -122,7 +122,7 @@ Talent = function(id, name, desc, extra) {
     this.desc = desc;
     this.extra = extra;
     this.code = function() {
-        return numToCharCode(this.id);
+        return numToUrlCode(this.id);
     }
     this.equals = function(obj) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
@@ -213,7 +213,7 @@ TravelPower = function(id, name, desc, tip) {
     this.tip = tip;
     this.advantage = new Array();
     this.code = function() {
-        return numToCharCode(this.id);
+        return numToUrlCode(this.id);
     }
     this.getAdvantage = function(mask) {
         var advantage = new Array();
@@ -411,29 +411,25 @@ dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(0, n
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Superspeed', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Distortion Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Superspeed', '<img src="img/TravelPower_DistortionSuperspeed.png" />&nbsp;Distortion Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(3, 'Impact', 'Impact', 2, null, 'While this travel power is active, you gain a damage bonus which scales with your current speed. This bonus persists for a short time upon losing speed or stopping.'));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Superspeed', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Displacement Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Superspeed', '<img src="img/TravelPower_DisplacementSuperspeed.png" />&nbsp;Displacement Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(3, 'Impact', 'Impact', 2, null, 'While this travel power is active, you gain a damage bonus which scales with your current speed. This bonus persists for a short time upon losing speed or stopping.'));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Acrobatics', '<img src="img/TravelPower_Acrobatics.png" />&nbsp;Distortion Acrobatics', 'Your ability to distort the very fabric of reality allows you to move in ways incomprehensible to the average person.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Acrobatics', '<img src="img/TravelPower_DistortionAcrobatics.png" />&nbsp;Distortion Acrobatics', 'Your ability to distort the very fabric of reality allows you to move in ways incomprehensible to the average person.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(3, 'Versatility', 'Versatility', 2, null, 'While this travel power is active, if you take damage you will receive a stack of Versatility, up to 5 stacks. Versatility increases your movement speed for a short time.'));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Acrobatics', '<img src="img/TravelPower_Acrobatics.png" />&nbsp;Displacement Acrobatics', 'Your ability to distort the very fabric of reality allows you to move in ways incomprehensible to the average person.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Acrobatics', '<img src="img/TravelPower_DisplacementAcrobatics.png" />&nbsp;Displacement Acrobatics', 'Your ability to distort the very fabric of reality allows you to move in ways incomprehensible to the average person.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the energy cost of all powers is increased and your energy generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantage.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -545,7 +541,7 @@ Power = function(id, name, desc, powerSet, framework, power, tier, tip) {
     this.tip = tip;
     this.advantage = new Array();
     this.code = function() {
-        return numToCharCode(this.framework)+numToCharCode(this.power);
+        return numToUrlCode(this.framework)+numToUrlCode(this.power);
     }
     this.getAdvantage = function(mask) {
         var advantage = new Array();
@@ -942,7 +938,7 @@ dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(2, dataPowerAlia
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(3, 'Force Spate', 'Force Spate', 2, null, 'Causes your Force Detonation to temporarily invert any nearby force fields, such as Containment Field. Inverted fields cause an additional burst of damage around the target.'));
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Inertial Dampening Field', '<img src="img/Force_IntertialDampeningField.png" />&nbsp;Inertial Dampening Field', 1, 3, pow++, 3, 'Force, 50 foot Sphere PBAoE Friend Buff<br /><br />Requires 5 powers from Force or 6 non-energy building powers from any framework.<br /><br />Reduces the strength of incoming attacks made against you and nearby teammates.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Inertial Dampening Field', '<img src="img/Force_IntertialDampeningField.png" />&nbsp;Inertial Dampening Field', 1, 3, pow++, 3, 'Force, 50 foot Sphere PBAoE Friend Buff Form<br /><br />Requires 5 powers from Force or 6 non-energy building powers from any framework.<br /><br />Reduces the strength of incoming attacks made against you and nearby teammates.');
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -1454,8 +1450,9 @@ dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(0, null, null, n
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(3, 'Not Without Incident', 'Not Without Incident', 2, null, '30% (100% while Enraged) chance to inflict AoE damage (10ft range, max of 5 targets) around your target.'));
-dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
-dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(4, 'Break the Trigger', 'Break the Trigger', 2, null, 'You pull the trigger so hard you cause the second and fourth attacks of this combo to become melee damage.'));
+dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(6, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Holdout Shot', '<img src="img/Munitions_HoldoutShot.png" />&nbsp;Holdout Shot', 2, 8, pow++, 1, 'Munitions, 50 foot Ranged Single Target Damage<br /><br />Requires 1 power from Munitions or 2 non-energy building powers from any framework.<br /><br />When you\\\'ve thrown everything at them and they\\\'re still coming Holdout Shot can be your saving grace.');
 dataPower[dataPower.length-1].advantage.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1687,7 +1684,7 @@ dataPowerAlias['Essence Assault'] = new PowerAlias('Essence Assault', 'Essence A
 dataPowerAlias['Rising Knee'] = new PowerAlias('Rising Knee', 'Rising Knee', '<img src="img/MartialArts_RisingKnee.png" />&nbsp;Rising Knee', 'Martial Arts, 10 foot Melee Single Target Damage and Knock Down<br /><br />Requires 3 powers from Martial Arts or 4 non-energy building powers from any framework.<br /><br />You quickly bring your knee up, slamming your target hard.');
 dataPowerAlias['Flowing Strikes'] = new PowerAlias('Flowing Strikes', 'Flowing Strikes', 'Flowing Strikes', 'Your mastery of unarmed combat allows you to make more effective blows as part of a combo, reducing the target\\\'s Damage Resistance to your next 2 non-energy building melee Crushing attacks.');
 dataPowerAlias['Bountiful Chi Resurgence'] = new PowerAlias('Bountiful Chi Resurgence', 'Bountiful Chi Resurgence', '<img src="img/MartialArts_BountifulChiResurgence.png" />&nbsp;Bountiful Chi Resurgence', 'Martial Arts, Self HoT and Debuff<br /><br />Requires 3 powers from Martial Arts or 4 non-energy building powers from any framework.<br /><br />Bountiful Chi Resurgence focuses your Chi into healing energy to help you recover from battle.');
-dataPowerAlias['Resurgent Reiki'] = new PowerAlias('Resurgent Reiki', 'Resurgent Reiki', 'Resurgent Reiki', 'This power activates when you Dodge.');
+dataPowerAlias['Resurgent Reiki'] = new PowerAlias('Resurgent Reiki', 'Resurgent Reiki', 'Resurgent Reiki', 'You gain additional ticks of healing whenever you Dodge an attack while Bountiful Chi Resurgence is active. This effect can only occur once every 0.5 seconds.');
 dataPowerAlias['Sneak'] = new PowerAlias('Sneak', 'Sneak', '<img src="img/MartialArts_Sneak.png" />&nbsp;Sneak', 'Martial Arts, self stealth<br /><br />Requires 3 powers from Martial Arts or 4 non-energy building powers from any framework.<br /><br />When you need to go unnoticed, Sneaking can get you to otherwise inaccessible spots.');
 dataPowerAlias['Silent Running'] = new PowerAlias('Silent Running', 'Silent Running', 'Silent Running', 'Increases your movement speed while Sneaking.');
 dataPowerAlias['Masterful Dodge'] = new PowerAlias('Masterful Dodge', 'Masterful Dodge', '<img src="img/MartialArts_MasterfulDodge.png" />&nbsp;Masterful Dodge', 'Martial Arts, Active Defense<br /><br />Requires 3 powers from Martial Arts or 4 non-energy building powers from any framework.<br /><br />In moments of need you are able to focus your attention on avoiding the attacks of your foes.');
@@ -4096,7 +4093,7 @@ ArchetypeGroup = function(id, name, desc, tip) {
     this.desc = desc;
     this.tip = tip;
     this.code = function() {
-        return numToCharCode(this.id);
+        return numToUrlCode(this.id);
     }
     this.equals = function(obj) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
@@ -4167,7 +4164,7 @@ Archetype = function(id, name, desc, group, superStat, innateTalent, power, tip)
     }
     this.tip = tip;
     this.code = function() {
-        return numToCharCode(this.id);
+        return numToUrlCode(this.id);
     }
     this.equals = function(obj) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
@@ -4207,7 +4204,7 @@ dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The T
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Marksman', '<img src="img/Archetype_Marksman.png" />&nbsp;The Marksman', 'Ranged', new Array('Super Dexterity', 'Super Intelligence', 'Super Ego'), 'The Marksman', new Array('Strafe', 'Straight Shot', 'Sonic Arrow', 'Quarry', 'Torrent of Arrows', 'Retaliation', new Array ('Snap Shot', 'Focused Shot'), 'Hunter\'s Instinct', 'Evasive Maneuvers', new Array('Storm of Arrows', 'Gas Arrow'), 'Explosive Arrow'), 'You are an expert with the bow, and your precision and finesse allow you to take foes down from long range. Your arsenal of arrows provides you with the tools for many situations.<br /><br />Concepts: Arcane Hunter, Master Archer, Ancient Deity, Expert Tracker, Dimensional Nomad<br /><br />You have a versatile set of ranged attacks, always trying to have the right arrow for any situation. You focus on a target\\\'s weak spots, dealing many critical hits to your foes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Scourge', '<img src="img/Archetype_Scourge.png" />&nbsp;The Scourge', 'Ranged', new Array('Super Recovery', 'Super Constitution', 'Super Ego'), 'The Scourge', new Array('Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', new Array('Venomous Breath', 'Vicious Cyclone'), 'Ebon Void', new Array('Locust Swarm', 'Crippling Coils'), 'Supernatural Power', 'Aspect of the Infernal', 'Epidemic', 'Defile'), 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Squall', '<img src="img/Archetype_Squall.png" />&nbsp;The Squall', 'Ranged', new Array('Super Ego', 'Super Recovery', 'Super Endurance'), 'The Squall', new Array('Wind Lash', 'Gust', 'Hurricane', 'Stormbringer', new Array('Wind Breath', 'Frost Breath'), 'Wind Barrier', new Array('Updraft', 'Twister'), 'Wind Reverberation', new Array('Electric Sheath', 'Ice Sheath'), 'Dust Devil', 'Typhoon'), 'You can control the wind and weather currents around you, creating raging hurricanes, powerful twisters, and huge gusts of wind to knock down and disorient your foes.<br /><br />Concepts: Storm Spirit, Atmospheric Manipulation, Weather Mutation, Air Wizard, Portable Wind Generator<br /><br />You possess a multitude of mid and long range attacks, many of which can Repel and Disorient your enemies, allowing you to direct movement on battlefield. You don\\\'t last long when enemies focus on you, so keep them off their feet while you take them down.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Soldier', '<img src="img/Archetype_Soldier.png" />&nbsp;The Soldier', 'Ranged', new Array('Super Dexterity', 'Super Ego', 'Super Recovery'), 'The Soldier', new Array('Steady Shot', 'Assault Rifle', 'Submachinegun Burst', 'Targeting Computer', new Array('Shotgun Blast', 'Frag Grenade'), 'Retaliation', 'Smoke Grenade', 'Killer Instinct', 'Lock N Load', new Array('Rocket', 'Gatling Gun'), 'Sniper Rifle'), 'You possess a formidable arsenal of military weapons and know how to use them. From heavy pistols and assault rifles to rockets and sniper rifles, you are the ultimate one-man army.<br /><br />Concepts: Android Mercenary, Ex-Special Forces, Gun-Toting Vigilante, Special Agent, Super-Soldier<br /><br />Your strength lies in your ranged attacks. You have a number of single-target and area effect attacks that inflict heavy damage to your target. Be careful though, all those weapons don\\\'t leave much room for body armor, so you either need to take down your opponent quickly or find someone who can draw incoming fire!');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Soldier', '<img src="img/Archetype_Soldier.png" />&nbsp;The Soldier', 'Ranged', new Array('Super Ego', 'Super Dexterity', 'Super Recovery'), 'The Soldier', new Array('Steady Shot', 'Assault Rifle', 'Submachinegun Burst', 'Targeting Computer', new Array('Shotgun Blast', 'Frag Grenade'), 'Retaliation', 'Smoke Grenade', 'Killer Instinct', 'Lock N Load', new Array('Rocket', 'Gatling Gun'), 'Sniper Rifle'), 'You possess a formidable arsenal of military weapons and know how to use them. From heavy pistols and assault rifles to rockets and sniper rifles, you are the ultimate one-man army.<br /><br />Concepts: Android Mercenary, Ex-Special Forces, Gun-Toting Vigilante, Special Agent, Super-Soldier<br /><br />Your strength lies in your ranged attacks. You have a number of single-target and area effect attacks that inflict heavy damage to your target. Be careful though, all those weapons don\\\'t leave much room for body armor, so you either need to take down your opponent quickly or find someone who can draw incoming fire!');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Glacier', '<img src="img/Archetype_Glacier.png" />&nbsp;The Glacier', 'Tank', new Array('Super Constitution', 'Super Endurance', 'Super Ego'), 'The Glacier', new Array('Ice Shards', 'Ice Blast', 'Ice Cage', 'Invulnerability', new Array('Snow Storm', 'Frost Breath'), 'Ice Shield', 'Ice Sheath', 'Shatter', 'Unbreakable', new Array('Ice Barrier', 'Ice Burst'), 'Avalanche'), 'You are able to create ice and cold out of thin air and manipulate it various ways. You blast your foes with ice shards, trap them in solid blocks of ice, then shatter them with only a thought.<br /><br />Concepts: Cold Mutation, Cryo-Suit, Frost Warrior, Ice Elemental, Winter Spirit<br /><br />You have a number of powers used to lock down your opponents, holding them in place so your allies can finish them off. You eventually gain the ability to shatter your ice constructs, causing damage to any opponent in their icy embrace.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mountain', '<img src="img/Archetype_Freeform.png" />&nbsp;The Mountain', 'Tank', new Array('Super Constitution', 'Super Ego', 'Super Endurance'), 'The Mountain', new Array('Wield Earth', 'Stone Shot', 'Tremor', 'Defiance', new Array('Cave In', 'Upheaval'), 'Stone Shroud', new Array('Land Slide', 'Seismic Smash'), 'Quicksand', 'Unbreakable', 'Fault Line', 'Fissure'), 'You are an embodiment of the rocks and earth that surround us, standing firm in the face of your foes. You manipulate the stone and soil to assault and harass those that would stand against you and your allies.<br /><br />Concepts: Rock Golem, Nature\\\'s Guardian, Earth Elemental, Druidic Enchantment, Primordial Entity<br /><br />You have multiple powers that can knock down and weaken your foes, allowing you to gain control of the fight and the attention of your enemies. Your assault enables your allies to attack unhindered, so focus on keeping your enemies attacking you instead of them!');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Master', '<img src="img/Archetype_Master.png" />&nbsp;The Master', 'Tank', new Array('Super Constitution', 'Super Dexterity', 'Super Strength'), 'The Master', new Array('Vicious Strikes', 'Thundering Kicks', 'Thunderbolt Lunge', 'Lightning Reflexes', new Array('Elbow Slam', 'Inexorable Tides'), 'Parry', 'Shuriken Storm', 'Form of the Master', 'Bountiful Chi Resurgence', 'Dragon Kick', new Array('Burning Chi Fist', 'Open Palm Strike')), 'Your ability to sense and avoid incoming danger is unparalleled, making you a difficult adversary to defeat. Your skill with unarmed martial arts allows you to pummel your foes, all while avoiding their assault against you.<br /><br />Concepts: Blind Monk, Time-Shifted Foot Soldier, Venerable Sensei, Sixth Sense Mutation<br /><br />You are adept at prolonged fights due to your abilities to avoid and dodge your attackers. In team fights, you work to keep foes focused on you with your martial arts powers, leaving your allies free to attack them unhindered.');
@@ -4220,7 +4217,7 @@ dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The F
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Void', '<img src="img/Archetype_Void.png" />&nbsp;The Void', 'Hybrid', new Array('Super Endurance', 'Super Constitution', 'Super Ego'), 'The Void', new Array('Shadow Bolt', 'Shadow Blast', 'Shadow Embrace', 'Shadow Form', 'Grasping Shadows', 'Ebon Void', new Array('Void Horror', 'Ebon Rift'), 'Spirit Reverberation', 'Shadow Shroud', new Array('Lifedrain', 'Summon Shadows'), 'Ebon Ruin'), 'You are connected to a realm of shadows and darkness. This connection allows you to channel dimensional energy to assault your foes, drawing out their fears and draining them of their essence.<br /><br />Concepts: Shadow Entity, Dark Magician, Soul Vampire, Demonic Blood, Multi-Dimensional Being<br /><br />You have a good range of mid and long range attacks, both single target and group attacks. You have the ability to lock down and weaken your foes, and can learn to summon creatures of pure shadow to assist you in combat.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Grimoire', '<img src="img/Archetype_Grimoire.png" />&nbsp;The Grimoire', 'Hybrid', new Array('Super Intelligence', 'Super Ego', 'Super Presence'), 'The Grimoire', new Array('Eldritch Bolts', 'Eldritch Blast', 'Sigils of the Primal Storm', 'Aura of Primal Majesty', 'Pillar of Poz', 'Eldritch Shield', new Array('Arcane Vitality', 'Vala\'s Light'), 'Circle of Arcane Power', 'Skarn\'s Bane', new Array('Sigils of Arcane Runes', 'Sigils of Ebon Weakness'), 'Hex of Suffering'), 'You have unlocked mysterious arcane secrets. You use this knowledge to weave powerful magic into auras, sigils, and spells designed to confound your enemies and protect your allies.<br /><br />Concepts: Dimensional Sorcerer, Master Mage, Rune Witch, Shaman, Street Wizard<br /><br />You have a good range of abilities that allow you to set up areas of control to focus your mystic powers. This allows you to heal your allies, debilitate your foes, and deal decent area effect damage.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Impulse', '<img src="img/Archetype_Impulse.png" />&nbsp;The Impulse', 'Hybrid', new Array('Super Endurance', 'Super Ego', 'Super Intelligence'), 'The Impulse', new Array('Force Bolts', 'Force Blast', 'Force Eruption', new Array('Personal Force Field', 'Kinetic Manipulation'), 'Crushing Wave', 'Force Shield', new Array('Protection Field', 'Containment Field'), 'Field Surge', 'Inertial Dampening Field', new Array('Force Detonation', 'Force Geyser'), 'Force Cascade'), 'You can create powerful blasts, eruptions, and protective bubbles out of pure energy. You use these forces to knock your foes around, keeping them off balance while you pummel them from afar.<br /><br />Concepts: Force Fields, Master of Gravity, Energy Manipulation, Technological Shields, Force of Will<br /><br />Many of your powers allow you to knock foes back, keeping them away from you and preventing them from attacking while they fly through the air. You will gain the ability to shield yourself and allies, while also being able to dish out serious damage.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Specialist', '<img src="img/Archetype_Specialist.png" />&nbsp;The Specialist', 'Hybrid', new Array('Super Dexterity', 'Super Recovery', 'Super Ego'), 'The Specialist', new Array('Gunslinger', 'Blade Tempest', 'Two-Gun Mojo', 'Lightning Reflexes', new Array('Bullet Beatdown', 'Storm\'s Harvest'), 'Parry', 'Eye of the Storm', 'Form of the Tempest', 'Holdout Shot', new Array('Lock N Load', 'Masterful Dodge'), 'Lead Tempest'), 'You are an expert at taking down your target with whatever means necessary. You are well trained with pistols and swords, alternating between them in combat with deadly quickness.<br /><br />Concepts: Bounty Hunter, Cybernetic Mercenary, Techno-Ninja, Covert Ops, Military Specialist<br /><br />You excel at short and mid-range combat, whether with your swords or your pistols. Your quick reflexes allow you to avoid incoming attacks, all the while whittling away at your foes with your rapid strikes.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Specialist', '<img src="img/Archetype_Specialist.png" />&nbsp;The Specialist', 'Hybrid', new Array('Super Dexterity', 'Super Ego', 'Super Strength'), 'The Specialist', new Array('Gunslinger', 'Blade Tempest', 'Two-Gun Mojo', 'Lightning Reflexes', new Array('Bullet Beatdown', 'Storm\'s Harvest'), 'Parry', 'Eye of the Storm', 'Form of the Tempest', 'Holdout Shot', new Array('Lock N Load', 'Masterful Dodge'), 'Lead Tempest'), 'You are an expert at taking down your target with whatever means necessary. You are well trained with pistols and swords, alternating between them in combat with deadly quickness.<br /><br />Concepts: Bounty Hunter, Cybernetic Mercenary, Techno-Ninja, Covert Ops, Military Specialist<br /><br />You excel at short and mid-range combat, whether with your swords or your pistols. Your quick reflexes allow you to avoid incoming attacks, all the while whittling away at your foes with your rapid strikes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Savage', '<img src="img/Archetype_Savage.png" />&nbsp;The Savage', 'Hybrid', new Array('Super Strength', 'Super Constitution', 'Super Recovery'), 'The Savage', new Array('Bestial Fury', 'Shred', 'Frenzy', 'Regeneration', 'Pounce', 'Parry', new Array('Bite', 'Massacre'), 'Supernatural Power', 'Howl', new Array('Resurgence', 'Devour Essence'), 'Aspect of the Bestial'), 'You are a vicious hybrid of man and beast with powers far greater than either. You rip apart enemies with your razor-sharp claws and teeth while rapidly healing your own injuries.<br /><br />Concepts: Animal Mutation, Lab Experiment, Man-Animal Hybrid, Mechanical Beast, Supernatural Creature<br /><br />You\\\'ve got a good mix of close combat attack powers, and can take a fair amount of damage due to your self-healing abilities. While you don\\\'t have the same offensive or defensive capabilities as dedicated archetypes, you\\\'re a good balance of both.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Radiant', '<img src="img/Archetype_Freeform.png" />&nbsp;The Radiant', 'Support', new Array('Super Presence', 'Super Ego', 'Super Intelligence'), 'The Radiant', new Array('Eldritch Bolts', 'Rebuke', 'Vengeance', 'Seraphim', 'Expulse',  'Eldritch Shield', new Array('Circle of Radiant Glory', 'Sigils of Radiant Sanctuary'), 'Arcane Vitality', new Array('Binding of Aratron', 'Soul Mesmerism'), 'Divine Renewal', 'Planar Fracture'), 'You have unlocked mysterious arcane secrets. You use this knowledge to weave powerful magic into auras, sigils, and spells designed to confound your enemies and protect your allies.<br /><br />Concepts: Dimensional Sorcerer, Master Mage, Rune Witch, Shaman, Street Wizard<br /><br />You have a good range of abilities that allow you to set up areas of control to focus your mystic powers. This allows you to heal your allies, debilitate your foes, and deal decent area effect damage.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mind', '<img src="img/Archetype_Mind.png" />&nbsp;The Mind', 'Support', new Array('Super Presence', 'Super Endurance', 'Super Ego'), 'The Mind', new Array('Psi Lash', 'Ego Blast', 'Ego Sprites', 'Aura of Radiant Protection', new Array('Psionic Healing', 'Empathic Healing'), 'Telekinetic Shield', 'Ego Sleep', 'Telepathic Reverberation', 'Ego Hold', new Array('Ego Storm', 'Summon Nightmare'), 'Mindful Reinforcement'), 'You have tapped into powerful psychic energies. You use your mental might to lash out at opponents and reach into their psyches to make their darkest nightmares real.<br /><br />Concepts: Alien Overmind, Mental Mutation, Mind-Control Ray, Psionic Projector, Telepath<br /><br />You have limited ranged attack abilities, but have a number of powers designed to lock down enemies and boost allies. You are most powerful when supporting other heroes.');
@@ -4233,27 +4230,70 @@ dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The C
 
 // version update class
 /**@constructor*/
-VersionUpdate = function(id, version, pos, start, modifier) {
+VersionUpdate = function(id, version, funct) {
     this.id = id;
     this.version = version;
-    this.pos = pos;
-    this.start = start;
-    this.modifier = modifier;
+    this.funct = funct;
     this.code = function() {
-        return numToCharCode(this.id);
-    }
-    this.getModifiedCodeNum = function(codeNum) {
-        if (codeNum >= start) return codeNum + modifier;
-        else return codeNum;
+        return numToUrlCode(this.id);
     }
     this.equals = function(obj) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
+    this.toString = function() {
+        return '[id='+this.id+', version=\''+this.version+'\', funct=\''+this.funct+'\', code='+this.code()+']';
+    }
 }
 
 // version update data
+// function must handle the following values for 'thing': pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask
+// valid values: type, pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask
+// valid types: start, archetype, superStat, innateTalent, talent, travelPower, power
+// valid
+// mask modifications:
+//   advantageId:   0 1 2 3 4  5  6  7   8
+//   decimal value: 1 2 4 8 16 32 64 128 256
 var dataVersionUpdate = new Array();
-//dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(dataVersionUpdate.length, 1, 1, 1, 1);
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(dataVersionUpdate.length, 0, null);
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(dataVersionUpdate.length, 1,
+                                                                function(thing, value) {
+                                                                    var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
+                                                                    var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+                                                                    var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+                                                                    var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+                                                                    switch (thing) {
+                                                                    case 'pos':
+                                                                        // add archetype to start of data
+                                                                        if (value['type'] == 'start' && value['pos'] == 0) return 1;
+                                                                        else return value['pos'];
+                                                                    case 'i': return value['i'];
+                                                                    case 'inc':
+                                                                        // advantages now use two digits
+                                                                        if (value['type'] == 'power') return value['inc']-1;
+                                                                        else return value['inc'];
+                                                                    case 'code1': return value['code1'];
+                                                                    case 'code2': return value['code2'];
+                                                                    case 'code3':
+                                                                        // advantages now use two characters
+                                                                        if (value['type'] == 'power') return numToUrlCode(0);
+                                                                        else return value['code3'];
+                                                                    case 'code4':
+                                                                        // advantages now use two characters
+                                                                        if (value['type'] == 'power') return value['code3'];
+                                                                        else return value['code4'];
+                                                                    case 'archetype': return value['archetype'];
+                                                                    case 'superStat': return value['superStat'];
+                                                                    case 'innateTalent': return value['innateTalent'];
+                                                                    case 'talent': return value['talent'];
+                                                                    case 'travelPower': return value['travelPower'];
+                                                                    case 'framework': return value['framework'];
+                                                                    case 'power': return value['power'];
+                                                                    case 'mask':
+                                                                        // add 'Break the Trigger' advantage to 'Bullet Beatdown' power
+                                                                        if (value['type'] == 'power' && codeNum1 == 8 && codeNum2 == 3) return value['mask']+(value['mask']&48);
+                                                                        else return value['mask'];
+                                                                    }
+                                                                });
 
 //==============================================================================
 // Get Methods

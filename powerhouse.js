@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-03-12 00:08:05 (kyle)>
+ * Time-stamp: <2012-04-13 22:13:21 (kyle)>
  *============================================================================*/
 
-var version = '0.9.4';
-var releaseDate = '2012-03-11';
-var buildVersion = 1;
+var version = '0.9.6';
+var releaseDate = '2012-04-13';
+var buildVersion = 2;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
 var buildUrl = siteUrl+'powerhouse.html';
@@ -25,17 +25,17 @@ function setCookie(name, value, expireDays)
 {
     var expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + expireDays);
-    var cookieValue = escape(value)+((expireDays == null) ? "" : "; expires="+expireDate.toUTCString());
-    document.cookie = name+"="+cookieValue;
+    var cookieValue = escape(value)+((expireDays == null) ? '' : '; expires='+expireDate.toUTCString());
+    document.cookie = name+'='+cookieValue;
 }
 window['setCookie'] = setCookie;
 function getCookie(name)
 {
-    var cookies = document.cookie.split(";");
+    var cookies = document.cookie.split(';');
     for (var i=0; i<cookies.length; i++) {
-        var x = cookies[i].substr(0, cookies[i].indexOf("="));
-        var y = cookies[i].substr(cookies[i].indexOf("=")+1);
-        x = x.replace(/^\s+|\s+$/g, "");
+        var x = cookies[i].substr(0, cookies[i].indexOf('='));
+        var y = cookies[i].substr(cookies[i].indexOf('=')+1);
+        x = x.replace(/^\s+|\s+$/g, '');
         if (x == name) return unescape(y);
     }
     return null;
@@ -44,24 +44,40 @@ window['getCookie'] = getCookie;
 
 // encode number to url code
 // valid number range is 0-61 (invalid numbers default to 0)
-function numToCharCode(num) {
-    var code = 0;
-    if (num >= 0 && num <= 9) code = num+48;
-    if (num >= 10 && num <= 35) code = num+55;
-    if (num >= 36 && num <= 61) code = num+61;
-    return String.fromCharCode(code);
+function numToUrlCode(num) {
+    var charCode = 0;
+    if (num >= 0 && num <= 9) charCode = num+48;
+    else if (num >= 10 && num <= 35) charCode = num+55;
+    else if (num >= 36 && num <= 61) charCode = num+61;
+    else throw 'numToUrlCode: num is out of valid range: '+num;
+    return String.fromCharCode(charCode);
 }
-window['numToCharCode'] = numToCharCode;
+window['numToUrlCode'] = numToUrlCode;
+// encode number to two digit url code
+// valid number range is 0-3721 (invalid numbers default to 0)
+function numToUrlCode2(num) {
+    return numToUrlCode(Math.floor(num/61))+numToUrlCode(num%61);
+}
+window['numToUrlCode2'] = numToUrlCode2;
+
 // decode url code to number
 // invalid codes default to 0
-function codeToNum(code) {
+function urlCodeToNum(code) {
     var num = 0;
-    if (code >= 48 && code <= 57) num = code-48;
-    if (code >= 65 && code <= 90) num = code-55;
-    if (code >= 97 && code <= 122) num = code-61;
+    var charCode = code.charCodeAt(0);
+    if (charCode >= 48 && charCode <= 57) num = charCode-48;
+    else if (charCode >= 65 && charCode <= 90) num = charCode-55;
+    else if (charCode >= 97 && charCode <= 122) num = charCode-61;
+    else throw 'urlCodeToNum: code is out of valid range: '+code+' ('+charCode+')';
     return num;
 }
-window['codeToNum'] = codeToNum;
+window['urlCodeToNum'] = urlCodeToNum;
+// decode two character url code to number
+// invalid codes default to 0
+function urlCodeToNum2(code) {
+    return urlCodeToNum(code[0])*61+urlCodeToNum(code[1]);
+}
+window['urlCodeToNum2'] = urlCodeToNum2;
 
 // get data sets (from powerhouse-data.js)
 var dataSuperStat = getDataSuperStat();
@@ -104,18 +120,6 @@ for (var i=0; i<dataPower.length; i++) {
         }
         dataPowerIdFromFramework[framework].push(parseInt(i));
     }
-}
-
-// version update lookup
-var dataVersionUpdateLookup = new Array();
-var versionUpdateId = 0;
-for (var i=1; i<buildVersion; i++) {
-    var posUpdate = new Array();
-    var update = dataVersionUpdate[versionUpdateId];
-    while (update.version == i) {
-        posUpdate[update.pos] = update.id;
-    }
-    dataVersionUpdateLookup[i] = posUpdate;
 }
 
 // current power house character info
@@ -189,7 +193,7 @@ function setupEvents(evnt) {
     // change name
     catchEvent(document.getElementById('editName'), 'change', changeName);
     // close popups when main document is clicked, but not when the popup divs are clicked
-    catchEvent(document, "mouseup", selectClearMaybe);
+    catchEvent(document, 'mouseup', selectClearMaybe);
 }
 window['setupEvents'] = setupEvents;
 catchEvent(window, 'load', setupEvents);
@@ -1304,6 +1308,20 @@ function setArchetype(id) {
 }
 window['setArchetype'] = setArchetype;
 
+// apply version update
+function applyVersionUpdate(version, thing, value) {
+    var result = value[thing];
+    for (var i=version; i<phVersion; i++) {
+        if (i<dataVersionUpdate.length) {
+            var funct = dataVersionUpdate[i].funct;
+            result = funct(thing, value);
+            value[thing] = result;
+        }
+    }
+    return result;
+}
+window['applyVersionUpdate'] = applyVersionUpdate;
+
 // parse url for parameters
 function parseUrlParams(url) {
     var version = buildVersion;
@@ -1322,6 +1340,7 @@ function parseUrlParams(url) {
                 document.getElementById('fieldName').firstChild.data = phName;
                 break;
             case 'a':
+                // note: deprecated, but needed for backwards compatibility with version 1
                 phArchetype = dataArchetype[parseInt(pair[1])];
                 //document.getElementById('fieldArchetype').firstChild.data = phArchetype.name;
                 break;
@@ -1335,45 +1354,73 @@ function parseUrlParams(url) {
     var i = 0;
     var inc = 1;
     while (i < data.length) {
-        var codeNum = codeToNum(data.charCodeAt(i));
+        //var codeNum = urlCodeToNum(data[i]);
+        pos = applyVersionUpdate(version, 'pos', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc});
+        i = applyVersionUpdate(version, 'i', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc});
+        //codeNum = applyVersionUpdate(version, 'codeNum', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'codeNum': codeNum});
         switch (pos) {
         case 0:
+            // archetype
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var archetype = urlCodeToNum(code1);
+            archetype = applyVersionUpdate(version, 'archetype', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
+            phArchetype = dataArchetype[archetype];
+            inc = 1;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
+            break;
         case 1:
         case 2:
-            // super stats
-            selectSuperStat(pos+1);
-            //setSuperStat(getVersionUpdateCodeNum(version, pos+1, codeNum));
-            setSuperStat(codeNum);
-            inc = 1;
-            break;
         case 3:
-            // innate talent
-            selectInnateTalent(pos-2);
-            setInnateTalent(codeNum);
+            // super stats
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var superStat = urlCodeToNum(code1);
+            superStat = applyVersionUpdate(version, 'superStat', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'superStat': superStat});
+            selectSuperStat(pos);
+            setSuperStat(superStat);
             inc = 1;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'superStat': superStat});
             break;
         case 4:
+            // innate talent
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var innateTalent = urlCodeToNum(code1);
+            innateTalent = applyVersionUpdate(version, 'innateTalent', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'innateTalent': innateTalent});
+            selectInnateTalent(pos-3);
+            setInnateTalent(innateTalent);
+            inc = 1;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'innateTalent': innateTalent});
+            break;
         case 5:
         case 6:
         case 7:
         case 8:
         case 9:
-            // talents
-            selectTalent(pos-3);
-            setTalent(codeNum);
-            inc = 1;
-            break;
         case 10:
+            // talents
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var talent = urlCodeToNum(code1);
+            talent = applyVersionUpdate(version, 'talent', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'talent': talent});
+            selectTalent(pos-4);
+            setTalent(talent);
+            inc = 1;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'talent': talent});
+            break;
         case 11:
+        case 12:
             // travel powers
-            var num = pos-9;
-            var mask = codeToNum(data.charCodeAt(i+1)) << 1;
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1]});
+            var code2 = applyVersionUpdate(version, 'code2', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1]});
+            var travelPower = urlCodeToNum(code1);
+            travelPower = applyVersionUpdate(version, 'travelPower', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'travelPower': travelPower});
+            var mask = urlCodeToNum(code2) << 1;
+            mask = applyVersionUpdate(version, 'mask', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'travelPower': travelPower, 'mask': mask});
+            var num = pos-10;
             selectTravelPower(num);
-            setTravelPower(codeNum);
+            setTravelPower(travelPower);
             setAdvantage(2, num, mask);
             inc = 2;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'travelPower': travelPower, 'mask': mask});
             break;
-        case 12:
         case 13:
         case 14:
         case 15:
@@ -1387,18 +1434,25 @@ function parseUrlParams(url) {
         case 23:
         case 24:
         case 25:
+        case 26:
             // powers
-            var num = pos-11;
-            var frameworkId = parseInt(codeToNum(data.charCodeAt(i)));
-            var powerCode = data.charAt(i)+data.charAt(i+1);
-            var id = dataPowerIdFromCode[powerCode];
-            var mask = codeToNum(data.charCodeAt(i+2)) << 1;
-            selectFramework(frameworkId);
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code2 = applyVersionUpdate(version, 'code2', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code3 = applyVersionUpdate(version, 'code3', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code4 = applyVersionUpdate(version, 'code4', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var framework = applyVersionUpdate(version, 'framework', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+            var power = applyVersionUpdate(version, 'power', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+            var mask = applyVersionUpdate(version, 'mask', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+            var powerCode = numToUrlCode(framework)+numToUrlCode(power);
+            var powerId = dataPowerIdFromCode[powerCode];
+            var num = pos-12;
+            selectFramework(framework);
             selectPower(num);
-            setPower(id);
-            //validatePower(num, id);
+            setPower(powerId);
+            //validatePower(num, powerId);
             setAdvantage(1, num, mask);
-            inc = 3;
+            inc = 4;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': framework, 'power': power, 'mask': mask});
             break;
         }
         i+=inc;
@@ -1408,20 +1462,6 @@ function parseUrlParams(url) {
     if (phArchetype.id > 1) setArchetype(phArchetype.id);
 }
 window['parseUrlParams'] = parseUrlParams;
-
-// apply version updates to codeNum
-function getVersionUpdateCodeNum(version, pos, codeNum) {
-    for (var i=version; i<phVersion; i++) {
-        var updateLookup = dataVersionUpdateLookup[i];
-        if (updateLookup != undefined) {
-            var updateId = updateLookup[pos];
-            if (updateId != undefined) {
-                codeNum = dataVersionUpdate[updateId].getModifiedCodeNum(codeNum);
-            }
-        }
-    }
-    return codeNum;
-}
 
 // change updates
 function changeUpdate() {
@@ -1452,8 +1492,10 @@ function buildLink() {
     //var fieldBookmark = document.getElementById('buildLinkBookmark');
     var fieldRef = document.getElementById('buildLinkRef');
     var base = window.location.href.replace(/\?.*$/, '');
-    var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&a='+phArchetype.id+'&d=';
+    //var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&a='+phArchetype.id+'&d=';
+    var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&d=';
     var params = new Array();
+    params.push(phArchetype.code());
     for (var i=1; i<phSuperStat.length; i++) {
         params.push(phSuperStat[i].code());
     }
@@ -1465,11 +1507,11 @@ function buildLink() {
     }
     for (var i=1; i<phTravelPower.length; i++) {
         params.push(phTravelPower[i].code());
-        params.push(numToCharCode(phTravelPowerAdvantage[i] >> 1));
+        params.push(numToUrlCode(phTravelPowerAdvantage[i] >> 1));
     }
     for (var i=1; i<phPower.length; i++) {
         params.push(phPower[i].code());
-        params.push(numToCharCode(phPowerAdvantage[i] >> 1));
+        params.push(numToUrlCode2(phPowerAdvantage[i] >> 1));
     }
     link += params.join('');
     phBuildLink = buildUrl+link;
@@ -1506,7 +1548,7 @@ window['setTitle'] = setTitle;
 
 // generate forum entries
 function forumEntry(type, first, second, third) {
-    var result = "";
+    var result = '';
     if (type == 1) {
         result += '<b><span style="color:#f78112">'+first+'</span></b>';
         if (second) {
@@ -1736,6 +1778,7 @@ function dataDump() {
     win.document.write('<h3><a onclick="document.getElementById(\'power\').scrollIntoView();">Power Data</a></h3>');
     win.document.write('<h3><a onclick="document.getElementById(\'archetype-group\').scrollIntoView();">Archetype Group Data</a></h3>');
     win.document.write('<h3><a onclick="document.getElementById(\'archetype\').scrollIntoView();">Archetype Data</a></h3>');
+    win.document.write('<h3><a onclick="document.getElementById(\'version-update\').scrollIntoView();">Version Update Data</a></h3>');
     win.document.write('<hr>');
     win.document.write('<h2 id="super-stat">Super Stat Data</h3>');
     for (var i=1; i<dataSuperStat.length; i++) {
@@ -1780,6 +1823,11 @@ function dataDump() {
     win.document.write('<h2 id="archetype">Archetype Data</h3>');
     for (var i=1; i<dataArchetype.length; i++) {
         win.document.write('dataArchetype['+i+'] = '+dataArchetype[i].toString()+'<br />');
+    }
+    win.document.write('<hr>');
+    win.document.write('<h2 id="version-update">Version Update Data</h3>');
+    for (var i=1; i<dataVersionUpdate.length; i++) {
+        win.document.write('dataVersionUpdate['+i+'] = '+dataVersionUpdate[i].toString()+'<br />');
     }
     win.focus();
 }
