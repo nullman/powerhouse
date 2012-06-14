@@ -5,18 +5,15 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-03-08 01:30:50 (kyle)>
+ * Time-stamp: <2012-06-03 14:59:11 (kyle)>
  */
 
-/* @font-face { */
-/*     font-family: comic-font; */
-/*     src: url('open-comic-font.ttf'); */
-/* } */
+@font-face {
+    font-family: Lexia;
+    src: url('lexia.ttf');
+}
 
 html {
-    font-family: "Comic Sans MS", sans-serif;
-    /* font-family: comic-font, "Comic Sans MS", sans-serif; */
-    font-size: 1.1em;
     margin: 0;
     overflow-y: scroll;    /* force scroll bar to appear to prevent jumping */
     padding: 0;
@@ -27,6 +24,9 @@ body {
     /* background-color: #0D3E7F;          /\* dark blue *\/ */
     /* background-color: #0E162B;          /\* dark blue *\/ */
     color: #FEC530;                     /* yellow */
+    font-family: Lexia, sans-serif;
+    /* font-size: 1.1em; */
+    font-size: 100%;
     /* margin: 0 1em 0 1em; */
     margin-left: auto;
     margin-right: auto;
@@ -35,8 +35,15 @@ body {
     padding: 0 2em;
 }
 
-.main {
+div#viewHelp {
+    font-family: sans-serif;
 }
+
+div#viewAbout {
+    font-family: sans-serif;
+}
+
+.main { }
 
 .title {
     font-size: xx-large;
@@ -155,7 +162,7 @@ img {
     height: auto;
     padding: 1px;
     vertical-align: middle;
-    width: 16px;
+    width: 24px;
 }
 
 /* td.selectionNormal { */
@@ -177,7 +184,7 @@ img {
 
 .leftSelection {
     float: left;
-    padding: 0;
+    padding: 0 1em 0 0;
     text-align: left;
 }
 
@@ -218,6 +225,16 @@ td {
 .edit { }
 
 .edit img {
+    border: 0;
+    height: auto;
+    padding: 1px;
+    vertical-align: middle;
+    width: 24px;
+}
+
+.prefs { }
+
+.prefs img {
     border: 0;
     height: auto;
     padding: 1px;
@@ -294,6 +311,9 @@ a.selectedButtonNote:visited, a.selectedButtonNote:hover, a.selectedButtonNote:a
 .buttonText {
     color: #FEC530;                     /* yellow */
 }
+.disabledButtonText {
+    color: #5C5C5C;                     /* dark gray */
+}
 a.buttonText, a.buttonText:link, a.buttonText:visited {
     color: #FEC530;                     /* yellow */
     font-weight: bold;
@@ -310,9 +330,20 @@ a.selectedButtonText:visited, a.selectedButtonText:hover, a.selectedButtonText:a
     font-weight: bold;
     text-decoration: none;
 }
+a.disabledButtonText, a.disabledButtonText:link,
+a.disabledButtonText:visited, a.disabledButtonText:hover, a.disabledButtonText:active {
+    color: #5C5C5C;                     /* dark gray */
+    font-weight: bold;
+    text-decoration: none;
+}
 
 .note {
     color: #FEC530;                     /* yellow */
+    font-size: smaller;
+    font-weight: normal;
+}
+.disabledNote {
+    color: #5C5C5C;                     /* dark gray */
     font-size: smaller;
     font-weight: normal;
 }
@@ -322,15 +353,43 @@ a.selectedButtonText:visited, a.selectedButtonText:hover, a.selectedButtonText:a
     font-size: x-small;
     font-weight: normal;
 }
+.disabledSpec {
+    color: #5C5C5C;                     /* dark gray */
+    font-size: x-small;
+    font-weight: normal;
+}
+
+.selectSpec {
+    color: #FEC530;                     /* yellow */
+    font-size: small;
+    font-weight: normal;
+}
+
+.specHighlight {
+    color: #FEF550;                     /* light yellow */
+    font-weight: bold;
+}
 
 .advantage {
-    color: #FEC530;                     /* yellow */
     font-size: smaller;
+}
+
+.specialization {
+    width: 100%;
+}
+
+.specialization img {
+    height: 20px;
+    width: auto;
+}
+
+.specializationPoints td {
+    valign: top;
 }
 
 .link {
     color: #FEC530;                     /* yellow */
-    font-size: small;
+    /* font-size: small; */
 }
 
 .linkRef {
@@ -351,8 +410,8 @@ textarea {
 
 .preview {
     border: 1px solid black;
-    /* font-family: sans-serif; */
-    font-family: "Comic Sans MS", sans-serif;
+    font-family: sans-serif;
+    /* font-family: comic-font, sans-serif; */
     font-size: 1em;
     /* height: 44em; */
     margin: 0 1em;
@@ -366,6 +425,27 @@ textarea {
     font-size: small;
 }
 
+.forumHeader {
+    color: #F78112;                     /* lighter dark orange */
+}
+
+.forumLink {
+    color: #8DCDFF;                     /* light blue */
+}
+
+.forumFirst {
+    color: #F78112;                     /* lighter dark orange */
+}
+
+.forumSecond {
+    color: #FEC530;                     /* yellow */
+}
+
+.forumThird {
+    color: #CE6C10;                     /* dark orange */
+    font-size: small;
+}
+
 /*
  * Print
  */
@@ -375,7 +455,7 @@ textarea {
         display: none;
     }
     html {
-        font-family: calibri, tahoma, arial, sans-serif;
+        font-family: Calibri, Tahoma, Arial, sans-serif;
         font-size: 0.8em;
     }
     body {
@@ -390,7 +470,30 @@ textarea {
         font-size: smaller;
     }
     .preview {
-        font-family: calibri, tahoma, arial, sans-serif;
+        font-family: Calibri, Tahoma, Arial, sans-serif;
+        font-size: 0.8em;
+    }
+    .forumHeader {
+        color: #000000;                 /* black */
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    .forumLink {
+        display: none;
+    }
+    .forumFirst {
+        color: #000000;                 /* black */
+        font-weight: normal;
+        font-size: 1.0em;
+    }
+    .forumSecond {
+        color: #000000;                 /* black */
+        font-weight: bold;
+        font-size: 1.0em;
+    }
+    .forumThird {
+        color: #000000;                 /* black */
+        font-weight: normal;
         font-size: 0.8em;
     }
 }
@@ -399,8 +502,8 @@ textarea {
  * Mobile Devices
  */
 
-@media handheld {
-    .left, .right {
+@media handheld, only screen and (max-width: 800px) {
+    .left, .right, .leftSelection, .rightSelection {
         float: none;
         padding: 0;
     }

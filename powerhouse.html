@@ -8,11 +8,12 @@
     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="powerhouse.css" />
     <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
     <script type="text/javascript" src="powerhouse-data.js"></script>
+    <script type="text/javascript" src="powerhouse-version.js"></script>
     <script type="text/javascript" src="powerhouse.js"></script>
   </head>
   <body>
     <div id="body" class="main">
-      <div>
+      <div id="header" style="display:none">
         <span class="title"><a href="powerhouse.html">PowerHouse</a></span>
         <span class="menu">
           <a id="showViewEdit" class="button" onclick="showView('Edit')">Edit</a>
@@ -20,8 +21,8 @@
           <a id="showViewPreview" class="button" onclick="showView('Preview')">Preview</a>
           &nbsp;&nbsp;
           <a id="showViewExport" class="button" onclick="showView('Export')">Export</a>
-          <!-- &nbsp;&nbsp; -->
-          <a id="showViewPrint" class="button" onclick="showView('Print')" style="display:none">Print</a>
+          &nbsp;&nbsp;
+          <a id="showViewPrefs" class="button" onclick="showView('Prefs')">Prefs</a>
           &nbsp;&nbsp;
           <a id="showViewHelp" class="button" onclick="showView('Help')">Help</a>
           &nbsp;&nbsp;
@@ -107,6 +108,16 @@
         </div>
       </div>
 
+      <div id="selectionSpecialization" class="selection" style="display:none">
+        <div id="selectSpecializationRole">
+        </div>
+        <div id="selectSpecialization">
+        </div>
+      </div>
+
+      <div id="selectionPref" class="selection" style="display:none">
+      </div>
+
       <div id="viewEdit" class="edit" style="display:none">
         <div class="section">
           <div id="leftName" class="left">
@@ -128,7 +139,7 @@
         </div>
 
         <div>
-          <div id="leftNormal" class="left">
+          <div id="leftBody" class="left">
             <div id="sectionSuperStat" class="section">
               <table>
                 <tr>
@@ -204,7 +215,7 @@
             </div>
           </div>
 
-          <div id="rightNormal" class="right">
+          <div id="rightBody" class="right">
             <div id="sectionPower" class="section">
               <table>
                 <tr id="rowPower1">
@@ -313,6 +324,43 @@
         </div>
 
         <div class="footer note">Advantage points: <span id="advantagePoints">0</span></div>
+
+        <div>
+          <div id="specialization1" class="leftSelection">
+            <div id="sectionSpecialization1" class="section">
+              <a id="headerSpecialization1" class="disabledButton" onclick="return false"><span><img src="img/blank.png" />&nbsp;Stat Tree</span></a>
+              <table id="tableSpecialization1" class="specialization">
+              </table>
+            </div>
+          </div>
+
+          <div id="specialization2" class="leftSelection">
+            <div id="sectionSpecialization2" class="section">
+              <a id="headerSpecialization2" class="button" onclick="selectSpecialization(2)"><span><img src="img/blank.png" />&nbsp;Role Tree</span></a>
+              <table id="tableSpecialization2" class="specialization">
+              </table>
+            </div>
+          </div>
+
+          <div id="specialization3" class="leftSelection">
+            <div id="sectionSpecialization3" class="section">
+              <a id="headerSpecialization3" class="button" onclick="selectSpecialization(3)"><span><img src="img/blank.png" />&nbsp;Role Tree</span></a>
+              <table id="tableSpecialization3" class="specialization">
+              </table>
+            </div>
+          </div>
+
+          <div id="specialization4" class="leftSelection">
+            <div id="sectionSpecialization4" class="section">
+              <a id="headerSpecialization4" class="button" onclick="selectSpecialization(4)"><span><img src="img/blank.png" />&nbsp;Mastery</span></a>
+              <table id="tableSpecialization4" class="specialization">
+              </table>
+            </div>
+          </div>
+
+          <div style="clear:both"></div>
+
+        </div>
       </div>
 
       <div id="viewPreview" style="display:none">
@@ -330,6 +378,7 @@
             Export Type:&nbsp;
             <a id="exportType_co" class="button" onclick="selectForumExportType('co')">CO</a>&nbsp;
             <a id="exportType_phpbbs" class="button" onclick="selectForumExportType('phpbbs')">phpBBS</a>
+            <a id="exportType_txt" class="button" onclick="selectForumExportType('txt')">Text</a>
           </span>
         </div>
         <div style="clear:both"></div>
@@ -337,7 +386,26 @@
         </textarea>
       </div>
 
-      <div id="viewPrint" style="display:none">
+      <div id="viewPrefs" class="prefs" style="display:none">
+        <p>
+          <h3>Preferences:</h3>
+        </p>
+        <p>
+          <a id="prefFontFamily" class="button" onclick="selectPrefFontFamily()">Font:&nbsp; <span id="prefFontFamilyName" class="buttonText"> </span></a>
+          &nbsp;&nbsp;
+          <a id="prefFontSmaller" class="button" onclick="selectPrefFontSize(-1)"><span><img src="img/Gadgeteering_MiniaturizationDrive.png" alt="Decrease Font Size" /></span></a>
+          &nbsp;
+          <span id="prefFontSize" class="buttonText"> </span>
+          &nbsp;
+          <a id="prefFontLarger" class="button" onclick="selectPrefFontSize(1)"><span><img src="img/Brick_Enrage.png" alt="Increase Font Size" /></span></a>
+        </p>
+        <p>
+          <a id="prefPopupTips" class="button" onclick="selectPrefPopupTips()">Popup Tips:&nbsp; <span id="prefPopupTipsValue" class="buttonText"> </span></a>
+        </p>
+        <!-- <object id="fontlist" name="fontlist" type="application/x-shockwave-flash" data="fontlist.swf" width="0" height="0"> -->
+        <!--   <param name="movie" value="fontlist.swf" /> -->
+        <!--   <embed src="fontlist.swf" width="0" height="0" /> -->
+        <!-- </object> -->
       </div>
 
       <div id="viewHelp" style="display:none">
@@ -346,13 +414,14 @@
         </p>
         <p>
           <ul>
-            <li><a href="#help-views">Views</a></li>
-            <li><a href="#help-name">Name Character</a></li>
-            <li><a href="#help-archetype">Select Archetype</a></li>
-            <li><a href="#help-abilities">Select Abilities</a></li>
-            <li><a href="#help-save">Save Character</a></li>
-            <li><a href="#help-export">Forum Preview and Export</a></li>
-            <li><a href="#help-reset">Reset</a></li>
+            <li><a onclick="document.getElementById('help-views').scrollIntoView(true)">Views</a></li>
+            <li><a onclick="document.getElementById('help-name').scrollIntoView(true)">Name Character</a></li>
+            <li><a onclick="document.getElementById('help-archetype').scrollIntoView(true)">Select Archetype</a></li>
+            <li><a onclick="document.getElementById('help-abilities').scrollIntoView(true)">Select Abilities</a></li>
+            <li><a onclick="document.getElementById('help-save').scrollIntoView(true)">Save Character</a></li>
+            <li><a onclick="document.getElementById('help-export').scrollIntoView(true)">Forum Preview and Export</a></li>
+            <li><a onclick="document.getElementById('help-prefs').scrollIntoView(true)">Preferences</a></li>
+            <li><a onclick="document.getElementById('help-reset').scrollIntoView(true)">Reset</a></li>
           </ul>
         </p>
         <h3 id="help-views">Views</h3>
@@ -363,6 +432,7 @@
           <li><b>Edit</b> is where you build your character.</li>
           <li><b>Preview</b> shows you how it will look in a forum post.</li>
           <li><b>Export</b> displays the text to paste in a forum post.</li>
+          <li><b>Prefs</b> is where you can set a few preferences.</li>
           <li><b>Help</b> is where you are now.</li>
           <li><b>About</b> contains author, background, and legal information.</li>
         </ul>
@@ -421,6 +491,17 @@
           color and you cannot select them.
         </p>
         <p>
+          Specializations are found at bottom of the page.  The first one is<br />
+          automatically set based on your Primary Super Stat.  The next two are<br />
+          chosen by you when you click on them.  Just like the other abilities, use<br />
+          the pop-up window to set your options.
+        </p>
+        <p>
+          The options for the Mastery Specialization will be populated when the<br />
+          other trees have be set.  Just click on the one you want from the pop-up<br />
+          window.
+        </p>
+        <p>
           On the pop-up windows, clicking "<b>Clear</b>" will deselect that item.  "<b>Cancel</b>"<br />
           or clicking outside of the box will cancel the selection.
         </p>
@@ -451,9 +532,15 @@
         </p>
         <p>
           To generate the forum export text, first select the "<b>Export</b>" view at the<br />
-          top of the page.  Then pick the type of export: "<b>CO</b>" (Champions Online)<br />
-          or "<b>phpBBS</b>".  Finally, just copy and paste the text found in the text box<br />
-          onto a forum page.
+          top of the page.  Then pick the type of export: "<b>CO</b>" (Champions Online),<br />
+          "<b>phpBBS</b>", or "<b>Text</b>".  Finally, just copy and paste the text found in the<br />
+          text box onto a forum page.
+        </p>
+        <h3 id="help-prefs">Preferences</h3>
+        <p>
+          There are a couple of preferences you can set that persist via browser<br />
+          cookies.  Select the "<b>Prefs</b>" view at the top of the page.  Then modify the<br />
+          preferences however you like.
         </p>
         <h3 id="help-reset">Reset</h3>
         <p>
@@ -469,7 +556,7 @@
           <h3>Website: <a href="http://powerhouse.nullware.com">http://powerhouse.nullware.com</a></h3>
         </p>
         <p>
-          PowerHouse is an HTML/Javascript character builder for<br />
+          PowerHouse is an HTML/Javascript character planner for<br />
           <a href="http://www.champions-online.com/">Champions Online</a>&#0153;
           players.  It is similar to and inspired by<br />
           <a href="http://extantforce.com/championBuilder.htm">championBuilder</a>,
@@ -482,6 +569,11 @@
         <p>
           Text descriptions and graphics are Copyright ©2009-2012 Cryptic<br />
           Studios, Inc. and are used as per their terms of service.
+        </p>
+        <p>
+          <a href="http://fonts.simplythebest.net/fonts/lexia.html">Lexia
+          Font</a> is Copyright ©2004 Keith Bates and is used in accordance<br />
+          with the license.
         </p>
         <p>
           This program is free software: you can redistribute it and/or modify<br />
@@ -537,22 +629,23 @@
         <span class="invisible"><a onclick="dataDump()">Data Dump</a></span>
       </div>
 
-      <div id="link" class="note">
-        <br />
-        <div class="left">
-          <!-- <div class="link"><a id="buildLinkBookmark" class="right" onclick="void(0)">Add Bookmark</a></div> -->
-          <span class="link"><a id="buildLink" class="button" href=".">Link to this build</a></span>
+      <div id="footer" class="footer" style="display:none">
+        <div id="link">
+          <div class="left">
+            <!-- <div class="link"><a id="buildLinkBookmark" class="right" onclick="void(0)">Add Bookmark</a></div> -->
+            <span class="link"><a id="buildLink" class="button" href=".">Link to this build</a></span>
+          </div>
+          <div class="right">
+            <span class="link"><a id="restorePrevBuild" class="button" style="display:none" onclick="restorePrevBuild()">Restore previous build</a></span>
+          </div>
+          <div style="clear:both"></div>
         </div>
-        <div class="right">
-          <span class="link"><a id="restorePrevBuild" class="button" onclick="restorePrevBuild()">Restore previous build</a></span>
+
+        <span class="note"><a href="http://powerhouse.nullware.com">PowerHouse</a> is a character planner for <a href="http://www.champions-online.com/">Champions Online</a>&#0153;</span>
+
+        <div id="linkref" class="footer">
+          <div class="linkRef"><span id="buildLinkRef"> </span></div>
         </div>
-        <div style="clear:both"></div>
-      </div>
-
-      <span class="note"><a href="http://powerhouse.nullware.com">PowerHouse</a> is a character builder for <a href="http://www.champions-online.com/">Champions Online</a>&#0153;</span>
-
-      <div id="linkref" class="footer">
-        <div class="linkRef"><span id="buildLinkRef"> </span></div>
       </div>
     </div>
   </body>

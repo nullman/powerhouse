@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-04-13 22:13:21 (kyle)>
+ * Time-stamp: <2012-06-10 10:37:21 (kyle)>
  *============================================================================*/
 
-var version = '0.9.6';
-var releaseDate = '2012-04-13';
-var buildVersion = 2;
+var version = '0.9.8';
+var releaseDate = '2012-06-04';
+var buildVersion = 3;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
 var buildUrl = siteUrl+'powerhouse.html';
@@ -19,6 +19,14 @@ var mouseY = 0;
 var clickableClasses = new Array();
 clickableClasses[0] = 'selection';
 clickableClasses[1] = 'link';
+
+// cookie variables with default values
+var cookieExpireDays = 365;
+var forumExportType = 'co';
+var prefFontFamilyList = new Array('Andale Mono', 'Arial', 'Comic Sans MS', 'Courier New', 'Garuda', 'Georgia', 'Helvetica', 'Lexia', 'Lucida Sans', 'Times New Roman', 'Trebuchet MS', 'Verdana', 'sans-serif');
+var prefFontFamily = 'Lexia';
+var prefFontSize = 100;
+var prefPopupTips = true;
 
 // set and get cookies
 function setCookie(name, value, expireDays)
@@ -59,6 +67,18 @@ function numToUrlCode2(num) {
     return numToUrlCode(Math.floor(num/61))+numToUrlCode(num%61);
 }
 window['numToUrlCode2'] = numToUrlCode2;
+// encode number to four digit url code
+// valid number range is 0-13845841 (invalid numbers default to 0)
+function numToUrlCode4(num) {
+    var result = '';
+    var tmp = num;
+    for (var i=3; i>=0; i--) {
+        result += numToUrlCode(Math.floor(tmp/Math.pow(61,i)));
+        tmp = tmp%Math.pow(61,i);
+    }
+    return result;
+}
+window['numToUrlCode4'] = numToUrlCode4;
 
 // decode url code to number
 // invalid codes default to 0
@@ -78,6 +98,12 @@ function urlCodeToNum2(code) {
     return urlCodeToNum(code[0])*61+urlCodeToNum(code[1]);
 }
 window['urlCodeToNum2'] = urlCodeToNum2;
+// decode four character url code to number
+// invalid codes default to 0
+function urlCodeToNum4(code) {
+    return urlCodeToNum(code[0])*226981+urlCodeToNum(code[1])*3721+urlCodeToNum(code[2])*61+urlCodeToNum(code[3]);
+}
+window['urlCodeToNum4'] = urlCodeToNum4;
 
 // get data sets (from powerhouse-data.js)
 var dataSuperStat = getDataSuperStat();
@@ -90,6 +116,7 @@ var dataPower = getDataPower();
 var dataEnergyUnlockPower = getDataEnergyUnlockPower();
 var dataArchetypeGroup = getDataArchetypeGroup();
 var dataArchetype = getDataArchetype();
+var dataSpecializationTree = getDataSpecializationTree();
 var dataVersionUpdate = getDataVersionUpdate();
 
 // power code lookup
@@ -154,6 +181,14 @@ var phPowerAdvantage = new Array();
 for (var i=1; i<=14; i++) {
     phPowerAdvantage[i] = 0;
 }
+var phSpecializationTree = new Array();
+for (var i=1; i<=4; i++) {
+    phSpecializationTree[i] = dataSpecializationTree[0];
+}
+var phSpecialization = new Array();
+for (var i=1; i<=4; i++) {
+    phSpecialization[i] = 0;
+}
 var phBuildLink = '';
 var phBuildLinkRef = '';
 var statFrameworkCount = new Array();
@@ -174,6 +209,7 @@ var selectedNum = 0;
 var selectedFieldId = null;
 var selectedFieldClass = null;
 var prevSelectedFramework = 0;
+var prevSelectedSpecializationSuperStat = 0;
 
 // event functions
 function catchEvent(eventObj, event, eventHandler) {
@@ -220,25 +256,27 @@ window['setMouseXY'] = setMouseXY;
 
 // popup (tool tip)
 function popup(text) {
-    var x = mouseX;
-    var y = mouseY;
-    var xoffset = 20;
-    var yoffset = 10;
-    var margin = 50;
-    var tip = document.getElementById('popup');
-    var width = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth);
-    var height = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) +
-        (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
-    tip.innerHTML = text;
-    tip.style.display = 'block';
-    x += xoffset;
-    y += yoffset;
-    if (x > width-tip.offsetWidth-margin) x = width-tip.offsetWidth-margin;
-    if (y > height-tip.offsetHeight-margin) y = height-tip.offsetHeight-margin;
-    if (x < 0) x = 0;
-    if (y < 0) y = 0;
-    tip.style.left = x+'px';
-    tip.style.top = y+'px';
+    if (prefPopupTips) {
+        var x = mouseX;
+        var y = mouseY;
+        var xoffset = 20;
+        var yoffset = 10;
+        var margin = 50;
+        var tip = document.getElementById('popup');
+        var width = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth);
+        var height = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) +
+            (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
+        tip.innerHTML = text;
+        tip.style.display = 'block';
+        x += xoffset;
+        y += yoffset;
+        if (x > width-tip.offsetWidth-margin) x = width-tip.offsetWidth-margin;
+        if (y > height-tip.offsetHeight-margin) y = height-tip.offsetHeight-margin;
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        tip.style.left = x+'px';
+        tip.style.top = y+'px';
+    }
 }
 window['popup'] = popup;
 function popout() {
@@ -261,12 +299,12 @@ window['showSection'] = showSection;
 // if right is true, then orientation is to the right
 // if right is false, then orientation is to the left
 function showPositionSection(id, right) {
+    var section = document.getElementById(id);
+    var margin = 50;
     var x = mouseX;
     var y = mouseY;
     var xoffset = ((right) ? 20 : -20);
     var yoffset = 10;
-    var margin = 50;
-    var section = document.getElementById(id);
     var width = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth);
     var height = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) +
         (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
@@ -278,10 +316,28 @@ function showPositionSection(id, right) {
     if (y > height-section.offsetHeight-margin) y = height-section.offsetHeight-margin;
     if (x < 0) x = 0;
     if (y < 0) y = 0;
-    section.style.top = y+'px';
     section.style.left = x+'px';
+    section.style.top = y+'px';
 }
 window['showPositionSection'] = showPositionSection;
+
+// update section position
+function updatePositionSection(id) {
+    var section = document.getElementById(id);
+    var margin = 50;
+    var x = section.style.left.substring(0, section.style.left.length-2);
+    var y = section.style.top.substring(0, section.style.top.length-2);
+    var width = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth);
+    var height = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) +
+        (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
+    if (x > width-section.offsetWidth-margin) x = width-section.offsetWidth-margin;
+    if (y > height-section.offsetHeight-margin) y = height-section.offsetHeight-margin;
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    section.style.left = x+'px';
+    section.style.top = y+'px';
+}
+window['updatePositionSection'] = updatePositionSection;
 
 // name functions
 function editName() {
@@ -330,6 +386,8 @@ function selectClear() {
     hideSection('selectionPowerAdvantage');
     hideSection('selectionArchetype');
     hideSection('selectionArchetypePower');
+    hideSection('selectionSpecialization');
+    hideSection('selectionPref');
     changeUpdate();
 }
 window['selectClear'] = selectClear;
@@ -343,7 +401,7 @@ function selectClearMaybe(evnt) {
     function checkParent(node) {
         while (node.parentNode) {
             var test = false;
-            for (i=0; i<clickableClasses.length; i++) {
+            for (var i=0; i<clickableClasses.length; i++) {
                 if (node.className == clickableClasses[i]) test = true;
             }
             if (test) return true;
@@ -355,6 +413,43 @@ function selectClearMaybe(evnt) {
 window['selectClearMaybe'] = selectClearMaybe;
 
 // super stat functions
+function setupSuperStats() {
+    var selectSuperStat = document.getElementById('selectSuperStat');
+    var children = selectSuperStat.getElementsByTagName('*');
+    while (children.length > 0) {
+        selectSuperStat.removeChild(children[0]);
+    }
+    for (var i=0; i<dataSuperStat.length; i++) {
+        if (i == 0) {
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectSuperStat'+i);
+            a.setAttribute('onclick', 'setSuperStat('+i+')');
+            a.innerHTML = 'Clear';
+            selectSuperStat.appendChild(a);
+            var span = document.createElement('span');
+            span.innerHTML = ' &nbsp; ';
+            selectSuperStat.appendChild(span);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectSuperStatCancel');
+            a.setAttribute('onclick', 'selectClear()');
+            a.innerHTML = 'Cancel';
+            selectSuperStat.appendChild(a);
+        } else {
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectSuperStat'+i);
+            a.setAttribute('onclick', 'setSuperStat('+i+')');
+            if (dataSuperStat[i].tip != null) {
+                a.setAttribute('onmouseover', 'popup(\''+dataSuperStat[i].tip+'\')');
+                a.setAttribute('onmouseout', 'popout()');
+            }
+            a.innerHTML = dataSuperStat[i].desc;
+            selectSuperStat.appendChild(a);
+        }
+        selectSuperStat.appendChild(document.createElement('br'));
+    }
+    hideSection('selectionSuperStat');
+}
+window['setupSuperStats'] = setupSuperStats;
 function selectSuperStat(num) {
     var fieldId = 'fieldSuperStat'+num;
     var field = document.getElementById(fieldId);
@@ -406,6 +501,9 @@ function setSuperStat(id) {
         }
     }
     selectClear();
+    setupInnateTalents();
+    setupTalents();
+    setupSpecializations();
 }
 window['setSuperStat'] = setSuperStat;
 function getSuperStatDefault(num) {
@@ -420,8 +518,66 @@ function getSuperStatDesc(id, num) {
     return dataSuperStat[id].desc+' <span class="spec">'+((num == 1) ? '(Primary)' : '(Secondary)')+'</span>';
 }
 window['getSuperStatDesc'] = getSuperStatDesc;
+function highlightSuperStats(str) {
+    for (var i=1; i<phSuperStat.length; i++) {
+        var regex = new RegExp('('+phSuperStat[i].abbrev+': \\d+)');
+        if (regex != null) {
+            str = str.replace(regex, '<span class="specHighlight">$1</span>');
+        }
+    }
+    return str;
+}
+window['highlightSuperStats'] = highlightSuperStats;
 
 // innate talent functions
+function setupInnateTalents() {
+    var selectInnateTalentIds = ['selectInnateTalent', 'selectInnateTalentLeft', 'selectInnateTalentRight'];
+    for (var i=0; i<selectInnateTalentIds.length; i++) {
+        var selectInnateTalent = document.getElementById(selectInnateTalentIds[i]);
+        var children = selectInnateTalent.getElementsByTagName('*');
+        while (children.length > 0) {
+            selectInnateTalent.removeChild(children[0]);
+        }
+    }
+    var selectInnateTalent = document.getElementById('selectInnateTalent');
+    var selectInnateTalentLeft = document.getElementById('selectInnateTalentLeft');
+    var selectInnateTalentRight = document.getElementById('selectInnateTalentRight');
+    for (var i=0; i<dataInnateTalent.length; i++) {
+        if (i == 0) {
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectInnateTalent'+i);
+            a.setAttribute('onclick', 'setInnateTalent('+i+')');
+            a.innerHTML = 'Clear';
+            selectInnateTalent.appendChild(a);
+            var span = document.createElement('span');
+            span.innerHTML = ' &nbsp; ';
+            selectInnateTalent.appendChild(span);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectInnateTalentCancel');
+            a.setAttribute('onclick', 'selectClear()');
+            a.innerHTML = 'Cancel';
+            selectInnateTalent.appendChild(a);
+        } else {
+            if (i <= dataInnateTalent.length/2) selectInnateTalent = selectInnateTalentLeft;
+            else selectInnateTalent = selectInnateTalentRight;
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectInnateTalent'+i);
+            a.setAttribute('onclick', 'setInnateTalent('+i+')');
+            if (dataInnateTalent[i].tip != null) {
+                a.setAttribute('onmouseover', 'popup(\''+dataInnateTalent[i].tip+'\')');
+                a.setAttribute('onmouseout', 'popout()');
+            }
+            a.innerHTML = '<img src="img/Innate_Talent.png" />&nbsp;' +
+                dataInnateTalent[i].desc +
+                ((dataInnateTalent[i].extra != null) ?
+                 ' <span class="selectSpec">('+highlightSuperStats(dataInnateTalent[i].extra)+')</span>' : '');
+            selectInnateTalent.appendChild(a);
+        }
+        selectInnateTalent.appendChild(document.createElement('br'));
+    }
+    hideSection('selectionInnateTalent');
+}
+window['setupInnateTalents'] = setupInnateTalents;
 function selectInnateTalent(num) {
     var fieldId = 'fieldInnateTalent'+num;
     var field = document.getElementById(fieldId);
@@ -469,6 +625,53 @@ function getInnateTalentDesc(id, num) {
 window['getInnateTalentDesc'] = getInnateTalentDesc;
 
 // talent functions
+function setupTalents() {
+    var selectTalentIds = ['selectTalent', 'selectTalentLeft', 'selectTalentRight'];
+    for (var i=0; i<selectTalentIds.length; i++) {
+        var selectTalent = document.getElementById(selectTalentIds[i]);
+        var children = selectTalent.getElementsByTagName('*');
+        while (children.length > 0) {
+            selectTalent.removeChild(children[0]);
+        }
+    }
+    var selectTalent = document.getElementById('selectTalent');
+    var selectTalentLeft = document.getElementById('selectTalentLeft');
+    var selectTalentRight = document.getElementById('selectTalentRight');
+    for (var i=0; i<dataTalent.length; i++) {
+        if (i == 0) {
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectTalent'+i);
+            a.setAttribute('onclick', 'setTalent('+i+')');
+            a.innerHTML = 'Clear';
+            selectTalent.appendChild(a);
+            var span = document.createElement('span');
+            span.innerHTML = ' &nbsp; ';
+            selectTalent.appendChild(span);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectTalentCancel');
+            a.setAttribute('onclick', 'selectClear()');
+            a.innerHTML = 'Cancel';
+            selectTalent.appendChild(a);
+        } else {
+            if (i <= dataTalent.length/2) selectTalent = selectTalentLeft;
+            else selectTalent = selectTalentRight;
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectTalent'+i);
+            a.setAttribute('onclick', 'setTalent('+i+')');
+            // if (dataTalent[i].tip != null) {
+            //     a.setAttribute('onmouseover', 'popup(\''+dataTalent[i].tip+'\')');
+            //     a.setAttribute('onmouseout', 'popout()');
+            // }
+            a.innerHTML = '<img src="img/Talent.png" />&nbsp;'+dataTalent[i].desc +
+                ((dataTalent[i].extra != null) ?
+                 ' <span class="selectSpec">('+highlightSuperStats(dataTalent[i].extra)+')</span>' : '');
+            selectTalent.appendChild(a);
+        }
+        selectTalent.appendChild(document.createElement('br'));
+    }
+    hideSection('selectionTalent');
+}
+window['setupTalents'] = setupTalents;
 function selectTalent(num) {
     var fieldId = 'fieldTalent'+num;
     var field = document.getElementById(fieldId);
@@ -533,6 +736,52 @@ function getTalentDesc(id) {
 window['getTalentDesc'] = getTalentDesc;
 
 // travel power functions
+function setupTravelPowers() {
+    var selectTravelPowerIds = ['selectTravelPower', 'selectTravelPowerLeft', 'selectTravelPowerRight'];
+    for (var i=0; i<selectTravelPowerIds.length; i++) {
+        var selectTravelPower = document.getElementById(selectTravelPowerIds[i]);
+        var children = selectTravelPower.getElementsByTagName('*');
+        while (children.length > 0) {
+            selectTravelPower.removeChild(children[0]);
+        }
+    }
+    var selectTravelPower = document.getElementById('selectTravelPower');
+    var selectTravelPowerLeft = document.getElementById('selectTravelPowerLeft');
+    var selectTravelPowerRight = document.getElementById('selectTravelPowerRight');
+    for (var i=0; i<dataTravelPower.length; i++) {
+        if (i == 0) {
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectTravelPower'+i);
+            a.setAttribute('onclick', 'setTravelPower('+i+')');
+            a.innerHTML = 'Clear';
+            selectTravelPower.appendChild(a);
+            var span = document.createElement('span');
+            span.innerHTML = ' &nbsp; ';
+            selectTravelPower.appendChild(span);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectTravelPowerCancel');
+            a.setAttribute('onclick', 'selectClear()');
+            a.innerHTML = 'Cancel';
+            selectTravelPower.appendChild(a);
+        } else {
+            if (i <= dataTravelPower.length/2) selectTravelPower = selectTravelPowerLeft;
+            else selectTravelPower = selectTravelPowerRight;
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectTravelPower'+i);
+            a.setAttribute('onclick', 'setTravelPower('+i+')');
+            if (dataTravelPower[i].tip != null) {
+                a.setAttribute('onmouseover', 'popup(\''+dataTravelPower[i].tip+'\')');
+                a.setAttribute('onmouseout', 'popout()');
+            }
+            a.innerHTML = dataTravelPower[i].desc;
+            selectTravelPower.appendChild(a);
+        }
+        selectTravelPower.appendChild(document.createElement('br'));
+    }
+    hideSection('selectionTravelPower');
+    hideSection('selectionTravelPowerAdvantage');
+}
+window['setupTravelPowers'] = setupTravelPowers;
 function selectTravelPower(num) {
     var fieldId = 'fieldTravelPower'+num;
     var field = document.getElementById(fieldId);
@@ -617,6 +866,36 @@ function getTravelPowerDefault(num) {
 window['getTravelPowerDefault'] = getTravelPowerDefault;
 
 // power functions
+function setupFrameworks() {
+    var selectFramework = document.getElementById('selectFramework');
+    var children = selectFramework.getElementsByTagName('*');
+    while (children.length > 0) {
+        selectFramework.removeChild(children[0]);
+    }
+    var table = document.createElement('table');
+    var tr = document.createElement('tr');
+    table.appendChild(tr);
+    var newRow = Math.floor(dataFramework.length/2);
+    for (var i=1; i<dataFramework.length; i++) {
+        var td = document.createElement('td');
+        tr.appendChild(td);
+        var a = document.createElement('a');
+        a.setAttribute('id', 'selectFramework'+i);
+        a.setAttribute('onclick', 'selectFramework('+i+')');
+        if (dataFramework[i].tip != null) {
+            a.setAttribute('onmouseover', 'popup(\''+dataFramework[i].tip+'\')');
+            a.setAttribute('onmouseout', 'popout()');
+        }
+        a.innerHTML = dataFramework[i].desc;
+        td.appendChild(a);
+        if (i == newRow) {
+            tr = document.createElement('tr');
+            table.appendChild(tr);
+        }
+    }
+    selectFramework.appendChild(table);
+}
+window['setupFrameworks'] = setupFrameworks;
 function selectFramework(framework) {
     var selectPowerIds = ['selectPower', 'selectPowerLeft', 'selectPowerRight'];
     for (var i=0; i<selectPowerIds.length; i++) {
@@ -665,8 +944,7 @@ function selectFramework(framework) {
             break;
         }
         if (dataPower[powerId].tip != null) {
-            var tip = dataPower[powerId].tip;
-            a.setAttribute('onmouseover', 'popup(\''+tip+'\')');
+            a.setAttribute('onmouseover', 'popup(\''+dataPower[powerId].tip+'\')');
             a.setAttribute('onmouseout', 'popout()');
         }
         a.innerHTML = dataPower[powerId].desc;
@@ -674,6 +952,7 @@ function selectFramework(framework) {
         selectPower.appendChild(document.createElement('br'));
     }
     prevSelectedFramework = framework;
+    updatePositionSection('selectionPower');
 }
 window['selectFramework'] = selectFramework;
 function selectPower(num) {
@@ -844,7 +1123,7 @@ function validatePower(num, id) {
 }
 window['validatePower'] = validatePower;
 function validatePowers() {
-    for (i=1; i<phPower.length; i++) {
+    for (var i=1; i<phPower.length; i++) {
         validatePower(i, phPower[i].id);
     }
 }
@@ -873,9 +1152,9 @@ function selectArchetypePower(num) {
         a.innerHTML = 'Cancel';
         selectPower.appendChild(a);
         selectPower.appendChild(document.createElement('br'));
-        var archetypePowers = phArchetype.power[num];
-        for (var i=1; i<archetypePowers.length; i++) {
-            var powerId = archetypePowers[i];
+        var archetypePowerList = phArchetype.powerList[num];
+        for (var i=1; i<archetypePowerList.length; i++) {
+            var powerId = archetypePowerList[i];
             var power = dataPower[powerId];
             var a = document.createElement('a');
             a.setAttribute('id', 'selectPower'+powerId);
@@ -886,8 +1165,7 @@ function selectArchetypePower(num) {
                 a.setAttribute('class', 'button');
             }
             if (dataPower[powerId].tip != null) {
-                var tip = dataPower[powerId].tip;
-                a.setAttribute('onmouseover', 'popup(\''+tip+'\')');
+                a.setAttribute('onmouseover', 'popup(\''+dataPower[powerId].tip+'\')');
                 a.setAttribute('onmouseout', 'popout()');
             }
             a.innerHTML = dataPower[powerId].desc;
@@ -920,7 +1198,7 @@ function checkAdvantageDependancyId(type, num, id) {
     var result = true;
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
     var mask = (type == 1) ? phPowerAdvantage[num] : phTravelPowerAdvantage[num];
-    var dependency = power.advantage[id].dependency;
+    var dependency = power.advantageList[id].dependency;
     if (dependency != null && !power.hasAdvantage(mask, dependency)) result = false;
     return result;
 }
@@ -928,7 +1206,7 @@ window['checkAdvantageDependancyId'] = checkAdvantageDependancyId;
 function checkAdvantageDependancyMask(type, num, mask) {
     var result = true;
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
-    var advantageList = (type == 1) ? phPower[num].advantage : phTravelPower[num].advantage;
+    var advantageList = (type == 1) ? phPower[num].advantageList : phTravelPower[num].advantageList;
     for (var i=1; i<advantageList.length; i++) {
         var advantage = advantageList[i];
         if (advantage.dependency != null &&
@@ -991,7 +1269,7 @@ function selectAdvantage(type, num) {
         form.appendChild(a);
         form.appendChild(document.createElement('br'));
         var table = document.createElement('table');
-        var advantageList = power.advantage;
+        var advantageList = power.advantageList;
         var advantagePoints = power.getPoints(mask);
         for (var i=1; i<advantageList.length; i++) {
             var advantage = advantageList[i];
@@ -1004,14 +1282,13 @@ function selectAdvantage(type, num) {
             input.setAttribute('type', 'checkbox');
             input.setAttribute('name', advantage.name);
             input.setAttribute('value', advantage.id);
-            var test = Math.pow(2, i);
-            if (mask > 0 && (mask & test) == test) {
+            if (mask > 0 && power.hasAdvantage(mask, i)) {
                 input.checked = true;
             }
             if (input.checked || (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
                                   advantagePoints+advantage.points <= maxAdvantagePointsPerPower &&
                                   checkAdvantageDependancyId(type, num, advantage.id))) {
-                input.setAttribute('onclick', 'toggleAdvantage('+type+', '+num+', '+i+')');
+                input.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
             } else {
                 input.setAttribute('onclick', 'return false');
             }
@@ -1021,14 +1298,13 @@ function selectAdvantage(type, num) {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectAdvantage'+i);
             if (advantage.tip != null) {
-                var tip = advantage.tip;
-                a.setAttribute('onmouseover', 'popup(\''+tip+'\')');
+                a.setAttribute('onmouseover', 'popup(\''+advantage.tip+'\')');
                 a.setAttribute('onmouseout', 'popout()');
             }
             if (input.checked || (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
                                   advantagePoints+advantage.points <= maxAdvantagePointsPerPower &&
                                   checkAdvantageDependancyId(type, num, advantage.id))) {
-                a.setAttribute('onclick', 'toggleAdvantage('+type+', '+num+', '+i+')');
+                a.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
                 a.setAttribute('class', 'selectButton');
             } else {
                 a.setAttribute('onclick', 'return false');
@@ -1056,7 +1332,7 @@ function selectAdvantageUpdate(type, num) {
     var field = document.getElementById(((type == 1) ? 'fieldPowerAdvantage' : 'fieldTravelPowerAdvantage')+num);
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
     var mask = (type == 1) ? phPowerAdvantage[num] : phTravelPowerAdvantage[num];
-    var advantageList = power.advantage;
+    var advantageList = power.advantageList;
     var advantagePoints = power.getPoints(mask);
     for (var i=1; i<advantageList.length; i++) {
         var advantage = advantageList[i];
@@ -1065,8 +1341,8 @@ function selectAdvantageUpdate(type, num) {
         if (checkboxAdvantage.checked || (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
                                           advantagePoints+advantage.points <= maxAdvantagePointsPerPower &&
                                           checkAdvantageDependancyId(type, num, advantage.id))) {
-            checkboxAdvantage.setAttribute('onclick', 'toggleAdvantage('+type+', '+num+', '+i+')');
-            selectAdvantage.setAttribute('onclick', 'toggleAdvantage('+type+', '+num+', '+i+')');
+            checkboxAdvantage.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
+            selectAdvantage.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
             selectAdvantage.setAttribute('class', 'selectButton');
         } else {
             checkboxAdvantage.setAttribute('onclick', 'return false');
@@ -1081,7 +1357,7 @@ function selectAdvantageClear(type, num) {
     setAdvantage(type, num, mask);
     var field = document.getElementById(((type == 1) ? 'fieldPowerAdvantage' : 'fieldTravelPowerAdvantage')+num);
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
-    var advantageList = power.advantage;
+    var advantageList = power.advantageList;
     for (var i=1; i<advantageList.length; i++) {
         var advantage = advantageList[i];
         var checkboxAdvantage = document.getElementById('checkboxAdvantage'+i);
@@ -1089,7 +1365,7 @@ function selectAdvantageClear(type, num) {
         checkboxAdvantage.checked = false;
         if (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
             checkAdvantageDependancyId(type, num, advantage.id)) {
-            selectAdvantage.setAttribute('onclick', 'toggleAdvantage('+type+', '+num+', '+i+')');
+            selectAdvantage.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
             selectAdvantage.setAttribute('class', 'selectButton');
         } else {
             selectAdvantage.setAttribute('onclick', 'return false');
@@ -1106,13 +1382,13 @@ function selectAdvantageCancel(type, num, mask) {
     selectClear();
 }
 window['selectAdvantageCancel'] = selectAdvantageCancel;
-function toggleAdvantage(type, num, id) {
+function selectAdvantageToggle(type, num, id) {
     var mask = (type == 1) ? phPowerAdvantage[num] : phTravelPowerAdvantage[num];
     var field = document.getElementById('checkboxAdvantage'+id);
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
     if (power.hasAdvantage(mask, id)) {
         mask = power.delAdvantage(mask, id);
-        var advantageList = power.advantage;
+        var advantageList = power.advantageList;
         for (var i=1; i<advantageList.length; i++) {
             var advantage = advantageList[i];
             if (advantage.dependency != null && advantage.dependency == id) {
@@ -1123,7 +1399,7 @@ function toggleAdvantage(type, num, id) {
         field.checked = false;
         setAdvantage(type, num, mask);
     } else {
-        var advantage = power.advantage[id];
+        var advantage = power.advantageList[id];
         var advantagePoints = power.getPoints(mask);
         if (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
             advantagePoints+advantage.points <= maxAdvantagePointsPerPower &&
@@ -1135,18 +1411,18 @@ function toggleAdvantage(type, num, id) {
     }
     selectAdvantageUpdate(type, num);
 }
-window['toggleAdvantage'] = toggleAdvantage;
+window['selectAdvantageToggle'] = selectAdvantageToggle;
 function setAdvantage(type, num, mask) {
     var oldStatAdvantagePoints = statAdvantagePoints;
     var field = document.getElementById(((type == 1) ? 'fieldPowerAdvantage' : 'fieldTravelPowerAdvantage')+num);
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
     var phMask = (type == 1) ? phPowerAdvantage[num] : phTravelPowerAdvantage[num];
-    var advantageList = power.getAdvantage(phMask);
+    var advantageList = power.getAdvantageList(phMask);
     var advantagePoints = power.getPoints(mask);
     for (var i=0; i<advantageList.length; i++) {
         statAdvantagePoints -= advantageList[i].points;
     }
-    var advantageList = power.getAdvantage(mask);
+    var advantageList = power.getAdvantageList(mask);
     for (var i=0; i<advantageList.length; i++) {
         statAdvantagePoints += advantageList[i].points;
     }
@@ -1162,7 +1438,7 @@ function setAdvantage(type, num, mask) {
 window['setAdvantage'] = setAdvantage;
 function advantageText(type, num, mask) {
     var power = (type == 1) ? phPower[num] : phTravelPower[num];
-    var advantageList = power.advantage;
+    var advantageList = power.advantageList;
     var result = '';
     if (advantageList.length > 0) {
         if (mask == 0) {
@@ -1190,7 +1466,501 @@ function advantageTextSpan(type, num, mask) {
 }
 window['advantageTextSpan'] = advantageTextSpan;
 
+// specialization functions
+function setupSpecializations() {
+    if (prevSelectedSpecializationSuperStat != phSuperStat[1].id) {
+        phSpecializationTree[1] = dataSpecializationTree[phSuperStat[1].id];
+        phSpecialization[1] = 0;
+        prevSelectedSpecializationSuperStat = phSuperStat[1].id;
+    }
+    for (var i=1; i<=4; i++) {
+        var tableSpecialization = document.getElementById('tableSpecialization'+i);
+        var children = tableSpecialization.getElementsByTagName('*');
+        while (children.length > 0) {
+            tableSpecialization.removeChild(children[0]);
+        }
+    }
+    for (var i=1; i<=4; i++) {
+        var specializationTree = phSpecializationTree[i];
+        var mask = phSpecialization[i];
+        var specializationList = specializationTree.specializationList;
+        var specializationPointList = specializationTree.getSpecializationList(mask);
+        var totalPoints = specializationTree.getPoints(mask);
+        var header = document.getElementById('headerSpecialization'+i);
+        var table = document.getElementById('tableSpecialization'+i);
+        switch (i) {
+        case 1:
+            if (specializationTree.id == 0) {
+                header.setAttribute('class', 'disabledButton');
+                header.setAttribute('onclick', 'return false');
+                //header.innerHTML = '<span><img src="img/blank.png" />&nbsp;Stat Tree <span class="spec">(0/10)</span></span>';
+                header.innerHTML = '<span>Stat Tree <span class="spec">(0/10)</span></span>';
+            } else {
+                header.setAttribute('class', 'button');
+                header.setAttribute('onclick', 'selectSpecialization('+i+')');
+                //header.innerHTML = '<span><img src="img/blank.png" />&nbsp;'+specializationTree.desc+' Tree <span class="spec">('+totalPoints+'/10)</span></span>';
+                header.innerHTML = '<span>'+specializationTree.desc+' Tree <span class="spec">('+totalPoints+'/10)</span></span>';
+            }
+            break;
+        case 2:
+        case 3:
+            if (specializationTree.id == 0) {
+                //header.innerHTML = '<span><img src="img/blank.png" />&nbsp;Role Tree <span class="spec">('+totalPoints+'/10)</span></span>';
+                header.innerHTML = '<span>Role Tree <span class="spec">('+totalPoints+'/10)</span></span>';
+            } else {
+                header.innerHTML = '<span>'+specializationTree.desc+' Tree <span class="spec">('+totalPoints+'/10)</span></span>';
+            }
+            break;
+        case 4:
+            if (specializationTree.id == 0) {
+                //header.innerHTML = '<span><img src="img/blank.png" />&nbsp;Mastery <span class="spec">(0/1)</span></span>';
+                header.innerHTML = '<span>Mastery <span class="spec">(0/1)</span></span>';
+            } else {
+                // var specialization = specializationList[8];
+                // header.innerHTML = '<span>'+specialization.desc+' <span class="spec">(1/1)</span></span>';
+                header.innerHTML = '<span>'+specializationTree.desc+' Mastery <span class="spec">(1/1)</span></span>';
+            }
+            break;
+        }
+        if (i != 4) {
+            for (var j=0; j<specializationList.length-1; j++) {
+                if (specializationPointList[j] > 0) {
+                    var specialization = specializationList[j];
+                    var tr = document.createElement('tr');
+                    table.appendChild(tr);
+                    var td = document.createElement('td');
+                    tr.appendChild(td);
+                    var span = document.createElement('span');
+                    // if (specialization.tip != null) {
+                    //     span.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
+                    //     span.setAttribute('onmouseout', 'popout()');
+                    // }
+                    span.innerHTML = specialization.desc;
+                    td.appendChild(span);
+                    var td = document.createElement('td');
+                    tr.appendChild(td);
+                    td.setAttribute('class', 'specializationPoints');
+                    var span = document.createElement('span');
+                    span.setAttribute('class', 'spec');
+                    span.innerHTML = '('+specializationPointList[j]+'/'+specialization.maxPoints+')';
+                    td.appendChild(span);
+                }
+            }
+        // } else {
+        //     if (specializationTree.id != 0) {
+        //         var tr = document.createElement('tr');
+        //         table.appendChild(tr);
+        //         var td = document.createElement('td');
+        //         tr.appendChild(td);
+        //         var span = document.createElement('span');
+        //         // var specialization = specializationList[8];
+        //         // span.innerHTML = '<span>'+specialization.desc+'</span>';
+        //         span.innerHTML = '<span>'+specializationTree.desc+' Mastery</span>';
+        //         td.appendChild(span);
+        //         var td = document.createElement('td');
+        //         tr.appendChild(td);
+        //         td.setAttribute('class', 'specializationPoints');
+        //         var span = document.createElement('span');
+        //         span.setAttribute('class', 'spec');
+        //         span.innerHTML = '(1/1)';
+        //         td.appendChild(span);
+        //     }
+        }
+    }
+}
+window['setupSpecializations'] = setupSpecializations;
+function selectSpecialization(num) {
+    selectClear();
+    selectSpecializationRefresh(num);
+    showPositionSection('selectionSpecialization', true);
+}
+window['selectSpecialization'] = selectSpecialization;
+function selectSpecializationRefresh(num) {
+    var selectSpecializationRole = document.getElementById('selectSpecializationRole');
+    var selectSpecialization = document.getElementById('selectSpecialization');
+    var specializationTree = phSpecializationTree[num];
+    var mask = phSpecialization[num];
+    var specializationList = specializationTree.specializationList;
+    var specializationPointList = specializationTree.getSpecializationList(mask);
+    var totalPoints = specializationTree.getPoints(mask);
+    var tier1Points = specializationTree.getTierPoints(mask, 1);
+    var selectSpecializationIds = ['selectSpecializationRole', 'selectSpecialization'];
+    for (var i=0; i<selectSpecializationIds.length; i++) {
+        var selectSpecialization = document.getElementById(selectSpecializationIds[i]);
+        var children = selectSpecialization.getElementsByTagName('*');
+        while (children.length > 0) {
+            selectSpecialization.removeChild(children[0]);
+        }
+    }
+    switch (num) {
+    case 1:
+        var span = document.createElement('span');
+        span.setAttribute('id', 'selectSpecialization1');
+        if (specializationTree.id == 0) {
+            //span.innerHTML = '<img src="img/blank.png" />&nbsp;Stat Tree (0/10)';
+            span.innerHTML = 'Stat Tree (0/10)';
+        } else {
+            //span.innerHTML = '<img src="img/blank.png" />&nbsp;'+specializationTree.desc+' ('+totalPoints+'/10)';
+            span.innerHTML = specializationTree.desc+' Tree ('+totalPoints+'/10)';
+        }
+        selectSpecializationRole.appendChild(span);
+        break;
+    case 2:
+    case 3:
+        if (phArchetype.id == 1) {
+            for (var i=9; i<dataSpecializationTree.length; i++) {
+                if (i == 15) {
+                    var br = document.createElement('br');
+                    selectSpecializationRole.appendChild(br);
+                }
+                var a = document.createElement('a');
+                if (specializationTree.id == i) {
+                    a.setAttribute('onclick', 'setSpecializationTree('+num+', '+i+')');
+                    a.setAttribute('class', 'takenButton');
+                } else if ((num == 2 && phSpecializationTree[3].id == i) ||
+                           (num == 3 && phSpecializationTree[2].id == i)) {
+                    a.setAttribute('onclick', 'setSpecializationTree('+num+', '+i+')');
+                    a.setAttribute('class', 'takenButton');
+                } else {
+                    a.setAttribute('onclick', 'setSpecializationTree('+num+', '+i+')');
+                    a.setAttribute('class', 'button');
+                }
+                if (dataSpecializationTree[i].tip != null) {
+                    a.setAttribute('onmouseover', 'popup(\''+dataSpecializationTree[i].tip+'\')');
+                    a.setAttribute('onmouseout', 'popout()');
+                }
+                a.innerHTML = dataSpecializationTree[i].desc;
+                selectSpecializationRole.appendChild(a);
+                var span = document.createElement('span');
+                span.innerHTML = ' &nbsp; ';
+                selectSpecializationRole.appendChild(span);
+            }
+        }
+        if (specializationTree.id != 0) {
+            var span = document.createElement('span');
+            span.setAttribute('id', 'selectSpecialization'+num);
+            span.innerHTML = specializationTree.desc+' Tree ('+totalPoints+'/10)';
+            selectSpecialization.appendChild(span);
+            var br = document.createElement('br');
+            selectSpecialization.appendChild(br);
+        }
+        break;
+    case 4:
+        var span = document.createElement('span');
+        span.setAttribute('id', 'selectSpecialization4');
+        if (specializationTree.id == 0) {
+            //span.innerHTML = '<span><img src="img/blank.png" />&nbsp;Mastery (0/1)</span>';
+            span.innerHTML = '<span>Mastery (0/1)</span>';
+        } else {
+            // var specialization = specializationList[8];
+            // span.innerHTML = '<span>'+specialization.desc+' (1/1)</span>';
+            span.innerHTML = '<span>'+specializationTree.desc+' Mastery (1/1)</span>';
+        }
+        selectSpecializationRole.appendChild(span);
+        break;
+    }
+    var a = document.createElement('a');
+    a.setAttribute('id', 'selectSpecializationClear');
+    a.setAttribute('onclick', 'selectSpecializationClear('+num+')');
+    a.innerHTML = 'Clear';
+    selectSpecialization.appendChild(a);
+    var span = document.createElement('span');
+    span.innerHTML = ' &nbsp; ';
+    selectSpecialization.appendChild(span);
+    if (num != 4) {
+        var a = document.createElement('a');
+        a.setAttribute('id', 'selectSpecializationCancel');
+        a.setAttribute('onclick', 'selectSpecializationCancel('+num+', '+mask+')');
+        a.innerHTML = 'Cancel';
+        selectSpecialization.appendChild(a);
+    }
+    var span = document.createElement('span');
+    span.innerHTML = ' &nbsp; ';
+    selectSpecialization.appendChild(span);
+    var a = document.createElement('a');
+    a.setAttribute('id', 'selectSpecializationClose');
+    a.setAttribute('onclick', 'selectClear()');
+    a.innerHTML = 'Close';
+    selectSpecialization.appendChild(a);
+    selectSpecialization.appendChild(document.createElement('br'));
+    if (num != 4) {
+        var table = document.createElement('table');
+        for (var i=0; i<specializationList.length-1; i++) {
+            var specialization = specializationList[i];
+            var tr = document.createElement('tr');
+            table.appendChild(tr);
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var span = document.createElement('span');
+            span.setAttribute('id', 'selectSpecializationDescription'+i);
+            if (specialization.tip != null) {
+                span.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
+                span.setAttribute('onmouseout', 'popout()');
+            }
+            //span.setAttribute('class', 'specialization');
+            span.innerHTML = specialization.desc;
+            if (totalPoints < 10 || specializationPointList[i] > 0) {
+                span.setAttribute('class', 'buttonText');
+            } else {
+                span.setAttribute('class', 'disabledButtonText');
+            }
+            td.appendChild(span);
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectSpecializationDecrement'+i);
+            if (specializationPointList[i] > 0) {
+                a.setAttribute('onclick', 'selectSpecializationDecrement('+num+','+i+')');
+                a.setAttribute('class', 'selectButton');
+            } else {
+                a.setAttribute('onclick', 'return false');
+                a.setAttribute('class', 'disabledButton');
+            }
+            a.innerHTML = '&nbsp;<<<&nbsp;';
+            td.appendChild(a);
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var span = document.createElement('span');
+            span.setAttribute('id', 'selectSpecializationPoints'+i);
+            span.innerHTML = '('+specializationPointList[i]+'/'+specialization.maxPoints+')';
+            if (totalPoints < 10 || specializationPointList[i] > 0) {
+                span.setAttribute('class', 'note');
+            } else {
+                span.setAttribute('class', 'disabledNote');
+            }
+            td.appendChild(span);
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectSpecializationIncrement'+i);
+            if (totalPoints < 10 &&
+                specializationPointList[i] < specialization.maxPoints &&
+               (i < 4 || tier1Points >= 5)) {
+                a.setAttribute('onclick', 'selectSpecializationIncrement('+num+','+i+')');
+                a.setAttribute('class', 'selectButton');
+            } else {
+                a.setAttribute('onclick', 'return false');
+                a.setAttribute('class', 'disabledButton');
+            }
+            a.innerHTML = '&nbsp;>>>&nbsp;';
+            td.appendChild(a);
+        }
+    } else {
+        var table = document.createElement('table');
+        var tr = document.createElement('tr');
+        table.appendChild(tr);
+        var td = document.createElement('td');
+        tr.appendChild(td);
+        var a = document.createElement('a');
+        if (phSpecializationTree[1].id == 0) {
+            a.setAttribute('onclick', 'return false');
+            a.setAttribute('class', 'disabledButton');
+            a.innerHTML = '<span><img src="img/blank.png" />&nbsp;Stat Mastery</span>';
+            //a.innerHTML = '<span>Stat Mastery</span>';
+        } else {
+            var specialization = phSpecializationTree[1].specializationList[8];
+            a.setAttribute('onclick', 'setSpecializationMastery(1)');
+            a.setAttribute('class', 'selectButton');
+            if (specialization.tip != null) {
+                a.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
+                a.setAttribute('onmouseout', 'popout()');
+            }
+            a.innerHTML = '<span>'+specialization.desc+'</span>';
+            //a.innerHTML = '<span>'+phSpecializationTree[1].desc+' Mastery</span>';
+        }
+        td.appendChild(a);
+        for (var i=2; i<=3; i++) {
+            var tr = document.createElement('tr');
+            table.appendChild(tr);
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var a = document.createElement('a');
+            if (phSpecializationTree[i].id == 0) {
+                a.setAttribute('onclick', 'return false');
+                a.setAttribute('class', 'disabledButton');
+                a.innerHTML = '<span><img src="img/blank.png" />&nbsp;Role Mastery</span>';
+                //a.innerHTML = '<span>Role Mastery</span>';
+            } else {
+                var specialization = phSpecializationTree[i].specializationList[8];
+                a.setAttribute('onclick', 'setSpecializationMastery('+i+')');
+                a.setAttribute('class', 'selectButton');
+                if (specialization.tip != null) {
+                    a.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
+                    a.setAttribute('onmouseout', 'popout()');
+                }
+                a.innerHTML = '<span>'+specialization.desc+'</span>';
+                //a.innerHTML = '<span>'+phSpecializationTree[i].desc+' Mastery</span>';
+            }
+            td.appendChild(a);
+        }
+    }
+    selectSpecialization.appendChild(table);
+    updatePositionSection('selectionSpecialization');
+}
+window['selectSpecializationRefresh'] = selectSpecializationRefresh;
+function selectSpecializationUpdate(num) {
+    var specializationTree = phSpecializationTree[num];
+    var mask = phSpecialization[num];
+    var specializationList = specializationTree.specializationList;
+    var specializationPointList = specializationTree.getSpecializationList(mask);
+    var totalPoints = specializationTree.getPoints(mask);
+    var tier1Points = specializationTree.getTierPoints(mask, 1);
+    if (num != 4) {
+        var selectSpecialization = document.getElementById('selectSpecialization'+num);
+        //selectSpecialization.innerHTML = '<img src="img/blank.png" />&nbsp;'+specializationTree.desc+' Tree ('+totalPoints+'/10)';
+        selectSpecialization.innerHTML = specializationTree.desc+' Tree ('+totalPoints+'/10)';
+    }
+    for (var i=0; i<specializationList.length-1; i++) {
+        var selectSpecializationDescription = document.getElementById('selectSpecializationDescription'+i);
+        var selectSpecializationDecrement = document.getElementById('selectSpecializationDecrement'+i);
+        var selectSpecializationPoints = document.getElementById('selectSpecializationPoints'+i);
+        var selectSpecializationIncrement = document.getElementById('selectSpecializationIncrement'+i);
+        var specialization = specializationList[i];
+        selectSpecializationPoints.innerHTML = '('+specializationPointList[i]+'/'+specialization.maxPoints+')';
+        if (totalPoints < 10 || specializationPointList[i] > 0) {
+            selectSpecializationDescription.setAttribute('class', 'buttonText');
+            selectSpecializationPoints.setAttribute('class', 'note');
+        } else {
+            selectSpecializationDescription.setAttribute('class', 'disabledButtonText');
+            selectSpecializationPoints.setAttribute('class', 'disabledNote');
+        }
+        if (specializationPointList[i] > 0) {
+            selectSpecializationDecrement.setAttribute('onclick', 'selectSpecializationDecrement('+num+','+i+')');
+            selectSpecializationDecrement.setAttribute('class', 'selectButton');
+        } else {
+            selectSpecializationDecrement.setAttribute('onclick', 'return false');
+            selectSpecializationDecrement.setAttribute('class', 'disabledButton');
+        }
+        if (totalPoints < 10 &&
+            specializationPointList[i] < specialization.maxPoints &&
+            (i < 4 || tier1Points >= 5)) {
+            selectSpecializationIncrement.setAttribute('onclick', 'selectSpecializationIncrement('+num+','+i+')');
+            selectSpecializationIncrement.setAttribute('class', 'selectButton');
+        } else {
+            selectSpecializationIncrement.setAttribute('onclick', 'return false');
+            selectSpecializationIncrement.setAttribute('class', 'disabledButton');
+        }
+    }
+}
+window['selectSpecializationUpdate'] = selectSpecializationUpdate;
+function selectSpecializationClear(num) {
+    phSpecialization[num] = 0;
+    setupSpecializations();
+    selectClear();
+}
+window['selectSpecializationClear'] = selectSpecializationClear;
+function selectSpecializationCancel(num, mask) {
+    setSpecialization(num, mask);
+    selectClear();
+}
+window['selectSpecializationCancel'] = selectSpecializationCancel;
+function selectSpecializationIncrement(num, id) {
+    var specializationTree = phSpecializationTree[num];
+    var mask = phSpecialization[num];
+    var totalPoints = specializationTree.getPoints(mask);
+    var tier1Points = specializationTree.getTierPoints(mask, 1);
+    var specializationList = specializationTree.specializationList;
+    var specializationPointList = specializationTree.getSpecializationList(mask);
+    var specialization = specializationList[id];
+    if (totalPoints < 10 &&
+        specializationPointList[id] < specialization.maxPoints &&
+        (id < 4 || tier1Points >= 5)) {
+        var newMask = specializationTree.incrSpecialization(mask, id);
+        setSpecialization(num, newMask);
+        selectSpecializationUpdate(num);
+    }
+}
+window['selectSpecializationIncrement'] = selectSpecializationIncrement;
+function selectSpecializationDecrement(num, id) {
+    var specializationTree = phSpecializationTree[num];
+    var mask = phSpecialization[num];
+    var totalPoints = specializationTree.getPoints(mask);
+    var specializationList = specializationTree.specializationList;
+    var specializationPointList = specializationTree.getSpecializationList(mask);
+    var specialization = specializationList[id];
+    if (specializationPointList[id] > 0) {
+        var newMask = specializationTree.decrSpecialization(mask, id);
+        setSpecialization(num, newMask);
+        selectSpecializationUpdate(num);
+    }
+}
+window['selectSpecializationDecrement'] = selectSpecializationDecrement;
+function setSpecialization(num, mask) {
+    if (dataSpecializationTree[num].getPoints(mask) <= 10) {
+        phSpecialization[num] = mask;
+        setupSpecializations();
+    }
+}
+window['setSpecialization'] = setSpecialization;
+function setSpecializationTree(num, id) {
+    var currentTree = phSpecializationTree[num];
+    if (currentTree.id != id) {
+        if ((num == 2 && phSpecializationTree[3].id == id) ||
+            (num == 3 && phSpecializationTree[2].id == id)) {
+            var otherNum = ((num == 2) ? 3 : 2);
+            var otherTree = phSpecializationTree[otherNum];
+            var otherSpec = phSpecialization[otherNum];
+            phSpecializationTree[otherNum] = phSpecializationTree[num];
+            phSpecialization[otherNum] = phSpecialization[num];
+            phSpecializationTree[num] = otherTree;
+            phSpecialization[num] = otherSpec;
+        } else {
+            if (phSpecializationTree[num].id == phSpecializationTree[4].id) phSpecializationTree[4] = dataSpecializationTree[0];
+            phSpecializationTree[num] = dataSpecializationTree[id];
+            phSpecialization[num] = 0;
+        }
+        selectSpecializationRefresh(num);
+        setupSpecializations();
+    }
+}
+window['setSpecializationTree'] = setSpecializationTree;
+function setSpecializationMastery(id) {
+    phSpecializationTree[4] = phSpecializationTree[id];
+    phSpecialization[4] = id;
+    setupSpecializations();
+    selectClear();
+}
+window['setSpecializationMastery'] = setSpecializationMastery;
+
 // archetype functions
+function setupArchtypes() {
+    var selectArchetypeIds = ['selectArchetype', 'selectArchetypeLeft', 'selectArchetypeRight'];
+    for (var i=0; i<selectArchetypeIds.length; i++) {
+        var selectArchetype = document.getElementById(selectArchetypeIds[i]);
+        var children = selectArchetype.getElementsByTagName('*');
+        while (children.length > 0) {
+            selectArchetype.removeChild(children[0]);
+        }
+    }
+    var selectArchetype = document.getElementById('selectArchetype');
+    var selectArchetypeLeft = document.getElementById('selectArchetypeLeft');
+    var selectArchetypeRight = document.getElementById('selectArchetypeRight');
+    for (var i=0; i<dataArchetype.length; i++) {
+        if (i == 0) {
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectArchetypeCancel');
+            a.setAttribute('onclick', 'selectClear()');
+            a.innerHTML = 'Cancel';
+            selectArchetype.appendChild(a);
+        } else {
+            if (i <= dataArchetype.length/2) selectArchetype = selectArchetypeLeft;
+            else selectArchetype = selectArchetypeRight;
+            var a = document.createElement('a');
+            a.setAttribute('id', 'selectArchetype'+i);
+            a.setAttribute('onclick', 'setArchetype('+i+')');
+            if (dataArchetype[i].tip != null) {
+                a.setAttribute('onmouseover', 'popup(\''+dataArchetype[i].tip+'\')');
+                a.setAttribute('onmouseout', 'popout()');
+            }
+            a.innerHTML = dataArchetype[i].desc;
+            selectArchetype.appendChild(a);
+        }
+        selectArchetype.appendChild(document.createElement('br'));
+    }
+    hideSection('selectionArchetype');
+    hideSection('selectionArchetypePower');
+}
+window['setupArchtypes'] = setupArchtypes;
 function selectArchetype() {
     selectClear();
     showPositionSection('selectionArchetype', true);
@@ -1199,17 +1969,17 @@ window['selectArchetype'] = selectArchetype;
 function setArchetype(id) {
     var archetype = dataArchetype[id];
     if (id == 1) {
-        for (i=1; i<phSuperStat.length; i++) {
+        for (var i=1; i<phSuperStat.length; i++) {
             var field = document.getElementById('fieldSuperStat'+i);
             field.setAttribute('onclick', 'selectSuperStat('+i+')');
             field.setAttribute('class', 'button');
         }
-        for (i=1; i<phInnateTalent.length; i++) {
+        for (var i=1; i<phInnateTalent.length; i++) {
             var field = document.getElementById('fieldInnateTalent'+i);
             field.setAttribute('onclick', 'selectInnateTalent('+i+')');
             field.setAttribute('class', 'button');
         }
-        for (i=1; i<phPower.length; i++) {
+        for (var i=1; i<phPower.length; i++) {
             var field = document.getElementById('fieldPower'+i);
             field.setAttribute('onclick', 'selectPower('+i+')');
             field.setAttribute('class', 'button');
@@ -1228,8 +1998,8 @@ function setArchetype(id) {
         document.getElementById('rowPower13').style.display = '';
         document.getElementById('rowPower14').style.display = '';
     } else {
-        for (i=1; i<phSuperStat.length; i++) {
-            var id = archetype.superStat[i];
+        for (var i=1; i<phSuperStat.length; i++) {
+            var id = archetype.superStatList[i];
             var field = document.getElementById('fieldSuperStat'+i);
             var selectField = document.getElementById('selectSuperStat'+id);
             if (id != phSuperStat[i].id) {
@@ -1240,7 +2010,7 @@ function setArchetype(id) {
             field.setAttribute('class', 'lockedButton');
             selectField.setAttribute('class', 'takenButton');
         }
-        for (i=1; i<phInnateTalent.length; i++) {
+        for (var i=1; i<phInnateTalent.length; i++) {
             var id = archetype.innateTalent;
             var field = document.getElementById('fieldInnateTalent'+i);
             var selectField = document.getElementById('selectInnateTalent'+id);
@@ -1252,17 +2022,17 @@ function setArchetype(id) {
             field.setAttribute('class', 'lockedButton');
             selectField.setAttribute('class', 'takenButton');
         }
-        for (i=1; i<phPower.length; i++) {
+        for (var i=1; i<phPower.length; i++) {
             var field = document.getElementById('fieldPower'+i);
             var advantageField = document.getElementById('fieldPowerAdvantage'+i);
-            var id = archetype.power[i];
+            var id = archetype.powerList[i];
             if (id != undefined) {
                 var multiplePowers = false;
                 if (id instanceof Array) {
                     multiplePowers = true;
                     var powers = id;
                     var oldId = phPower[i].id;
-                    for (j=1; j<powers.length; j++) {
+                    for (var j=1; j<powers.length; j++) {
                         if (powers[j] == oldId) id = powers[j];
                     }
                     if (id instanceof Array) id = powers[1];
@@ -1287,6 +2057,9 @@ function setArchetype(id) {
                 field.innerHTML = getPowerDefault(i);
                 advantageField.innerHTML = advantageTextSpan(1, i, 0);
             }
+        }
+        for (var i=1; i<=3; i++) {
+            setSpecializationTree(i, archetype.specializationTreeList[i]);
         }
         document.getElementById('fieldTalentNote1').innerHTML = '7&nbsp;';
         document.getElementById('fieldTalentNote2').innerHTML = '12&nbsp;';
@@ -1454,6 +2227,30 @@ function parseUrlParams(url) {
             inc = 4;
             inc = applyVersionUpdate(version, 'inc', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': framework, 'power': power, 'mask': mask});
             break;
+        case 27:
+        case 28:
+        case 29:
+            // specializations
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code2 = applyVersionUpdate(version, 'code2', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code3 = applyVersionUpdate(version, 'code3', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code4 = applyVersionUpdate(version, 'code4', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var codeNum = parseInt(urlCodeToNum4(code1+code2+code3+code4));
+            var sp = codeNum >> 4;
+            var spt = codeNum & ~(sp << 4);
+            var specializationTree = applyVersionUpdate(version, 'specializationTree', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'specializationTree': spt, 'specialization': sp});
+            var specialization = applyVersionUpdate(version, 'specialization', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'specializationTree': spt, 'specialization': sp});
+            var num = pos-26;
+            if (num == 1) {
+                setSpecializationTree(4, spt);
+                setSpecialization(num, sp);
+            } else {
+                setSpecializationTree(num, (spt == 0) ? 0 : spt+8);
+                setSpecialization(num, sp);
+            }
+            inc = 4;
+            inc = applyVersionUpdate(version, 'inc', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'specializationTree': spt, 'specialization': sp});
+            break;
         }
         i+=inc;
         pos++;
@@ -1513,6 +2310,13 @@ function buildLink() {
         params.push(phPower[i].code());
         params.push(numToUrlCode2(phPowerAdvantage[i] >> 1));
     }
+    for (var i=1; i<phSpecializationTree.length-1; i++) {
+        if (i == 1) {
+            params.push(numToUrlCode4(phSpecializationTree[4].id | (phSpecialization[1] << 4)));
+        } else {
+            params.push(numToUrlCode4(((phSpecializationTree[i].id == 0) ? 0 : phSpecializationTree[i].id-8) | (phSpecialization[i] << 4)));
+        }
+    }
     link += params.join('');
     phBuildLink = buildUrl+link;
     //var name = phName;
@@ -1523,9 +2327,9 @@ function buildLink() {
     //field.innerHTML = name;
     ////fieldBookmark.setAttribute('onclick', 'addBookmark(\''+name+'\',\''+url+'\');');
     fieldRef.innerHTML = url;
-    if (prevBuildLink != undefined) setCookie('buildLink', prevBuildLink, 30);
+    if (prevBuildLink != undefined) setCookie('buildLink', prevBuildLink, cookieExpireDays);
     prevBuildLink = url;
-   var restore = document.getElementById('restorePrevBuild');
+    var restore = document.getElementById('restorePrevBuild');
     if (getCookie('buildLink') == undefined) restore.style.display = 'none';
     else restore.style.display = '';
 }
@@ -1549,14 +2353,24 @@ window['setTitle'] = setTitle;
 // generate forum entries
 function forumEntry(type, first, second, third) {
     var result = '';
-    if (type == 1) {
-        result += '<b><span style="color:#f78112">'+first+'</span></b>';
+    switch (type) {
+    case 1:
+        result += '<b><span class="forumFirst">'+first+'</span></b>';
         if (second) {
-            result += ' <b><span style="color:#fec530">'+second+'</span></b>';
-            if (third) result += ' <b><span style="font-size:small;color:#ce6c10">'+third+'</span></b>';
+            result += ' <b><span class="forumSecond">'+second+'</span></b>';
+            if (third) result += ' <b><span class="forumThird">'+third+'</span></b>';
         }
         result += '<br />';
-    } else if (type == 2) {
+        break;
+    case 2:
+        result += first;
+        if (second) {
+            result += ' '+second;
+            if (third) result += ' '+third;
+        }
+        result += '\n';
+        break;
+    case 3:
         result += '[b][color=#f78112]'+first+'[/color][/b]';
         if (second) {
             result += ' [b][color=#fec530]'+second+'[/color][/b]';
@@ -1564,6 +2378,7 @@ function forumEntry(type, first, second, third) {
             if (third) result += ' [color=#ce6c10]'+third+'[/color]';
         }
         result += '\n';
+        break;
     }
     return result;
 }
@@ -1585,8 +2400,8 @@ window['forumAdvantageText'] = forumAdvantageText;
 function forumPreview() {
     var forumPreview = document.getElementById('forumPreview');
     var result = new Array();
-    result.push('<b><a href="'+siteUrl+'"><span style="color:#f78112">'+siteName+'</span></a></b> &nbsp; ');
-    result.push('<b><a href="'+phBuildLink+'"><span style="color:#8dcdff">(Link to this build)</span></a></b><br />');
+    result.push('<b><a href="'+siteUrl+'"><span class="forumHeader">'+siteName+'</span></a></b> &nbsp; ');
+    result.push('<b><a href="'+phBuildLink+'"><span class="forumLink">(Link to this build)</span></a></b><br />');
     result.push('<br />');
     result.push(forumEntry(1, 'Name:', phName));
     result.push('<br />');
@@ -1643,12 +2458,27 @@ function forumPreview() {
     result.push(forumEntry(1, 'Travel Powers:'));
     result.push(forumEntry(1, 'Level 6:', forumName(phTravelPower[1].name), forumAdvantageText(2, 1, phTravelPowerAdvantage[1])));
     result.push(forumEntry(1, 'Level 35:', forumName(phTravelPower[2].name), forumAdvantageText(2, 2, phTravelPowerAdvantage[2])));
+    result.push('<br />');
+    result.push(forumEntry(1, 'Specializations:'));
+    for (var i=1; i<=3; i++) {
+        var specializationTree = phSpecializationTree[i];
+        var mask = phSpecialization[i];
+        var specializationList = specializationTree.specializationList;
+        var specializationPointList = specializationTree.getSpecializationList(mask);
+        for (var j=0; j<specializationList.length-1; j++) {
+            if (specializationPointList[j] > 0) {
+                result.push(forumEntry(1, specializationTree.name+':', forumName(specializationList[j].name), '('+specializationPointList[j]+'/'+specializationList[j].maxPoints+')'));
+            }
+        }
+    }
+    if (phSpecializationTree[4].id != 0) {
+        result.push(forumEntry(1, 'Mastery:', forumName(phSpecializationTree[1].name)+' Mastery', '(1/1)'));
+    }
     forumPreview.innerHTML = result.join('');
 }
 window['forumPreview'] = forumPreview;
 
 // forum export
-var forumExportType = 'co';
 function setForumExportType(forumType) {
     forumExportType = forumType;
     setCookie('forumType', forumType, 30);
@@ -1663,74 +2493,175 @@ function selectForumExportType(forumType) {
 window['selectForumExportType'] = selectForumExportType;
 function forumExport() {
     var forumType = getCookie('forumType');
+    var forumTypeNum;
+    if (forumType == 'txt') forumTypeNum = 2;
+    else forumTypeNum = 3;
     if (forumType == undefined) forumType = forumExportType;
     setForumExportType(forumType);
     document.getElementById('exportType_'+forumType).setAttribute('class', 'selectedButton');
     var forumText = document.getElementById('forumText');
     var result = new Array();
-    if (forumType == 'co') result.push('[font="Comic Sans MS"]');
-    result.push('[b][url='+siteUrl+'][color=#f78112]'+siteName+'[/color][/url][/b] ');
-    result.push('[b][url='+phBuildLink+'][color=#8dcdff](Link to this build)[/color][/url][/b]\n');
+    //if (forumType == 'co') result.push('[font="Comic Sans MS"]');
+    if (forumTypeNum == 2) {
+        result.push(siteName+' '+siteUrl+'\n');
+        result.push('\n');
+        result.push('Link to this build: '+phBuildLink+'\n');
+    } else {
+        result.push('[b][url='+siteUrl+'][color=#f78112]'+siteName+'[/color][/url][/b] ');
+        result.push('[b][url='+phBuildLink+'][color=#8dcdff](Link to this build)[/color][/url][/b]\n');
+    }
     result.push('\n');
-    result.push(forumEntry(2, 'Name:', phName));
+    result.push(forumEntry(forumTypeNum, 'Name:', phName));
     result.push('\n');
-    result.push(forumEntry(2, 'Archetype:', phArchetype.name));
+    result.push(forumEntry(forumTypeNum, 'Archetype:', phArchetype.name));
     result.push('\n');
-    result.push(forumEntry(2, 'Super Stats:'));
-    result.push(forumEntry(2, 'Level 6:', forumName(phSuperStat[1].name), '(Primary)'));
-    result.push(forumEntry(2, 'Level 10:', forumName(phSuperStat[2].name), '(Secondary)'));
-    result.push(forumEntry(2, 'Level 15:', forumName(phSuperStat[3].name), '(Secondary)'));
+    result.push(forumEntry(forumTypeNum, 'Super Stats:'));
+    result.push(forumEntry(forumTypeNum, 'Level 6:', forumName(phSuperStat[1].name), '(Primary)'));
+    result.push(forumEntry(forumTypeNum, 'Level 10:', forumName(phSuperStat[2].name), '(Secondary)'));
+    result.push(forumEntry(forumTypeNum, 'Level 15:', forumName(phSuperStat[3].name), '(Secondary)'));
     result.push('\n');
-    result.push(forumEntry(2, 'Talents:'));
-    result.push(forumEntry(2, 'Level 1:', forumName(phInnateTalent[1].name)));
+    result.push(forumEntry(forumTypeNum, 'Talents:'));
+    result.push(forumEntry(forumTypeNum, 'Level 1:', forumName(phInnateTalent[1].name)));
     if (phArchetype.id > 1) {
-        result.push(forumEntry(2, 'Level 7:', forumName(phTalent[1].name)));
-        result.push(forumEntry(2, 'Level 12:', forumName(phTalent[2].name)));
-        result.push(forumEntry(2, 'Level 15:', forumName(phTalent[3].name)));
-        result.push(forumEntry(2, 'Level 20:', forumName(phTalent[4].name)));
-        result.push(forumEntry(2, 'Level 25:', forumName(phTalent[5].name)));
-        result.push(forumEntry(2, 'Level 30:', forumName(phTalent[6].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 7:', forumName(phTalent[1].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 12:', forumName(phTalent[2].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 15:', forumName(phTalent[3].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 20:', forumName(phTalent[4].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 25:', forumName(phTalent[5].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 30:', forumName(phTalent[6].name)));
         result.push('\n');
     } else {
-        result.push(forumEntry(2, 'Level 6:', forumName(phTalent[1].name)));
-        result.push(forumEntry(2, 'Level 9:', forumName(phTalent[2].name)));
-        result.push(forumEntry(2, 'Level 12:', forumName(phTalent[3].name)));
-        result.push(forumEntry(2, 'Level 15:', forumName(phTalent[4].name)));
-        result.push(forumEntry(2, 'Level 18:', forumName(phTalent[5].name)));
-        result.push(forumEntry(2, 'Level 21:', forumName(phTalent[6].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 6:', forumName(phTalent[1].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 9:', forumName(phTalent[2].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 12:', forumName(phTalent[3].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 15:', forumName(phTalent[4].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 18:', forumName(phTalent[5].name)));
+        result.push(forumEntry(forumTypeNum, 'Level 21:', forumName(phTalent[6].name)));
         result.push('\n');
     }
-    result.push(forumEntry(2, 'Powers:'));
-    result.push(forumEntry(2, 'Level 1:', forumName(phPower[1].name), forumAdvantageText(1, 1, phPowerAdvantage[1])));
-    result.push(forumEntry(2, 'Level 1:', forumName(phPower[2].name), forumAdvantageText(1, 2, phPowerAdvantage[2])));
-    result.push(forumEntry(2, 'Level 6:', forumName(phPower[3].name), forumAdvantageText(1, 3, phPowerAdvantage[3])));
-    result.push(forumEntry(2, 'Level 8:', forumName(phPower[4].name), forumAdvantageText(1, 4, phPowerAdvantage[4])));
-    result.push(forumEntry(2, 'Level 11:', forumName(phPower[5].name), forumAdvantageText(1, 5, phPowerAdvantage[5])));
-    result.push(forumEntry(2, 'Level 14:', forumName(phPower[6].name), forumAdvantageText(1, 6, phPowerAdvantage[6])));
-    result.push(forumEntry(2, 'Level 17:', forumName(phPower[7].name), forumAdvantageText(1, 7, phPowerAdvantage[7])));
+    result.push(forumEntry(forumTypeNum, 'Powers:'));
+    result.push(forumEntry(forumTypeNum, 'Level 1:', forumName(phPower[1].name), forumAdvantageText(1, 1, phPowerAdvantage[1])));
+    result.push(forumEntry(forumTypeNum, 'Level 1:', forumName(phPower[2].name), forumAdvantageText(1, 2, phPowerAdvantage[2])));
+    result.push(forumEntry(forumTypeNum, 'Level 6:', forumName(phPower[3].name), forumAdvantageText(1, 3, phPowerAdvantage[3])));
+    result.push(forumEntry(forumTypeNum, 'Level 8:', forumName(phPower[4].name), forumAdvantageText(1, 4, phPowerAdvantage[4])));
+    result.push(forumEntry(forumTypeNum, 'Level 11:', forumName(phPower[5].name), forumAdvantageText(1, 5, phPowerAdvantage[5])));
+    result.push(forumEntry(forumTypeNum, 'Level 14:', forumName(phPower[6].name), forumAdvantageText(1, 6, phPowerAdvantage[6])));
+    result.push(forumEntry(forumTypeNum, 'Level 17:', forumName(phPower[7].name), forumAdvantageText(1, 7, phPowerAdvantage[7])));
     if (phArchetype.id > 1) {
-        result.push(forumEntry(2, 'Level 22:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
-        result.push(forumEntry(2, 'Level 27:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
-        result.push(forumEntry(2, 'Level 32:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
-        result.push(forumEntry(2, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push(forumEntry(forumTypeNum, 'Level 22:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
+        result.push(forumEntry(forumTypeNum, 'Level 27:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
+        result.push(forumEntry(forumTypeNum, 'Level 32:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
+        result.push(forumEntry(forumTypeNum, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
         result.push('\n');
     } else {
-        result.push(forumEntry(2, 'Level 20:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
-        result.push(forumEntry(2, 'Level 23:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
-        result.push(forumEntry(2, 'Level 26:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
-        result.push(forumEntry(2, 'Level 29:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
-        result.push(forumEntry(2, 'Level 32:', forumName(phPower[12].name), forumAdvantageText(1, 12, phPowerAdvantage[12])));
-        result.push(forumEntry(2, 'Level 35:', forumName(phPower[13].name), forumAdvantageText(1, 13, phPowerAdvantage[13])));
-        result.push(forumEntry(2, 'Level 38:', forumName(phPower[14].name), forumAdvantageText(1, 14, phPowerAdvantage[14])));
+        result.push(forumEntry(forumTypeNum, 'Level 20:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
+        result.push(forumEntry(forumTypeNum, 'Level 23:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
+        result.push(forumEntry(forumTypeNum, 'Level 26:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
+        result.push(forumEntry(forumTypeNum, 'Level 29:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push(forumEntry(forumTypeNum, 'Level 32:', forumName(phPower[12].name), forumAdvantageText(1, 12, phPowerAdvantage[12])));
+        result.push(forumEntry(forumTypeNum, 'Level 35:', forumName(phPower[13].name), forumAdvantageText(1, 13, phPowerAdvantage[13])));
+        result.push(forumEntry(forumTypeNum, 'Level 38:', forumName(phPower[14].name), forumAdvantageText(1, 14, phPowerAdvantage[14])));
         result.push('\n');
     }
-    result.push(forumEntry(2, 'Travel Powers:'));
-    result.push(forumEntry(2, 'Level 6:', forumName(phTravelPower[1].name), forumAdvantageText(2, 1, phTravelPowerAdvantage[1])));
-    result.push(forumEntry(2, 'Level 35:', forumName(phTravelPower[2].name), forumAdvantageText(2, 2, phTravelPowerAdvantage[2])));
-    if (forumType == 'co') result.push('[/font]');
+    result.push(forumEntry(forumTypeNum, 'Travel Powers:'));
+    result.push(forumEntry(forumTypeNum, 'Level 6:', forumName(phTravelPower[1].name), forumAdvantageText(2, 1, phTravelPowerAdvantage[1])));
+    result.push(forumEntry(forumTypeNum, 'Level 35:', forumName(phTravelPower[2].name), forumAdvantageText(2, 2, phTravelPowerAdvantage[2])));
+    result.push('\n');
+    result.push(forumEntry(forumTypeNum, 'Specializations:'));
+    for (var i=1; i<=3; i++) {
+        var specializationTree = phSpecializationTree[i];
+        var mask = phSpecialization[i];
+        var specializationList = specializationTree.specializationList;
+        var specializationPointList = specializationTree.getSpecializationList(mask);
+        for (var j=0; j<specializationList.length-1; j++) {
+            if (specializationPointList[j] > 0) {
+                result.push(forumEntry(forumTypeNum, specializationTree.name+':', forumName(specializationList[j].name), '('+specializationPointList[j]+'/'+specializationList[j].maxPoints+')'));
+            }
+        }
+    }
+    if (phSpecializationTree[4].id != 0) {
+        result.push(forumEntry(forumTypeNum, 'Mastery:', forumName(phSpecializationTree[1].name)+' Mastery', '(1/1)'));
+    }
+    //if (forumType == 'co') result.push('[/font]');
     forumText.innerHTML = result.join('');
 }
 window['forumExport'] = forumExport;
+
+// preferences
+function setPrefFontFamily(fontFamily) {
+    prefFontFamily = fontFamily;
+    setCookie('prefFontFamily', fontFamily, cookieExpireDays);
+    document.getElementById('body').style.fontFamily = fontFamily+', sans-serif';
+    document.getElementById('prefFontFamilyName').innerHTML = fontFamily;
+    hideSection('selectionPref');
+}
+window['setPrefFontFamily'] = setPrefFontFamily;
+function selectPrefFontFamily() {
+    var selectPrefFontFamily = document.getElementById('selectionPref');
+    var children = selectPrefFontFamily.getElementsByTagName('*');
+    while (children.length > 0) {
+        selectPrefFontFamily.removeChild(children[0]);
+    }
+    var numColumns = Math.floor(prefFontFamilyList.length/25)+1;
+    if (numColumns > 4) numColumns = 4;
+    var currColumn = 0;
+    var selectPrefFontFamilyColumn;
+    for (var i=0; i<prefFontFamilyList.length; i++) {
+        if (i >= currColumn*25) {
+            currColumn++;
+            var div = document.createElement('div');
+            div.setAttribute('id', 'selectPrefFontFamilyColumn'+currColumn);
+            div.setAttribute('class', 'leftSelection');
+            selectPrefFontFamily.appendChild(div);
+            selectPrefFontFamilyColumn = div;
+        }
+        var a = document.createElement('a');
+        a.setAttribute('id', 'selectPrefFontFamily'+i);
+        a.setAttribute('onclick', 'setPrefFontFamily(\''+prefFontFamilyList[i]+'\')');
+        a.innerHTML = '&nbsp;'+prefFontFamilyList[i]+'&nbsp;';
+        selectPrefFontFamilyColumn.appendChild(a);
+        selectPrefFontFamilyColumn.appendChild(document.createElement('br'));
+    }
+    showPositionSection('selectionPref', true);
+}
+window['selectPrefFontFamily'] = selectPrefFontFamily;
+function setPrefFontSize(fontSize) {
+    prefFontSize = fontSize;
+    setCookie('prefFontSize', fontSize, cookieExpireDays);
+    document.getElementById('body').style.fontSize = fontSize+'%';
+    document.getElementById('prefFontSize').innerHTML = fontSize+'%';
+}
+window['setPrefFontSize'] = setPrefFontSize;
+function selectPrefFontSize(change) {
+    setPrefFontSize(prefFontSize+change*10);
+}
+window['selectPrefFontSize'] = selectPrefFontSize;
+// function populateFontList(fontList) {
+//     prefFontFamilyList = new Array();
+//     for (var key in fontList) {
+//         var fontName = fontList[key];
+//         fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+//         if (!(fontName.match(/[_\-\s]Italic$/)
+//               || fontName.match(/[_\-\s](Demi)?[Bb]old$/)
+//               || fontName.match(/[_\-\s]Medium$/)
+//               || fontName.match(/[_\-\s](Ultra)?[Ll]ight$/)
+//               || fontName.match(/[_\-\s]Condensed$/))) {
+//             fontName = fontName.replace(/\s*Regular$/, '');
+//             prefFontFamilyList.add(fontName);
+//         }
+//     }
+// }
+// window['populateFontList'] = populateFontList;
+function setPrefPopupTips(popupTips) {
+    prefPopupTips = popupTips;
+    setCookie('prefPopupTips', popupTips, cookieExpireDays);
+    document.getElementById('prefPopupTipsValue').innerHTML = (popupTips ? "On" : "Off");
+}
+window['setPrefPopupTips'] = setPrefPopupTips;
+function selectPrefPopupTips() {
+    setPrefPopupTips(!prefPopupTips);
+}
+window['selectPrefPopupTips'] = selectPrefPopupTips;
 
 // show views
 function showView(view) {
@@ -1738,7 +2669,7 @@ function showView(view) {
     document.getElementById('viewEdit').style.display = 'none';
     document.getElementById('viewPreview').style.display = 'none';
     document.getElementById('viewExport').style.display = 'none';
-    document.getElementById('viewPrint').style.display = 'none';
+    document.getElementById('viewPrefs').style.display = 'none';
     document.getElementById('viewHelp').style.display = 'none';
     document.getElementById('viewAbout').style.display = 'none';
     section.style.display = '';
@@ -1749,8 +2680,8 @@ function showView(view) {
     document.getElementById('showViewPreview').setAttribute('class', 'button');
     document.getElementById('showViewExport').href.onclick = '';
     document.getElementById('showViewExport').setAttribute('class', 'button');
-    document.getElementById('showViewPrint').href.onclick = '';
-    document.getElementById('showViewPrint').setAttribute('class', 'button');
+    document.getElementById('showViewPrefs').href.onclick = '';
+    document.getElementById('showViewPrefs').setAttribute('class', 'button');
     document.getElementById('showViewHelp').href.onclick = '';
     document.getElementById('showViewHelp').setAttribute('class', 'button');
     document.getElementById('showViewAbout').href.onclick = '';
@@ -1778,6 +2709,7 @@ function dataDump() {
     win.document.write('<h3><a onclick="document.getElementById(\'power\').scrollIntoView();">Power Data</a></h3>');
     win.document.write('<h3><a onclick="document.getElementById(\'archetype-group\').scrollIntoView();">Archetype Group Data</a></h3>');
     win.document.write('<h3><a onclick="document.getElementById(\'archetype\').scrollIntoView();">Archetype Data</a></h3>');
+    win.document.write('<h3><a onclick="document.getElementById(\'specialization-tree\').scrollIntoView();">Specialization Tree Data</a></h3>');
     win.document.write('<h3><a onclick="document.getElementById(\'version-update\').scrollIntoView();">Version Update Data</a></h3>');
     win.document.write('<hr>');
     win.document.write('<h2 id="super-stat">Super Stat Data</h3>');
@@ -1825,15 +2757,45 @@ function dataDump() {
         win.document.write('dataArchetype['+i+'] = '+dataArchetype[i].toString()+'<br />');
     }
     win.document.write('<hr>');
+    win.document.write('<h2 id="specialization-tree">Specialization Tree Data</h3>');
+    for (var i=1; i<dataSpecializationTree.length; i++) {
+        win.document.write('dataSpecializationTree['+i+'] = '+dataSpecializationTree[i].toString()+'<br />');
+    }
+    win.document.write('<hr>');
     win.document.write('<h2 id="version-update">Version Update Data</h3>');
     for (var i=1; i<dataVersionUpdate.length; i++) {
         win.document.write('dataVersionUpdate['+i+'] = '+dataVersionUpdate[i].toString()+'<br />');
     }
     win.focus();
 }
+window['dataDump'] = dataDump;
+
+// setup preferences
+function setupPrefs() {
+    // font family
+    var fontFamily = getCookie('prefFontFamily');
+    if (fontFamily == undefined) fontFamily = prefFontFamily;
+    setPrefFontFamily(fontFamily);
+    // font size
+    var fontSize = getCookie('prefFontSize');
+    if (fontSize == undefined) fontSize = prefFontSize;
+    setPrefFontSize(parseInt(fontSize));
+    // popup tips
+    var popupTips = getCookie('prefPopupTips');
+    if (popupTips == undefined) popupTips = prefPopupTips;
+    setPrefPopupTips(popupTips);
+}
+window['setupPrefs'] = setupPrefs;
 
 // start
 function start() {
+    // setup preferences
+    setupPrefs();
+
+    // setup header/footer
+    document.getElementById('header').style.display = '';
+    document.getElementById('footer').style.display = '';
+
     // show edit view
     showView('Edit');
 
@@ -1851,175 +2813,19 @@ function start() {
     document.getElementById('fieldArchetype').innerHTML = phArchetype.desc;
 
     // setup super stats
-    var selectSuperStat = document.getElementById('selectSuperStat');
-    for (var i=0; i<dataSuperStat.length; i++) {
-        if (i == 0) {
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectSuperStat'+i);
-            a.setAttribute('onclick', 'setSuperStat('+i+')');
-            a.innerHTML = 'Clear';
-            selectSuperStat.appendChild(a);
-            var span = document.createElement('span');
-            span.innerHTML = ' &nbsp; ';
-            selectSuperStat.appendChild(span);
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectSuperStatCancel');
-            a.setAttribute('onclick', 'selectClear()');
-            a.innerHTML = 'Cancel';
-            selectSuperStat.appendChild(a);
-        } else {
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectSuperStat'+i);
-            a.setAttribute('onclick', 'setSuperStat('+i+')');
-            if (dataSuperStat[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataSuperStat[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
-            a.innerHTML = dataSuperStat[i].desc;
-            selectSuperStat.appendChild(a);
-        }
-        selectSuperStat.appendChild(document.createElement('br'));
-    }
-    hideSection('selectionSuperStat');
+    setupSuperStats();
 
     // setup innate talents
-    var selectInnateTalent = document.getElementById('selectInnateTalent');
-    var selectInnateTalentLeft = document.getElementById('selectInnateTalentLeft');
-    var selectInnateTalentRight = document.getElementById('selectInnateTalentRight');
-    for (var i=0; i<dataInnateTalent.length; i++) {
-        if (i == 0) {
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectInnateTalent'+i);
-            a.setAttribute('onclick', 'setInnateTalent('+i+')');
-            a.innerHTML = 'Clear';
-            selectInnateTalent.appendChild(a);
-            var span = document.createElement('span');
-            span.innerHTML = ' &nbsp; ';
-            selectInnateTalent.appendChild(span);
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectInnateTalentCancel');
-            a.setAttribute('onclick', 'selectClear()');
-            a.innerHTML = 'Cancel';
-            selectInnateTalent.appendChild(a);
-        } else {
-            if (i <= dataInnateTalent.length/2) selectInnateTalent = selectInnateTalentLeft;
-            else selectInnateTalent = selectInnateTalentRight;
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectInnateTalent'+i);
-            a.setAttribute('onclick', 'setInnateTalent('+i+')');
-            if (dataInnateTalent[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataInnateTalent[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
-            a.innerHTML = '<img src="img/Innate_Talent.png" />&nbsp;' +
-                dataInnateTalent[i].desc +
-                ((dataInnateTalent[i].extra != null) ?
-                 ' <span class="spec">('+dataInnateTalent[i].extra+')</span>' : '');
-            selectInnateTalent.appendChild(a);
-        }
-        selectInnateTalent.appendChild(document.createElement('br'));
-    }
-    hideSection('selectionInnateTalent');
+    setupInnateTalents();
 
     // setup talents
-    var selectTalent = document.getElementById('selectTalent');
-    var selectTalentLeft = document.getElementById('selectTalentLeft');
-    var selectTalentRight = document.getElementById('selectTalentRight');
-    for (var i=0; i<dataTalent.length; i++) {
-        if (i == 0) {
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectTalent'+i);
-            a.setAttribute('onclick', 'setTalent('+i+')');
-            a.innerHTML = 'Clear';
-            selectTalent.appendChild(a);
-            var span = document.createElement('span');
-            span.innerHTML = ' &nbsp; ';
-            selectTalent.appendChild(span);
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectTalentCancel');
-            a.setAttribute('onclick', 'selectClear()');
-            a.innerHTML = 'Cancel';
-            selectTalent.appendChild(a);
-        } else {
-            if (i <= dataTalent.length/2) selectTalent = selectTalentLeft;
-            else selectTalent = selectTalentRight;
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectTalent'+i);
-            a.setAttribute('onclick', 'setTalent('+i+')');
-            // if (dataTalent[i].tip != null) {
-            //     a.setAttribute('onmouseover', 'popup(\''+dataTalent[i].tip+'\')');
-            //     a.setAttribute('onmouseout', 'popout()');
-            // }
-            a.innerHTML = '<img src="img/Talent.png" />&nbsp;'+dataTalent[i].desc +
-                ((dataTalent[i].extra != null) ?
-                 ' <span class="spec">('+dataTalent[i].extra+')</span>' : '');
-            selectTalent.appendChild(a);
-        }
-        selectTalent.appendChild(document.createElement('br'));
-    }
-    hideSection('selectionTalent');
+    setupTalents();
 
     // setup travel powers
-    var selectTravelPower = document.getElementById('selectTravelPower');
-    var selectTravelPowerLeft = document.getElementById('selectTravelPowerLeft');
-    var selectTravelPowerRight = document.getElementById('selectTravelPowerRight');
-    for (var i=0; i<dataTravelPower.length; i++) {
-        if (i == 0) {
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectTravelPower'+i);
-            a.setAttribute('onclick', 'setTravelPower('+i+')');
-            a.innerHTML = 'Clear';
-            selectTravelPower.appendChild(a);
-            var span = document.createElement('span');
-            span.innerHTML = ' &nbsp; ';
-            selectTravelPower.appendChild(span);
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectTravelPowerCancel');
-            a.setAttribute('onclick', 'selectClear()');
-            a.innerHTML = 'Cancel';
-            selectTravelPower.appendChild(a);
-        } else {
-            if (i <= dataTravelPower.length/2) selectTravelPower = selectTravelPowerLeft;
-            else selectTravelPower = selectTravelPowerRight;
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectTravelPower'+i);
-            a.setAttribute('onclick', 'setTravelPower('+i+')');
-            if (dataTravelPower[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataTravelPower[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
-            a.innerHTML = dataTravelPower[i].desc;
-            selectTravelPower.appendChild(a);
-        }
-        selectTravelPower.appendChild(document.createElement('br'));
-    }
-    hideSection('selectionTravelPower');
-    hideSection('selectionTravelPowerAdvantage');
+    setupTravelPowers();
 
     // setup frameworks
-    var selectFramework = document.getElementById('selectFramework');
-    var table = document.createElement('table');
-    var tr = document.createElement('tr');
-    table.appendChild(tr);
-    var newRow = Math.floor(dataFramework.length/2);
-    for (var i=1; i<dataFramework.length; i++) {
-        var td = document.createElement('td');
-        tr.appendChild(td);
-        var a = document.createElement('a');
-        a.setAttribute('id', 'selectFramework'+i);
-        a.setAttribute('onclick', 'selectFramework('+i+')');
-        if (dataFramework[i].tip != null) {
-            a.setAttribute('onmouseover', 'popup(\''+dataFramework[i].tip+'\')');
-            a.setAttribute('onmouseout', 'popout()');
-        }
-        a.innerHTML = dataFramework[i].desc;
-        td.appendChild(a);
-        if (i == newRow) {
-            tr = document.createElement('tr');
-            table.appendChild(tr);
-        }
-    }
-    selectFramework.appendChild(table);
+    setupFrameworks();
 
     // setup powers
     // powers are setup when a framework is selected with the `selectFramework' function
@@ -2027,33 +2833,7 @@ function start() {
     hideSection('selectionPowerAdvantage');
 
     // setup archetypes
-    var selectArchetype = document.getElementById('selectArchetype');
-    var selectArchetypeLeft = document.getElementById('selectArchetypeLeft');
-    var selectArchetypeRight = document.getElementById('selectArchetypeRight');
-    for (var i=0; i<dataArchetype.length; i++) {
-        if (i == 0) {
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectArchetypeCancel');
-            a.setAttribute('onclick', 'selectClear()');
-            a.innerHTML = 'Cancel';
-            selectArchetype.appendChild(a);
-        } else {
-            if (i <= dataArchetype.length/2) selectArchetype = selectArchetypeLeft;
-            else selectArchetype = selectArchetypeRight;
-            var a = document.createElement('a');
-            a.setAttribute('id', 'selectArchetype'+i);
-            a.setAttribute('onclick', 'setArchetype('+i+')');
-            if (dataArchetype[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataArchetype[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
-            a.innerHTML = dataArchetype[i].desc;
-            selectArchetype.appendChild(a);
-        }
-        selectArchetype.appendChild(document.createElement('br'));
-    }
-    hideSection('selectionArchetype');
-    hideSection('selectionArchetypePower');
+    setupArchtypes();
 
     // parse url
     parseUrlParams(window.location.href);
