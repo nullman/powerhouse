@@ -1,3 +1,233 @@
+2012-08-26  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js: Added Martial Arts: Smoke
+        Bomb Lunge Power (image needed).
+
+        * powerhouse-data.js, powerhouse-version.js: Removed Martial Arts:
+        Sneak Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Martial Arts: Night
+        Warrior Power.
+
+        * powerhouse.js: Fixed bug where one could clear Specialization Trees
+        when editing an Archetype.  The clear button will now clear the
+        Specializations picked, but keep the Tree
+        (except for the Mastery Tree).
+
+        * powerhouse.js: Fixed bug with Thunderbolt Lunge not being able to be
+        selected in Unarmed if another Martial Arts energy builder had been
+        taken.
+
+2012-08-24  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js: Added The Night Avenger
+        Archetype (image needed).
+
+        * powerhouse-data.js, powerhouse-version.js: Added The Night Avenger
+        Innate Talent.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering:
+        Boomerang Toss Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering:
+        Ricochet Throw Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering:
+        Grapple Gun Pull Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering:
+        Throwing Blades Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering: Gas
+        Pellets Power (image needed).
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering: Bolas
+        Power (image needed).
+
+        * powerhouse-data.js, powerhouse-version.js: Added Gadgeteering:
+        Strafing Run Power (image needed).
+
+2012-08-21  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added correct images for some Travel Powers:
+        Retractable Wings, Bat Flight, Scarab Flight, Ooze Tunneling, Inky
+        Ooze Tunneling, and Metallic Ooze Tunneling.
+
+        * powerhouse-data.js: Added new Travel Powers: Energy Slide, Flag
+        Speed, Millennial Flight, and Ninja Vanish.  All but Flag Speed
+        currently have generic images.
+
+2012-06-28  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Reversed 'Fixed bug where Tier 4 Powers could be
+        selected before level 35' as that is not true, you can select Tier 4
+        Powers at any time (as long as the character is level 35 or higher).
+        (Thanks to steven g for reporting this.)
+
+2012-06-25  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Fixed Impressive Physique Talent name.
+
+2012-06-22  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Fixed bug in Specialization loading code.  Fix bug
+        with version 3 corrupting the Specialization Mastery value by
+        resetting or clearing the value on version update.
+
+2012-06-21  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Fixed bug with name being cleared when editing.
+
+2012-06-20  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Fixed bug with Preview and Export views not showing
+        non-SuperStat Specialization Mastery's.  (Thanks to Supercollide for
+        reporting this.)
+
+        * powerhouse.js: Fixed bug with non-SuperStat Specialization Mastery's
+        not being set correctly on page load.
+
+        * powerhouse.js: Fixed bug with default cookie values when browser
+        cookies are turned off.
+
+        * powerhouse.js: Clearing a Specialization Tree now clears the type of
+        tree as well as the selected Specializations.
+
+2012-06-19  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-version.js: Correctly set Plasma Beam to a Tier 2 Power.
+
+        * powerhouse-version.js: Changed Chest Beam from a Tier 3 Power to a
+        Tier 2 Power.
+
+        * powerhouse-version.js: Changed Mini Gun from a Tier 2 Power to a
+        Tier 1 Power.
+
+        * powerhouse.js: Fixed bug where it was possible to select a Power
+        twice if it was in multiple sets.
+
+        * powerhouse.js: Fixed bug where Tier 4 Powers could be selected
+        before level 35.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor:
+        Reconstruction Circuits.
+
+        * powerhouse-data.js, powerhouse-version.js: More Archetype updates
+        for the ones that have had other powers moved around.  (Specifically:
+        The Scourge, The Master, The Disciple, The Unleashed, The Blade, The
+        Fist, The Impulse, The Specialist, The Savage, and The Cursed.)
+
+
+2012-06-18  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js: Added image for The
+        Radiant Archetype.
+
+        * powerhouse-data.js, powerhouse-version.js: Added image for The
+        Mountain Archetype.
+
+2012-06-17  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js: Added The Invincible
+        Archetype.
+
+        * powerhouse-data.js, powerhouse-version.js: Added The Invincible
+        Innate Talent.
+
+        * powerhouse.js, powerhouse-data.js, powerhouse-version.js: Updated
+        Archetypes.  All archetypes get an extra power at level 14.
+
+2012-06-14  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Energy
+        Wave: Reverse Polarity Advantage.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Fire
+        All Weapons Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Plasma
+        Beam Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Plasma
+        Cutter Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor:
+        Overdrive Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor:
+        Lightspeed Dash Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor:
+        Lightwave Slash Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor:
+        Tactical Missiles Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Laser
+        Edge Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Power
+        Bolts Power.
+
+2012-06-13  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Mini
+        Gun: Infrared Guidance System Advantage.
+
+        * powerhouse-data.js: Updated Power Armor: Mini Gun Power description
+        (it's now a 2 foot Cylinder AoE).
+
+        * powerhouse-data.js: Updated Power Armor: Micro Munitions Power
+        description (it's now a 15 foot Sphere AoE).
+
+        * powerhouse-data.js, powerhouse-version.js: Added Power Armor: Energy
+        Shield: Phalanx Defense System Advantage.
+
+        * powerhouse-data.js: Updated Power Armor Power descriptions.
+
+        * powerhouse-data.js: Updated Munitions Powers and Advantages that now
+        interact with Concentration instead of Enrage.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Mind: Manipulator
+        Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Mystic: Compassion
+        Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Added Technology:
+        Concentration Power.
+
+        * powerhouse-data.js, powerhouse-version.js: Removed Infernal
+        Supernatural: Aspect of the Ethereal Power.
+
+        * powerhouse-data.js: Updated Brick: Enrage Power description.
+
+2012-06-12  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added the effects of ranking up Specializations
+        to their descriptions.
+
+        * powerhouse-data.js: Fixed bug with Specialization Brawler,
+        Penetrating Strikes' tip.
+
+        * img: Updated Innate Talent and Talent images to use ones that look
+        like DNA strands.
+
+2012-06-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Clicking anywhere in the Specialization table will
+        now pop-up the select Specialization window.  (Previously only the
+        header would do this.)
+
+        * powerhouse.js, powerhouse-data.js, powerhouse-version.js: Changed
+        'new Array()' calls to '[]'.
+
+2012-06-10  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Updated Super Stat images.
+
+        * Released version 0.9.8.
+
 2012-06-06  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * powerhouse.js:  Resizing pop-up windows now reposition themselves if
@@ -46,25 +276,25 @@
         * powerhouse.css: Help and About views now use browser default
         sans-serif font.
 
-        * powerhouse-data.js, powerhouse-version.js:  Added new Accelerated
-        Metabolism Advantage to Reaper's Caress power.
+        * powerhouse-data.js, powerhouse-version.js:  Added new Single Blade:
+        Reaper's Caress: Accelerated Metabolism Advantage.
 
-        * powerhouse-data.js, powerhouse-version.js:  Added new Strong Arm
-        Advantage to Hurl power.
+        * powerhouse-data.js, powerhouse-version.js:  Added new Might: Hurl:
+        Strong Arm Advantage..
 
-        * powerhouse-data.js, powerhouse-version.js:  Added new It's That Time
-        Advantage to Clobber power.
+        * powerhouse-data.js, powerhouse-version.js:  Added new Might:
+        Clobber: It's That Time Advantage.
 
-        * powerhouse-data.js:  Added Accelerated Metabolism Advantage to
-        Beatdown Power.
+        * powerhouse-data.js:  Added new Might: Beatdown: Accelerated
+        Metabolism Advantage.
 
-        * powerhouse-data.js, powerhouse-version.js:  Added new Strong Arm
-        Advantage to Shuriken Storm Power.
+        * powerhouse-data.js, powerhouse-version.js:  Added new Martial Arts:
+        Shuriken Storm: Strong Arm Advantage.
 
 2012-04-21  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse-data.js, powerhouse-version.js:  Added new Kindling
-        Advantage to Fire Strike Power.
+        * powerhouse-data.js, powerhouse-version.js:  Added new Fire: Fire
+        Strike: Kindling Advantage.
 
         * powerhouse.js, powerhouse-data.js, powerhouse-version.js,
         powerhouse.html:  Bumped version to 3.  Moved version update code from
@@ -123,8 +353,8 @@
 
         * powerhouse.js, powerhouse-data.js:  Finished version 2 updates.
         Power Advantages are now two characters in length.  Added version
-        update logic for the new Break the Trigger Advantage in the Bullet
-        Beatdown Power.
+        update logic for the new Break the Trigger Advantage in the Munitions:
+        Bullet Beatdown Power.
 
 2012-03-31  Kyle W T Sherman  <kylewsherman@gmail.com>
 

@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-06-06 21:52:38 (kyle)>
+ * Time-stamp: <2012-08-26 14:56:28 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -32,16 +32,16 @@ SuperStat = function(id, name, desc, abbrev, tip) {
 }
 
 // super stat data
-var dataSuperStat = new Array();
+var dataSuperStat = [];
 dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, null, null, null, null);
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Strength', '<img src="img/SuperStat_Strength.png" />&nbsp;Strength', 'Str', 'Improves Melee Damage, Melee Knocks, Knock Resistance, and the pick-up and throw ability.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Dexterity', '<img src="img/SuperStat_Dexterity.png" />&nbsp;Dexterity', 'Dex', 'Improves a hero\\\'s Critical Hit Chance and effectiveness of Stealth granting powers.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Constitution', '<img src="img/SuperStat_Constitution.png" />&nbsp;Constitution', 'Con', 'Improves a hero\\\'s Hit Points.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Intelligence', '<img src="img/SuperStat_Intelligence.png" />&nbsp;Intelligence', 'Int', 'Affects the hero\\\'s power cooldown length, Stealth Detection, and the Energy Cost of their powers.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Ego', '<img src="img/SuperStat_Ego.png" />&nbsp;Ego', 'Ego', 'Improves Ranged Damage, Ranged Knocks, and Hold Resistance.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Presence', '<img src="img/SuperStat_Recovery.png" />&nbsp;Presence', 'Pre', 'Improves Healing Strength, Hold Duration, and Crowd Control Resistance.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Recovery', '<img src="img/SuperStat_Recovery.png" />&nbsp;Recovery', 'Rec', 'Sets the hero\\\'s Equilibrium, increases rate of Energy generated from Energy building attacks, and grants a small increase to Maximum Energy.');
-dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Endurance', '<img src="img/SuperStat_Endurance.png" />&nbsp;Endurance', 'End', 'Affects a hero\\\'s Maximum Energy and rate of energy generated from fighting attacks.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Strength', '<img src="img/Stat_Strength.png" />&nbsp;Strength', 'Str', 'Improves Melee Damage, Melee Knocks, Knock Resistance, and the pick-up and throw ability.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Dexterity', '<img src="img/Stat_Dexterity.png" />&nbsp;Dexterity', 'Dex', 'Improves a hero\\\'s Critical Hit Chance and effectiveness of Stealth granting powers.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Constitution', '<img src="img/Stat_Constitution.png" />&nbsp;Constitution', 'Con', 'Improves a hero\\\'s Hit Points.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Intelligence', '<img src="img/Stat_Intelligence.png" />&nbsp;Intelligence', 'Int', 'Affects the hero\\\'s power cooldown length, Stealth Detection, and the Energy Cost of their powers.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Ego', '<img src="img/Stat_Ego.png" />&nbsp;Ego', 'Ego', 'Improves Ranged Damage, Ranged Knocks, and Hold Resistance.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Presence', '<img src="img/Stat_Presence.png" />&nbsp;Presence', 'Pre', 'Improves Healing Strength, Hold Duration, and Crowd Control Resistance.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Recovery', '<img src="img/Stat_Recovery.png" />&nbsp;Recovery', 'Rec', 'Sets the hero\\\'s Equilibrium, increases rate of Energy generated from Energy building attacks, and grants a small increase to Maximum Energy.');
+dataSuperStat[dataSuperStat.length] = new SuperStat(dataSuperStat.length, 'Endurance', '<img src="img/Stat_Endurance.png" />&nbsp;Endurance', 'End', 'Affects a hero\\\'s Maximum Energy and rate of energy generated from fighting attacks.');
 
 //==============================================================================
 // Innate Talents
@@ -67,7 +67,7 @@ InnateTalent = function(id, name, desc, extra, tip) {
 }
 
 // innate talent data
-var dataInnateTalent = new Array();
+var dataInnateTalent = [];
 dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, null, null, null, null);
 dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'Sureshot', 'Sureshot', 'Dex: 12, Int: 12', 'This is the innate talent for Archery.<br />Con: 5, End: 5, Str: 5, Dex: 12, Int: 12, Ego: 5, Pre: 5, Rec: 5');
 dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'Abyssal', 'Abyssal', 'Con: 12, End: 12', 'This is the innate talent for Darkness.<br />Con: 12, End: 12, Str: 5, Dex: 5, Int: 5, Ego: 5, Pre: 5, Rec: 5');
@@ -110,6 +110,8 @@ dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.le
 dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'The Mountain', 'The Mountain', 'Con: 10, End: 10, Str: 8, Ego: 10', 'This is the innate talent for The Mountain.<br />Con: 10, End: 10, Str: 8, Dex: 5, Int: 5, Ego: 10, Pre: 5, Rec: 5');
 dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'The Unleashed', 'The Unleashed', 'Str: 10, Dex: 10, Int: 8, Rec: 10', 'This is the innate talent for The Unleashed.<br />Con: 5, End: 5, Str: 10, Dex: 10, Int: 8, Ego: 5, Pre: 5, Rec: 10');
 dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'The Radiant', 'The Radiant', 'Int: 10, Ego: 10, Pre: 10, Rec: 8', 'This is the innate talent for The Radiant.<br />Con: 5, End: 5, Str: 5, Dex: 5, Int: 10, Ego: 10, Pre: 10, Rec: 8');
+dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'The Invincible', 'The Invincible', 'Con: 10, End: 10, Int: 10, Ego: 8', 'This is the innate talent for The Invincible.<br />Con: 10, End: 10, Str: 5, Dex: 5, Int: 10, Ego: 8, Pre: 5, Rec: 5');
+dataInnateTalent[dataInnateTalent.length] = new InnateTalent(dataInnateTalent.length, 'The Night Avenger', 'The Night Avenger', 'End: 8, Str: 10, Dex: 10, Ego: 10', 'This is the innate talent for The Night Avenger.<br />Con: 5, End: 8, Str: 10, Dex: 10, Int: 5, Ego: 10, Pre: 5, Rec: 5');
 
 //==============================================================================
 // Talents
@@ -134,7 +136,7 @@ Talent = function(id, name, desc, extra) {
 }
 
 // talent data
-var dataTalent = new Array();
+var dataTalent = [];
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, null, null, null);
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Mighty', 'Mighty', 'Str: 8');
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Agile', 'Agile', 'Dex: 8');
@@ -148,7 +150,7 @@ dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Martial Focus', '
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Physical Conditioning', 'Physical Conditioning', 'Str: 5, Con: 5');
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Body and Mind', 'Body and Mind', 'Str: 5, Int: 5');
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Professional Athlete', 'Professional Athlete', 'Str: 5, Ego: 5');
-dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Impressive Physicque', 'Impressive Physicque', 'Str: 5, Pre: 5');
+dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Impressive Physique', 'Impressive Physicque', 'Str: 5, Pre: 5');
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Relentless', 'Relentless', 'Str: 5, Rec: 5');
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Bodybuilder', 'Bodybuilder', 'Str: 5, End: 5');
 dataTalent[dataTalent.length] = new Talent(dataTalent.length, 'Acrobat', 'Acrobat', 'Dex: 5, Con: 5');
@@ -203,7 +205,7 @@ PowerAlias = function(id, name, desc, tip) {
 }
 
 // power alias data
-var dataPowerAlias = new Array();
+var dataPowerAlias = [];
 
 //==============================================================================
 // Power Advantages (set with their powers)
@@ -234,12 +236,12 @@ TravelPower = function(id, name, desc, tip) {
     this.name = name;
     this.desc = desc;
     this.tip = tip;
-    this.advantageList = new Array();
+    this.advantageList = [];
     this.code = function() {
         return numToUrlCode(this.id);
     }
     this.getAdvantageList = function(mask) {
-        var advantageList = new Array();
+        var advantageList = [];
         if (mask > 0) {
             for (var i=1; i<this.advantageList.length; i++) {
                 var test = Math.pow(2, i);
@@ -287,7 +289,7 @@ TravelPower = function(id, name, desc, tip) {
 }
 
 // travel power data
-var dataTravelPower = new Array();
+var dataTravelPower = [];
 
 //------------------------------------------------------------------------------
 // Travel Power Aliases
@@ -315,7 +317,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, 'Rebounding Resilience', 'Rebounding Resilience', 2, null, 'While Superjump is active, holds are more difficult to land on you.'));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Superspeed', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Superspeed', 'Faster than a speeding bullet isn\\\'t just a metaphor in your case.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Superspeed', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Superspeed', 'Faster than a speeding bullet isn\\\'t just a metaphor in your case.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -327,7 +329,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Versatility'].name, dataPowerAlias['Versatility'].desc, 2, null, dataPowerAlias['Versatility'].tip));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Mach Speed', '<img src="img/TravelPower_MachSpeed.png" />&nbsp;Mach Speed', 'Faster than a speeding bullet isn\\\'t just a metaphor in your case.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Mach Speed', '<img src="img/TravelPower_MachSpeed.png" />&nbsp;Mach Speed', 'Faster than a speeding bullet isn\\\'t just a metaphor in your case.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -386,18 +388,18 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Lightspeed', '<img src="img/TravelPower_Lightspeed.png" />&nbsp;Lightspeed', 'Approach the speed of light, and leave a trail of illumination to prove it.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Lightspeed', '<img src="img/TravelPower_Lightspeed.png" />&nbsp;Lightspeed', 'Approach the speed of light, and leave a trail of illumination to prove it.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rainbow Flight', '<img src="img/TravelPower_RainbowFlight.png" />&nbsp;Rainbow Flight', 'Your power over the light spectrum allows you to soar through the air while putting on a light show, dazzling all around you.<br /><br />Tap<br />+ Grants flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Rainbow Flight activates at maximum Flight Speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rainbow Flight', '<img src="img/TravelPower_RainbowFlight.png" />&nbsp;Rainbow Flight', 'Your power over the light spectrum allows you to soar through the air while putting on a light show, dazzling all around you.<br /><br />Tap<br />+ Grants flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Rainbow Flight activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rainbow Flight: Cloud', '<img src="img/TravelPower_RainbowFlightCloud.png" />&nbsp;Rainbow Flight: Cloud', 'Your power over the elements allows you to levitate upon a cloud, leaving behind a trail of colored light wherever you pass.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Rainbow Flight activates at maximum Flight Speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rainbow Flight: Cloud', '<img src="img/TravelPower_RainbowFlightCloud.png" />&nbsp;Rainbow Flight: Cloud', 'Your power over the elements allows you to levitate upon a cloud, leaving behind a trail of colored light wherever you pass.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Rainbow Flight activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -439,7 +441,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, 'Scarab Embrace', 'Scarab Embrace', 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Blazing Speed', '<img src="img/TravelPower_BlazingSpeed.png" />&nbsp;Blazing Speed', 'You move so fast you ignite the very ground under your feet, leaving swaths of fire in your wake.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Blazing Speed', '<img src="img/TravelPower_BlazingSpeed.png" />&nbsp;Blazing Speed', 'You move so fast you ignite the very ground under your feet, leaving swaths of fire in your wake.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -455,18 +457,18 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Snowball Roll', '<img src="img/TravelPower_SnowballRoll.png" />&nbsp;Snowball Roll', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Snowball Roll', '<img src="img/TravelPower_SnowballRoll.png" />&nbsp;Snowball Roll', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Superspeed', '<img src="img/TravelPower_DistortionSuperspeed.png" />&nbsp;Distortion Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Superspeed', '<img src="img/TravelPower_DistortionSuperspeed.png" />&nbsp;Distortion Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Superspeed', '<img src="img/TravelPower_DisplacementSuperspeed.png" />&nbsp;Displacement Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Superspeed', '<img src="img/TravelPower_DisplacementSuperspeed.png" />&nbsp;Displacement Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -484,8 +486,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Versatility'].name, dataPowerAlias['Versatility'].desc, 2, null, dataPowerAlias['Versatility'].tip));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Retractable Wings', '<img src="img/TravelPower_Flight.png" />&nbsp;Retractable Wings', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Retractable Wings', '<img src="img/TravelPower_RetractableWings.png" />&nbsp;Retractable Wings', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -497,7 +498,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
 // TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Hyper Ball', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Hyper Ball', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Hyper Ball', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Hyper Ball', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -508,34 +509,29 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Bat Flight', '<img src="img/TravelPower_Flight.png" />&nbsp;Bat Flight', 'Take to the skies as a swarm of bats.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br />- Other powers cannot be used while using Bat Flight.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Bat Flight', '<img src="img/TravelPower_BatFlight.png" />&nbsp;Bat Flight', 'Take to the skies as a swarm of bats.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br />- Other powers cannot be used while using Bat Flight.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Scarab Flight', '<img src="img/TravelPower_Flight.png" />&nbsp;Scarab Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Scarab Flight', '<img src="img/TravelPower_ScarabFlight.png" />&nbsp;Scarab Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ooze Tunneling', '<img src="img/TravelPower_Tunneling.png" />&nbsp;Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
-
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Inky Ooze Tunneling', '<img src="img/TravelPower_Tunneling.png" />&nbsp;Inky Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ooze Tunneling', '<img src="img/TravelPower_OozeTunneling.png" />&nbsp;Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
-// TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Metallic Ooze Tunneling', '<img src="img/TravelPower_Tunneling.png" />&nbsp;Metallic Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Inky Ooze Tunneling', '<img src="img/TravelPower_OozeTunneling.png" />&nbsp;Inky Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
+
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Metallic Ooze Tunneling', '<img src="img/TravelPower_OozeTunneling.png" />&nbsp;Metallic Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -569,13 +565,37 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
 // TODO: find proper image
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'R.A.D. Sphere', '<img src="img/TravelPower_Superspeed.png" />&nbsp;R.A.D. Sphere', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'R.A.D. Sphere', '<img src="img/TravelPower_Superspeed.png" />&nbsp;R.A.D. Sphere', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
 
 // TODO: find proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Aethyric Incantation', '<img src="img/TravelPower_Flight.png" />&nbsp;Aethyric Incantation', 'Surrounded by mystic energy, you take flight and soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Energy Slide', '<img src="img/TravelPower_IceSlide.png" />&nbsp;Energy Slide', 'Harnessing your latent energies, you glide along the ground at amazing speeds.<br /><br />Tap<br />+ While active, your movement and jump speeds are increased and you will slide along the ground.<br />+ Slightly lower top speed than Superspeed.<br />+ Slightly lower maximum jump height than Acrobatics.<br />+ While out of combat, speed gradually increase over several stages.<br />- While in combat, speed is reduced.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Energy Slide activates at maximum speed.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Flag Speed', '<img src="img/TravelPower_FlagSpeed.png" />&nbsp;Flag Speed', 'These colors DO run.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Millennial Flight', '<img src="img/TravelPower_Flight.png" />&nbsp;Millennial Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ninja Vanish', '<img src="img/TravelPower_Teleportation.png" />&nbsp;Ninja Vanish', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Teleportation has no speed penalty from combat.<br />+ Teleportation does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Teleportation while you are in combat is difficult to maintain, causing you to only be able to maintain Teleportation for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Teleportation, you will be affected by phase sickness and will be unable to activate Teleportation again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
@@ -596,7 +616,7 @@ PowerSet = function(id, name, desc) {
 }
 
 // power set data
-var dataPowerSet = new Array();
+var dataPowerSet = [];
 dataPowerSet[dataPowerSet.length] = new PowerSet(dataPowerSet.length, 'Energy Projector', '<img src="img/PowerSet_EnergyProjector.png" />&nbsp;Energy Projector');
 dataPowerSet[dataPowerSet.length] = new PowerSet(dataPowerSet.length, 'Technology', '<img src="img/PowerSet_Technology.png" />&nbsp;Technology');
 dataPowerSet[dataPowerSet.length] = new PowerSet(dataPowerSet.length, 'Martial Arts', '<img src="img/PowerSet_MartialArts.png" />&nbsp;Martial Arts');
@@ -621,7 +641,7 @@ Framework = function(id, name, desc, tip) {
 }
 
 // framework data
-var dataFramework = new Array();
+var dataFramework = [];
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, null, null, null);
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Electricity', '<img src="img/Framework_Electricity.png" alt="Electricity" />', '<b>Electricity</b><br /><br />You channel the power of the storm. Fling lightning bolts at those who displease you. You are all about offense. Your attacks allow you to fight multiple enemies at once and dominate a battlefield. However, it takes a lot out of you. You can chain your attacks to strike multiple enemies at once and generate Energy for yourself. Generate enough Energy, an you can transform yourself into electricity and become even more powerful.<br /><br />* Recommended Characteristics: Recovery and Endurance<br />* Starting Innate Talent: Energized<br />* Suggested Skill: Mysticism or Arms<br />* Main Damage Type: Electrical Damage<br />* Main Mechanics: Negative Ions<br />* Archetypes: The Tempest');
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Fire', '<img src="img/Framework_Fire.png" alt="Fire" />', '<b>Fire</b><br /><br />You can wield the heat of the inferno to damage every enemy in front of you with contemptuous ease. Use your fire powers to fight multiple enemies within range at once. Most of your fire powers will cause enemies to burn for a long time, weakening them long after your initial attack. You create enduring patches of flame on the battlefield and gain Energy from nearby fire.<br /><br />* Recommended Characteristics: Presence and Recovery<br />* Starting Innate Talent: Incandescent<br />* Suggested Skill: Mysticism<br />* Main Damage Type: Fire Damage<br />* Main Mechanics: Clinging Flames<br />* Archetypes: The Inferno');
@@ -632,12 +652,12 @@ dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Ice',
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Archery', '<img src="img/Framework_Archery.png" alt="Archery" />', '<b>Archery</b><br /><br />You are a hunter of men, singling out the corrupt and the unjust. Through the use of specialized arrows archers have access to a wider variety of attacks than most characters and can switch between Roots, Stuns and other status effects at will. When archers establish a quarry their attacks become increasingly accurate and efficient.<br /><br />* Recommended Characteristics: Dexterity and Intelligence<br />* Starting Innate Talent: Sureshot<br />* Suggested Skill: Science<br />* Main Damage Type: Piercing Damage<br />* Archetypes: The Marksman');
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Gadgeteering', '<img src="img/Framework_Gadgeteering.png" alt="Gadgeteering" />', '<b>Gadgeteering</b><br /><br />Whatever the situation, you have a gadget to solve it. Flaming crocodiles chasing you? No problem… Create pet robots that heal, gunbots that shoot, defensive towers, and many, many more toys. Pets, pets, and more pets.<br /><br />* Recommended Characteristics: Endurance and Intelligence<br />* Starting Innate Talent: Technological Intuition<br />* Suggested Skill: Science<br />* Main Damage Types: Particle Damage<br />* Archetypes: The Inventor');
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Munitions', '<img src="img/Framework_Munitions.png" alt="Munitions" />', '<b>Munitions</b><br /><br />You use normal world tech to accomplish superhuman feats. Your level of skill is breathtaking. You may be military, law enforcement, paramilitary or independent. You have more firepower than just about everyone else, and it costs you very little. In exchange, you have somewhat less flexibility than some of your fellow superheroes. Mines and demolitions allow you to control territory and a wide variety of weapon replaces allow you to, with planning, find the right gun for the job.<br /><br />* Recommended Characteristics: Dexterity and Ego<br />* Starting Innate Talent: Quick Trigger<br />* Suggested Skill: Mysticism or Science<br />* Main Damage Type: Piercing Damage<br />* Main Mechanics: Critical Hits<br />* Archetypes: The Soldier and The Specialist');
-dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Power Armor', '<img src="img/Framework_PowerArmor.png" alt="Power Armor" />', '<b>Power Armor</b><br /><br />You are a versatile hero, with equally strong offense and defense. You can use a multitude of weapon systems, activated individually or simultaneously, to create overwhelming wave of firepower. Faster than any other class, you can become invulnerable to the attacks of weaker enemies. You can work will on your own or with a team, thanks to your multi-weapon toggle framework and Targeting Computer.<br /><br />* Recommended Characteristics: Strength and Intelligence<br />* Starting Innate Talent: Mechanized<br />* Suggested Skill: Arms or Science<br />* Main Damage Type: Particle Damage<br />* Main Mechanics: Weapon Systems<br />* Archetypes: None');
+dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Power Armor', '<img src="img/Framework_PowerArmor.png" alt="Power Armor" />', '<b>Power Armor</b><br /><br />You are a versatile hero, with equally strong offense and defense. You can use a multitude of weapon systems, activated individually or simultaneously, to create overwhelming wave of firepower. Faster than any other class, you can become invulnerable to the attacks of weaker enemies. You can work will on your own or with a team, thanks to your multi-weapon toggle framework and Targeting Computer.<br /><br />* Recommended Characteristics: Strength and Intelligence<br />* Starting Innate Talent: Mechanized<br />* Suggested Skill: Arms or Science<br />* Main Damage Type: Particle Damage<br />* Main Mechanics: Weapon Systems<br />* Archetypes: The Invincible');
 
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Dual Blades', '<img src="img/Framework_DualBlades.png" alt="Dual Blades" />', '<b>Dual Blades</b><br /><br />A master of blades, you surround yourself with a withering tempest of steel that damages multiple weaker opponents at once. You gain Energy from every Critical Strike on nearby opponents, which drives you to ever greater prowess. You are the only one with innately multi-target Melee attacks, and you have a strong focus and on scoring Critical Hits.<br /><br />* Recommended Characteristics: Strength and Dexterity<br />* Starting Innate Talent: One of Mind and Body<br />* Suggested Skill: Arms<br />* Main Damage Type: Slashing Damage<br />* Main Mechanics: Critical Hit, Rush/Focus<br />* Archetypes: The Specialist and The Unleashed');
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Fighting Claws', '<img src="img/Framework_FightingClaws.png" alt="Fighting Claws" />', '<b>Fighting Claws</b><br /><br />You embody the swiftness of the asp, the ferocity of the lion, the precision of the hawk, and the might of the dragon. You can at times inflict bleeding wounds on your opponents that can be exploited for further devastating strikes. Yours is a mobile combat style and random infliction of debilitation effects upon your enemies.<br /><br />* Recommended Characteristics: Strength and Dexterity<br />* Starting Innate Talent: One of Mind and Body<br />* Suggested Skill: Arms<br />* Main Damage Type: Slashing Damage<br />* Main Mechanics: Shredded, Rush/Focus<br />* Archetypes: None');
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Single Blade', '<img src="img/Framework_SingleBlade.png" alt="Single Blade" />', '<b>Single Blade</b><br /><br />The ultimate master of your weapon of choice, you prefer to focus on one specific target and hound that enemy to inevitable defeat. Your attacks are so fierce, your enemies continue to weaken afterwards. Press the attack, and your enemy will completely fall apart. The more you press your opponent with attacks, the more potent the damage you do.<br /><br />* Recommended Characteristics: Strength and Dexterity<br />* Starting Innate Talent: One of Mind and Body<br />* Suggested Skill: Arms<br />* Main Damage Type: Slashing Damage<br />* Main Mechanics: Bleed, Rush/Focus<br />* Archetypes: The Blade');
-dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Unarmed', '<img src="img/Framework_Unarmed.png" alt="Martial Arts" />', '<b>Unarmed</b><br /><br />A master or unarmed martial arts, you specialize in defeated multiple weaker opponents all at once. You are highly agile and mobile and can defeat your enemies with a torrent of kicks and punches. Your agility gives you near supernatural dodging and the ability to gain Energy from dodging an opponents attack. You\\\'re superb in Melee fighting.<br /><br />* Recommended Characteristics: Strength and Dexterity<br />* Starting Innate Talent: One of Mind and Body<br />* Suggested Skill: Arms<br />* Main Damage Type: Crushing Damage<br />* Main Mechanics: Small Dodge buffs, Rush/Focus<br />* Archetypes: The Master and The Fist');
+dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Unarmed', '<img src="img/Framework_Unarmed.png" alt="Martial Arts" />', '<b>Unarmed</b><br /><br />A master or unarmed martial arts, you specialize in defeated multiple weaker opponents all at once. You are highly agile and mobile and can defeat your enemies with a torrent of kicks and punches. Your agility gives you near supernatural dodging and the ability to gain Energy from dodging an opponents attack. You\\\'re superb in Melee fighting.<br /><br />* Recommended Characteristics: Strength and Dexterity<br />* Starting Innate Talent: One of Mind and Body<br />* Suggested Skill: Arms<br />* Main Damage Type: Crushing Damage<br />* Main Mechanics: Small Dodge Buffs, Rush/Focus<br />* Archetypes: The Master and The Fist');
 
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Telekinesis', '<img src="img/Framework_Telekinesis.png" alt="Telekinesis" />', '<b>Telekinesis</b><br /><br />You can craft devastating weapons with the power of your mind and exude crushing eaves of force. The telekinesis set mixes close range Melee attacks, using weapons of solidified mental energy, and long range attacks that batter all nearby enemies. You can sheathe yourself in mental energy, dramatically increasing the power of your psi weapon attacks.<br /><br />* Recommended Characteristics: Constitution and Ego<br />* Starting Innate Talent: Matter Manipulator<br />* Suggested Skill: Mysticism or Arms<br />* Main Damage Type: Ego Damage<br />* Main Mechanics: Ego Blades, Ego Leech<br />* Archetypes: The Disciple');
 dataFramework[dataFramework.length] = new Framework(dataFramework.length, 'Telepathy', '<img src="img/Framework_Telepathy.png" alt="Telepathy" />', '<b>Telepathy</b><br /><br />You can attack, control, strengthen or soothe the minds of your foes or allies. You have excellent support and healing powers, as well as crowd control abilities. You can hone your telepathic abilities and learn to gain Energy even as you heal others.<br /><br />* Recommended Characteristics: Ego and Presence<br />* Starting Innate Talent: Mind Reader<br />* Suggested Skill: Mysticism<br />* Main Damage Type: Ego Damage<br />* Main Mechanics: Crowd Control and Healing<br />* Archetypes: The Mind');
@@ -670,12 +690,12 @@ Power = function(id, name, desc, powerSet, framework, power, tier, tip) {
     this.power = power;
     this.tier = tier;
     this.tip = tip;
-    this.advantageList = new Array();
+    this.advantageList = [];
     this.code = function() {
         return numToUrlCode(this.framework)+numToUrlCode(this.power);
     }
     this.getAdvantageList = function(mask) {
-        var advantageList = new Array();
+        var advantageList = [];
         if (mask > 0) {
             for (var i=1; i<this.advantageList.length; i++) {
                 var test = Math.pow(2, i);
@@ -723,17 +743,17 @@ Power = function(id, name, desc, powerSet, framework, power, tier, tip) {
 }
 
 // power data
-var dataPower = new Array();
+var dataPower = [];
 dataPower[0] = new Power(dataPower.length, null, null, null, 0, 0, null, null);
 
 // energy unlock power data
-var dataEnergyUnlockPower = new Array();
+var dataEnergyUnlockPower = [];
 
 // require group data
-var dataRequireGroup = new Array();
+var dataRequireGroup = [];
 
 // require group power data
-var dataRequireGroupPower = new Array();
+var dataRequireGroupPower = [];
 
 //------------------------------------------------------------------------------
 // Power Global Aliases
@@ -744,13 +764,15 @@ dataPowerAlias['R3'] = new PowerAlias('R3', 'Rank 3', 'Rank 3', 'Increases damag
 dataPowerAlias['R2EB'] = new PowerAlias('R2EB', 'Rank 2', 'Rank 2', 'Increases damage done or strength of power and energy generated.');
 dataPowerAlias['R3EB'] = new PowerAlias('R3EB', 'Rank 3', 'Rank 3', 'Increases damage done or strength of power and energy generated.');
 dataPowerAlias['AM'] = new PowerAlias('AM', 'Accelerated Metabolism', 'Accelerated Metabolism', 'Every time you use this ability you have a chance to return a small amount of energy.');
-dataPowerAlias['CC'] = new PowerAlias('CC', 'Crippling Challenge', 'Crippling Challenge', '+ Increases the threat caused by this attack, making enemies more likely to attack you.<br />+ Places a 20% damage debuff on the target that persists for 15 seconds. If the affected enemy attacks the taunter, it will quickly reduce this debuff’s strength. Conversely, damage the taunter inflicts on the taunted enemy restores the debuff’s strength.<br />+ This advantage taunts an A.I. controlled enemy, forcing them to attack you for 4 seconds. All taunts share a 10 second cooldown, and an enemy that has been taunted by any source cannot be taunted again for 10 seconds.<br />+ Crippling Challenge breaks through blocking and disables it for 10 seconds.');
-dataPowerAlias['CS'] = new PowerAlias('CS', 'Challenging Strikes', 'Challenging Strikes', '+ This advantage causes this attack to generate additional threat against all affected targets, making them more likely to attack you.<br />+ If this advantage is applied to a power that has a recharge time, it will additionally add a moderate amount of threat over time to all affected targets, for the duration of the recharge.<br />+ This advantage inflicts a 5% damage debuff against all affected targets. If an affected enemy attacks you, it will quickly reduce this debuff’s strength. Conversely, any damage you inflict restores the debuff’s strength.');
+dataPowerAlias['CC'] = new PowerAlias('CC', 'Crippling Challenge', 'Crippling Challenge', '+ Increases the threat caused by this attack, making enemies more likely to attack you.<br />+ Places a 20% Damage Debuff on the target that persists for 15 seconds. If the affected enemy attacks the taunter, it will quickly reduce this Debuff’s strength. Conversely, damage the taunter inflicts on the taunted enemy restores the Debuff’s strength.<br />+ This advantage taunts an A.I. controlled enemy, forcing them to attack you for 4 seconds. All taunts share a 10 second cooldown, and an enemy that has been taunted by any source cannot be taunted again for 10 seconds.<br />+ Crippling Challenge breaks through blocking and disables it for 10 seconds.');
+dataPowerAlias['CS'] = new PowerAlias('CS', 'Challenging Strikes', 'Challenging Strikes', '+ This advantage causes this attack to generate additional threat against all affected targets, making them more likely to attack you.<br />+ If this advantage is applied to a power that has a recharge time, it will additionally add a moderate amount of threat over time to all affected targets, for the duration of the recharge.<br />+ This advantage inflicts a 5% Damage Debuff against all affected targets. If an affected enemy attacks you, it will quickly reduce this Debuff’s strength. Conversely, any damage you inflict restores the Debuff’s strength.');
 dataPowerAlias['NG'] = new PowerAlias('NG', 'Nailed to the Ground', 'Nailed to the Ground', 'Cancels and locks out Travel Powers for a short period of time.');
 
 //------------------------------------------------------------------------------
 // Power Set: Energy Projector
 //------------------------------------------------------------------------------
+
+dataRequireGroup['energy projector'] = [];
 
 dataPowerAlias['Energy Storm'] = new PowerAlias('Energy Storm', 'Energy Storm', '<img src="img/EnergyProjector_EnergyStorm.png" />&nbsp;Energy Storm', 'Energy Projector, Single Target Damage and Cone Debuff<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />Absorbs power from your enemies and sends it back at them with cataclysmic fury.');
 dataPowerAlias['Weather the Storm'] = new PowerAlias('Weather the Storm', 'Weather the Storm', 'Weather the Storm', 'Secondary Energy Effects, such as Clinging Flames, have a chance to not be consumed when you use Energy Storm.');
@@ -758,6 +780,8 @@ dataPowerAlias['Weather the Storm'] = new PowerAlias('Weather the Storm', 'Weath
 //------------------------------------------------------------------------------
 // Power Framework: Electricity
 //------------------------------------------------------------------------------
+
+dataRequireGroup['energy projector'].push(1);
 
 var pow = 0;
 
@@ -824,7 +848,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Electrocute', '<img s
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Superconductor', 'Superconductor', 2, null, 'Places a stacking debuff on the target of Electrocute which increases all Electrical damage dealt to the target by a scaling value for 20 seconds.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Superconductor', 'Superconductor', 2, null, 'Places a stacking Debuff on the target of Electrocute which increases all Electrical damage dealt to the target by a scaling value for 20 seconds.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ball Lightning', '<img src="img/Electricity_BallLightning.png" />&nbsp;Ball Lightning', 1, 1, pow++, 3, 'Electricity, 100 foot Ranged AoE Damage<br /><br />Requires 5 powers from Electricity or 6 non-Energy Building powers from any framework.<br /><br />Ball Lightning summons a sphere of electrical energy to fight your foe. The sphere will chase them down, and deal damage to other nearby enemies as well.');
@@ -858,6 +882,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Fire
 //------------------------------------------------------------------------------
 
+dataRequireGroup['energy projector'].push(2);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Throw Fire', '<img src="img/Fire_ThrowFire.png" />&nbsp;Throw Fire', 1, 2, pow++, -1, 'Fire, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Throw fire throws small balls of flame at your target.');
@@ -873,7 +899,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Wild Fire', 'Wild Fire', 2, null, 'If your target is affected by the Clinging Flames condition, your Fire Strike attack will refresh the Clinging Flames effect, and will cause a small mount of fire damage to all targets in a small area of effect.'));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Kindling', 'Kindling', 2, null, 'Your Fiery Escalation buff now also increases the damage of your next Fire Power by 10% per stack. However, Fiery Escalation is now consumed by powers that trigger this effect.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Kindling', 'Kindling', 2, null, 'Your Fiery Escalation Buff now also increases the damage of your next Fire Power by 10% per stack. However, Fiery Escalation is now consumed by powers that trigger this effect.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -881,7 +907,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Heat Wave', '<img src
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Engulfing Flames', 'Engulfing Flames', 2, null, 'Reduces the damage your Heat Wave deals, but applies a stacking debuff on your target that reduces their resistance to your fire damage.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Engulfing Flames', 'Engulfing Flames', 2, null, 'Reduces the damage your Heat Wave deals, but applies a stacking Debuff on your target that reduces their resistance to your fire damage.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Fire Breath', '<img src="img/Fire_FireBreath.png" />&nbsp;Fire Breath', 1, 2, pow++, 1, 'Fire, 50 foot Ranged 45 degree Cone AoE Damage<br /><br />Requires 1 power from Fire or 2 non-Energy Building powers from any framework.<br /><br />Fire Breath allows your character to exhale a cone of flame at your enemies, turning the area in front of you into a blazing inferno.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -895,7 +921,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Fireball', '<img src=
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Unstable Accelerant', 'Unstable Accelerant', 2, null, 'Your Fireball now debuffs the affects targets, causing them to take increased damage from Burning effects. Burning effects include:<br />- Clinging Flames<br />- Conflagration<br />- Fire Snake<br />- Heatwave<br />- Flashfire<br />- Pyre Burn (the patch left by Pyre)<br />- Wildfire (the AoE proc for the Fire Strike advantage)'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Unstable Accelerant', 'Unstable Accelerant', 2, null, 'Your Fireball now Debuffs the affects targets, causing them to take increased damage from Burning effects. Burning effects include:<br />- Clinging Flames<br />- Conflagration<br />- Fire Snake<br />- Heatwave<br />- Flashfire<br />- Pyre Burn (the patch left by Pyre)<br />- Wildfire (the AoE proc for the Fire Strike advantage)'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
@@ -955,6 +981,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 //------------------------------------------------------------------------------
 // Power Framework: Force
 //------------------------------------------------------------------------------
+
+dataRequireGroup['energy projector'].push(3);
 
 var pow = 0;
 
@@ -1067,6 +1095,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Wind
 //------------------------------------------------------------------------------
 
+dataRequireGroup['energy projector'].push(4);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Wind Lash', '<img src="img/Wind_WindLash.png" />&nbsp;Wind Lash', 1, 4, pow++, -1, 'Wind, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Wind Lash assaults your foe with powerful bolts of wind.');
@@ -1084,7 +1114,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Toppling
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Wind Breath', '<img src="img/Wind_WindBreath.png" />&nbsp;Wind Breath', 1, 4, pow++, 1, 'Wind, 50 foot Ranged 45 Degree Cone AoE Damage and Repel<br /><br />Requires 1 power from Wind or 2 non-Energy Building powers from any framework.<br /><br />Wind Breath causes your character to exhale a cone of fast moving wind, pummeling and chilling your foes.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Wind Breath', '<img src="img/Wind_WindBreath.png" />&nbsp;Wind Breath', 1, 4, pow++, 1, 'Wind, 50 foot Ranged 45 degree Cone AoE Damage and Repel<br /><br />Requires 1 power from Wind or 2 non-Energy Building powers from any framework.<br /><br />Wind Breath causes your character to exhale a cone of fast moving wind, pummeling and chilling your foes.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -1160,6 +1190,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 //------------------------------------------------------------------------------
 // Power Framework: Ice
 //------------------------------------------------------------------------------
+
+dataRequireGroup['energy projector'].push(5);
 
 var pow = 0;
 
@@ -1271,12 +1303,18 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Set: Technology
 //------------------------------------------------------------------------------
 
+dataRequireGroup['technology'] = [];
+
 dataPowerAlias['Implosion Engine'] = new PowerAlias('Implosion Engine', 'Implosion Engine', '<img src="img/Technology_ImplosionEngine.png" />&nbsp;Implosion Engine', 'Technology, 100 foot Ranged AoE Damage and Reverse Repel and Snare<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />You throw an Implosion Engine, a device that generates a massive gravitational vortex in a very small area, sucking in nearby matter, and dealing significant Dimensional damage.');
 dataPowerAlias['Inverse Polarization Field'] = new PowerAlias('Inverse Polarization Field', 'Inverse Polarization Field', 'Inverse Polarization Field', 'Just before self-destructing, the polarity of the gravitational field created by Implosion Engine will reverse, sending all affected enemies flying.');
+// dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Technology or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.<br /><br />Toggle<br />+ Activating this power grants a stack of the Concentration Buff, increasing your Ranged Damage, slightly increasing Melee Damage, and granting you a small amount of Energy. This Energy gain scales with your Ego or Intelligence (whichever is higher) and you may gain Energy in this way at most once every 4 seconds.<br />+ While you maintain this Form, you gain another instance of Concentration whenever you fully charge or maintain a ranged power. You can gain up to eight stacks of this Buff.<br />+ At Rank 2, two instances of the Concentration Buff are granted at activation. At Rank 3, you gain three instances on activation.<br /><br />- You must fully charge this power to activate it, and taking any damage will interrupt your concentration, canceling the charge.<br />- While this power is active, the Energy Cost of all of your powers is slightly increased.<br />- You may only have one Form power active at a time. Activating a Form power immediately ends any pre-existing Forms.');
+dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Technology or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
 // Power Framework: Archery
 //------------------------------------------------------------------------------
+
+dataRequireGroup['technology'].push(6);
 
 var pow = 0;
 
@@ -1299,7 +1337,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Taser Arrow', '<img s
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Aftershock', 'Aftershock', 2, null, 'Causes your target to lose Energy and suffer additional Electrical damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Aftershock', 'Aftershock', 2, null, 'Causes your target to lose Energy and suffer additional Electrical Damage over Time.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Sonic Arrow', '<img src="img/Archery_SonicArrow.png" />&nbsp;Sonic Arrow', 2, 6, pow++, 1, 'Archery, 100 foot Ranged 10 foot Sphere AoE Damage and Stun<br /><br />Requires 1 power from Archery or 2 non-Energy Building powers from any framework.<br /><br />Sonic Arrow fires a specialized arrow at your target emitting a concentrated blast of noise when it strikes the target.');
@@ -1316,6 +1354,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Fair Game', 'Fair Game', 2, null, 'When the target of your Quarry dies, you gain a small amount of Health. The amount of Health you gain scales with your Constitution.'));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Concentration'].name, dataPowerAlias['Concentration'].desc, 2, 6, pow++, 1, dataPowerAlias['Concentration'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'technology';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Evasive Maneuvers', '<img src="img/Archery_EvasiveManeuvers.png" />&nbsp;Evasive Maneuvers', 2, 6, pow++, 1, 'Archery, Self Buff<br /><br />Requires 1 power from Archery or 2 non-Energy Building powers from any framework.<br /><br />Evasive Maneuvers causes you to lunge backwards to put distance between you and your foe.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1338,7 +1382,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Storm of Arrows', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Achilles\\\' Heel', 'Achilles\\\' Heel', 2, null, 'Storm of Arrows pins all enemies in the area under attack to the ground, Rooting them in place and repairing the duration of your Roots on the target.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Achilles\' Heel', 'Achilles\' Heel', 2, null, 'Storm of Arrows pins all enemies in the area under attack to the ground, Rooting them in place and repairing the duration of your Roots on the target.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
@@ -1361,7 +1405,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Explosive Arrow', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Where\\\'s the Kaboom?', 'Where\\\'s the Kaboom?', 2, null, 'Explosive Arrow deals an initial amount of Piercing damage and delays the explosive effect for several seconds.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Where\'s the Kaboom?', 'Where\'s the Kaboom?', 2, null, 'Explosive Arrow deals an initial amount of Piercing damage and delays the explosive effect for several seconds.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Gas Arrow', '<img src="img/Archery_GasArrow.png" />&nbsp;Gas Arrow', 2, 6, pow++, 3, 'Archery, 100 foot Ranged 15 foot Sphere AoE Damage<br /><br />Requires 5 powers from Archery or 6 non-Energy Building powers from any framework.<br /><br />You launch an arrow filled with a dangerous mixture of toxins.');
@@ -1381,6 +1425,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Gadgeteering
 //------------------------------------------------------------------------------
 
+dataRequireGroup['technology'].push(7);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Sonic Blaster', '<img src="img/Gadgeteering_SonicBlaster.png" />&nbsp;Sonic Blaster', 2, 7, pow++, -1, 'Gadgeteering, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Sonic Blaster emits a painfully concentrated beam of sound to rip through your enemies.');
@@ -1391,6 +1437,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Refracti
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Particle Rifle', '<img src="img/Gadgeteering_ParticleRifle.png" />&nbsp;Particle Rifle', 2, 7, pow++, -1, 'Gadgeteering, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Particle Rifle discharges concentrated bursts of Particle energy to assault your foes.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+// TODO: needs description
+dataPower[dataPower.length] = new Power(dataPower.length, 'Boomerang Toss', '<img src="img/Gadgeteering_BoomerangToss.png" />&nbsp;Boomerang Toss', 2, 7, pow++, -1, 'Gadgeteering, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />???.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
@@ -1409,6 +1462,20 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Finite Improbability Engine', 'Finite Improbability Engine', 2, null, 'A reasonable attempt at changing the outcome of random events by evaluating a finite number of improbable outcomes and altering them to your advantage, this device slightly increase the Critical Hit Chance and Critical Severity provided per tick by 1% each, and causes random effects to affect your target when you Critically Hit them.<br /><br />These effects include, but are not limited to: Disorientation, spontaneous Bleeding, indescribable Fear, Slowness of movement ("The Snares"), toxic infusion, temporal displacement, dimensional displacement, important object displacement, other types of displacement, and potentially unknown side effects.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Ricochet Throw', '<img src="img/Gadgeteering_RicochetThrow.png" />&nbsp;Ricochet Throw', 2, 7, pow++, 1, 'Gadgeteering, 100 foot Ranged Single Target Damage (Blast)<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />You throw a well aimed boomerang at your foes that can bounce to several, striking them for Crushing Damage.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Microelectronic Controllers', 'Microelectronic Controllers', 2, null, 'Your boomerangs now deal increased damage for each subsequent target they hit.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Grapple Gun Pull', '<img src="img/Gadgeteering_GrappleGunPull.png" />&nbsp;Grapple Gun Pull', 2, 7, pow++, 1, 'Gadgeteering, 50 foot Ranged Single Target Damage and Knock To<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />Yank your foe to you using your trusty Grapple Gun.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Gauntlet Chainsaw', '<img src="img/Gadgeteering_GauntletChainsaw.png" />&nbsp;Gauntlet Chainsaw', 2, 7, pow++, 1, 'Gadgeteering, 10 foot Melee 2.5 foot Cylinder AoE Damage<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />Gauntlet Chainsaw uses a glove mounted chainsaw to slash through any targets in your path.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1459,7 +1526,13 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Nanobot Swarm', '<img
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Rejuvinating Injectors', 'Rejuvinating Injectors', 2, null, 'Causes the activation of Nanobot Swarm to grant you a heal over time buff for several seconds.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Rejuvinating Injectors', 'Rejuvinating Injectors', 2, null, 'Causes the activation of Nanobot Swarm to grant you a Heal over Time Buff for several seconds.'));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Concentration'].name, dataPowerAlias['Concentration'].desc, 2, 7, pow++, 1, dataPowerAlias['Concentration'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'technology';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Molecular Self-Assembly', '<img src="img/Gadgeteering_MolecularSelfAssembly.png" />&nbsp;Molecular Self-Assembly', 2, 7, pow++, 1, 'Gadgeteering, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Each time your abilities become ready to use you receive a rush of Energy in anticipation of the coming fight.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
@@ -1478,6 +1551,19 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Sonic Su
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
+dataPower[dataPower.length] = new Power(dataPower.length, 'Throwing Blades', '<img src="img/Gadgeteering_ThrowingBlades.png" />&nbsp;Throwing Blades', 2, 7, pow++, 2, 'Gadgeteering, 50 foot Ranged 120 degree Cone AoE Damage<br /><br />Requires 3 powers from Gadgeteering or 4 non-energy building powers from any framework.<br /><br />You throw a flurry of boomerangs at all targets in front of you.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Gas Pellets', '<img src="img/Gadgeteering_ThrowingBlades.png" />&nbsp;Gas Pellets', 2, 7, pow++, 2, 'Gadgeteering, Ranged AoE Damage and Snare<br /><br />Requires 3 powers from Gadgeteering or 4 non-energy building powers from any framework.<br /><br />Gas Pellets throws 4 pellets that release a choking fume that damages and slows all enemies caught in its radius.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Oversized Pellet Bag', 'Oversized Pellet Bag', 2, null, 'Always throw the maximum number of Gas Pellets, regardless of whether you are in stealth or not.'));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Tanglecoil Launcher', '<img src="img/Gadgeteering_TanglecoilLauncher.png" />&nbsp;Tanglecoil Launcher', 2, 7, pow++, 2, 'Gadgeteering, 50 foot Single Target Hold<br /><br />Requires 3 powers from Gadgeteering or 4 non-Energy Building powers from any framework.<br /><br />Tanglecoil fires a projectile thats binds your foe, crushing them and preventing any actions.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1485,7 +1571,14 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Constricting Coils', 'Constricting Coils', 2, null, 'Reinforced Tanglecoil wires double the damage dealt by your Tanglecoil Launcher.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Toxic Nanites', '<img src="img/Gadgeteering_ToxicNanites.png" />&nbsp;Toxic Nanites', 2, 7, pow++, 2, 'Gadgeteering, Self On-Next-Hit DoT<br /><br />Requires 3 powers from Gadgeteering or 4 non-Energy Building powers from any framework.<br /><br />Toxic Nanites laces your next attack with deadly nanites, infecting your target and dealing Toxic damage over time.');
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Bolas', '<img src="img/Gadgeteering_RicochetThrow.png" />&nbsp;Bolas', 2, 7, pow++, 2, 'Gadgeteering, 50 foot Ranged Single Target Damage and Hold<br /><br />Requires 3 powers from Gadgeteering or 4 non-energy building powers from any framework.<br /><br />Bolas throws a projectile that binds your foe, crushing them and preventing any actions.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Toxic Nanites', '<img src="img/Gadgeteering_ToxicNanites.png" />&nbsp;Toxic Nanites', 2, 7, pow++, 2, 'Gadgeteering, Self On-Next-Hit DoT<br /><br />Requires 3 powers from Gadgeteering or 4 non-Energy Building powers from any framework.<br /><br />Toxic Nanites laces your next attack with deadly nanites, infecting your target and dealing Toxic Damage over Time.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -1518,6 +1611,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Anvil of Dawn', 'Anvil of Dawn', 2, null, 'Orbital Cannon continues firing a steady beam after the initial blast. It will also chase targets, but moves slowly.<br /><br />In this mode the continuing damaging power of the cannon is effective only at the ground level.'));
 
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Strafing Run', '<img src="img/Gadgeteering_ParticleMine.png" />&nbsp;Strafing Run', 2, 7, pow++, 3, 'Gadgeteering, Ranged AoE Damage<br /><br />Requires 5 powers from Gadgeteering or 6 non-energy building powers from any framework.<br /><br />You call in support from your high tech jet which then drops explosives in a targeted area.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Resurrection Serum', '<img src="img/Gadgeteering_ResurrectionSerum.png" />&nbsp;Resurrection Serum', 2, 7, pow++, 3, 'Gadgeteering, 15 foot Sphere PBAoE Revive<br /><br />Requires 5 powers from Gadgeteering or 6 non-Energy Building powers from any framework.<br /><br />Resurrection Serum is a carefully crafted concoction administered to fallen allies to return them to action.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1534,13 +1633,15 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Munitions
 //------------------------------------------------------------------------------
 
+dataRequireGroup['technology'].push(8);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Gunslinger', '<img src="img/Munitions_Gunslinger.png" />&nbsp;Gunslinger', 2, 8, pow++, -1, 'Munitions, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Gunslinger pulls out a pair of pistols to put down your enemies.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Trick Shot', 'Trick Shot', 2, null, '50% (100% while Enraged) chance to hit an additional target within 12 feet. The additional target takes double damage if they are Feared.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Trick Shot', 'Trick Shot', 2, null, '50% (100% while Concentrated) chance to hit an additional target within 12 feet. The additional target takes double damage if they are Feared.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Steady Shot', '<img src="img/Munitions_SteadyShot.png" />&nbsp;Steady Shot', 2, 8, pow++, -1, 'Munitions, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />You take aim with a single pistol to shoot your foes.');
@@ -1563,7 +1664,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Bullet Beatdown', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Not Without Incident', 'Not Without Incident', 2, null, '30% (100% while Enraged) chance to inflict AoE damage (10ft range, max of 5 targets) around your target.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Not Without Incident', 'Not Without Incident', 2, null, '30% (100% while Concentrated or Enraged) chance to inflict AoE damage (10ft range, max of 5 targets) around your target.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Break the Trigger', 'Break the Trigger', 2, null, 'You pull the trigger so hard you cause the second and fourth attacks of this combo to become Melee damage.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
@@ -1586,7 +1687,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Shotgun Blast', '<img
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Breaching Round', 'Breaching Round', 2, null, 'Provides a 100% chance to Knock Back the primary target. While Enraged, it also has a 100% chance to knock back all targets.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Breaching Round', 'Breaching Round', 2, null, 'Provides a 100% chance to Knock Back the primary target. While Concentrated, it also has a 100% chance to knock back all targets.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 
@@ -1597,6 +1698,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Aggression', 'Aggression', 2, null, '15% chance per tick per target to apply Bleeding to a non-Bleeding target. 100% chance vs non-Bleeding targets in Melee range.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Concentration'].name, dataPowerAlias['Concentration'].desc, 2, 8, pow++, 1, dataPowerAlias['Concentration'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'technology';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Killer Instinct', '<img src="img/Munitions_KillerInstinct.png" />&nbsp;Killer Instinct', 2, 8, pow++, 1, 'Munitions, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Munitions or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Killer Instinct drives you through the battle, granting you a burst of Energy every time you land a Critical Hit.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
@@ -1625,7 +1732,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Gatling Gun', '<img s
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Listen to Reason', 'Listen to Reason', 2, null, '15% chance to apply Fear to target. Full maintain applies Enraged to self.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Listen to Reason', 'Listen to Reason', 2, null, '15% chance to apply Fear to target. Full maintain applies Concentration to self.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Smoke Grenade', '<img src="img/Munitions_SmokeGrenade.png" />&nbsp;Smoke Grenade', 2, 8, pow++, 2, 'Munitions, 100 foot Ranged AoE Perception Debuff<br /><br />Requires 3 powers from Munitions or 4 non-Energy Building powers from any framework.<br /><br />If you need to sneak around or just need an escape plan, Smoke Grenade could be just what you need.');
@@ -1658,7 +1765,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Lead Tempest', '<img 
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Tread Softly', 'Tread Softly', 2, null, 'Grants a significant bonus to Dodge and Avoidance while maintained. This bonus is doubled if you are currently Enraged.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Tread Softly', 'Tread Softly', 2, null, 'Grants a significant bonus to Dodge and Avoidance while maintained. This bonus is doubled if you are currently Concentrated.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
@@ -1672,6 +1779,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Power Armor
 //------------------------------------------------------------------------------
 
+dataRequireGroup['technology'].push(9);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Wrist Bolter', '<img src="img/PowerArmor_WristBolter.png" />&nbsp;Wrist Bolter', 2, 9, pow++, -1, 'Power Armor, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Wrist Bolter uses wrist mounted Particle cannons to rain destruction down on your enemies.');
@@ -1679,6 +1788,21 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Automated Assault', 'Automated Assault', 1, null, 'Changes the Wrist Bolter to function as a hand slot. Wrist Bolter does not generate Energy while other powers are in use.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Power Bolts', '<img src="img/PowerArmor_PowerBolts.png" />&nbsp;Power Bolts', 2, 9, pow++, -1, 'Power Armor, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Power Bolts fires pure Kinetic Energy at your enemy.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'It Burns', 'It Burns', 2, null, 'All Power Bolts attacks now have a chance to apply Plasma Burn instead of just the opening attack.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Laser Edge', '<img src="img/SingleBlade_ReapersTouch.png" />&nbsp;Laser Edge', 2, 9, pow++, -1, 'Power Armor, Energy Builder, 10 foot Melee Single Target Damage<br /><br />Laser Edge uses your laser sword to rapidly slice apart your enemies.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'It Burns', 'It Burns', 2, null, 'All Laser Edge attacks now have a chance to apply Plasma Burn instead of just the opening attack.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Power Gauntlet', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Power Gauntlet', 2, 9, pow++, 0, 'Power Armor, 100 foot Ranged Single Target Damage (Blast)<br /><br />Power Gauntlet uses your gloves as a point to focus Particle energy before using it to blast away any foes in your path.');
@@ -1689,14 +1813,22 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Downrang
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Laser Sword', '<img src="img/PowerArmor_LaserSword.png" />&nbsp;Laser Sword', 2, 9, pow++, 1, 'Power Armor, 10 foot Melee Single Target Damage<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Laser Sword creates a sword of pure Particle energy in your hand for rapid attacks against the enemy.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Tactical Missiles', '<img src="img/PowerArmor_TacticalMissiles.png" />&nbsp;Tactical Missiles', 2, 9, pow++, 0, 'Power Armor, 100 foot Ranged Single Target Damage (Blast)<br /><br />Tactical Missiles fire from your wrist to obliterate your target.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Blast Radius', 'Blast Radius', 2, null, 'Tactical Missiles now deals its base damage in a 10 foot radius.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Laser Sword', '<img src="img/PowerArmor_LaserSword.png" />&nbsp;Laser Sword', 2, 9, pow++, 1, 'Power Armor, 10 foot Melee Single Target Damage (Combo)<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Laser Sword creates a sword of pure Particle energy in your hand for rapid attacks against the enemy.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Particle Acceleration', 'Particle Acceleration', 2, null, 'The plasma of your blade burns with barely controlled fury. Each strike peels away your targets defenses, increasing the Particle damage they take. This increased potency, however, causes the cost of this power to increase with every strike.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Concussor Beam', '<img src="img/PowerArmor_ConcussorBeam.png" />&nbsp;Concussor Beam', 2, 9, pow++, 1, 'Power Armor, 100 foot Ranged Single Target Damage and repel<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Concussor Beam shoots Particle beams from the palms of your hands at your target.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Concussor Beam', '<img src="img/PowerArmor_ConcussorBeam.png" />&nbsp;Concussor Beam', 2, 9, pow++, 1, 'Power Armor, 50 foot Ranged Single Target Damage and Repel<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Concussor Beam shoots Particle beams from the palms of your hands at your target.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -1710,6 +1842,22 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, '20/20 Fission', '20/20 Fission', 2, null, 'Decreases the time it takes for your Eye Beams to burn through the initial target.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Lightwave Slash', '<img src="img/SingleBlade_ScythingBlade.png" />&nbsp;Lightwave Slash', 2, 9, pow++, 1, 'Power Armor, 10 foot Melee 120 degree Cone AoE Damage<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Lightwave Slash delivers a powerful laser slash to your targets, leaving them burning long after the initial attack.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mini Gun', '<img src="img/PowerArmor_MiniGun.png" />&nbsp;Mini Gun', 2, 9, pow++, 1, 'Power Armor, 100 foot Ranged 2 foot Cylinder AoE Damage<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Mini Gun fires a withering line of deadly lead at your target with enough power to go through the target and strike enemies behind them.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'U-238 Rounds', 'U-238 Rounds', 2, null, 'The use of depleted uranium-238 penetrators allows for better armor penetration with your Mini Gun. Through extensive testing, you\\\'re certain that no harmful side-effects will arise from their use. Well... You\\\'re pretty sure, at least.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Infrared Guidance System', 'Infrared Guidance System', 2, null, 'Increases the radius of this power to 5 feet.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Targeting Computer', '<img src="img/PowerArmor_TargetingComputer.png" />&nbsp;Targeting Computer', 2, 9, pow++, 1, 'Power Armor, Slotted Offensive Passive and Energy Form<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Your Targeting Computer allows you to track multiple targets in battle and their corresponding weak points.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1720,21 +1868,37 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Concentration'].name, dataPowerAlias['Concentration'].desc, 2, 9, pow++, 1, dataPowerAlias['Concentration'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'technology';
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Energy Shield', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Energy Shield', 2, 9, pow++, 1, 'Power Armor, Block<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Energy Shield utilizes a sophisticated energy projector to generate a protective barrier in front of you.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Laser Knight', 'Laser Knight', 3, null, 'If you have the Energy Shield power slotted, this advantage will cause it to activate when you make a Melee attack, increasing your defense for a few seconds, but slightly lowering the attack\\\'s damage.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Phalanx Defense System', 'Phalanx Defense System', 3, null, 'If you have the Energy Shield power slotted, this advantage will cause it to activate when you make a Power Armor Slot (Chest, Hand, or Shoulder) attack, increasing your defense for a few seconds.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Mini Gun', '<img src="img/PowerArmor_MiniGun.png" />&nbsp;Mini Gun', 2, 9, pow++, 2, 'Power Armor, 100 foot Ranged 4 foot Cylinder AoE Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Mini Gun fires a withering line of deadly lead at your target with enough power to go through the target and strike enemies behind them.');
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Lightspeed Dash', '<img src="img/SingleBlade_ReapersEmbrace.png" />&nbsp;Lightspeed Dash', 2, 9, pow++, 1, 'Power Armor, 60 foot Lunge and Snare<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />You use your energy blade to dash forward and slash at your foe.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'U-238 Rounds', 'U-238 Rounds', 2, null, 'The use of depleted uranium-238 penetrators allows for better armor penetration with your Mini Gun. Through extensive testing, you\\\'re certain that no harmful side-effects will arise from their use. Well... You\\\'re pretty sure, at least.'));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Micro Munitions', '<img src="img/PowerArmor_MicroMunitions.png" />&nbsp;Micro Munitions', 2, 9, pow++, 2, 'Power Armor, 100 foot Ranged 10 foot Sphere AoE Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Micro Munitions fires volleys of laser guided missiles at whatever is unfortunate enough to be your target.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Overdrive', '<img src="img/PowerArmor_Overdrive.png" />&nbsp;Overdrive', 2, 9, pow++, 1, 'Power Armor, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Rewire your weapon systems, allowing efficient use of one power to fuel the use of other powers.');
+dataEnergyUnlockPower[dataPower.length-1] = true;
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Plasma Cutter', '<img src="img/PowerArmor_PlasmaCutter.png" />&nbsp;Plasma Cutter', 2, 9, pow++, 2, 'Power Armor, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />You pull back and put all of your weight into a powerful laser thrust.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Micro Munitions', '<img src="img/PowerArmor_MicroMunitions.png" />&nbsp;Micro Munitions', 2, 9, pow++, 2, 'Power Armor, 100 foot Ranged 15 foot Sphere AoE Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Micro Munitions fires volleys of laser guided missiles at whatever is unfortunate enough to be your target.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -1742,24 +1906,33 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Alpha St
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
+dataPower[dataPower.length] = new Power(dataPower.length, 'Chest Beam', '<img src="img/PowerArmor_ChestBeam.png" />&nbsp;Chest Beam', 2, 9, pow++, 2, 'Power Armor, 50 foot Ranged 2 foot Cylinder AoE Damage and Debuff<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Chest Beam fires an unstoppable Particle blast of destruction at your enemy.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Point Blank Blast', 'Point Blank Blast', 2, null, 'Increases the damage dealt by Chest Beam the closer you are to your target.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Plasma Beam', '<img src="img/PowerArmor_PlasmaBeam.png" />&nbsp;Plasma Beam', 2, 9, pow++, 2, 'Power Armor, 50 foot Ranged 1 foot Cylinder AoE Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Plasma Beam cuts down everything in its path.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Melta Cannon', 'Melta Cannon', 2, null, 'Plasma Beam gains a 5% chance per tick to apply Plasma Burn. Plasma Burn deals Damage over Time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Unbreakable', '<img src="img/PowerArmor_Unbreakable.png" />&nbsp;Unbreakable', 2, 9, pow++, 2, 'Power Armor, Active Defense<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Through a focused effort you are able to shrug off attacks without harm.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 2, 1,'[ID]'));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Better You Than Me', 'Better You Than Me', 2, null, 'Attacks against you while you have Unbreakable active have a chance to grant 1 stack of the Enrage buff, and to refresh all instances of that buff on yourself. This can happen at most once every 3 seconds.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Better You Than Me', 'Better You Than Me', 2, null, 'Attacks against you while you have Unbreakable active have a chance to grant 1 stack of the Enrage Buff, and to refresh all instances of that Buff on yourself. This can happen at most once every 3 seconds.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Energy Wave', '<img src="img/PowerArmor_EnergyWave.png" />&nbsp;Energy Wave', 2, 9, pow++, 3, 'Power Armor, 25 foot Sphere PBAoE Ranged Damage and Knock Back<br /><br />Requires 5 powers from Power Armor or 6 non-Energy Building powers from any framework.<br /><br />Generating a massive surge of power you blow away the enemies surronding you.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Hardened Particle Matrix', 'Hardened Particle Matrix', 3, null, 'Your Energy Wave attack will redirect the enrgy around you into a short duration Shield which absorbs damage based on the number of targets caught in your blast.'));
-
-dataPower[dataPower.length] = new Power(dataPower.length, 'Chest Beam', '<img src="img/PowerArmor_ChestBeam.png" />&nbsp;Chest Beam', 2, 9, pow++, 3, 'Power Armor, 50 foot Ranged 2 foot Cylinder AoE Damage and Debuff<br /><br />Requires 5 powers from Power Armor or 6 non-Energy Building powers from any framework.<br /><br />Chest Beam fires an unstoppable Particle blast of destruction at your enemy.');
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Point Blank Blast', 'Point Blank Blast', 2, null, 'Increases the damage dealt by Chest Beam the closer you are to your target.'));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Reverse Polarity', 'Reverse Polarity', 2, null, 'Energy Wave will now Knock Towards you instead of away from you.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Shoulder Launcher', '<img src="img/PowerArmor_ShoulderLauncher.png" />&nbsp;Shoulder Launcher', 2, 9, pow++, 3, 'Power Armor, 100 foot Ranged 10 foot Sphere AoE Damage and Knock Back<br /><br />Requires 5 powers from Power Armor or 6 non-Energy Building powers from any framework.<br /><br />Shoulder Launcher uses a shoulder mounted rocket launcher to fire an explosive rocket at your enemies. It takes several seconds for the rocket to lock on and fire.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1767,6 +1940,17 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Bunker Buster', 'Bunker Buster', 2, null, 'Shoulder Launcher deals additional damage to targets using Block.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Fire All Weapons', '<img src="img/PowerArmor_FireAllWeapons.png" />&nbsp;Fire All Weapons', 2, 9, pow++, 3, 'Power Armor, 50 foot Ranged 120 degree Cone AoE Damage<br /><br />Requires 5 powers from Power Armor or 6 non-Energy Building powers from any framework.<br /><br />Fire every weapon you\\\'ve got! Unload everything you have.. at any cost.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Reconstruction Circuits', '<img src="img/PowerArmor_ReconstructionCircuits.png" />&nbsp;Reconstruction Circuits', 2, 9, pow++, 3, 'Power Armor, Self Heal Over Time<br /><br />Requires 5 powers from Power Armor or 6 non-Energy Building powers from any framework.<br /><br />Your armor is so technologically advanced that it can repair itself in battle.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Implosion Engine'].name, dataPowerAlias['Implosion Engine'].desc, 2, 9, pow++, 4, dataPowerAlias['Implosion Engine'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1778,7 +1962,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Set: Martial Arts
 //------------------------------------------------------------------------------
 
-dataRequireGroup['martial arts'] = new Array();
+dataRequireGroup['martial arts'] = [];
 
 dataPowerAlias['Fury of the Dragon'] = new PowerAlias('Fury of the Dragon', 'Fury of the Dragon', '<img src="img/MartialArts_FuryOfTheDragon.png" />&nbsp;Fury of the Dragon', 'Martial Arts, 25 foot Melee 60 degree Cone AoE Damage<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />Fury of the Dragon causes a chaotic attack of claws and fire, dealing damage to nearby foes.');
 dataPowerAlias['Real Ultimate Power'] = new PowerAlias('Real Ultimate Power', 'Real Ultimate Power', 'Real Ultimate Power', 'The purpose of this advantage is to flip out and make people Bleed. Your Fury of the Dragon has multiple chances to cause a Bleed effect on the target.');
@@ -1786,23 +1970,30 @@ dataPowerAlias['Shuriken Throw'] = new PowerAlias('Shuriken Throw', 'Shuriken Th
 dataPowerAlias['Chained Kunai'] = new PowerAlias('Chained Kunai', 'Chained Kunai', 'Chained Kunai', 'Shuriken Throw now allows you to use Chained Kunai once every 5 seconds. This version of the power will Knock the target toward you instead of down. The cost of Chained Kunai is increased, the range is only 50 feet, and it prevents your shuriken from being able to Knock Down the target.');
 dataPowerAlias['Inexorable Tides'] = new PowerAlias('Inexorable Tides', 'Inexorable Tides', '<img src="img/MartialArts_InexorableTides.png" />&nbsp;Inexorable Tides', 'Martial Arts, 10 foot Melee 120 degree Cone AoE Damage and Knock Up<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />A powerful kick at the legs of your opponents, Knocking them into the air.');
 dataPowerAlias['Instep Crush'] = new PowerAlias('Instep Crush', 'Instep Crush', 'Instep Crush', 'Adds a Root to the primary target of your Inexorable Tides strikes.');
-dataPowerAlias['Smoke Bomb'] = new PowerAlias('Smoke Bomb', 'Smoke Bomb', '<img src="img/MartialArts_Smokebomb.png" />&nbsp;Smoke Bomb', 'Martial Arts, 150 foot Sphere PBAoE Threat Wipe and temporary Stealth<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Smoke Bomb drops a cloud of obscuring smoke at your feet allowing you to execute a strategic retreat when necessary.');
+dataPowerAlias['Smoke Bomb'] = new PowerAlias('Smoke Bomb', 'Smoke Bomb', '<img src="img/MartialArts_SmokeBomb.png" />&nbsp;Smoke Bomb', 'Martial Arts, 150 foot Sphere PBAoE Threat Wipe and temporary Stealth<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Smoke Bomb drops a cloud of obscuring smoke at your feet allowing you to execute a strategic retreat when necessary.');
 dataPowerAlias['Concussive Escape'] = new PowerAlias('Concussive Escape', 'Concussive Escape', 'Concussive Escape', 'Smoke Bomb Knocks Down affected targets within 15 feet of where the Smoke Bomb lands.');
 dataPowerAlias['Lightning Reflexes'] = new PowerAlias('Lightning Reflexes', 'Lightning Reflexes', '<img src="img/MartialArts_LightningReflexes.png" />&nbsp;Lightning Reflexes', 'Martial Arts, Slotted Defensive Passive<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />You have honed your reflexes to perfection and are able to move with impossible speed to avoid attacks.');
 dataPowerAlias['Way of the Warrior'] = new PowerAlias('Way of the Warrior', 'Way of the Warrior', '<img src="img/MartialArts_WayOfTheWarrior.png" />&nbsp;Way of the Warrior', 'Martial Arts, Slotted Offensive Passive<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />You have the stance, form and discipline of a trained Master of the Martial Arts. You strike harder and more accurately, your deft stance allows you to avoid more damage more often. Additionally, a Master of the Martial Arts never wastes energy on a strike that will not connect; attacks that your enemy dodges refund a portion of their cost.');
 dataPowerAlias['Intensity'] = new PowerAlias('Intensity', 'Intensity', '<img src="img/MartialArts_Intensity.png" />&nbsp;Intensity', 'Martial Arts, Active Offense<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />You focus all of your attention on the upcoming battle, harnessing your inner strength to bolster your abilities.');
+// TODO: find proper image
+dataPowerAlias['Night Warrior'] = new PowerAlias('Night Warrior', 'Night Warrior', '<img src="img/MartialArts_Sneak.png" />&nbsp;Night Warrior', 'Martial Arts, Slotted Offensive Passive<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Your are a lithe and stealthy warrior who can strike from the shadows with pinpoint precision.');
+dataPowerAlias['Silent Running'] = new PowerAlias('Silent Running', 'Silent Running', 'Silent Running', 'Increases your movement speed while sneaking.');
 dataPowerAlias['Parry'] = new PowerAlias('Parry', 'Parry', '<img src="img/MartialArts_Parry.png" />&nbsp;Parry', 'Martial Arts, Block<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Parry is an enhanced block power that allows you to, with careful timing, return some damage to an attacker.');
 dataPowerAlias['The Elusive Monk'] = new PowerAlias('The Elusive Monk', 'The Elusive Monk', 'The Elusive Monk', 'If you have the Parry power slotted, this advantage will cause it to activate when you make a Melee attack, increasing your Dodge Rating, Avoidance Rating, and Knock Resistance for a few seconds, but slightly lowering the attack\\\'s damage.');
 dataPowerAlias['Thunderbolt Lunge'] = new PowerAlias('Thunderbolt Lunge', 'Thunderbolt Lunge', '<img src="img/MartialArts_ThunderboltLunge.png" />&nbsp;Thunderbolt Lunge', 'Martial Arts, 60 foot Lunge and Snare and Root<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Thunderbolt Lunge allows you to quickly close distance with your target.');
+// TODO: find proper image
 dataPowerAlias['Essence Assault'] = new PowerAlias('Essence Assault', 'Essence Assault', 'Essence Assault', 'Thunderbolt Lunge will also Stun your target for a few seconds if you lunge more than 20 feet and they aren\\\'t already controlled.');
+dataPowerAlias['Smoke Bomb Lunge'] = new PowerAlias('Smoke Bomb Lunge', 'Smoke Bomb Lunge', '<img src="img/MartialArts_SmokeBomb.png" />&nbsp;Smoke Bomb Lunge', 'Martial Arts, 60 foot Lunge and Melee Damage<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Put down a burst of smoke, disappearing for a moment and reappearing on top of your enemy.');
+dataPowerAlias['Sudden Strike'] = new PowerAlias('Sudden Strike', 'Sudden Strike', 'Sudden Strike', 'If you lunge from more than 50 feet away your next single target Melee Critical has 15% more severity.');
 dataPowerAlias['Rising Knee'] = new PowerAlias('Rising Knee', 'Rising Knee', '<img src="img/MartialArts_RisingKnee.png" />&nbsp;Rising Knee', 'Martial Arts, 10 foot Melee Single Target Damage and Knock Down<br /><br />Requires 3 powers from Martial Arts or 4 non-Energy Building powers from any framework.<br /><br />You quickly bring your knee up, slamming your target hard.');
 dataPowerAlias['Flowing Strikes'] = new PowerAlias('Flowing Strikes', 'Flowing Strikes', 'Flowing Strikes', 'Your mastery of unarmed combat allows you to make more effective blows as part of a combo, reducing the target\\\'s Damage Resistance to your next 2 non-energy building Melee Crushing attacks.');
 dataPowerAlias['Bountiful Chi Resurgence'] = new PowerAlias('Bountiful Chi Resurgence', 'Bountiful Chi Resurgence', '<img src="img/MartialArts_BountifulChiResurgence.png" />&nbsp;Bountiful Chi Resurgence', 'Martial Arts, Self HoT and Debuff<br /><br />Requires 3 powers from Martial Arts or 4 non-Energy Building powers from any framework.<br /><br />Bountiful Chi Resurgence focuses your Chi into healing energy to help you recover from battle.');
 dataPowerAlias['Resurgent Reiki'] = new PowerAlias('Resurgent Reiki', 'Resurgent Reiki', 'Resurgent Reiki', 'You gain additional ticks of healing whenever you Dodge an attack while Bountiful Chi Resurgence is active. This effect can only occur once every 0.5 seconds.');
-dataPowerAlias['Sneak'] = new PowerAlias('Sneak', 'Sneak', '<img src="img/MartialArts_Sneak.png" />&nbsp;Sneak', 'Martial Arts, self stealth<br /><br />Requires 3 powers from Martial Arts or 4 non-Energy Building powers from any framework.<br /><br />When you need to go unnoticed, Sneaking can get you to otherwise inaccessible spots.');
-dataPowerAlias['Silent Running'] = new PowerAlias('Silent Running', 'Silent Running', 'Silent Running', 'Increases your movement speed while Sneaking.');
+// deprecated
+// dataPowerAlias['Sneak'] = new PowerAlias('Sneak', 'Sneak', '<img src="img/MartialArts_Sneak.png" />&nbsp;Sneak', 'Martial Arts, self stealth<br /><br />Requires 3 powers from Martial Arts or 4 non-Energy Building powers from any framework.<br /><br />When you need to go unnoticed, Sneaking can get you to otherwise inaccessible spots.');
+// dataPowerAlias['Silent Running'] = new PowerAlias('Silent Running', 'Silent Running', 'Silent Running', 'Increases your movement speed while sneaking.');
 dataPowerAlias['Masterful Dodge'] = new PowerAlias('Masterful Dodge', 'Masterful Dodge', '<img src="img/MartialArts_MasterfulDodge.png" />&nbsp;Masterful Dodge', 'Martial Arts, Active Defense<br /><br />Requires 3 powers from Martial Arts or 4 non-Energy Building powers from any framework.<br /><br />In moments of need you are able to focus your attention on avoiding the attacks of your foes.');
-dataPowerAlias['Unfettered Strikes'] = new PowerAlias('Unfettered Strikes', 'Unfettered Strikes', 'Unfettered Strikes', 'Each time you Dodge an attack while Masterful Dodge is active, you gain an Opportunity Strike buff, increasing your damage for a short time.');
+dataPowerAlias['Unfettered Strikes'] = new PowerAlias('Unfettered Strikes', 'Unfettered Strikes', 'Unfettered Strikes', 'Each time you Dodge an attack while Masterful Dodge is active, you gain an Opportunity Strike Buff, increasing your damage for a short time.');
 dataPowerAlias['Shuriken Storm'] = new PowerAlias('Shuriken Storm', 'Shuriken Storm', '<img src="img/MartialArts_ShurikenStorm.png" />&nbsp;Shuriken Storm', 'Martial Arts, 30 foot Sphere PBAoE Ranged Damage<br /><br />Requires 5 powers from Martial Arts or 6 non-Energy Building powers from any framework.<br /><br />You unleash a hail of shuriken all around you, attempting to hit as many targets as you can.');
 dataPowerAlias['Floating Butterfly'] = new PowerAlias('Floating Butterfly', 'Floating Butterfly', 'Floating Butterfly', 'Your rapid movements while maintaining this power make you difficult to land a blow on, granting you a bonus to Dodge and Avoidance.');
 dataPowerAlias['Strong Arm'] = new PowerAlias('Strong Arm', 'Strong Arm', 'Strong Arm', 'Causes this power to gain bonus damage from your Strength, instead of your Ego.');
@@ -1819,14 +2010,14 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Rain of Steel', '<img
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Grinning Ghost', 'Grinning Ghost', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Grinning Ghost', 'Grinning Ghost', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus Buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Blade Tempest', '<img src="img/DualBlades_BladeTempest.png" />&nbsp;Blade Tempest', 3, 10, pow++, 0, 'Dual Blades, 10 foot Melee 120 degree Cone AoE Damage (Combo)<br /><br />Blade Tempest is a deadly combination of whirling two blade attacks.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Crashing Crescendo', 'Crashing Crescendo', 2, null, 'Each hit with Blade Tempest adds a stacking buff which increases your chance to Critically Hit. All stacks of the buff are removed upon a successful critical hit.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Crashing Crescendo', 'Crashing Crescendo', 2, null, 'Each hit with Blade Tempest adds a stacking Buff which increases your chance to Critically Hit. All stacks of the Buff are removed upon a successful Critical Hit.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
@@ -1885,6 +2076,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Night Warrior'].name, dataPowerAlias['Night Warrior'].desc, 3, 10, pow++, 1, dataPowerAlias['Night Warrior'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Parry'].name, dataPowerAlias['Parry'].desc, 3, 10, pow++, 1, dataPowerAlias['Parry'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1899,6 +2097,16 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Smoke Bomb Lunge'].name, dataPowerAlias['Smoke Bomb Lunge'].desc, 3, 10, pow++, 1, dataPowerAlias['Smoke Bomb Lunge'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Sudden Strike'].name, dataPowerAlias['Sudden Strike'].desc, 2, null, dataPowerAlias['Sudden Strike'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Dragon\'s Wrath', '<img src="img/DualBlades_DragonsWrath.png" />&nbsp;Dragon\'s Wrath', 3, 10, pow++, 2, 'Dual Blades, 10 foot Melee Single Target Damage with rush<br /><br />Requires 3 powers from Dual Blades or 4 non-Energy Building powers from any framework.<br /><br />Dragon\\\'s Wrath is a technique that is highly effective in both attacking the enemy and in setting yourself up to efficiently press your attack.');
@@ -1929,12 +2137,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Resurgent Reiki'].name, dataPowerAlias['Resurgent Reiki'].desc, 2, null, dataPowerAlias['Resurgent Reiki'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
-dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 10, pow++, 2, dataPowerAlias['Sneak'].tip);
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
-dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+// deprecated
+// dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 10, pow++, 2, dataPowerAlias['Sneak'].tip);
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+// dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Masterful Dodge'].name, dataPowerAlias['Masterful Dodge'].desc, 3, 10, pow++, 2, dataPowerAlias['Masterful Dodge'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1978,14 +2187,14 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Hawk\'s Talons', '<im
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Peerless Predation', 'Peerless Predation', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Peerless Predation', 'Peerless Predation', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus Buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Viper\'s Fangs', '<img src="img/FightingClaws_VipersFangs.png" />&nbsp;Viper\'s Fangs', 3, 11, pow++, 0, 'Fighting Claws, 10 foot Melee Single Target Damage and debuff (Combo)<br /><br />Viper\\\'s Fangs is a brutal slashing claw attack with the potential to utilize your Chi energy to inflict a venomous wound on your enemy.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Viper\'s Fangs', '<img src="img/FightingClaws_VipersFangs.png" />&nbsp;Viper\'s Fangs', 3, 11, pow++, 0, 'Fighting Claws, 10 foot Melee Single Target Damage and Debuff (Combo)<br /><br />Viper\\\'s Fangs is a brutal slashing claw attack with the potential to utilize your Chi energy to inflict a venomous wound on your enemy.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Spitting Cobra', 'Spitting Cobra', 2, null, 'Grants each attack with Viper\\\'s Fangs a chance to apply Deadly Poison, which stacks up to 10 times and causes your target to suffer Toxic damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Spitting Cobra', 'Spitting Cobra', 2, null, 'Grants each attack with Viper\\\'s Fangs a chance to apply Deadly Poison, which stacks up to 10 times and causes your target to suffer Toxic Damage over Time.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -1993,7 +2202,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Rend and Tear', '<img
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Drake\'s Deliverance', 'Drake\'s Deliverance', 2, null, 'Rend and Tear does 30% bonus damage, but does the damage over time after the initial hit.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Drake\'s Deliverance', 'Drake\'s Deliverance', 2, null, 'Rend and Tear does 30% bonus damage, but does the Damage over Time after the initial hit.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Shuriken Throw'].name, dataPowerAlias['Shuriken Throw'].desc, 3, 11, pow++, 1, dataPowerAlias['Shuriken Throw'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2042,6 +2251,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Night Warrior'].name, dataPowerAlias['Night Warrior'].desc, 3, 11, pow++, 1, dataPowerAlias['Night Warrior'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Parry'].name, dataPowerAlias['Parry'].desc, 3, 11, pow++, 1, dataPowerAlias['Parry'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -2056,6 +2272,16 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Smoke Bomb Lunge'].name, dataPowerAlias['Smoke Bomb Lunge'].desc, 3, 11, pow++, 1, dataPowerAlias['Smoke Bomb Lunge'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Sudden Strike'].name, dataPowerAlias['Sudden Strike'].desc, 2, null, dataPowerAlias['Sudden Strike'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Dragon\'s Claws', '<img src="img/FightingClaws_DragonsClaws.png" />&nbsp;Dragon\'s Claws', 3, 11, pow++, 2, 'Fighting Claws, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Fighting Claws or 4 non-Energy Building powers from any framework.<br /><br />Dragon\'s Claws is a technique that is highly effective in both attacking the enemy and in setting yourself up to efficiently press your attack.');
@@ -2080,12 +2306,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Resurgent Reiki'].name, dataPowerAlias['Resurgent Reiki'].desc, 2, null, dataPowerAlias['Resurgent Reiki'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
-dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 11, pow++, 2, dataPowerAlias['Sneak'].tip);
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
-dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+// deprecated
+// dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 11, pow++, 2, dataPowerAlias['Sneak'].tip);
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+// dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Masterful Dodge'].name, dataPowerAlias['Masterful Dodge'].desc, 3, 11, pow++, 2, dataPowerAlias['Masterful Dodge'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2128,7 +2355,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Reaper\'s Touch', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Three Edged Blade', 'Three Edged Blade', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Three Edged Blade', 'Three Edged Blade', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus Buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Reaper\'s Caress', '<img src="img/SingleBlade_ReapersCaress.png" />&nbsp;Reaper\'s Caress', 3, 12, pow++, 0, 'Single Blade, 10 foot Melee Single Target Damage (Combo)<br /><br />Reaper\\\'s Caress is a rapid series of attacks capable of leaving the enemy with multiple bleeding wounds.');
@@ -2192,6 +2419,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Night Warrior'].name, dataPowerAlias['Night Warrior'].desc, 3, 12, pow++, 1, dataPowerAlias['Night Warrior'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Parry'].name, dataPowerAlias['Parry'].desc, 3, 12, pow++, 1, dataPowerAlias['Parry'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -2206,6 +2440,16 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Smoke Bomb Lunge'].name, dataPowerAlias['Smoke Bomb Lunge'].desc, 3, 12, pow++, 1, dataPowerAlias['Smoke Bomb Lunge'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Sudden Strike'].name, dataPowerAlias['Sudden Strike'].desc, 2, null, dataPowerAlias['Sudden Strike'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Dragon\'s Bite', '<img src="img/SingleBlade_DragonsBite.png" />&nbsp;Dragon\'s Bite', 3, 12, pow++, 2, 'Single Blade, 10 foot Melee Single Target Damage and Rush<br /><br />Requires 3 powers from Single Blade or 4 non-Energy Building powers from any framework.<br /><br />Dragon\\\'s Bite is a technique that is highly effective in both attacking the enemy and in setting yourself up to efficiently press your attack.');
@@ -2228,12 +2472,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Resurgent Reiki'].name, dataPowerAlias['Resurgent Reiki'].desc, 2, null, dataPowerAlias['Resurgent Reiki'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
-dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 12, pow++, 2, dataPowerAlias['Sneak'].tip);
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
-dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+// deprecated
+// dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 12, pow++, 2, dataPowerAlias['Sneak'].tip);
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+// dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Masterful Dodge'].name, dataPowerAlias['Masterful Dodge'].desc, 3, 12, pow++, 2, dataPowerAlias['Masterful Dodge'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2275,21 +2520,21 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Righteous Fists', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Drunken Master', 'Drunken Master', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Drunken Master', 'Drunken Master', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus Buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Vicious Strikes', '<img src="img/Unarmed_ViciousStrikes.png" />&nbsp;Vicious Strikes', 3, 13, pow++, -1, 'Unarmed, Energy Builder, 10 foot Melee Single Target Damage<br /><br />Vicious Strikes is a fighting technique to deliver a series of rapid punches to your enemy.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Drunken Master', 'Drunken Master', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Drunken Master', 'Drunken Master', 2, null, 'With this advantage, this technique exposes weaknesses in your opponent, and sharpens your own form. Every attack has a chance to grant you a single instance of a Focus Buff if you are not already affected by it or if you are affected by a Martial Arts form.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Thundering Kicks', '<img src="img/Unarmed_ThunderingKicks.png" />&nbsp;Thundering Kicks', 3, 13, pow++, 0, 'Unarmed, 10 foot Melee Single Target Damage and Dodge Buff (Combo)<br /><br />Thundering Kicks unleashes a flurry of pounding kicks on your enemy.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Floating Lotus Blossom', 'Floating Lotus Blossom', 2, null, 'Each successful hit with Thundering Kicks adds a stacking Dodge buff to you. All stacks of the buff are removed upon a successful Dodge.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Floating Lotus Blossom', 'Floating Lotus Blossom', 2, null, 'Each successful hit with Thundering Kicks adds a stacking Dodge Buff to you. All stacks of the Buff are removed upon a successful Dodge.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -2297,7 +2542,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Crashing Wave Kick', 
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Subtlety of the Tides', 'Subtlety of the Tides', 2, null, 'For 8 seconds after using Crashing Wave Kick, all of your Melee attacks have a 50% chance to grant a stack of Ebb and Flow which is a small Dodge and Avoidance buff. The amount of Dodge and Avoidance granted is increased slightly as you level.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Subtlety of the Tides', 'Subtlety of the Tides', 2, null, 'For 8 seconds after using Crashing Wave Kick, all of your Melee attacks have a 50% chance to grant a stack of Ebb and Flow which is a small Dodge and Avoidance Buff. The amount of Dodge and Avoidance granted is increased slightly as you level.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -2356,6 +2601,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Night Warrior'].name, dataPowerAlias['Night Warrior'].desc, 3, 13, pow++, 1, dataPowerAlias['Night Warrior'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Parry'].name, dataPowerAlias['Parry'].desc, 3, 13, pow++, 1, dataPowerAlias['Parry'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -2370,6 +2622,17 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Smoke Bomb Lunge'].name, dataPowerAlias['Smoke Bomb Lunge'].desc, 3, 13, pow++, 1, dataPowerAlias['Smoke Bomb Lunge'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Sudden Strike'].name, dataPowerAlias['Sudden Strike'].desc, 2, null, dataPowerAlias['Sudden Strike'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Backhand Chop', '<img src="img/Unarmed_BackhandChop.png" />&nbsp;Backhand Chop', 3, 13, pow++, 2, 'Unarmed, 10 foot Melee Single Target Damage and Interrupt<br /><br />Requires 3 powers from Unarmed or 4 non-Energy Building powers from any framework.<br /><br />You quickly spin, delivering a backhanded strike to your target.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2407,12 +2670,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Resurgent Reiki'].name, dataPowerAlias['Resurgent Reiki'].desc, 2, null, dataPowerAlias['Resurgent Reiki'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
-dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 13, pow++, 2, dataPowerAlias['Sneak'].tip);
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
-dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+// deprecated
+// dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Sneak'].name, dataPowerAlias['Sneak'].desc, 3, 13, pow++, 2, dataPowerAlias['Sneak'].tip);
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Silent Running'].name, dataPowerAlias['Silent Running'].desc, 1, null, dataPowerAlias['Silent Running'].tip));
+// dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Masterful Dodge'].name, dataPowerAlias['Masterful Dodge'].desc, 3, 13, pow++, 2, dataPowerAlias['Masterful Dodge'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2425,14 +2689,14 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Burning Chi Fist', '<
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Fists of Righteous Flame', 'Fists of Righteous Flame', 2, null, 'If fully charged, Burning Chi Fist grants a short duration buff with each use which grants a chance to add Dimensional damage to each Melee attack.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Fists of Righteous Flame', 'Fists of Righteous Flame', 2, null, 'If fully charged, Burning Chi Fist grants a short duration Buff with each use which grants a chance to add Dimensional damage to each Melee attack.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Dragon Uppercut', '<img src="img/Unarmed_DragonUppercut.png" />&nbsp;Dragon Uppercut', 3, 13, pow++, 3, 'Unarmed, 10 foot Melee Single Target Damage and Knock Up<br /><br />Requires 5 powers from Unarmed or 6 non-Energy Building powers from any framework.<br /><br />You leap upward with great force, and land an uppercut attack on your foe, knocking them up into the air.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Chi Flame', 'Chi Flame', 2, null, 'Causes your Dragon Uppercut to burn your target with Chi energy, dealing an additional 10% damage as Dimensional damage. Fully charging your Dragon Uppercut will cause the target to suffer additional Dimensional damage over time for 3 seconds.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Chi Flame', 'Chi Flame', 2, null, 'Causes your Dragon Uppercut to burn your target with Chi energy, dealing an additional 10% damage as Dimensional damage. Fully charging your Dragon Uppercut will cause the target to suffer additional Dimensional Damage over Time for 3 seconds.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Open Palm Strike', '<img src="img/Unarmed_OpenPalmStrike.png" />&nbsp;Open Palm Strike', 3, 13, pow++, 3, 'Unarmed, 10 foot Melee Single Target Damage and Knock Back<br /><br />Requires 5 powers from Unarmed or 6 non-Energy Building powers from any framework.<br /><br />You perform a focused double palm strike that can send your enemy flying.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2460,12 +2724,17 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Set: Mentalist
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mentalist'] = [];
+
 dataPowerAlias['Mind Link'] = new PowerAlias('Mind Link', 'Mind Link', '<img src="img/Mentalist_MindLink.png" />&nbsp;Mind Link', 'Mentalist, 50 foot Sphere PBAoE Triggered Damage<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />This telepathic link allows you to share pain amongst the enemies around you by forging a psychic bond that forces them to feel the pain of others.');
 dataPowerAlias['Aggression Inhibitor'] = new PowerAlias('Aggression Inhibitor', 'Aggression Inhibitor', 'Aggression Inhibitor', 'All damage you take while maintaining this power is reduced by 20%.');
+dataPowerAlias['Manipulator'] = new PowerAlias('Manipulator', 'Manipulator', '<img src="img/Mentalist_Manipulation.png" />&nbsp;Manipulator', 'Mentalist, Self Buff Form<br /><br />Requires 1 power from Mentalist or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
 // Power Framework: Telekinesis
 //------------------------------------------------------------------------------
+
+dataRequireGroup['mentalist'].push(14);
 
 var pow = 0;
 
@@ -2534,6 +2803,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Id Blades', 'Id Blades', 0, null, 'While this power is active, your Ego Blade powers manifest Dual Id Blades instead of a single Ego Blade.'));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Manipulator'].name, dataPowerAlias['Manipulator'].desc, 2, 14, pow++, 1, dataPowerAlias['Manipulator'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mentalist';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Telekinetic Shield', '<img src="img/Telekinesis_TelekineticShield.png" />&nbsp;Telekinetic Shield', 4, 14, pow++, 1, 'Telekinesis, Block<br /><br />Requires 1 power from Telekinesis or 2 non-Energy Building powers from any framework.<br /><br />Using the power of your mind, you can create a shield of pure telekinetic energy to protect yourself.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2630,13 +2905,15 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Telepathy
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mentalist'].push(15);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Psi Lash', '<img src="img/Telepathy_PsiLash.png" />&nbsp;Psi Lash', 4, 15, pow++, -1, 'Telepathy, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Assault your foe with this psychic attack, damaging their body as you ready yourself for greater attacks.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2EB'].name, dataPowerAlias['R2EB'].desc, 2, null, dataPowerAlias['R2EB'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3EB'].name, dataPowerAlias['R3EB'].desc, 2, 1, dataPowerAlias['R3EB'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psychic Reverberations', 'Psychic Reverberations', 2, null, 'Psi Lash has a chance to buff your Ego damage.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psychic Reverberations', 'Psychic Reverberations', 2, null, 'Psi Lash has a chance to Buff your Ego damage.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Blast', '<img src="img/Telepathy_EgoBlast.png" />&nbsp;Ego Blast', 4, 15, pow++, 0, 'Telepathy, 100 foot Ranged Single Target Damage and Disorient (Blast)<br /><br />');
@@ -2674,6 +2951,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Empathic Amplification', 'Empathic Amplification', 2, null, 'When you heal someone else with Empathic Healing, you transfer the pain to yourself. You can then redirect this pain through your own attacks for a short period of time. Failing to redirect the pain quickly enough will cause you to take damage.'));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Manipulator'].name, dataPowerAlias['Manipulator'].desc, 2, 15, pow++, 1, dataPowerAlias['Manipulator'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mentalist';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Telepathic Reverberation', '<img src="img/Telepathy_TelepathicReverberation.png" />&nbsp;Telepathic Reverberation', 4, 15, pow++, 1, 'Telepathy, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Telepathic Reverberation allows you to drain the mental energy from the enemies around you under your thrall.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
@@ -2714,7 +2997,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Collective Will', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Consume Will', 'Consume Will', 2, null, 'Causes the entities summoned by Collective Will to debuff their targets, lowering their resistance to Ego damage by 10%.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Consume Will', 'Consume Will', 2, null, 'Causes the entities summoned by Collective Will to Debuff their targets, lowering their resistance to Ego damage by 10%.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Mindful Reinforcement', '<img src="img/Telepathy_MindfulReinforcement.png" />&nbsp;Mindful Reinforcement', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged Single Target Shield and Heal<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Activating this power is a true statement of mind over matter, granting your target a damage absorbing shield, which can heal your target.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2732,13 +3015,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Set: Brick
 //------------------------------------------------------------------------------
 
-dataRequireGroup['brick'] = new Array();
+dataRequireGroup['brick'] = [];
 
 dataPowerAlias['Unleashed Rage'] = new PowerAlias('Unleashed Rage', 'Unleashed Rage', '<img src="img/Brick_UnleashedRage.png" />&nbsp;Unleashed Rage', 'Brick, 10 foot Melee 15 foot Sphere AoE Damage and Knock Down and Fear<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />Unleashed Rage lets forth a deafening shout, terrifying and damaging nearby foes.');
 dataPowerAlias['Defiance'] = new PowerAlias('Defiance', 'Defiance', '<img src="img/Brick_Defiance.png" />&nbsp;Defiance', 'Brick, Slotted Defensive Passive<br /><br />Requires 1 power from Brick or 2 non-Energy Building powers from any framework.<br /><br />You refuse to fall to the attacks of your enemies. The more they throw at you the more resilient you become.');
 dataPowerAlias['Force of Will'] = new PowerAlias('Force of Will', 'Force of Will', 'Force of Will', 'Adds increasing Knock Back and Stun resistance as your Health gets lower.');
 dataPowerAlias['Unstoppable'] = new PowerAlias('Unstoppable', 'Unstoppable', '<img src="img/Brick_Unstoppable.png" />&nbsp;Unstoppable', 'Brick, Slotted Offensive Passive<br /><br />Requires 1 power from Brick or 2 non-Energy Building powers from any framework.<br /><br />You channel all of your energy into becoming an unstoppable force of nature.');
-dataPowerAlias['Enrage'] = new PowerAlias('Enrage', 'Enrage', '<img src="img/Brick_Enrage.png" />&nbsp;Enrage', 'Brick, Self Buff<br /><br />Requires 3 powers from Brick or 4 non-Energy Building powers from any framework.<br /><br />Enrage sends you into a frenzy, increasing your damage and causing any damage dealt to you to only make you fight harder.');
+dataPowerAlias['Enrage'] = new PowerAlias('Enrage', 'Enrage', '<img src="img/Brick_Enrage.png" />&nbsp;Enrage', 'Brick, Self Buff<br /><br />Requires 3 powers from Brick or 4 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced angry posture.');
 dataPowerAlias['Endorphin Rush'] = new PowerAlias('Endorphin Rush', 'Endorphin Rush', 'Endorphin Rush', 'Activating Enrage will heal you over time. The duration of this heal is based on the number of stacks of Defiant on you. The amount healed is based on your Constitution.');
 dataPowerAlias['Giant Growth'] = new PowerAlias('Giant Growth', 'Giant Growth', 'Giant Growth', 'Purchasing this advantage adds a growth effect to Enraged.');
 dataPowerAlias['Aggressor'] = new PowerAlias('Aggressor', 'Aggressor', '<img src="img/Brick_Aggressor.png" />&nbsp;Aggressor', 'Brick, Self Buff Form<br /><br />Requires 3 powers from Brick or 4 non-Energy Building powers from any framework.<br /><br />Your aggressive stance increases your damage.');
@@ -2962,7 +3245,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Quicksand', '<img src
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Repulsing Waves', 'Repulsing Waves', 2, null, 'Quicksand will now repel foes away from you instead of pulling them towards you. (Will not push them out of maximum range of the power.) Quicksand also gains a chance to Stagger for all foes hit.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Repulsing Waves', 'Repulsing Waves', 2, null, 'Quicksand will now Repel foes away from you instead of pulling them towards you. (Will not push them out of maximum range of the power.) Quicksand also gains a chance to Stagger for all foes hit.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
@@ -3032,7 +3315,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Defensive Combo', '<i
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Surge of Strength', 'Surge of Strength', 2, null, 'Defensive Combo attacks now apply or refresh the Defiant buff on each attack. Defensive Combo will never apply more than 1 stack of Defiant, but it will refresh any number of existing applications of Defiant.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Surge of Strength', 'Surge of Strength', 2, null, 'Defensive Combo attacks now apply or refresh the Defiant Buff on each attack. Defensive Combo will never apply more than 1 stack of Defiant, but it will refresh any number of existing applications of Defiant.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -3040,7 +3323,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Mighty Kick', '<img s
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Madness', 'Madness', 2, null, 'Hitting a foe with fully charged Mighty Kick will now add or refresh the Defiant buff.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Madness', 'Madness', 2, null, 'Hitting a foe with fully charged Mighty Kick will now add or refresh the Defiant Buff.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Hurl', '<img src="img/Might_Hurl.png" />&nbsp;Hurl', 5, 18, pow++, 1, 'Might, 100 foot Ranged Single Target Damage and Snare<br /><br />Requires 1 power from Might or 2 non-Energy Building powers from any framework.<br /><br />Hurl allows you to tear a chunk out of the ground and fling it at your enemy.');
@@ -3177,12 +3460,17 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 // Power Set: Mystic
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'] = [];
+
 dataPowerAlias['Planar Fracture'] = new PowerAlias('Planar Fracture', 'Planar Fracture', '<img src="img/Mystic_PlanarFracture.png" />&nbsp;Planar Fracture', 'Mystic, 50 foot Ranged Single Target Damage and DoT and Debuff<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />Planar Fracture creates a tear in time and space, linking this plane with another. Chaotic energy pours forth from the fracture, causing random damage and status effects on your foes.');
-dataPowerAlias['Double Vortex'] = new PowerAlias('Double Vortex', 'Double Vortex', 'Double Vortex', 'Your Planar Fracture now causes 2 random debuffs on each target instead of 1.');
+dataPowerAlias['Double Vortex'] = new PowerAlias('Double Vortex', 'Double Vortex', 'Double Vortex', 'Your Planar Fracture now causes 2 random Debuffs on each target instead of 1.');
+dataPowerAlias['Compassion'] = new PowerAlias('Compassion', 'Compassion', '<img src="img/Mystic_Compassion.png" />&nbsp;Compassion', 'Mystic, Self Buff Form<br /><br />Requires 1 power from Mystic or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
 // Power Framework: Celestial
 //------------------------------------------------------------------------------
+
+dataRequireGroup['mystic'].push(19);
 
 var pow = 0;
 
@@ -3238,7 +3526,13 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Seraphim', '<img src=
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Balance', 'Balance', 2, null, 'This advantage improves the healing aura effect of your Seraphim power. While you are in combat and Seraphim is active, up to 5 enemy targets within 25 feet of you will take a small amount of damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Balance', 'Balance', 2, null, 'This advantage improves the healing aura effect of your Seraphim power. While you are in combat and Seraphim is active, up to 5 enemy targets within 25 feet of you will take a small amount of Damage over Time.'));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 19, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Illumination', '<img src="img/Celestial_Illumination.png" />&nbsp;Illumination', 6, 19, pow++, 1, 'Celestial, 50 foot Ranged Single Friend Buff and Debuff<br /><br />Requires 1 power from Celestial or 2 non-Energy Building powers from any framework.<br /><br />Illumination places healing energies around your target, aiding your allies in their fight.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -3288,6 +3582,8 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Darkness
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(20);
+
 var pow = 0;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow Bolt', '<img src="img/Darkness_ShadowBolt.png" />&nbsp;Shadow Bolt', 6, 20, pow++, -1, 'Darkness, Energy Builder, 50 foot Ranged Single Target Damage<br /><br />Shadow Bolt fires balls of dimensional energy at your enemy.');
@@ -3301,7 +3597,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow Blast', '<img 
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psychotic Break', 'Psychotic Break', 2, null, 'Full charge vs Feared target pushes them into full on psychosis, Stunning the target and dealing additional Dimensional damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psychotic Break', 'Psychotic Break', 2, null, 'Full charge vs Feared target pushes them into full on psychosis, Stunning the target and dealing additional Dimensional Damage over Time.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -3319,19 +3615,25 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Grasping Shadows', '<
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Unyielding Agony', 'Unyielding Agony', 2, null, 'Grasping Shadows now deals damage over time. This damage does not reduce the durability of the Paralyze Hold applied by Grasping Shadows.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Unyielding Agony', 'Unyielding Agony', 2, null, 'Grasping Shadows now deals Damage over Time. This damage does not reduce the durability of the Paralyze Hold applied by Grasping Shadows.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow Shroud', '<img src="img/Darkness_ShadowShroud.png" />&nbsp;Shadow Shroud', 6, 20, pow++, 1, 'Darkness, Active Offense and Energy Form<br /><br />Requires 1 power from Darkness or 2 non-Energy Building powers from any framework.<br /><br />Shadow Shroud wraps you in darkness and dimensional energies; this connection to the nether forces improves your combat abilities for a short period of time.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Terrifying Visage', 'Terrifying Visage', 2, null, 'Your visage in Shadow Shroud becomes terrifying. Nearby enemies may be Feared, and Feared enemies may be driven to a state of Psychotic Break, Stunning them and dealing Dimensional damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Terrifying Visage', 'Terrifying Visage', 2, null, 'Your visage in Shadow Shroud becomes terrifying. Nearby enemies may be Feared, and Feared enemies may be driven to a state of Psychotic Break, Stunning them and dealing Dimensional Damage over Time.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow Form', '<img src="img/Darkness_ShadowForm.png" />&nbsp;Shadow Form', 6, 20, pow++, 1, 'Darkness, Slotted Offensive Passive and Energy Form<br /><br />Requires 1 power from Darkness or 2 non-Energy Building powers from any framework.<br /><br />Your knowledge of other dimensions has taught you how best to use your paranormal powers.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 20, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ebon Void', '<img src="img/Darkness_EbonVoid.png" />&nbsp;Ebon Void', 6, 20, pow++, 1, 'Darkness, Block<br /><br />Requires 1 power from Darkness or 2 non-Energy Building powers from any framework.<br /><br />Ebon Void creates a protective barrier that reduces incoming damage by bleeding off the damaging effects into another dimension.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -3400,7 +3702,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Group: Sorcery
 //------------------------------------------------------------------------------
 
-dataRequireGroup['sorcery'] = new Array();
+dataRequireGroup['sorcery'] = [];
 
 dataPowerAlias['Mystic Transference'] = new PowerAlias('Mystic Transference', 'Mystic Transference', 'Mystic Transference', 'You now only summon two of these Sigils, but they can be summoned alongside your other Sigils. This also lowers the base recharge time for these Sigils to 10 seconds, and reduces the charge time and cost of these Sigils.');
 dataPowerAlias['Unbound Ritual'] = new PowerAlias('Unbound Ritual', 'Unbound Ritual', 'Unbound Ritual', 'Causes the pet summoned by this Ritual to no longer be bound to the circle. This allows the summon to follow you around wherever you may go, and your pet no longer goes away when another Ritual pet is summoned. This advantage also adds an Energy Cost to this summon power.');
@@ -3414,7 +3716,7 @@ dataPowerAlias['Binding of Aratron'] = new PowerAlias('Binding of Aratron', 'Bin
 dataPowerAlias['Tenable Bonds'] = new PowerAlias('Tenable Bonds', 'Tenable Bonds', 'Tenable Bonds', 'While Binding of Aratron is maintained on your target it will drain the target\\\'s Energy and return Health to you.');
 dataPowerAlias['Tyrannons Familiar'] = new PowerAlias('Tyrannons Familiar', 'Tyrannon\'s Familiar', '<img src="img/Sorcery_TyrannonsFamiliar.png" />&nbsp;Tyrannon\'s Familiar', 'Sorcery, Controllable Pet<br /><br />Requires 1 power from Sorcery or 2 non-Energy Building powers from any framework.<br /><br />With this power you may summon a powerful sorcerous Golem Familiar to battle your enemies and empower your magic.');
 dataPowerAlias['Eldritch Shield'] = new PowerAlias('Eldritch Shield', 'Eldritch Shield', '<img src="img/Sorcery_EldritchShield.png" />&nbsp;Eldritch Shield', 'Sorcery, Block<br /><br />Requires 1 power from Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Eldritch Shield creates a protective barrier of focused magical energy.');
-dataPowerAlias['Imbue With Power'] = new PowerAlias('Imbue With Power', 'Imbue With Power', 'Imbue With Power', 'Adds a different effect to your shield based on which Aura you have active:<br />+ Aura of Arcane Clarity: Your shield now returns more Energy during a block, scaling with your Intelligence.<br />+ Aura of Primal Majesty: Your shield now has a chance to strike your attacker with a bolt of lightning.<br />+ Aura of Ebon Destruction: Your shield now has a chance to Fear your attackers.<br />+ Aura of Radiant Protection: Your shield now has a chance to place a heal over time on you.');
+dataPowerAlias['Imbue With Power'] = new PowerAlias('Imbue With Power', 'Imbue With Power', 'Imbue With Power', 'Adds a different effect to your shield based on which Aura you have active:<br />+ Aura of Arcane Clarity: Your shield now returns more Energy during a block, scaling with your Intelligence.<br />+ Aura of Primal Majesty: Your shield now has a chance to strike your attacker with a bolt of lightning.<br />+ Aura of Ebon Destruction: Your shield now has a chance to Fear your attackers.<br />+ Aura of Radiant Protection: Your shield now has a chance to place a Heal over Time on you.');
 dataPowerAlias['Pyromancers Blades'] = new PowerAlias('Pyromancers Blades', 'Pyromancer\'s Blades', '<img src="img/Sorcery_PyromancersBlades.png" />&nbsp;Pyromancer\'s Blades', 'Sorcery, Uncontrolled Pet<br /><br />Requires 3 powers from Sorcery or 4 non-Energy Building powers from any framework.<br /><br />Pyromancer\\\'s Blade summons scimitars of pure fire which magically float and attack your foes.');
 dataPowerAlias['Skarns Bane'] = new PowerAlias('Skarns Bane', 'Skarn\'s Bane', '<img src="img/Sorcery_SkarnsBane.png" />&nbsp;Skarn\'s Bane', 'Sorcery, 50 foot Ranged 45 degree Cone AoE Damage and Debuff<br /><br />Requires 5 powers from Sorcery or 6 non-Energy Building powers from any framework.<br /><br />Skarn\\\'s Bane unleashes a cone of degenerative energy upon your enemies, attacking both their mental and physical beings.');
 dataPowerAlias['Warlocks Malice'] = new PowerAlias('Warlocks Malice', 'Warlock\'s Malice', 'Warlock\'s Malice', 'Gives each pulse of Skarn\\\'s Bane a chance to Root the target.');
@@ -3423,12 +3725,13 @@ dataPowerAlias['Rune of Lethargy'] = new PowerAlias('Rune of Lethargy', 'Rune of
 dataPowerAlias['Urthonas Charm'] = new PowerAlias('Urthonas Charm', 'Urthona\'s Charm', '<img src="img/Sorcery_UrthonasCharm.png" />&nbsp;Urthona\'s Charm', 'Sorcery, 100 foot Ranged Single Target Confuse and Debuff<br /><br />Requires 5 powers from Sorcery or 6 non-Energy Building powers from any framework.<br /><br />Urthona\\\'s Charm attacks the mind of your target, causing them to become temporarily confused.');
 dataPowerAlias['Ephemeral Endowment'] = new PowerAlias('Ephemeral Endowment', 'Ephemeral Endowment', 'Ephemeral Endowment', 'Increases the damage, defense, and speed of the target of Urthona\\\'s Charm for a short duration.');
 dataPowerAlias['Valas Light'] = new PowerAlias('Valas Light', 'Vala\'s Light', '<img src="img/Sorcery_ValasLight.png" />&nbsp;Vala\'s Light', 'Sorcery, 50 foot Ranged 10 foot Sphere AoE Friend Heal<br /><br />Requires 5 powers from Sorcery or 6 non-Energy Building powers from any framework.<br /><br />You channel your magic into life restoring energy, healing multiple allies.');
-dataPowerAlias['Light Everlasting'] = new PowerAlias('Light Everlasting', 'Light Everlasting', 'Light Everlasting', 'When fully charged, adds a heal over time component to the power, healing a for portion of the full heal over 10 seconds.');
+dataPowerAlias['Light Everlasting'] = new PowerAlias('Light Everlasting', 'Light Everlasting', 'Light Everlasting', 'When fully charged, adds a Heal over Time component to the power, healing a for portion of the full heal over 10 seconds.');
 
 //------------------------------------------------------------------------------
 // Power Framework: Arcane Sorcery
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(21);
 dataRequireGroup['sorcery'].push(21);
 
 var pow = 0;
@@ -3473,6 +3776,12 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Arcane Clarit
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 21, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Tyrannons Familiar'].name, dataPowerAlias['Tyrannons Familiar'].desc, 6, 21, pow++, 1, dataPowerAlias['Tyrannons Familiar'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -3551,6 +3860,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Primal Sorcery
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(22);
 dataRequireGroup['sorcery'].push(22);
 
 var pow = 0;
@@ -3595,6 +3905,12 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Primal Majest
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 22, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Tyrannons Familiar'].name, dataPowerAlias['Tyrannons Familiar'].desc, 6, 22, pow++, 1, dataPowerAlias['Tyrannons Familiar'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -3673,6 +3989,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Ebon Sorcery
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(23);
 dataRequireGroup['sorcery'].push(23);
 
 var pow = 0;
@@ -3717,6 +4034,12 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Ebon Destruct
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 23, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Tyrannons Familiar'].name, dataPowerAlias['Tyrannons Familiar'].desc, 6, 23, pow++, 1, dataPowerAlias['Tyrannons Familiar'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -3795,6 +4118,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Radiant Sorcery
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(24);
 dataRequireGroup['sorcery'].push(24);
 
 var pow = 0;
@@ -3833,6 +4157,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Runic Glow', 'Runic Glow', 0, null, 'Grants your Aura of Radiant Protection the appearance of magical rune circles floating around you.'));
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 24, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Sigils of Radiant Sanctuary', '<img src="img/Sorcery_SigilsOfRadiantSanctuary.png" />&nbsp;Sigils of Radiant Sanctuary', 6, 24, pow++, 1, 'Radiant Sorcery, Sigils AoE Stealth Buff and Heal<br /><br />Requires 1 power from Radiant Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Sigils of Radiant Sanctuary summons 5 sigil stones that effectively hide and heal you and your allies within their circle.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -3918,7 +4248,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Group: Supernatural
 //------------------------------------------------------------------------------
 
-dataRequireGroup['supernatural'] = new Array();
+dataRequireGroup['supernatural'] = [];
 
 dataPowerAlias['Venomous Breath'] = new PowerAlias('Venomous Breath', 'Venomous Breath', '<img src="img/Supernatural_VenomousBreath.png" />&nbsp;Venomous Breath', 'Supernatural, 50 foot Ranged 45 degree Cone AoE Damage<br /><br />Requires 1 power from Supernatural or 2 non-Energy Building powers from any framework.<br /><br />Venomous Breath causes you to exhale a deadly mist of poison to choke and torment your enemies.');
 dataPowerAlias['Paralytic Bile'] = new PowerAlias('Paralytic Bile', 'Paralytic Bile', 'Paralytic Bile', 'Targets hit with Venemous Breath have a chance to suffer from an Infection that Stuns them for a short time. Targets that are Bleeding have a 100% chance to be Infected.');
@@ -3928,7 +4258,7 @@ dataPowerAlias['Regeneration'] = new PowerAlias('Regeneration', 'Regeneration', 
 dataPowerAlias['Pestilence'] = new PowerAlias('Pestilence', 'Pestilence', '<img src="img/Supernatural_Pestilence.png" />&nbsp;Pestilence', 'Supernatural, Slotted Defensive Passive, Damage over Time<br /><br />Requires 1 power from Supernatural or 2 non-Energy Building powers from any framework.<br /><br />You surround yourself in a cloud of unnatural filth, inflicting toxic damage and infesting your foes.');
 dataPowerAlias['Supernatural Power'] = new PowerAlias('Supernatural Power', 'Supernatural Power', '<img src="img/Supernatural_SupernaturalPower.png" />&nbsp;Supernatural Power', 'Supernatural, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Supernatural or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />You are able to tap into a nearly limitless pool of energy.');
 dataPowerAlias['Soul Mesmerism'] = new PowerAlias('Soul Mesmerism', 'Soul Mesmerism', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Soul Mesmerism', 'Supernatural, 50 foot Single Target Hold<br /><br />Requires 3 powers from Supernatural or 4 non-Energy Building powers from any framework.<br /><br />Soul Mesmerism attempts to hypnotize your enemy, preventing them from taking any actions.');
-dataPowerAlias['Glossolalia'] = new PowerAlias('Glossolalia', 'Glossolalia', 'Glossolalia', 'Your target begins speaking in tongues. Nearby foes take Sonic damage over time and have a chance to join in the chant. 20% chance per tick to apply a secondary Soul Mesmerism effect to nearby targets.');
+dataPowerAlias['Glossolalia'] = new PowerAlias('Glossolalia', 'Glossolalia', 'Glossolalia', 'Your target begins speaking in tongues. Nearby foes take Sonic Damage over Time and have a chance to join in the chant. 20% chance per tick to apply a secondary Soul Mesmerism effect to nearby targets.');
 dataPowerAlias['Resurgence'] = new PowerAlias('Resurgence', 'Resurgence', '<img src="img/Supernatural_Resurgence.png" />&nbsp;Resurgence', 'Supernatural, Active Defense Self Heal<br /><br />Requires 3 powers from Supernatural or 4 non-Energy Building powers from any framework.<br /><br />Resurgence focuses your body\\\'s healing power into a quick burst of Health.');
 dataPowerAlias['Evanescent Emergence'] = new PowerAlias('Evanescent Emergence', 'Evanescent Emergence', 'Evanescent Emergence', 'Using Resurgence while Held will help you break free of the Hold. Additionally, any time you use Resurgence while under 50% Health, you become Enraged or refresh the duration of Enraged.');
 
@@ -3936,6 +4266,7 @@ dataPowerAlias['Evanescent Emergence'] = new PowerAlias('Evanescent Emergence', 
 // Power Framework: Bestial Supernatural
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(25);
 dataRequireGroup['supernatural'].push(25);
 
 var pow = 0;
@@ -3993,6 +4324,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'supernatural';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 25, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Pounce', '<img src="img/Supernatural_Pounce.png" />&nbsp;Pounce', 6, 25, pow++, 1, 'Bestial Supernatural, 60 foot Lunge and Knock Down<br /><br />Requires 1 power from Bestial Supernatural or 2 non-Energy Building powers from any framework.<br /><br />Launch yourself through the air at your target, attacking and Knocking them down.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -4025,6 +4362,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Aspect of the Bestial
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Giant Growth'].name, dataPowerAlias['Giant Growth'].desc, 0, null, dataPowerAlias['Giant Growth'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Howl', '<img src="img/Supernatural_Howl.png" />&nbsp;Howl', 6, 25, pow++, 2, 'Bestial Supernatural, 25 foot Sphere PBAoE Friend Buff and Fear<br /><br />Requires 3 powers from Bestial Supernatural or 4 non-Energy Building powers from any framework.<br /><br />You let loose a fierce howl, inspiring your allies and frightening your foes.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -4054,6 +4392,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 // Power Framework: Infernal Supernatural
 //------------------------------------------------------------------------------
 
+dataRequireGroup['mystic'].push(26);
 dataRequireGroup['supernatural'].push(26);
 
 var pow = 0;
@@ -4135,6 +4474,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'supernatural';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 26, pow++, 1, dataPowerAlias['Compassion'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'mystic';
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Supernatural Power'].name, dataPowerAlias['Supernatural Power'].desc, 6, 26, pow++, 1, dataPowerAlias['Supernatural Power'].tip);
 dataEnergyUnlockPower[dataPower.length-1] = true;
 dataRequireGroupPower[dataPower.length-1] = 'supernatural';
@@ -4157,7 +4502,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Locust Swarm', '<img 
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Festering Bites', 'Festering Bites', 2, null, 'Each time your Locust Swarm deals damage, it has a 15% chance to apply Deadly Poison, which stacks up to 10 times and causes your target to suffer Toxic damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Festering Bites', 'Festering Bites', 2, null, 'Each time your Locust Swarm deals damage, it has a 15% chance to apply Deadly Poison, which stacks up to 10 times and causes your target to suffer Toxic Damage over Time.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Soul Mesmerism'].name, dataPowerAlias['Soul Mesmerism'].desc, 6, 26, pow++, 2, dataPowerAlias['Soul Mesmerism'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -4179,17 +4524,17 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
-// TODO: find proper image
-dataPower[dataPower.length] = new Power(dataPower.length, 'Aspect of the Ethereal', '<img src="img/Supernatural_AspectOfTheEthereal.png" />&nbsp;Aspect of the Ethereal', 6, 26, pow++, 2, 'Infernal Supernatural, Self Buff Form<br /><br />Requires 3 powers from Infernal Supernatural or 4 non-Energy Building powers from any framework.<br /><br />You focus on your connection with your Infernal powers, increasing their effect.');
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+// removed from game
+// dataPower[dataPower.length] = new Power(dataPower.length, 'Aspect of the Ethereal', '<img src="img/Supernatural_AspectOfTheEthereal.png" />&nbsp;Aspect of the Ethereal', 6, 26, pow++, 2, 'Infernal Supernatural, Self Buff Form<br /><br />Requires 3 powers from Infernal Supernatural or 4 non-Energy Building powers from any framework.<br /><br />You focus on your connection with your Infernal powers, increasing their effect.');
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+// dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Defile', '<img src="img/Supernatural_Defile.png" />&nbsp;Defile', 6, 26, pow++, 3, 'Infernal Supernatural, 100 foot Ranged Single Target Damage and Debuff<br /><br />Requires 5 powers from Infernal Supernatural or 6 non-Energy Building powers from any framework.<br /><br />Defile greatly damages your target and weakens their resistance to toxic damage.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Plague Bearer', 'Plague Bearer', 2, null, 'Fully charging Defile places an AoE Toxic DoT on your target. The target and other foes within 10 feet take Toxic damage over time.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Plague Bearer', 'Plague Bearer', 2, null, 'Fully charging Defile places an AoE Toxic DoT on your target. The target and other foes within 10 feet take Toxic Damage over Time.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Rebirth', '<img src="img/Supernatural_Rebirth.png" />&nbsp;Rebirth', 6, 26, pow++, 3, 'Infernal Supernatural, Self Resurrection and Heal<br /><br />Requires 5 powers from Infernal Supernatural or 6 non-Energy Building powers from any framework.<br /><br />Rebirth allows you to recover from defeat to take vengeance upon your enemies.');
@@ -4243,7 +4588,7 @@ Specialization = function(id, name, desc, tier, maxPoints, tip) {
 //==============================================================================
 
 // helper lookup functions
-var dataSuperStatIdFromName = new Array();
+var dataSuperStatIdFromName = [];
 for (var i=0; i<dataSuperStat.length; i++) {
     dataSuperStatIdFromName[dataSuperStat[i].name] = dataSuperStat[i].id;
 }
@@ -4256,12 +4601,12 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
     this.desc = desc;
     this.superStat = (superStat == null) ? null : dataSuperStatIdFromName[superStat];
     this.tip = tip;
-    this.specializationList = new Array();
+    this.specializationList = [];
     this.code = function() {
         return numToUrlCode(this.id);
     }
     this.getSpecializationList = function(mask) {
-        var specializationList = new Array();
+        var specializationList = [];
         for (var i=0; i<this.specializationList.length; i++) {
             if (mask > 0) {
                 var test1 = Math.pow(2, i*2);
@@ -4346,15 +4691,15 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
 }
 
 // specialization tree data
-var dataSpecializationTree = new Array();
+var dataSpecializationTree = [];
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, null, null, null, null);
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Strength', 'Strength', 'Strength', 'Primary Super Stat Strength');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Swole', '<img src="img/Brick_Defiance.png" />&nbsp;Swole', 1, 3, 'Strength now also grants you +1 Maximum Health Points.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Swole', '<img src="img/Brick_Defiance.png" />&nbsp;Swole', 1, 3, 'Strength now also grants you +1/2/3 Maximum Health Points.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Physical Peak', '<img src="img/SuperStat_Constitution.png" />&nbsp;Physical Peak', 1, 3, 'Your Secondary Super Stats now grant a cost discount to your Melee powers.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Quick Recovery', '<img src="img/Supernatural_Regeneration.png" />&nbsp;Quick Recovery', 1, 2, 'Your Recovery increases your Health Regeneration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Aggression', '<img src="img/Might_Retaliation.png" />&nbsp;Aggression', 1, 2, 'Increases the amount of Offense your receive from items by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Balance', '<img src="img/SuperStat_Strength.png" />&nbsp;Balance', 2, 2, 'Your Strength now grants Knock bonuses to your Ranged Knock powers, equal to 25% of the bonus it grants your Melee powers. However, this Specialization causes your Ego to no longer affect the Knock Strength of your Ranged powers.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Aggression', '<img src="img/Might_Retaliation.png" />&nbsp;Aggression', 1, 2, 'Increases the amount of Offense your receive from items by 10/20%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Balance', '<img src="img/SuperStat_Strength.png" />&nbsp;Balance', 2, 2, 'Your Strength now grants Knock bonuses to your Ranged Knock powers, equal to 25/50% of the bonus it grants your Melee powers. However, this Specialization causes your Ego to no longer affect the Knock Strength of your Ranged powers.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Brutality', '<img src="img/Might_Demolish.png" />&nbsp;Brutality', 2, 2, 'Your Secondary Super Stats now increase your Critical Severity.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Juggernaut', '<img src="img/Framework_Might.png" />&nbsp;Juggernaut', 2, 3, 'Your Constitution now grants Defense.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Overpower', '<img src="img/Might_Clobber.png" />&nbsp;Overpower', 2, 3, 'Your Strength now increases your Melee Critical Chance.'));
@@ -4362,200 +4707,200 @@ dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Dexterity', 'Dexterity', 'Dexterity', 'Primary Super Stat Dexterity');
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Combat Training', '<img src="img/Brick_Defiance.png" />&nbsp;Combat Training', 1, 3, 'Offense now also grants Critical Strike Rating.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Gear Utilization', '<img src="img/Specialization_GearUtilization.png" />&nbsp;Gear Utilization', 1, 3, 'Increases the amount of Offense and Defense you receive from items by 6%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Brush It Off', '<img src="img/Specialization_BrushItOff.png" />&nbsp;Brush It Off', 1, 2, 'Increases your chance to Dodge AoE attacks by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Power Swell', '<img src="img/Specialization_PowerSwell.png" />&nbsp;Power Swell', 1, 2, 'Whenever you get a Critical Strike, the cost of your next Damage or Healing power activation is reduced by 5%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Gear Utilization', '<img src="img/Specialization_GearUtilization.png" />&nbsp;Gear Utilization', 1, 3, 'Increases the amount of Offense and Defense you receive from items by 6/12/18%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Brush It Off', '<img src="img/Specialization_BrushItOff.png" />&nbsp;Brush It Off', 1, 2, 'Increases your chance to Dodge AoE attacks by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Power Swell', '<img src="img/Specialization_PowerSwell.png" />&nbsp;Power Swell', 1, 2, 'Whenever you get a Critical Strike, the cost of your next Damage or Healing power activation is reduced by 5/10%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Evasion', '<img src="img/Archery_EvasiveManeuvers.png" />&nbsp;Evasion', 2, 2, 'Your Secondary Super Stats now grant Avoidance Rating.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Deadly Aim', '<img src="img/Specialization_DeadlyAim.png" />&nbsp;Deadly Aim', 2, 3, 'Your Secondary Super Stats now increase your Critical Severity.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Expose Weakness', '<img src="img/Munitions_SniperRifle.png" />&nbsp;Expose Weakness', 2, 2, 'Whenever you Critically Strike a foe, you reduce their resistance to your attacks by 1% for 10 seconds. This effect stacks up to 5 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Expose Weakness', '<img src="img/Munitions_SniperRifle.png" />&nbsp;Expose Weakness', 2, 2, 'Whenever you Critically Strike a foe, you reduce their resistance to your attacks by 1/2% for 10 seconds. This effect stacks up to 5 times.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Quick Reflexes', '<img src="img/MartialArts_MasterfulDodge.png" />&nbsp;Quick Reflexes', 2, 3, 'Your Dexterity now grants Dodge Chance Rating.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Dexterity Mastery', '<img src="img/SuperStat_Dexterity.png" />&nbsp;Dexterity Mastery', 3, 1, 'You gain 20 Dexterity and 10 Critical Severity Rating and Avoidance Rating.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Constitution', 'Constitution', 'Constitution', 'Primary Super Stat Constitution');
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Unyielding', '<img src="img/PowerArmor_Invulnerability.png" />&nbsp;Unyielding', 1, 2, 'Your Constitution now increases your Hold Restistance.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Fuel My Fire', '<img src="img/Specialization_FuelMyFire.png" />&nbsp;Fuel My Fire', 1, 3, 'Taking damage grants you 2% of your Maximum Energy. This effect can only occur once per second.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Tough', '<img src="img/Brick_Defiance.png" />&nbsp;Tough', 1, 3, 'Your Secondary Super Stats now provide an additional 0.5 Maximum Health Points.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Fuel My Fire', '<img src="img/Specialization_FuelMyFire.png" />&nbsp;Fuel My Fire', 1, 3, 'Taking damage grants you 2/4/6% of your Maximum Energy. This effect can only occur once per second.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Tough', '<img src="img/Brick_Defiance.png" />&nbsp;Tough', 1, 3, 'Your Secondary Super Stats now provide an additional 0.5/1/1.5 Maximum Health Points.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Resilient', '<img src="img/PowerArmor_Unbreakable.png" />&nbsp;Resilient', 1, 2, 'Your Constitution now increases your Knock Resistance.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Deflection', '<img src="img/MartialArts_Parry.png" />&nbsp;Deflection', 2, 3, 'Your Dexterity now grants Dodge Chance Rating.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Quick Healing', '<img src="img/Supernatural_Regeneration.png" />&nbsp;Quick Healing', 2, 3, 'Your Secondary Super Stats increase your Health Regeneration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Adrenaline Rush', '<img src="img/SuperStat_Constitution.png" />&nbsp;Adrenaline Rush', 2, 2, 'Whenever one of your attacks critically hits, you are healed for 1% of your Maximum Health.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Armored', '<img src="img/Specialization_Armored.png" />&nbsp;Armored', 2, 2, 'Increases the amount of Defense you receive from items by 10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Adrenaline Rush', '<img src="img/SuperStat_Constitution.png" />&nbsp;Adrenaline Rush', 2, 2, 'Whenever one of your attacks critically hits, you are healed for 1/2% of your Maximum Health.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Armored', '<img src="img/Specialization_Armored.png" />&nbsp;Armored', 2, 2, 'Increases the amount of Defense you receive from items by 10/20%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Constitution Mastery', '<img src="img/SuperStat_Constitution.png" />&nbsp;Constitution Mastery', 3, 1, 'You gain 20 Constitution and Defense.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Intelligence', 'Intelligence', 'Intelligence', 'Primary Super Stat Intelligence');
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Preparation', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Preparation', 1, 2, 'Your Endurance increases your Equilibrium.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Enlightened', '<img src="img/Mentalist_MindLink.png" />&nbsp;Enlightened', 1, 3, 'Your non-Super Stats grant 10% more than their normal stated bonuses.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Enlightened', '<img src="img/Mentalist_MindLink.png" />&nbsp;Enlightened', 1, 3, 'Your non-Super Stats grant 10/20/30% more than their normal stated bonuses.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Tactician', '<img src="img/Specialization_Tactician.png" />&nbsp;Tactician', 1, 2, 'Your Secondary Super Stats now grant Offense.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Battle of Wits', '<img src="img/Sorcery_AuraOfEbonDestruction.png" />&nbsp;Battle of Wits', 1, 3, 'Your Intelligence now grants a bonus to Hold Strength.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Revitalize', '<img src="img/Celestial_Seraphim.png" />&nbsp;Revitalize', 2, 3, 'Your Energy Builder reduces the remaining recharge time of all your currently recharging abilities by 2%. This effect can only occur once every 2 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Revitalize', '<img src="img/Celestial_Seraphim.png" />&nbsp;Revitalize', 2, 3, 'Your Energy Builder reduces the remaining recharge time of all your currently recharging abilities by 2/4/6%. This effect can only occur once every 2 seconds.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Detect Vulnerability', '<img src="img/PowerArmor_TargetingComputer.png" />&nbsp;Detect Vulnerability', 2, 3, 'Your Intelligence now grants Defense Penetration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Tinkering', '<img src="img/Specialization_Tinkering.png" />&nbsp;Tinkering', 2, 2, 'Increases the amount of Offense and Defense you receive from items by 6%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Expertise', '<img src="img/Specialization_Expertise.png" />&nbsp;Expertise', 2, 2, 'Your Secondary Super Stats grant 10% more of their normal stated bonuses. (This does not affect the bonus Damage, Healing, or Threat modifiers granted from your Secondary Super Stats, only the default bonuses of those stats.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Tinkering', '<img src="img/Specialization_Tinkering.png" />&nbsp;Tinkering', 2, 2, 'Increases the amount of Offense and Defense you receive from items by 6/12%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Expertise', '<img src="img/Specialization_Expertise.png" />&nbsp;Expertise', 2, 2, 'Your Secondary Super Stats grant 10/20% more of their normal stated bonuses. (This does not affect the bonus Damage, Healing, or Threat modifiers granted from your Secondary Super Stats, only the default bonuses of those stats.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Intelligence Mastery', '<img src="img/SuperStat_Intelligence.png" />&nbsp;Intelligence Mastery', 3, 1, 'Increases all of your non-Super Stats by 10.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Ego', 'Ego', 'Ego', 'Primary Super Stat Ego');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Mental Endurance', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Mental Endurance', 1, 3, 'Increases the amount of Maximum Energy your Recovery grants by 33%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Mental Endurance', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Mental Endurance', 1, 3, 'Increases the amount of Maximum Energy your Recovery grants by 33/67/100%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Force of Will', '<img src="img/Telepathy_TelepathicReverberation.png" />&nbsp;Force of Will', 1, 2, 'Your Secondary Super Stats now grant Defense.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Insight', '<img src="img/Sorcery_CircleOfPrimalDominion.png" />&nbsp;Insight', 1, 3, 'Your Ego now grants a Cost Discount to your Ranged powers.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Aggression', '<img src="img/Might_Retaliation.png" />&nbsp;Aggression', 1, 2, 'Increases the amount of Offense you receive from items by 10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Aggression', '<img src="img/Might_Retaliation.png" />&nbsp;Aggression', 1, 2, 'Increases the amount of Offense you receive from items by 10/20%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Follow Through', '<img src="img/Telekinesis_EgoBladeBreach.png" />&nbsp;Follow Through', 2, 3, 'Your Ego now increases your Critical Severity.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Exploit Opening', '<img src="img/Telekinesis_Telekinesis.png" />&nbsp;Exploit Opening', 2, 2, 'Whenever you Critically Strike a foe, your next non-Critical Strike deals additional Damage equal to 15% of your Critical Severity.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Exploit Opening', '<img src="img/Telekinesis_Telekinesis.png" />&nbsp;Exploit Opening', 2, 2, 'Whenever you Critically Strike a foe, your next non-Critical Strike deals additional Damage equal to 15/30% of your Critical Severity.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Sixth Sense', '<img src="img/SuperStat_Ego.png" />&nbsp;Sixth Sense', 2, 3, 'Your Secondary Super Stats now increase your Critical Chance.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Mind over Matter', '<img src="img/Telekinesis_Telekinesis.png" />&nbsp;Mind over Matter', 2, 2, 'Your Ego now grants Knock bonuses to your Melee Knock powers, equal to 25% the bonus it grants your Ranged powers. However, this Specialization causes your Strength to no longer affect the Knock Strength of your Melee powers.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Mind over Matter', '<img src="img/Telekinesis_Telekinesis.png" />&nbsp;Mind over Matter', 2, 2, 'Your Ego now grants Knock bonuses to your Melee Knock powers, equal to 25/50% the bonus it grants your Ranged powers. However, this Specialization causes your Strength to no longer affect the Knock Strength of your Melee powers.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Ego Mastery', '<img src="img/SuperStat_Ego.png" />&nbsp;Ego Mastery', 3, 1, 'Increases your Secondary Super Stats by 20.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Presence', 'Presence', 'Presence', 'Primary Super Stat Presence');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Repurpose', '<img src="img/MartialArts_BountifulChiResurgence.png" />&nbsp;Repurpose', 1, 3, 'Your Offense from items now grants +0.1% Bonus Healing for each point of Offense.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Selfless Ally', '<img src="img/Celestial_Ascension.png" />&nbsp;Selfless Ally', 1, 2, 'Healing a friendly target heals you for 5% of that amount.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Dominion', '<img src="img/Sorcery_BindingOfAratron.png" />&nbsp;Dominion', 1, 2, 'Increases the amount of Hold Strength your Presence grants by 25%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Grandeur', '<img src="img/Celestial_Seraphim.png" />&nbsp;Grandeur', 1, 3, 'You gain 1 Offense for every 10 Presence you have.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Brilliance', '<img src="img/Celestial_Illumination.png" />&nbsp;Brilliance', 2, 3, 'Your Critical Heals now increase the healing you do to that target by 1% for 10 seconds. This effect stacks up to 3 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Repurpose', '<img src="img/MartialArts_BountifulChiResurgence.png" />&nbsp;Repurpose', 1, 3, 'Your Offense from items now grants 0.1/0.2/0.3% Bonus Healing for each point of Offense.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Selfless Ally', '<img src="img/Celestial_Ascension.png" />&nbsp;Selfless Ally', 1, 2, 'Healing a friendly target heals you for 5/10% of that amount.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Dominion', '<img src="img/Sorcery_BindingOfAratron.png" />&nbsp;Dominion', 1, 2, 'Increases the amount of Hold Strength your Presence grants by 25/50%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Grandeur', '<img src="img/Celestial_Seraphim.png" />&nbsp;Grandeur', 1, 3, 'You gain 1/2/3 Offense for every 10 Presence you have.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Brilliance', '<img src="img/Celestial_Illumination.png" />&nbsp;Brilliance', 2, 3, 'Your Critical Heals now increase the healing you do to that target by 1/2/3% for 10 seconds. This effect stacks up to 3 times.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Moment of Glory', '<img src="img/Force_KineticManipulation.png" />&nbsp;Moment of Glory', 2, 3, 'Your Secondary Super Stats now increase your Critical Chance.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Force of Will', '<img src="img/Telepathy_TelepathicReverberation.png" />&nbsp;Force of Will', 2, 2, 'Your Secondary Super Stats now grant Defense.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Vulnerability', '<img src="img/Supernatural_DevourEssence.png" />&nbsp;Vulnerability', 2, 2, 'Your Paralyze and Sleep effects now decrease the target\\\'s Resistances by 5% for 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Vulnerability', '<img src="img/Supernatural_DevourEssence.png" />&nbsp;Vulnerability', 2, 2, 'Your Paralyze and Sleep effects now decrease the target\\\'s Resistances by 5/10% for 5 seconds.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Presence Mastery', '<img src="img/SuperStat_Recovery.png" />&nbsp;Presence Mastery', 3, 1, 'Your direct Heals also Shield your target for 10% of the amount Healed, and your direct Shields also grant the target 10% additional Healing received. Both of these effects last 6 seconds.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Recovery', 'Recovery', 'Recovery', 'Primary Super Stat Recovery');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Gear Utilization', '<img src="img/Specialization_GearUtilization.png" />&nbsp;Gear Utilization', 1, 3, 'Increases the amount of Offense and Defense you receive from items by 6%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Withstand', '<img src="img/Force_KineticManipulation.png" />&nbsp;Withstand', 1, 2, 'You gain 1 Crowd Control Resistance Rating for every 20 points you have in your Secondary Super Stats.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Gear Utilization', '<img src="img/Specialization_GearUtilization.png" />&nbsp;Gear Utilization', 1, 3, 'Increases the amount of Offense and Defense you receive from items by 6/12/18%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Withstand', '<img src="img/Force_KineticManipulation.png" />&nbsp;Withstand', 1, 2, 'You gain 1/2 Crowd Control Resistance Rating for every 20 points you have in your Secondary Super Stats.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Rapid Recovery', '<img src="img/Supernatural_Regeneration.png" />&nbsp;Rapid Recovery', 1, 3, 'Your Recovery increases your Health Regeneration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Staying Power', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Staying Power', 1, 2, 'Increases the amount of Maximum Energy your Recovery grants by 50%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Super Charged', '<img src="img/Specialization_SuperCharged.png" />&nbsp;Super Charged', 2, 3, 'When your Energy level is above 90%, your chance to Critically Strike is increased 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Efficient', '<img src="img/Electricity_IonicReverberation.png" />&nbsp;Efficient', 2, 3, 'Increases the amount of Energy gained from Energy Unlock powers by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Well Rounded', '<img src="img/Sorcery_AuraOfPrimalMajesty.png" />&nbsp;Well Rounded', 2, 2, 'Your non-Super Stats increase your Maximum Health by 1 and Maximum Energy by 0.1.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Staying Power', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Staying Power', 1, 2, 'Increases the amount of Maximum Energy your Recovery grants by 50/100%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Super Charged', '<img src="img/Specialization_SuperCharged.png" />&nbsp;Super Charged', 2, 3, 'When your Energy level is above 90%, your chance to Critically Strike is increased 5/10/15%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Efficient', '<img src="img/Electricity_IonicReverberation.png" />&nbsp;Efficient', 2, 3, 'Increases the amount of Energy gained from Energy Unlock powers by 5/10/15%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Well Rounded', '<img src="img/Sorcery_AuraOfPrimalMajesty.png" />&nbsp;Well Rounded', 2, 2, 'Your non-Super Stats increase your Maximum Health by 1/2 and Maximum Energy by 0.1/0.2.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Second Wind', '<img src="img/Wind_Stormbringer.png" />&nbsp;Second Wind', 2, 2, 'Your Secondary Super Stats increase your Power Recharge Speed.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Recovery Mastery', '<img src="img/SuperStat_Recovery.png" />&nbsp;Recovery Mastery', 3, 1, 'Increases all of your Super Stats by 10.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Endurance', 'Endurance', 'Endurance', 'Primary Super Stat Endurance');
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Readiness', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Readiness', 1, 3, 'Your Endurance increases your Equilibrium.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Withstand', '<img src="img/Force_KineticManipulation.png" />&nbsp;Withstand', 1, 2, 'You gain 1 Crowd Control Resistance Rating for every 20 points you have in your Secondary Super Stats.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Gear Utilization', '<img src="img/Specialization_GearUtilization.png" />&nbsp;Gear Utilization', 1, 3, 'Increases the amount of Offense and Defense you receive from items by 6%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Kickback', '<img src="img/Celestial_Seraphim.png" />&nbsp;Kickback', 1, 2, 'Your Energy Builder causes your next non-Energy Builder attack to grant 5% of your Maximum Energy.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Gear Utilization', '<img src="img/Specialization_GearUtilization.png" />&nbsp;Gear Utilization', 1, 3, 'Increases the amount of Offense and Defense you receive from items by 6/12/18%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Kickback', '<img src="img/Celestial_Seraphim.png" />&nbsp;Kickback', 1, 2, 'Your Energy Builder causes your next non-Energy Builder attack to grant 5/10% of your Maximum Energy.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Quick Recovery', '<img src="img/Supernatural_Regeneration.png" />&nbsp;Quick Recovery', 1, 2, 'Your Recovery increases your Health Regeneration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Outburst', '<img src="img/Specialization_SuperCharged.png" />&nbsp;Outburst', 2, 3, 'When your Energy is above 90%, the Damage, Healing, and Energy Costs of your powers are increased by 5%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Outburst', '<img src="img/Specialization_SuperCharged.png" />&nbsp;Outburst', 2, 3, 'When your Energy is above 90%, the Damage, Healing, and Energy Costs of your powers are increased by 5/10/15%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Power Overwhelming', '<img src="img/Fire_ThermalReverberation.png" />&nbsp;Power Overwhelming', 2, 3, 'Your Secondary Super Stats now grant Offense.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Hardened', '<img src="img/SuperStat_Constitution.png" />&nbsp;Hardened', 2, 2, 'Your Endurance now provides an additional +2 Maximum Health Points.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Hardened', '<img src="img/SuperStat_Constitution.png" />&nbsp;Hardened', 2, 2, 'Your Endurance now provides an additional 2/4 Maximum Health Points.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Endurance Mastery', '<img src="img/SuperStat_Endurance.png" />&nbsp;Endurance Mastery', 3, 1, 'You gain 3% of your Maximum Energy when certain criteria are met, dependent on your Role:<br /><br />Tank Role: Whenever you take Damage. This effect can only occur once every 3 seconds.<br /><br />Melee Damage or Ranged Damage Roles: Whenever you deal Damage. This effect can only occur once every 3 seconds.<br /><br />Support Role: Whenever you Heal a target. This effect can only occur once every 3 seconds.<br /><br />Hybrid Role: Every 5 seconds you are in combat.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Protector', 'Protector', null, 'Pure Tank');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Beacon of Hope', '<img src="img/Celestial_Illumination.png" />&nbsp;Beacon of Hope', 1, 3, 'Increase healing received from others by 3%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Unrelenting', '<img src="img/Specialization_Unrelenting.png" />&nbsp;Unrelenting', 1, 2, 'Snares no longer reduce your Movement Speed, and your Run Speed is increased by 10%. These effects do not apply when your travel powers are active.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Bulwark', '<img src="img/Might_Retaliation.png" />&nbsp;Bulwark', 1, 2, 'Increases your Maximum Health by 5% when not in the Hybrid role. When in the Hybrid role, this Specialization instead causes your Super Stats to increase your Threat Generation.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Debilitating Challenge', '<img src="img/Specialization_DebilitatingChallenge.png" />&nbsp;Debilitating Challenge', 2, 2, 'Your Crippling Challenge now also lowers the Damage Resistance of your target by 2%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Exhausting Strikes', '<img src="img/Specialization_ExhaustingStrikes.png" />&nbsp;Exhausting Strikes', 2, 2, 'Your Energy Builder attacks now reduce your primary target\\\'s Damage dealt by 5% for 10 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Defensive Expertise', '<img src="img/Brick_Unstoppable.png" />&nbsp;Defensive Expertise', 2, 3, 'Your Active Defense powers benefit from an additional 7% Power Recharge Reduction.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Resolute', '<img src="img/PowerArmor_Unbreakable.png" />&nbsp;Resolute', 2, 3, 'Whenever you are Knocked or Held, you regain 2% of your Maximum Health over the next 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10/20/30%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Beacon of Hope', '<img src="img/Celestial_Illumination.png" />&nbsp;Beacon of Hope', 1, 3, 'Increase healing received from others by 3/6/9%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Unrelenting', '<img src="img/Specialization_Unrelenting.png" />&nbsp;Unrelenting', 1, 2, 'Snares no longer reduce your Movement Speed, and your Run Speed is increased by 10/20%. These effects do not apply when your travel powers are active.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Bulwark', '<img src="img/Might_Retaliation.png" />&nbsp;Bulwark', 1, 2, 'Increases your Maximum Health by 5/10% when not in the Hybrid role. When in the Hybrid role, this Specialization instead causes your Super Stats to increase your Threat Generation.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Debilitating Challenge', '<img src="img/Specialization_DebilitatingChallenge.png" />&nbsp;Debilitating Challenge', 2, 2, 'Your Crippling Challenge now also lowers the Damage Resistance of your target by 2/4%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Exhausting Strikes', '<img src="img/Specialization_ExhaustingStrikes.png" />&nbsp;Exhausting Strikes', 2, 2, 'Your Energy Builder attacks now reduce your primary target\\\'s Damage dealt by 5/10% for 10 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Defensive Expertise', '<img src="img/Brick_Unstoppable.png" />&nbsp;Defensive Expertise', 2, 3, 'Your Active Defense powers benefit from an additional 7/14/21% Power Recharge Reduction.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Resolute', '<img src="img/PowerArmor_Unbreakable.png" />&nbsp;Resolute', 2, 3, 'Whenever you are Knocked or Held, you regain 2/4/6% of your Maximum Health over the next 5 seconds.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Protector Mastery', '<img src="img/blank.png" />&nbsp;Protector Mastery', 3, 1, 'Whenever a damaging attack brings you below 30% Health, the Recharge Time on your Active Defense powers is reset. This effect can only occur once every 60 seconds.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Brawler', 'Brawler', null, 'Pure Melee');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'The Glory of Battle', '<img src="img/FightingClaws_FormOfTheTiger.png" />&nbsp;The Glory of Battle', 1, 3, 'Your AoE attacks grant a stack of Glory for each target they hit. When you reach 30 stacks of Glory, the stack is consumed and becomes Glorious Battle, which grants you 16 Offense and Critical Strike Rating. Glorious Battle lasts for 15 seconds, and prevents you from gaining additional stacks of Glory for the duration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'No Escape', '<img src="img/Specialization_NoEscape.png" />&nbsp;No Escape', 1, 3, 'Your Energy Builder has a 33% chance to Daze your target for 4 seconds if they are within 10 feet of you. Dazed characters move 20% slower.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Penetrating Strikes', '<img src="img/FightingClaws_TigersBite.png" />&nbsp;Penetrating Strikes', 1, 2, 'Your Melee Critical Strikes debuff your target, causing further attacks to ignore 5% of the target\'s Resistance. Lasts for 5 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Finishing Blow', '<img src="img/Specialization_FinishingBlow.png" />&nbsp;Finishing Blow', 2, 3, 'Your Single Target attacks now do an additional 3.3% Base Damage to targets under 35% Health.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Setup', '<img src="img/DualBlades_RainOfSteel.png" />&nbsp;Setup', 2, 2, 'Your Melee Combo attacks have an increasing chance to cause your next non-Combo Melee attack to deal an additional 10% Base Damage.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Flanking', '<img src="img/FightingClaws_DragonsClaws.png" />&nbsp;Flanking', 2, 3, 'Increases the Melee Damage you deal from behind your target by 3.3%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Offensive Expertise', '<img src="img/MartialArts_Intensity.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7% Power Recharge Reduction.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'The Glory of Battle', '<img src="img/FightingClaws_FormOfTheTiger.png" />&nbsp;The Glory of Battle', 1, 3, 'Your AoE attacks grant a stack of Glory for each target they hit. When you reach 30 stacks of Glory, the stack is consumed and becomes Glorious Battle, which grants you 16/33/49 Offense and Critical Strike Rating. Glorious Battle lasts for 15 seconds, and prevents you from gaining additional stacks of Glory for the duration.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'No Escape', '<img src="img/Specialization_NoEscape.png" />&nbsp;No Escape', 1, 3, 'Your Energy Builder has a 33/67/100% chance to Daze your target for 4 seconds if they are within 10 feet of you. Dazed characters move 20% slower.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Penetrating Strikes', '<img src="img/FightingClaws_TigersBite.png" />&nbsp;Penetrating Strikes', 1, 2, 'Your Melee Critical Strikes Debuff your target, causing further attacks to ignore 5/10% of the target\\\'s Resistance. Lasts for 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Finishing Blow', '<img src="img/Specialization_FinishingBlow.png" />&nbsp;Finishing Blow', 2, 3, 'Your Single Target attacks now do an additional 3.3/6.7/10% Base Damage to targets under 35% Health.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Setup', '<img src="img/DualBlades_RainOfSteel.png" />&nbsp;Setup', 2, 2, 'Your Melee Combo attacks have an increasing chance to cause your next non-Combo Melee attack to deal an additional 10/20% Base Damage.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Flanking', '<img src="img/FightingClaws_DragonsClaws.png" />&nbsp;Flanking', 2, 3, 'Increases the Melee Damage you deal from behind your target by 3.3/6.7/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Offensive Expertise', '<img src="img/MartialArts_Intensity.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7/14% Power Recharge Reduction.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Brawler Mastery', '<img src="img/blank.png" />&nbsp;Brawler Mastery', 3, 1, 'Whenever you lunge, the Base Damage of your next Melee attack is increased by % [unknown value]. This effect can only occur once every 10 seconds.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Avenger', 'Avenger', null, 'Pure Range');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Can\'t Touch This', '<img src="img/Specialization_CantTouchThis.png" />&nbsp;Can\'t Touch This', 1, 3, 'When your Energy Builder deals Damage it has a 33% chance to Daze your target for 4 seconds if they are more than 10 feet away from you. Dazed characters move 20% slower.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Anguish', '<img src="img/Specialization_Anguish.png" />&nbsp;Anguish', 1, 2, 'Whenever you Critically Strike with a Ranged attack, you deal an additional 15 Penetrating Damage every 2 seconds for 6 seconds. (Penetrating Damage is only resisted by Resistance to All Damage, and ignores half of that Resistance. Penetrating Damage also ignores half of the absorption provided by Shields.)'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Round \'em Up', '<img src="img/Might_IronCyclone.png" />&nbsp;Round \'em Up', 1, 3, 'Your AoE attacks cuase your targets to take 1% more Damage from further AoE attacks you make. Stacks up to 3 times and lasts 10 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Surprise Attack', '<img src="img/Electricity_Electrocute.png" />&nbsp;Surprise Attack', 2, 2, 'Your Single Target attacks now have an additional 10% Critical Chance on targets above 90% Health.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Relentless Assault', '<img src="img/Supernatural_AspectOfTheInfernal.png" />&nbsp;Relentless Assault', 2, 3, 'Your Maintained attacks increase your Offense by 10 for 8 seconds. Stacks up to 5 times.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Offensive Expertise', '<img src="img/MartialArts_Intensity.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7% Power Recharge Reduction.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Preemptive Strike', '<img src="img/Fire_ThrowFire.png" />&nbsp;Preemptive Strike', 2, 3, 'Your Ranged Blast attacks cause your next non-Blast Ranged attack to deal an additional 5% Base Damage.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Can\'t Touch This', '<img src="img/Specialization_CantTouchThis.png" />&nbsp;Can\'t Touch This', 1, 3, 'When your Energy Builder deals Damage it has a 33/67/100% chance to Daze your target for 4 seconds if they are more than 10 feet away from you. Dazed characters move 20% slower.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Anguish', '<img src="img/Specialization_Anguish.png" />&nbsp;Anguish', 1, 2, 'Whenever you Critically Strike with a Ranged attack, you deal an additional N Penetrating Damage every 2 seconds for 6 seconds. (Penetrating Damage is only resisted by Resistance to all damage, and ignores half of that Resistance. Penetrating Damage also ignores half of the absorption provided by Shields.)'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Round \'em Up', '<img src="img/Might_IronCyclone.png" />&nbsp;Round \'em Up', 1, 3, 'Your AoE attacks cuase your targets to take 1/2/3% more Damage from further AoE attacks you make. Stacks up to 3 times and lasts 10 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Surprise Attack', '<img src="img/Electricity_Electrocute.png" />&nbsp;Surprise Attack', 2, 2, 'Your Single Target attacks now have an additional 10/20% Critical Chance on targets above 90% Health.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Relentless Assault', '<img src="img/Supernatural_AspectOfTheInfernal.png" />&nbsp;Relentless Assault', 2, 3, 'Your Maintained attacks increase your Offense by 10/20/30 for 8 seconds. Stacks up to 5 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Offensive Expertise', '<img src="img/MartialArts_Intensity.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7/14% Power Recharge Reduction.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Preemptive Strike', '<img src="img/Fire_ThrowFire.png" />&nbsp;Preemptive Strike', 2, 3, 'Your Ranged Blast attacks cause your next non-Blast Ranged attack to deal an additional 5/10/15% Base Damage.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Avenger Mastery', '<img src="img/blank.png" />&nbsp;Avenger Mastery', 3, 1, 'Whenever you get 2 Critical attacks within 5 seconds, your next Blast power has its Charge Time reduced by 50%.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Sentinel', 'Sentinel', null, 'Pure Support');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Torment', '<img src="img/Specialization_Torment.png" />&nbsp;Torment', 1, 2, 'Increases the duration of your Hold powers by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Eternal Spring', '<img src="img/Telepathy_EmpathicHealing.png" />&nbsp;Eternal Spring', 1, 2, 'Your Critical Heals heal for an additional 10% over 6 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Caregiver', '<img src="img/Specialization_Caregiver.png" />&nbsp;Caregiver', 1, 3, 'The strength of your Heals and Shields on other players is increased by 4%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Torment', '<img src="img/Specialization_Torment.png" />&nbsp;Torment', 1, 2, 'Increases the duration of your Hold powers by 10/20%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Eternal Spring', '<img src="img/Telepathy_EmpathicHealing.png" />&nbsp;Eternal Spring', 1, 2, 'Your Critical Heals heal for an additional 10/20% over 6 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Caregiver', '<img src="img/Specialization_Caregiver.png" />&nbsp;Caregiver', 1, 3, 'The strength of your Heals and Shields on other players is increased by 4/8/12%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Sentinel Aura', '<img src="img/Specialization_SentinelAura.png" />&nbsp;Sentinel Aura', 1, 3, 'You and your teammates regain N Health every 3 seconds. This number is based on your level, and is affected by your Bonus Healing.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Moment of Need', '<img src="img/Specialization_MomentOfNeed.png" />&nbsp;Moment of Need', 2, 3, 'Increase your chance to get a Critical Heal effect by 3%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Rejuvenated', '<img src="img/Telepathy_TelepathicReverberation.png" />&nbsp;Rejuvenated', 2, 3, 'Your Active Heal over Time (HoT) ticks have a 33% chance to grant you 5.9 Energy. This effect can only occur once every 2 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Wither', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Wither', 2, 2, 'Your Hold effects (Paralyze, Stun, Sleep) now also cause your target to take an additional 5% Damage.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Genesis', '<img src="img/Celestial_Seraphim.png" />&nbsp;Genesis', 2, 2, 'Reduces the Energy Cost of your Heals, Shields, Confuses, Incapacitates, Paralyzes, and Placates by 10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Moment of Need', '<img src="img/Specialization_MomentOfNeed.png" />&nbsp;Moment of Need', 2, 3, 'Increase your chance to get a Critical Heal effect by 3/6/9%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Rejuvenated', '<img src="img/Telepathy_TelepathicReverberation.png" />&nbsp;Rejuvenated', 2, 3, 'Your Active Heal over Time (HoT) ticks have a 33/67/100% chance to grant you 5.9 Energy. This effect can only occur once every 2 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Wither', '<img src="img/Supernatural_SoulMesmerism.png" />&nbsp;Wither', 2, 2, 'Your Hold effects (Paralyze, Stun, Sleep) now also cause your target to take an additional 5/10% Damage.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Genesis', '<img src="img/Celestial_Seraphim.png" />&nbsp;Genesis', 2, 2, 'Reduces the Energy Cost of your Heals, Shields, Confuses, Incapacitates, Paralyzes, and Placates by 10/20%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Sentinel Mastery', '<img src="img/blank.png" />&nbsp;Sentinel Mastery', 3, 1, 'Your Paralyze, Incapacitate, Stun, and Sleep effects cause allies who strike the affected target to be Healed for 2% of their Maximum Health. A target can only be affected by this Heal once every second. The duration of this effect lasts up to 8 seconds, but is dependent on the Rank of your target.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Commander', 'Commander', null, 'Pure Pet');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Evasive Action', '<img src="img/Archery_EvasiveManeuvers.png" />&nbsp;Evasive Action', 1, 2, 'Grants your pet an additional 25% Resistance to All Damage against AoE attacks.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Rapid Response', '<img src="img/Specialization_RapidResponse.png" />&nbsp;Rapid Response', 1, 2, 'Decrease the summon time of your pet powers by 0.5 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Create An Opening', '<img src="img/Specialization_CreateAnOpening.png" />&nbsp;Create An Opening', 1, 2, 'Whenever you Critically Strike, your pets Critical Strike Chance is increased by 10% for 5 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Multitasker', '<img src="img/Gadgeteering_SupportDrones.png" />&nbsp;Multitasker', 1, 3, 'Reduces the Energy penalty caused by having pets out by 17%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Well Trained', '<img src="img/Supernatural_Lash.png" />&nbsp;Well Trained', 2, 2, 'The recharge time of all of your pet\\\'s abilities is reduced by 10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Evasive Action', '<img src="img/Archery_EvasiveManeuvers.png" />&nbsp;Evasive Action', 1, 2, 'Grants your pet an additional 25/50% Resistance to all damage against AoE attacks.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Rapid Response', '<img src="img/Specialization_RapidResponse.png" />&nbsp;Rapid Response', 1, 2, 'Decrease the summon time of your pet powers by 0.5/1 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Create An Opening', '<img src="img/Specialization_CreateAnOpening.png" />&nbsp;Create An Opening', 1, 2, 'Whenever you Critically Strike, your pets Critical Strike Chance is increased by 10/20% for 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Multitasker', '<img src="img/Gadgeteering_SupportDrones.png" />&nbsp;Multitasker', 1, 3, 'Reduces the Energy penalty caused by having pets out by 17/33/50%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Well Trained', '<img src="img/Supernatural_Lash.png" />&nbsp;Well Trained', 2, 2, 'The recharge time of all of your pet\\\'s abilities is reduced by 10/20%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Durable', '<img src="img/PowerArmor_LaserSword.png" />&nbsp;Durable', 2, 3, 'Your Secondary Super Stats now further increase the pet Health and the amount of healing pets receive.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Relief', '<img src="img/Gadgeteering_ResurrectionSerum.png" />&nbsp;Relief', 2, 3, 'Your Secondary Super Stats now further increase the healing done by your pets.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Savage', '<img src="img/Supernatural_Bite.png" />&nbsp;Savage', 2, 3, 'Your Secondary Super Stats now further increase the Damage dealt by your pets.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Commander Mastery', '<img src="img/blank.png" />&nbsp;Commander Mastery', 3, 1, 'Increases the Base Damage of your pets by 10%.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Warden', 'Warden', null, 'Melee / Tank');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Slaughter', '<img src="img/HeavyWeapon_Skullcrusher.png" />&nbsp;Slaughter', 1, 3, 'Increases the Critical Strike chance of your Melee Combo attacks by 3%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Elusive', '<img src="img/MartialArts_LightningReflexes.png" />&nbsp;Elusive', 1, 2, 'Increases your Resistance to AoE attacks by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Reactive Strikes', '<img src="img/HeavyWeapon_Guard.png" />&nbsp;Reactive Strikes', 2, 2, 'Single Target attacks made against you have a 10% chance to deal 10% of that Damage back to the attacker as Penetrating Damage. (Penetrating Damage is only resisted by Resistance to All Damage, and ignores half of that Resistance. Penetrating Damage also ignores half of the absorption provided by Shields.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Tenacious', '<img src="img/Might_Clobber.png" />&nbsp;Tenacious', 2, 2, 'Whenever you take Damage, you gain 5 Offense. This effect lasts 15 seconds, stacks up to 5 times, and can only occur once per second.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Upper Hand', '<img src="img/HeavyWeapon_Bludgeon.png" />&nbsp;Upper Hand', 2, 3, 'Increases Melee Damage you deal to targets affected by Disorient, Bleed, Shredded, Ego Leech, and Stagger by 2%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'The Best Defense', '<img src="img/Munitions_KillerInstinct.png" />&nbsp;The Best Defense', 2, 3, 'You gain 33% of your Defense as Offense.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10/20/30%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Slaughter', '<img src="img/HeavyWeapon_Skullcrusher.png" />&nbsp;Slaughter', 1, 3, 'Increases the Critical Strike chance of your Melee Combo attacks by 3/6/9%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Elusive', '<img src="img/MartialArts_LightningReflexes.png" />&nbsp;Elusive', 1, 2, 'Increases your Resistance to AoE attacks by 10/20%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Reactive Strikes', '<img src="img/HeavyWeapon_Guard.png" />&nbsp;Reactive Strikes', 2, 2, 'Single Target attacks made against you have a 10% chance to deal 10/20% of that Damage back to the attacker as Penetrating Damage. (Penetrating Damage is only resisted by Resistance to all damage, and ignores half of that Resistance. Penetrating Damage also ignores half of the absorption provided by Shields.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Tenacious', '<img src="img/Might_Clobber.png" />&nbsp;Tenacious', 2, 2, 'Whenever you take Damage, you gain 5/10 Offense. This effect lasts 15 seconds, stacks up to 5 times, and can only occur once per second.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Upper Hand', '<img src="img/HeavyWeapon_Bludgeon.png" />&nbsp;Upper Hand', 2, 3, 'Increases Melee Damage you deal to targets affected by Disorient, Bleed, Shredded, Ego Leech, and Stagger by 2/4/6%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'The Best Defense', '<img src="img/Munitions_KillerInstinct.png" />&nbsp;The Best Defense', 2, 3, 'You gain 33/67/100% of your Defense as Offense.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Warden Mastery', '<img src="img/blank.png" />&nbsp;Warden Mastery', 3, 1, 'Increases the Damage of your Combo powers by 10%, and whenever you finish a Combo you gain a stack of Grit. Grit increases your Damage Resistance by 3%, and stacks up to 3 times.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Guardian', 'Guardian', null, 'Range / Tank');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Locus', '<img src="img/Fire_Pyre.png" />&nbsp;Locus', 1, 2, 'When you strike with or are struck by an AoE, you gain a stack of Locus. When you reach 30 stacks of Locus, the stack is consumed and becomes Locus Eruption, which grants you 25 Offense and Defense. Locus Eruption lasts for 15 seconds, and prevents you from gaining additional stacks of Locus for the duration.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Make It Count', '<img src="img/Electricity_LightningArc.png" />&nbsp;Make It Count', 1, 3, 'Increases the Damage and decreases the cost of your Blast attacks by 2%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Retribution', '<img src="img/Specialization_Retribution.png" />&nbsp;Retribution', 2, 2, 'Single Target attacks made against you have a 10% chance to trigger Retribution on you for 6 seconds, which grants you 5% all Damage Strength and 30 Health Points every 2 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Tenacious', '<img src="img/Might_Clobber.png" />&nbsp;Tenacious', 2, 2, 'Whenever you take Damage, you gain 5 Offense. This effect lasts 15 seconds, stacks up to 5 times, and can only occur once per second.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Find the Mark', '<img src="img/Archery_SnapShot.png" />&nbsp;Find the Mark', 2, 3, 'Your Ranged attacks have a 10% chance to Expose your target. Expose increases your chance to Critically Strike that target with Ranged attacks by 3% for 10 seconds and stacks up to 3 times.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'The Best Defense', '<img src="img/Munitions_KillerInstinct.png" />&nbsp;The Best Defense', 2, 3, 'You gain 33% of your Defense as Offense.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10/20/30%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Locus', '<img src="img/Fire_Pyre.png" />&nbsp;Locus', 1, 2, 'When you strike with or are struck by an AoE, you gain a stack of Locus. When you reach 30 stacks of Locus, the stack is consumed and becomes Locus Eruption, which grants you 25/49 Offense and Defense. Locus Eruption lasts for 15 seconds, and prevents you from gaining additional stacks of Locus for the duration.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Make It Count', '<img src="img/Electricity_LightningArc.png" />&nbsp;Make It Count', 1, 3, 'Increases the Damage and decreases the cost of your Blast attacks by 2/4/6%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Retribution', '<img src="img/Specialization_Retribution.png" />&nbsp;Retribution', 2, 2, 'Single Target attacks made against you have a 10% chance to trigger Retribution on you for 6 seconds, which grants you 5/10% all Damage Strength and 30 Health Points every 2 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Tenacious', '<img src="img/Might_Clobber.png" />&nbsp;Tenacious', 2, 2, 'Whenever you take Damage, you gain 5/10 Offense. This effect lasts 15 seconds, stacks up to 5 times, and can only occur once per second.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Find the Mark', '<img src="img/Archery_SnapShot.png" />&nbsp;Find the Mark', 2, 3, 'Your Ranged attacks have a 10/20/30% chance to Expose your target. Expose increases your chance to Critically Strike that target with Ranged attacks by 3% for 10 seconds and stacks up to 3 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'The Best Defense', '<img src="img/Munitions_KillerInstinct.png" />&nbsp;The Best Defense', 2, 3, 'You gain 33/67/100% of your Defense as Offense.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Guardian Mastery', '<img src="img/blank.png" />&nbsp;Guardian Mastery', 3, 1, 'Your Blast powers give you a stack of Alacrity, which reduces the charge time of Blast powers by 3% and grants you 9 Dodge Chance Rating. Alacrity stacks up to 3 times.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Sentry', 'Sentry', null, 'Support / Tank');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Twist Fate', '<img src="img/Specialization_TwistFate.png" />&nbsp;Twist Fate', 1, 2, 'Your Energy Builder grants stacks of Twist Fate for 5 seconds. Each stack increases your Dodge and Crit Chance by 1.5%. Stacks up to 3 times.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Precise', '<img src="img/Specialization_Caregiver.png" />&nbsp;Precise', 1, 3, 'The strength of your Single Target attacks and your Heals and Shields on other players is increased by 3%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Sentry Aura', '<img src="img/Specialization_SentryAura.png" />&nbsp;Sentry Aura', 1, 3, 'You and your teammates gain an additional 2% Resistance to All Damage.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Fortify', '<img src="img/Telekinesis_TelekineticMaelstrom.png" />&nbsp;Fortify', 2, 2, 'Whenever you get a Critical Effect (from Damage or Healing powers) you gain Fortify, which lasts 10 seconds and stacks up to 3 times. Each stack increases your Healing Strength and Damage Resistance by 1%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Stalling Tactics', '<img src="img/Specialization_StallingTactics.png" />&nbsp;Stalling Tactics', 2, 3, 'Increases the duration of your Stun, Sleep, and Snare effects by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Persevere', '<img src="img/Specialization_Persevere.png" />&nbsp;Persevere', 2, 2, 'Single Target attacks made against you have a 10% chance to Heal you and your nearby teammates for 10% of the Damage dealt.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Reinforce', '<img src="img/Telekinesis_TelekineticShield.png" />&nbsp;Reinforce', 2, 2, 'Whenever you Critically Heal, your target gains 5% Resistance to All Damage for 5 seconds. Whenever you Critically Strike with a Single Target attack, you gain 5% Resistance to All Damage for 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Fortified Gear', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Fortified Gear', 1, 3, 'Increases the amount of Defense you receive from items by 10/20/30%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Twist Fate', '<img src="img/Specialization_TwistFate.png" />&nbsp;Twist Fate', 1, 2, 'Your Energy Builder grants stacks of Twist Fate for 5 seconds. Each stack increases your Dodge and Crit Chance by 1.5/3%. Stacks up to 3 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Precise', '<img src="img/Specialization_Caregiver.png" />&nbsp;Precise', 1, 3, 'The strength of your Single Target attacks and your Heals and Shields on other players is increased by 3/6/9%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Sentry Aura', '<img src="img/Specialization_SentryAura.png" />&nbsp;Sentry Aura', 1, 3, 'You and your teammates gain an additional 2/4/6% Resistance to all damage.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Fortify', '<img src="img/Telekinesis_TelekineticMaelstrom.png" />&nbsp;Fortify', 2, 2, 'Whenever you get a Critical Effect (from Damage or Healing powers) you gain Fortify, which lasts 10 seconds and stacks up to 3 times. Each stack increases your Healing Strength and Damage Resistance by 1/2%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Stalling Tactics', '<img src="img/Specialization_StallingTactics.png" />&nbsp;Stalling Tactics', 2, 3, 'Increases the duration of your Stun, Sleep, and Snare effects by 5/10/15%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Persevere', '<img src="img/Specialization_Persevere.png" />&nbsp;Persevere', 2, 2, 'Single Target attacks made against you have a 10% chance to Heal you and your nearby teammates for 10/20% of the Damage dealt.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Reinforce', '<img src="img/Telekinesis_TelekineticShield.png" />&nbsp;Reinforce', 2, 2, 'Whenever you Critically Heal, your target gains 5/10% Resistance to all damage for 5 seconds. Whenever you Critically Strike with a Single Target attack, you gain 5/10% Resistance to all damage for 5 seconds.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Sentry Mastery', '<img src="img/blank.png" />&nbsp;Sentry Mastery', 3, 1, 'Whenever a damaging attack brings you below 50% Health, the attacker is Stunned and you Heal nearby allies for 10% of your Maximum Health. This Stun lasts 3 seconds and is twice as powerful as normal Stuns, and can affect enemies that are not normally affected by Stuns. This effect can only occur once every 60 seconds.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Arbiter', 'Arbiter', null, 'Melee / Support');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Enforcer', '<img src="img/Celestial_Palliate.png" />&nbsp;Enforcer', 1, 3, 'The strength of your Combo attacks, Heals, and Shields is increased by 2%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Arbiter Aura', '<img src="img/Specialization_ArbiterAura.png" />&nbsp;Arbiter Aura', 1, 3, 'You and your teammates gain an additional 1% Melee Damage Strength.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Rend', '<img src="img/Supernatural_Massacre.png" />&nbsp;Rend', 1, 2, 'Whenever you Critically Strike an enemy, you reduce their Damage Resistance by 2% for 5 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Honor', '<img src="img/Sorcery_RitualOfRadiantSummoning.png" />&nbsp;Honor', 2, 2, 'Whenever you Heal or Shield an ally, your next attack gains 5% Damage Strength.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Concussion', '<img src="img/Gadgeteering_SonicDevice.png" />&nbsp;Concussion', 2, 3, 'Whenever you Stun a target you now also reduce the Damage the target deals by 5%. The duration of this effect lasts up to 8 seconds, but is dependent on the Rank of your target.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Preservation', '<img src="img/Celestial_Imbue.png" />&nbsp;Preservation', 2, 2, 'Reduces the Energy Cost of your Heals, Holds, and Single Target Melee attacks by 7.5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Enhanced Gear', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Enhanced Gear', 2, 3, 'Increases the amount of Offense you receive from items by 10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Enforcer', '<img src="img/Celestial_Palliate.png" />&nbsp;Enforcer', 1, 3, 'The strength of your Combo attacks, Heals, and Shields is increased by 2/4/6%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Arbiter Aura', '<img src="img/Specialization_ArbiterAura.png" />&nbsp;Arbiter Aura', 1, 3, 'You and your teammates gain an additional 1/3/5% Melee Damage Strength.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Rend', '<img src="img/Supernatural_Massacre.png" />&nbsp;Rend', 1, 2, 'Whenever you Critically Strike an enemy, you reduce their Damage Resistance by 2/4% for 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Honor', '<img src="img/Sorcery_RitualOfRadiantSummoning.png" />&nbsp;Honor', 2, 2, 'Whenever you Heal or Shield an ally, your next attack gains 5/10% Damage Strength. This effect lasts 10s and stacks up to 3 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Concussion', '<img src="img/Gadgeteering_SonicDevice.png" />&nbsp;Concussion', 2, 3, 'Whenever you Stun a target you now also reduce the Damage the target deals by 5/10/15%. The duration of this effect lasts up to 8 seconds, but is dependent on the Rank of your target.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Preservation', '<img src="img/Celestial_Imbue.png" />&nbsp;Preservation', 2, 2, 'Reduces the Energy Cost of your Heals, Holds, and Single Target Melee attacks by 7.5/15%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Enhanced Gear', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Enhanced Gear', 2, 3, 'Increases the amount of Offense you receive from items by 10/20/30%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Arbiter Mastery', '<img src="img/blank.png" />&nbsp;Arbiter Mastery', 3, 1, 'Your Combo finishers heal yourself for 1% of your Maximum Health, and heal nearby allies for 3 times that amount.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Overseer', 'Overseer', null, 'Range / Support');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Administer', '<img src="img/Force_KineticManipulation.png" />&nbsp;Administer', 1, 3, 'The strength of your Blast attacks, Heals, and Shields is increased by 3%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Overseer Aura', '<img src="img/Specialization_OverseerAura.png" />&nbsp;Overseer Aura', 1, 3, 'You and your teammates gain an additional 1% Ranged Damage Strength.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Impact', '<img src="img/Technology_ImplosionEngine.png" />&nbsp;Impact', 1, 2, 'Whenever you Critically Strike an enemy, you reduce the Damage they deal by 4% for 5 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Honor', '<img src="img/Sorcery_RitualOfRadiantSummoning.png" />&nbsp;Honor', 2, 2, 'Whenever you Heal or Shield an ally, your next attack gains 5% Damage Strength. This effect lasts 10 seconds and stacks up to 3 times.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Trapped', '<img src="img/Gadgeteering_TanglecoilLauncher.png" />&nbsp;Trapped', 2, 3, 'Whenever you Paralyze, Incapacitate, or Root a target they now also take 3% more Damage. The duration of this effect lasts up to 8 seconds, but is dependent on the Rank of your target.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Conservation', '<img src="img/Force_IntertialDampeningField.png" />&nbsp;Conservation', 2, 2, 'Reduces the Energy Cost of your Heals, Paralyzes, Incapacitates, Confuses, Placates, and Single Target Ranged attacks by 7.5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Enhanced Gear', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Enhanced Gear', 2, 3, 'Increases the amount of Offense you receive from items by 10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Administer', '<img src="img/Force_KineticManipulation.png" />&nbsp;Administer', 1, 3, 'The strength of your Blast attacks, Heals, and Shields is increased by 3/6/9%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Overseer Aura', '<img src="img/Specialization_OverseerAura.png" />&nbsp;Overseer Aura', 1, 3, 'You and your teammates gain an additional 1/3/5% Ranged Damage Strength.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Impact', '<img src="img/Technology_ImplosionEngine.png" />&nbsp;Impact', 1, 2, 'Whenever you Critically Strike an enemy, you reduce the Damage they deal by 4/8% for 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Honor', '<img src="img/Sorcery_RitualOfRadiantSummoning.png" />&nbsp;Honor', 2, 2, 'Whenever you Heal or Shield an ally, your next attack gains 5/10% Damage Strength. This effect lasts 10 seconds and stacks up to 3 times.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Trapped', '<img src="img/Gadgeteering_TanglecoilLauncher.png" />&nbsp;Trapped', 2, 3, 'Whenever you Paralyze, Incapacitate, or Root a target they now also take 3/6/9% more Damage. The duration of this effect lasts up to 8 seconds, but is dependent on the Rank of your target.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Conservation', '<img src="img/Force_IntertialDampeningField.png" />&nbsp;Conservation', 2, 2, 'Reduces the Energy Cost of your Heals, Paralyzes, Incapacitates, Confuses, Placates, and Single Target Ranged attacks by 7.5/15%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Enhanced Gear', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Enhanced Gear', 2, 3, 'Increases the amount of Offense you receive from items by 10/20/30%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Overseer Mastery', '<img src="img/blank.png" />&nbsp;Overseer Mastery', 3, 1, 'Increases the Base Damage of healing done to targets at or below 20% health by 10%.'));
 
 dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(dataSpecializationTree.length, 'Vindicator', 'Vindicator', null, 'Melee / Range');
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Aggressive Stance', '<img src="img/Specialization_AggressiveStance.png" />&nbsp;Aggressive Stance', 1, 2, 'Increases your Defense by 10% of your Offense value.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Merciless', '<img src="img/Specialization_Merciless.png" />&nbsp;Merciless', 1, 3, 'Increases your Critical Severity by 5%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Initiative', '<img src="img/Specialization_Initiative.png" />&nbsp;Initiative', 1, 2, 'Your Energy Builder attacks now reduce your primary target\\\'s Damage Resistance to your attacks by 2% for 12 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'The Rush of Battle', '<img src="img/Specialization_TheRushOfBattle.png" />&nbsp;The Rush of Battle', 1, 3, 'When you defeat an enemy, you regain %5 of your Maximum Health over the next 5 seconds.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Focused Strikes', '<img src="img/Celestial_CelestialCleansing.png" />&nbsp;Focused Strikes', 2, 3, 'Increases the Critical Strike Chance of your Single Target attacks by 2%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Modified Gear', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Modified Gear', 2, 2, 'Increases the amount of Offense you receive from items by 10%.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Offensive Expertise', '<img src="img/FightingClaws_FormOfTheTiger.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7% Power Recharge Reduction.'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Mass Destruction', '<img src="img/Specialization_MassDestruction.png" />&nbsp;Mass Destruction', 2, 3, 'Increases the Critical Strike Chance of your AoE attacks by 2%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Aggressive Stance', '<img src="img/Specialization_AggressiveStance.png" />&nbsp;Aggressive Stance', 1, 2, 'Increases your Defense by 10/20% of your Offense value.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Merciless', '<img src="img/Specialization_Merciless.png" />&nbsp;Merciless', 1, 3, 'Increases your Critical Severity by 5/10/15%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Initiative', '<img src="img/Specialization_Initiative.png" />&nbsp;Initiative', 1, 2, 'Your Energy Builder attacks now reduce your primary target\\\'s Damage Resistance to your attacks by 2/4% for 12 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'The Rush of Battle', '<img src="img/Specialization_TheRushOfBattle.png" />&nbsp;The Rush of Battle', 1, 3, 'When you defeat an enemy, you regain %5/10/15 of your Maximum Health over the next 5 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Focused Strikes', '<img src="img/Celestial_CelestialCleansing.png" />&nbsp;Focused Strikes', 2, 3, 'Increases the Critical Strike Chance of your Single Target attacks by 2/4/6%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Modified Gear', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Modified Gear', 2, 2, 'Increases the amount of Offense you receive from items by 10/20%.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Offensive Expertise', '<img src="img/FightingClaws_FormOfTheTiger.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7/14% Power Recharge Reduction.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(7, 'Mass Destruction', '<img src="img/Specialization_MassDestruction.png" />&nbsp;Mass Destruction', 2, 3, 'Increases the Critical Strike Chance of your AoE attacks by 2/4/6%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(8, 'Vindicator Mastery', '<img src="img/blank.png" />&nbsp;Vindicator Mastery', 3, 1, 'Grants bonus Ranged Damage equal to 1/3 the bonus Strength gives to Melee Damage, and grants bonus Melee Damage equal to 1/3 the bonus Ego gives to Ranged Damage.'));
 
 //==============================================================================
@@ -4581,7 +4926,7 @@ ArchetypeGroup = function(id, name, desc, tip) {
 }
 
 // archetype group data
-var dataArchetypeGroup = new Array();
+var dataArchetypeGroup = [];
 dataArchetypeGroup[dataArchetypeGroup.length] = new ArchetypeGroup(dataArchetypeGroup.length, null, null, null);
 dataArchetypeGroup[dataArchetypeGroup.length] = new ArchetypeGroup(dataArchetypeGroup.length, 'Freeform', 'Freeform', 'Choose this option to mix and match your starting powers from any archetype. Tailor your hero\\\'s characteristics by choosing an Innate Talent. Archetypes are built and balanced to provide everything a hero needs, but those who want complete control can use a custom champion.');
 dataArchetypeGroup[dataArchetypeGroup.length] = new ArchetypeGroup(dataArchetypeGroup.length, 'Ranged', 'Ranged', 'You deal good damage from a distance, but are weak in Melee combat and can take less damage than other roles can.');
@@ -4595,23 +4940,23 @@ dataArchetypeGroup[dataArchetypeGroup.length] = new ArchetypeGroup(dataArchetype
 //==============================================================================
 
 // helper lookup functions
-var dataArchetypeGroupIdFromName = new Array();
+var dataArchetypeGroupIdFromName = [];
 for (var i=0; i<dataArchetypeGroup.length; i++) {
     dataArchetypeGroupIdFromName[dataArchetypeGroup[i].name] = dataArchetypeGroup[i].id;
 }
-var dataSuperStatIdFromName = new Array();
+var dataSuperStatIdFromName = [];
 for (var i=0; i<dataSuperStat.length; i++) {
     dataSuperStatIdFromName[dataSuperStat[i].name] = dataSuperStat[i].id;
 }
-var dataInnateTalentIdFromName = new Array();
+var dataInnateTalentIdFromName = [];
 for (var i=0; i<dataInnateTalent.length; i++) {
     dataInnateTalentIdFromName[dataInnateTalent[i].name] = dataInnateTalent[i].id;
 }
-var dataPowerIdFromName = new Array();
+var dataPowerIdFromName = [];
 for (var i=0; i<dataPower.length; i++) {
     dataPowerIdFromName[dataPower[i].name] = dataPower[i].id;
 }
-var dataSpecializationTreeIdFromName = new Array();
+var dataSpecializationTreeIdFromName = [];
 for (var i=0; i<dataSpecializationTree.length; i++) {
     dataSpecializationTreeIdFromName[dataSpecializationTree[i].name] = dataSpecializationTree[i].id;
 }
@@ -4623,18 +4968,18 @@ Archetype = function(id, name, desc, group, superStatList, innateTalent, powerLi
     this.name = name;
     this.desc = desc;
     this.group = dataArchetypeGroupIdFromName[group];
-    this.superStatList = new Array();
+    this.superStatList = [];
     if (superStatList != null) {
         for (var i=0; i<superStatList.length; i++) {
             this.superStatList[i+1] = dataSuperStatIdFromName[superStatList[i]];
         }
     }
     this.innateTalent = dataInnateTalentIdFromName[innateTalent];
-    this.powerList = new Array();
+    this.powerList = [];
     if (powerList != null) {
         for (var i=0; i<powerList.length; i++) {
             if (powerList[i] instanceof Array) {
-                this.powerList[i+1] = new Array();
+                this.powerList[i+1] = [];
                 for (var j=0; j<powerList[i].length; j++) {
                     this.powerList[i+1][j+1] = dataPowerIdFromName[powerList[i][j]];
                 }
@@ -4643,7 +4988,7 @@ Archetype = function(id, name, desc, group, superStatList, innateTalent, powerLi
             }
         }
     }
-    this.specializationTreeList = new Array();
+    this.specializationTreeList = [];
     if (specializationTreeList != null) {
         for (var i=0; i<specializationTreeList.length; i++) {
             this.specializationTreeList[i+1] = dataSpecializationTreeIdFromName[specializationTreeList[i]];
@@ -4689,33 +5034,36 @@ Archetype = function(id, name, desc, group, superStatList, innateTalent, powerLi
 }
 
 // archetype data
-var dataArchetype = new Array();
+var dataArchetype = [];
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, null, null, null, null, null, null, null, null);
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'Freeform', '<img src="img/Archetype_Freeform.png" />&nbsp;Freeform', 'Freeform', null, null, null, null, 'Choose this option to mix and match your starting powers from any archetype. Tailor your hero\\\'s characteristics by choosing an Innate Talent. Archetypes are built and balanced to provide everything a hero needs, but those who want complete control can use a custom champion.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inferno', '<img src="img/Archetype_Inferno.png" />&nbsp;The Inferno', 'Ranged', new Array('Recovery', 'Endurance', 'Ego'), 'The Inferno', new Array('Throw Fire', 'Fire Strike', 'Fireball', 'Fiery Form', new Array('Fire Breath', 'Pyre'), 'Fire Shield', 'Conflagration', 'Thermal Reverberation', 'Immolation', new Array('Heat Wave', 'Fire Snake'), 'Flashfire'), new Array('Recovery', 'Avenger', 'Guardian'), 'You control the devastating element of fire, creating and shaping it to your will. Whether hurling flaming projectiles or erupting into a deadly firestorm, you leave a blazing swath of destruction in your wake.<br /><br />Concepts: Fire Mutation, Flame Mage, Magma Creature, Plasma Control Suit, Pyrokinetic<br /><br />You have Ranged area attacks that cause damage over time. You can\\\'t take a lot of damage though, so be sure to hit your targets hard enough to take them down or recruit a tough ally who can take the damage for you. You can also absorb Energy from fire around you, so you become most powerful when you set things on fire. Light things up and feel the burn!');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Tempest', '<img src="img/Archetype_Tempest.png" />&nbsp;The Tempest', 'Ranged', new Array('Endurance', 'Ego', 'Recovery'), 'The Tempest', new Array('Electric Bolt', 'Lightning Arc', 'Sparkstorm', 'Electric Form', 'Thunderstrike', 'Electric Shield', new Array('Electrocute', 'Ball Lightning'), 'Ionic Reverberation', 'Electric Sheath', new Array('Lightning Storm', 'Invocation of Storm Calling'), 'Gigabolt'), new Array('Endurance', 'Avenger', 'Guardian'), 'You are able to control and create electrical currents, generating electricity on your own or even directly affecting the weather itself. With a bolt of lightning from the sky or a continuous barrage of electricity, you are able to devastate your foes.<br /><br />Concepts: Tesla Coil Suit, Air Elemental, Electric Mutation, Lightning Wizard, Weather Control Artifact<br /><br />You have a variety of Ranged attacks, many of which are capable of hitting multiple foes. Many of your powers leave your targets electrically charged, setting you up for future attacks against them. You aren\\\'t so great at taking a beating yourself, so take them down quickly before they overwhelm you.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Marksman', '<img src="img/Archetype_Marksman.png" />&nbsp;The Marksman', 'Ranged', new Array('Dexterity', 'Intelligence', 'Ego'), 'The Marksman', new Array('Strafe', 'Straight Shot', 'Sonic Arrow', 'Quarry', 'Torrent of Arrows', 'Retaliation', new Array ('Snap Shot', 'Focused Shot'), 'Hunter\'s Instinct', 'Evasive Maneuvers', new Array('Storm of Arrows', 'Gas Arrow'), 'Explosive Arrow'), new Array('Dexterity', 'Avenger', 'Guardian'), 'You are an expert with the bow, and your precision and finesse allow you to take foes down from long range. Your arsenal of arrows provides you with the tools for many situations.<br /><br />Concepts: Arcane Hunter, Master Archer, Ancient Deity, Expert Tracker, Dimensional Nomad<br /><br />You have a versatile set of Ranged attacks, always trying to have the right arrow for any situation. You focus on a target\\\'s weak spots, dealing many critical hits to your foes.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Scourge', '<img src="img/Archetype_Scourge.png" />&nbsp;The Scourge', 'Ranged', new Array('Recovery', 'Constitution', 'Ego'), 'The Scourge', new Array('Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', new Array('Venomous Breath', 'Vicious Cyclone'), 'Ebon Void', new Array('Locust Swarm', 'Crippling Coils'), 'Supernatural Power', 'Aspect of the Infernal', 'Epidemic', 'Defile'), new Array('Recovery', 'Overseer', 'Avenger'), 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Squall', '<img src="img/Archetype_Squall.png" />&nbsp;The Squall', 'Ranged', new Array('Ego', 'Recovery', 'Endurance'), 'The Squall', new Array('Wind Lash', 'Gust', 'Hurricane', 'Stormbringer', new Array('Wind Breath', 'Frost Breath'), 'Wind Barrier', new Array('Updraft', 'Twister'), 'Wind Reverberation', new Array('Electric Sheath', 'Ice Sheath'), 'Dust Devil', 'Typhoon'), new Array('Ego', 'Vindicator', 'Avenger'), 'You can control the wind and weather currents around you, creating raging hurricanes, powerful twisters, and huge gusts of wind to knock down and disorient your foes.<br /><br />Concepts: Storm Spirit, Atmospheric Manipulation, Weather Mutation, Air Wizard, Portable Wind Generator<br /><br />You possess a multitude of mid and long range attacks, many of which can Repel and Disorient your enemies, allowing you to direct movement on battlefield. You don\\\'t last long when enemies focus on you, so keep them off their feet while you take them down.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Soldier', '<img src="img/Archetype_Soldier.png" />&nbsp;The Soldier', 'Ranged', new Array('Ego', 'Dexterity', 'Recovery'), 'The Soldier', new Array('Steady Shot', 'Assault Rifle', 'Submachinegun Burst', 'Targeting Computer', new Array('Shotgun Blast', 'Frag Grenade'), 'Retaliation', 'Smoke Grenade', 'Killer Instinct', 'Lock N Load', new Array('Rocket', 'Gatling Gun'), 'Sniper Rifle'), new Array('Ego', 'Vindicator', 'Avenger'), 'You possess a formidable arsenal of military weapons and know how to use them. From heavy pistols and assault rifles to rockets and sniper rifles, you are the ultimate one-man army.<br /><br />Concepts: Android Mercenary, Ex-Special Forces, Gun-Toting Vigilante, Special Agent, Super-Soldier<br /><br />Your strength lies in your Ranged attacks. You have a number of single-target and area effect attacks that inflict heavy damage to your target. Be careful though, all those weapons don\\\'t leave much room for body armor, so you either need to take down your opponent quickly or find someone who can draw incoming fire!');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Glacier', '<img src="img/Archetype_Glacier.png" />&nbsp;The Glacier', 'Tank', new Array('Constitution', 'Endurance', 'Ego'), 'The Glacier', new Array('Ice Shards', 'Ice Blast', 'Ice Cage', 'Invulnerability', new Array('Snow Storm', 'Frost Breath'), 'Ice Shield', 'Ice Sheath', 'Shatter', 'Unbreakable', new Array('Ice Barrier', 'Ice Burst'), 'Avalanche'), new Array('Constitution', 'Guardian', 'Protector'), 'You are able to create ice and cold out of thin air and manipulate it various ways. You blast your foes with ice shards, trap them in solid blocks of ice, then shatter them with only a thought.<br /><br />Concepts: Cold Mutation, Cryo-Suit, Frost Warrior, Ice Elemental, Winter Spirit<br /><br />You have a number of powers used to lock down your opponents, holding them in place so your allies can finish them off. You eventually gain the ability to shatter your ice constructs, causing damage to any opponent in their icy embrace.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mountain', '<img src="img/Archetype_Freeform.png" />&nbsp;The Mountain', 'Tank', new Array('Constitution', 'Ego', 'Endurance'), 'The Mountain', new Array('Wield Earth', 'Stone Shot', 'Tremor', 'Defiance', new Array('Cave In', 'Upheaval'), 'Stone Shroud', new Array('Land Slide', 'Seismic Smash'), 'Quicksand', 'Unbreakable', 'Fault Line', 'Fissure'), new Array('Constitution', 'Protector', 'Guardian'), 'You are an embodiment of the rocks and earth that surround us, standing firm in the face of your foes. You manipulate the stone and soil to assault and harass those that would stand against you and your allies.<br /><br />Concepts: Rock Golem, Nature\\\'s Guardian, Earth Elemental, Druidic Enchantment, Primordial Entity<br /><br />You have multiple powers that can knock down and weaken your foes, allowing you to gain control of the fight and the attention of your enemies. Your assault enables your allies to attack unhindered, so focus on keeping your enemies attacking you instead of them!');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Master', '<img src="img/Archetype_Master.png" />&nbsp;The Master', 'Tank', new Array('Constitution', 'Dexterity', 'Strength'), 'The Master', new Array('Vicious Strikes', 'Thundering Kicks', 'Thunderbolt Lunge', 'Lightning Reflexes', new Array('Elbow Slam', 'Inexorable Tides'), 'Parry', 'Shuriken Storm', 'Form of the Master', 'Bountiful Chi Resurgence', 'Dragon Kick', new Array('Burning Chi Fist', 'Open Palm Strike')), new Array('Constitution', 'Warden', 'Protector'), 'Your ability to sense and avoid incoming danger is unparalleled, making you a difficult adversary to defeat. Your skill with unarmed martial arts allows you to pummel your foes, all while avoiding their assault against you.<br /><br />Concepts: Blind Monk, Time-Shifted Foot Soldier, Venerable Sensei, Sixth Sense Mutation<br /><br />You are adept at prolonged fights due to your abilities to avoid and dodge your attackers. In team fights, you work to keep foes focused on you with your martial arts powers, leaving your allies free to attack them unhindered.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Behemoth', '<img src="img/Archetype_Behemoth.png" />&nbsp;The Behemoth', 'Tank', new Array('Constitution', 'Strength', 'Recovery'), 'The Behemoth', new Array('Clobber', 'Defensive Combo', 'Mighty Leap', 'Defiance', new Array('Roomsweeper', 'Thunderclap'), 'Retaliation', 'Demolish', 'Aggressor', 'Unbreakable', new Array('Uppercut', 'Haymaker'), 'Shockwave'), new Array('Constitution', 'Protector', 'Warden'), 'You are an unstoppable juggernaut of raw strength who can take a lot of punishment. Your crushing blows send enemies flying or can Stun them into submission.<br /><br />Concepts: Exo-Skeleton, Golem, Radioactive Boost, Secret Formula, Strength Mutation<br /><br />You\\\'ve got some strong close combat powers designed to damage and knock down your opponents. You can take a lot of damage which you can turn around and use against your enemies. When you\\\'re teamed up with other heroes, a lot of them will be depending on you to soak up enemy fire so charge in and start attacking!');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Disciple', '<img src="img/Archetype_Disciple.png" />&nbsp;The Disciple', 'Melee', new Array('Ego', 'Recovery', 'Dexterity'), 'The Disciple', new Array('Ego Blade', 'Ego Weaponry', 'Ego Blade Frenzy', 'Id Mastery', 'Ego Blade Dash', 'Telekinetic Shield', new Array('Ego Blade Breach', 'Ego Choke'), 'Ego Reverberation', 'Ego Surge', new Array('Mental Discipline', 'Telekinetic Maelstrom'), 'Ego Blade Annihilation'), new Array('Ego', 'Vindicator', 'Brawler'), 'You are a master of manipulating kinetic Energy. These powers primarily manifest themselves as your kinetic weaponry, but you can also summon even greater telekinetic power to shield yourself or destroy foes.<br /><br />Concepts: Telekinetic Warrior, Psychic Ninja, Psi-Assassin, Mental Mastermind, Technological Energy Blades<br /><br />You have many powerful Melee attacks, as well as close range group attacks. You have the ability to dish out tons of damage immediately around you, and can use your mental prowess to gain energy while defeating foes in combat.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Unleashed', '<img src="img/Archetype_Unleashed.png" />&nbsp;The Unleashed', 'Melee', new Array('Dexterity', 'Recovery', 'Strength'), 'The Unleashed', new Array('Rain of Steel', 'Blade Tempest', 'Storm\'s Harvest', 'Unstoppable', 'Force Snap', 'Force Shield', new Array('Force Eruption', 'Eye of the Storm'), 'Form of the Tempest', new Array('Bountiful Chi Resurgence', 'Intensity'), 'Dragon\'s Wrath', new Array('Containment Field', 'Force Geyser')), new Array('Dexterity', 'Warden', 'Vindicator'), 'You are in tune with the universe in ways few can understand. This understanding has enhanced your formidable swordsmanship with powers beyond, enabling you to knock and control your foes from a distance, allowing you to close the gap and finish them.<br /><br />Concepts: Cosmic Knight, Militant Monk, Dark Inquisitor, Eldritch Warrior, Mysterious Visitor<br /><br />You are a fearsome opponent at close range, capable of quickly dispatching multiple foes with your dual blades. You will learn to enhance your combat style with ways to knock your foes around the battle field, bringing them to you with a flick of your wrist.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Blade', '<img src="img/Archetype_Blade.png" />&nbsp;The Blade', 'Melee', new Array('Dexterity', 'Strength', 'Recovery'), 'The Blade', new Array('Reaper\'s Touch', 'Reaper\'s Caress', 'Thunderbolt Lunge', 'Way of the Warrior', 'Scything Blade', 'Parry', new Array('Shuriken Throw', 'Smoke Bomb'), 'Form of the Swordsman', 'Dragon\'s Bite', new Array('Inexorable Tides', 'Masterful Dodge'), 'Reaper\'s Embrace'), new Array('Dexterity', 'Brawler', 'Warden'), 'You are trained in the ancient arts of martial combat and have mastered the way of the sword. You are deadly in close combat, your focused strikes swiftly cutting down any who dares stand against you.<br /><br />Concepts: Alien Gladiator, Blade Master, Mystic Knight, Ninja Warrior, Robot Assassin<br /><br />You are the master of close combat, specialized in swiftly taking down single targets. Finish your enemies before they get a chance to retaliate, as you cannot sustain a great deal of injuries yourself.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Devastator', '<img src="img/Archetype_Devastator.png" />&nbsp;The Devastator', 'Melee', new Array('Strength', 'Recovery', 'Constitution'), 'The Devastator', new Array('Bludgeon', 'Cleave', 'Eruption', 'Unstoppable', 'Decimate', 'Guard', new Array('Skewer', 'Skullcrusher'), 'Arc of Ruin', 'Aggressor', new Array('Vicious Descent', 'Earth Splitter'), 'Brimstone'), new Array('Strength', 'Brawler', 'Warden'), 'You\\\'ve got a really big weapon, and you aren\\\'t afraid to use it. Whether it\\\'s a huge axes, sword, or hammer, you use it to crush your foes, knocking them aside if they think about giving you trouble.<br /><br />Concepts: Runic Weapon, Planar Emissary, Ancient Deity, Transdimensional Soldier, Primal Warrior<br /><br />With your strong, heavy swings you are able to take on many foes at once, utilizing the weight of your weapon to Knock your foes down and Disorient them. Striking at one foe or many, you\\\'ll make them regret getting close to you.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Fist', '<img src="img/Archetype_Fist.png" />&nbsp;The Fist', 'Melee', new Array('Dexterity', 'Strength', 'Recovery'), 'The Fist', new Array('Vicious Strikes', 'One Hundred Hands', 'Thunderbolt Lunge', 'Way of the Warrior', new Array('Crashing Wave Kick', 'Backhand Chop'), 'Parry', 'Dragon Kick', 'Form of the Tempest', 'Intensity', new Array('Burning Chi Fist', 'Open Palm Strike'), 'Dragon Uppercut'), new Array('Dexterity', 'Brawler', 'Vindicator'), 'Your expertise in unarmed combat is formidable, allowing you to catch enemies off guard with your powerful strikes. Your rapid strikes make you highly dangerous up close, quickly dispatching any foe in your way.<br /><br />Concepts: Street Brawler, Mixed Martial Artist, Reflect Enhancement Experiment, Warrior Monk<br /><br />You are an up close combatant, with powers that are effective in single and multiple target situations. You have several ways to hinder your enemies during a fight, by Stunning or Knocking them down, but you won\\\'t last long with too many enemies attacking you.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Void', '<img src="img/Archetype_Void.png" />&nbsp;The Void', 'Hybrid', new Array('Endurance', 'Constitution', 'Ego'), 'The Void', new Array('Shadow Bolt', 'Shadow Blast', 'Shadow Embrace', 'Shadow Form', 'Grasping Shadows', 'Ebon Void', new Array('Void Horror', 'Ebon Rift'), 'Spirit Reverberation', 'Shadow Shroud', new Array('Lifedrain', 'Summon Shadows'), 'Ebon Ruin'), new Array('Endurance', 'Guardian', 'Avenger'), 'You are connected to a realm of shadows and darkness. This connection allows you to channel dimensional energy to assault your foes, drawing out their fears and draining them of their essence.<br /><br />Concepts: Shadow Entity, Dark Magician, Soul Vampire, Demonic Blood, Multi-Dimensional Being<br /><br />You have a good range of mid and long range attacks, both single target and group attacks. You have the ability to lock down and weaken your foes, and can learn to summon creatures of pure shadow to assist you in combat.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Grimoire', '<img src="img/Archetype_Grimoire.png" />&nbsp;The Grimoire', 'Hybrid', new Array('Intelligence', 'Ego', 'Presence'), 'The Grimoire', new Array('Eldritch Bolts', 'Eldritch Blast', 'Sigils of the Primal Storm', 'Aura of Primal Majesty', 'Pillar of Poz', 'Eldritch Shield', new Array('Arcane Vitality', 'Vala\'s Light'), 'Circle of Arcane Power', 'Skarn\'s Bane', new Array('Sigils of Arcane Runes', 'Sigils of Ebon Weakness'), 'Hex of Suffering'), new Array('Intelligence', 'Guardian', 'Overseer'), 'You have unlocked mysterious arcane secrets. You use this knowledge to weave powerful magic into auras, sigils, and spells designed to confound your enemies and protect your allies.<br /><br />Concepts: Dimensional Sorcerer, Master Mage, Rune Witch, Shaman, Street Wizard<br /><br />You have a good range of abilities that allow you to set up areas of control to focus your mystic powers. This allows you to heal your allies, debilitate your foes, and deal decent area effect damage.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Impulse', '<img src="img/Archetype_Impulse.png" />&nbsp;The Impulse', 'Hybrid', new Array('Endurance', 'Ego', 'Intelligence'), 'The Impulse', new Array('Force Bolts', 'Force Blast', 'Force Eruption', new Array('Personal Force Field', 'Kinetic Manipulation'), 'Crushing Wave', 'Force Shield', new Array('Protection Field', 'Containment Field'), 'Field Surge', 'Inertial Dampening Field', new Array('Force Detonation', 'Force Geyser'), 'Force Cascade'), new Array('Endurance', 'Guardian', 'Vindicator'), 'You can create powerful blasts, eruptions, and protective bubbles out of pure energy. You use these forces to knock your foes around, keeping them off balance while you pummel them from afar.<br /><br />Concepts: Force Fields, Master of Gravity, Energy Manipulation, Technological Shields, Force of Will<br /><br />Many of your powers allow you to knock foes back, keeping them away from you and preventing them from attacking while they fly through the air. You will gain the ability to shield yourself and allies, while also being able to dish out serious damage.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Specialist', '<img src="img/Archetype_Specialist.png" />&nbsp;The Specialist', 'Hybrid', new Array('Dexterity', 'Ego', 'Strength'), 'The Specialist', new Array('Gunslinger', 'Blade Tempest', 'Two-Gun Mojo', 'Lightning Reflexes', new Array('Bullet Beatdown', 'Storm\'s Harvest'), 'Parry', 'Eye of the Storm', 'Form of the Tempest', 'Holdout Shot', new Array('Lock N Load', 'Masterful Dodge'), 'Lead Tempest'), new Array('Dexterity', 'Vindicator', 'Guardian'), 'You are an expert at taking down your target with whatever means necessary. You are well trained with pistols and swords, alternating between them in combat with deadly quickness.<br /><br />Concepts: Bounty Hunter, Cybernetic Mercenary, Techno-Ninja, Covert Ops, Military Specialist<br /><br />You excel at short and mid-range combat, whether with your swords or your pistols. Your quick reflexes allow you to avoid incoming attacks, all the while whittling away at your foes with your rapid strikes.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Savage', '<img src="img/Archetype_Savage.png" />&nbsp;The Savage', 'Hybrid', new Array('Strength', 'Constitution', 'Recovery'), 'The Savage', new Array('Bestial Fury', 'Shred', 'Frenzy', 'Regeneration', 'Pounce', 'Parry', new Array('Bite', 'Massacre'), 'Supernatural Power', 'Howl', new Array('Resurgence', 'Devour Essence'), 'Aspect of the Bestial'), new Array('Strength', 'Warden', 'Brawler'), 'You are a vicious hybrid of man and beast with powers far greater than either. You rip apart enemies with your razor-sharp claws and teeth while rapidly healing your own injuries.<br /><br />Concepts: Animal Mutation, Lab Experiment, Man-Animal Hybrid, Mechanical Beast, Supernatural Creature<br /><br />You\\\'ve got a good mix of close combat attack powers, and can take a fair amount of damage due to your self-healing abilities. While you don\\\'t have the same offensive or defensive capabilities as dedicated archetypes, you\\\'re a good balance of both.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Radiant', '<img src="img/Archetype_Freeform.png" />&nbsp;The Radiant', 'Support', new Array('Presence', 'Ego', 'Intelligence'), 'The Radiant', new Array('Eldritch Bolts', 'Rebuke', 'Vengeance', 'Seraphim', 'Expulse',  'Eldritch Shield', new Array('Circle of Radiant Glory', 'Sigils of Radiant Sanctuary'), 'Arcane Vitality', new Array('Binding of Aratron', 'Soul Mesmerism'), 'Divine Renewal', 'Planar Fracture'), new Array('Presence', 'Sentry', 'Sentinel'), 'You have unlocked mysterious arcane secrets. You use this knowledge to weave powerful magic into auras, sigils, and spells designed to confound your enemies and protect your allies.<br /><br />Concepts: Dimensional Sorcerer, Master Mage, Rune Witch, Shaman, Street Wizard<br /><br />You have a good range of abilities that allow you to set up areas of control to focus your mystic powers. This allows you to heal your allies, debilitate your foes, and deal decent area effect damage.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mind', '<img src="img/Archetype_Mind.png" />&nbsp;The Mind', 'Support', new Array('Presence', 'Endurance', 'Ego'), 'The Mind', new Array('Psi Lash', 'Ego Blast', 'Ego Sprites', 'Aura of Radiant Protection', new Array('Psionic Healing', 'Empathic Healing'), 'Telekinetic Shield', 'Ego Sleep', 'Telepathic Reverberation', 'Ego Hold', new Array('Ego Storm', 'Summon Nightmare'), 'Mindful Reinforcement'), new Array('Presence', 'Sentinel', 'Sentry'), 'You have tapped into powerful psychic energies. You use your mental might to lash out at opponents and reach into their psyches to make their darkest nightmares real.<br /><br />Concepts: Alien Overmind, Mental Mutation, Mind-Control Ray, Psionic Projector, Telepath<br /><br />You have limited Ranged attack abilities, but have a number of powers designed to lock down enemies and boost allies. You are most powerful when supporting other heroes.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inventor', '<img src="img/Archetype_Inventor.png" />&nbsp;The Inventor', 'Support', new Array('Intelligence', 'Presence', 'Ego'), 'The Inventor', new Array('Sonic Blaster', 'Experimental Blaster', 'Experimental Burst Ray', 'Medical Nanites', new Array('Attack Toys', 'Munitions Bots'), 'Energy Shield', 'Bionic Shielding', 'Support Drones', 'Miniaturization Drive', new Array('Sonic Device', 'Toxic Nanites'), 'Orbital Cannon'), new Array('Intelligence', 'Overseer', 'Commander'), 'You are an incredibly gifted creator of advanced technology, using unconventional ideas that the average person would think impossible. Your quirky designs get the job done, with only the occasional unintended side effect.<br /><br />Concepts: Scientific Entrepreneur, Prototype Cyber Soldier, Technopath, Kid Genius, Mad Scientist<br /><br />Your set of wacky gadgets provides you with a good variety of abilities. You will learn to create personal robots to aid you in combat, and several of your gizmos will be valuable assets in assisting other heroes.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Cursed', '<img src="img/Archetype_Cursed.png" />&nbsp;The Cursed', 'Ranged', new Array('Recovery', 'Constitution', 'Ego'), 'The Scourge', new Array('Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', new Array('Venomous Breath', 'Vicious Cyclone'), 'Ebon Void', new Array('Locust Swarm', 'Crippling Coils'), 'Supernatural Power', 'Aspect of the Infernal', 'Epidemic', 'Defile'), new Array('Recovery', 'Overseer', 'Avenger'), 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inferno', '<img src="img/Archetype_Inferno.png" />&nbsp;The Inferno', 'Ranged', ['Recovery', 'Endurance', 'Ego'], 'The Inferno', ['Throw Fire', 'Fire Strike', 'Fireball', 'Fiery Form', ['Fire Breath', 'Pyre'], 'Concentration', 'Conflagration', 'Fire Shield', 'Thermal Reverberation', 'Immolation', ['Heat Wave', 'Fire Snake'], 'Flashfire'], ['Recovery', 'Avenger', 'Guardian'], 'You control the devastating element of fire, creating and shaping it to your will. Whether hurling flaming projectiles or erupting into a deadly firestorm, you leave a blazing swath of destruction in your wake.<br /><br />Concepts: Fire Mutation, Flame Mage, Magma Creature, Plasma Control Suit, Pyrokinetic<br /><br />You have Ranged area attacks that cause Damage over Time. You can\\\'t take a lot of damage though, so be sure to hit your targets hard enough to take them down or recruit a tough ally who can take the damage for you. You can also absorb Energy from fire around you, so you become most powerful when you set things on fire. Light things up and feel the burn!');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Tempest', '<img src="img/Archetype_Tempest.png" />&nbsp;The Tempest', 'Ranged', ['Endurance', 'Ego', 'Recovery'], 'The Tempest', ['Electric Bolt', 'Lightning Arc', 'Sparkstorm', 'Electric Form', 'Thunderstrike', 'Concentration', ['Electrocute', 'Ball Lightning'], 'Electric Shield', 'Ionic Reverberation', 'Electric Sheath', ['Lightning Storm', 'Invocation of Storm Calling'], 'Gigabolt'], ['Endurance', 'Avenger', 'Guardian'], 'You are able to control and create electrical currents, generating electricity on your own or even directly affecting the weather itself. With a bolt of lightning from the sky or a continuous barrage of electricity, you are able to devastate your foes.<br /><br />Concepts: Tesla Coil Suit, Air Elemental, Electric Mutation, Lightning Wizard, Weather Control Artifact<br /><br />You have a variety of Ranged attacks, many of which are capable of hitting multiple foes. Many of your powers leave your targets electrically charged, setting you up for future attacks against them. You aren\\\'t so great at taking a beating yourself, so take them down quickly before they overwhelm you.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Marksman', '<img src="img/Archetype_Marksman.png" />&nbsp;The Marksman', 'Ranged', ['Dexterity', 'Intelligence', 'Ego'], 'The Marksman', ['Strafe', 'Straight Shot', 'Sonic Arrow', 'Quarry', 'Torrent of Arrows', 'Concentration', ['Snap Shot', 'Focused Shot'], 'Retaliation', 'Hunter\'s Instinct', 'Evasive Maneuvers', ['Storm of Arrows', 'Gas Arrow'], 'Explosive Arrow'], ['Dexterity', 'Avenger', 'Guardian'], 'You are an expert with the bow, and your precision and finesse allow you to take foes down from long range. Your arsenal of arrows provides you with the tools for many situations.<br /><br />Concepts: Arcane Hunter, Master Archer, Ancient Deity, Expert Tracker, Dimensional Nomad<br /><br />You have a versatile set of Ranged attacks, always trying to have the right arrow for any situation. You focus on a target\\\'s weak spots, dealing many critical hits to your foes.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Scourge', '<img src="img/Archetype_Scourge.png" />&nbsp;The Scourge', 'Ranged', ['Recovery', 'Constitution', 'Ego'], 'The Scourge', ['Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', ['Venomous Breath', 'Vicious Cyclone'], 'Aspect of the Infernal', ['Locust Swarm', 'Crippling Coils'], 'Ebon Void', 'Supernatural Power', 'Resurgence', 'Epidemic', 'Defile'], ['Recovery', 'Overseer', 'Avenger'], 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Squall', '<img src="img/Archetype_Squall.png" />&nbsp;The Squall', 'Ranged', ['Ego', 'Recovery', 'Endurance'], 'The Squall', ['Wind Lash', 'Gust', 'Hurricane', 'Stormbringer', ['Wind Breath', 'Frost Breath'], 'Concentration', ['Updraft', 'Twister'], 'Wind Barrier', 'Wind Reverberation', ['Electric Sheath', 'Ice Sheath'], 'Dust Devil', 'Typhoon'], ['Ego', 'Vindicator', 'Avenger'], 'You can control the wind and weather currents around you, creating raging hurricanes, powerful twisters, and huge gusts of wind to knock down and disorient your foes.<br /><br />Concepts: Storm Spirit, Atmospheric Manipulation, Weather Mutation, Air Wizard, Portable Wind Generator<br /><br />You possess a multitude of mid and long range attacks, many of which can Repel and Disorient your enemies, allowing you to direct movement on battlefield. You don\\\'t last long when enemies focus on you, so keep them off their feet while you take them down.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Soldier', '<img src="img/Archetype_Soldier.png" />&nbsp;The Soldier', 'Ranged', ['Ego', 'Dexterity', 'Recovery'], 'The Soldier', ['Steady Shot', 'Assault Rifle', 'Submachinegun Burst', 'Targeting Computer', ['Shotgun Blast', 'Frag Grenade'], 'Concentration', 'Smoke Grenade', 'Retaliation', 'Killer Instinct', 'Lock N Load', ['Rocket', 'Gatling Gun'], 'Sniper Rifle'], ['Ego', 'Vindicator', 'Avenger'], 'You possess a formidable arsenal of military weapons and know how to use them. From heavy pistols and assault rifles to rockets and sniper rifles, you are the ultimate one-man army.<br /><br />Concepts: Android Mercenary, Ex-Special Forces, Gun-Toting Vigilante, Special Agent, Super-Soldier<br /><br />Your strength lies in your Ranged attacks. You have a number of single-target and area effect attacks that inflict heavy damage to your target. Be careful though, all those weapons don\\\'t leave much room for body armor, so you either need to take down your opponent quickly or find someone who can draw incoming fire!');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Glacier', '<img src="img/Archetype_Glacier.png" />&nbsp;The Glacier', 'Tank', ['Constitution', 'Endurance', 'Ego'], 'The Glacier', ['Ice Shards', 'Ice Blast', 'Ice Cage', 'Invulnerability', ['Snow Storm', 'Frost Breath'], 'Concentration', 'Ice Sheath', 'Ice Shield', 'Shatter', 'Unbreakable', ['Ice Barrier', 'Ice Burst'], 'Avalanche'], ['Constitution', 'Guardian', 'Protector'], 'You are able to create ice and cold out of thin air and manipulate it various ways. You blast your foes with ice shards, trap them in solid blocks of ice, then shatter them with only a thought.<br /><br />Concepts: Cold Mutation, Cryo-Suit, Frost Warrior, Ice Elemental, Winter Spirit<br /><br />You have a number of powers used to lock down your opponents, holding them in place so your allies can finish them off. You eventually gain the ability to shatter your ice constructs, causing damage to any opponent in their icy embrace.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mountain', '<img src="img/Archetype_Mountain.png" />&nbsp;The Mountain', 'Tank', ['Constitution', 'Ego', 'Endurance'], 'The Mountain', ['Wield Earth', 'Stone Shot', 'Tremor', 'Defiance', ['Cave In', 'Upheaval'], 'Concentration', ['Land Slide', 'Seismic Smash'], 'Stone Shroud', 'Quicksand', 'Unbreakable', 'Fault Line', 'Fissure'], ['Constitution', 'Protector', 'Guardian'], 'You are an embodiment of the rocks and earth that surround us, standing firm in the face of your foes. You manipulate the stone and soil to assault and harass those that would stand against you and your allies.<br /><br />Concepts: Rock Golem, Nature\\\'s Guardian, Earth Elemental, Druidic Enchantment, Primordial Entity<br /><br />You have multiple powers that can knock down and weaken your foes, allowing you to gain control of the fight and the attention of your enemies. Your assault enables your allies to attack unhindered, so focus on keeping your enemies attacking you instead of them!');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Master', '<img src="img/Archetype_Master.png" />&nbsp;The Master', 'Tank', ['Constitution', 'Dexterity', 'Strength'], 'The Master', ['Vicious Strikes', 'Thundering Kicks', 'Thunderbolt Lunge', 'Lightning Reflexes', ['Elbow Slam', 'Inexorable Tides'], 'Form of the Master', 'Shuriken Storm', 'Parry', 'Masterful Dodge', 'Bountiful Chi Resurgence', 'Dragon Kick', ['Burning Chi Fist', 'Open Palm Strike']], ['Constitution', 'Warden', 'Protector'], 'Your ability to sense and avoid incoming danger is unparalleled, making you a difficult adversary to defeat. Your skill with unarmed martial arts allows you to pummel your foes, all while avoiding their assault against you.<br /><br />Concepts: Blind Monk, Time-Shifted Foot Soldier, Venerable Sensei, Sixth Sense Mutation<br /><br />You are adept at prolonged fights due to your abilities to avoid and dodge your attackers. In team fights, you work to keep foes focused on you with your martial arts powers, leaving your allies free to attack them unhindered.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Invincible', '<img src="img/Archetype_Invincible.png" />&nbsp;The Invincible', 'Tank', ['Intelligence', 'Constitution', 'Endurance'], 'The Invincible', ['Power Bolts', 'Tactical Missiles', 'Mini Gun', 'Invulnerability', ['Micro Munitions', 'Chest Beam'], 'Concentration', 'Reconstruction Circuits', 'Energy Shield', 'Overdrive', 'Unbreakable', ['Plasma Beam', 'Energy Wave'], 'Fire All Weapons'], ['Intelligence', 'Protector', 'Guardian'], 'Who said you need superpowers to be a superhero? Using the latest in cutting-edge technology, your suit of armor offers near-invincible levels of protection while remaining light and flexible enough for maneuverability. And with its arsenals of guns, lasers, and missiles, you can dish out as much as you can take.<br /><br />Concepts: Powered Armor, Future Soldier, Genius Industrialist, Billionaire Scientist, Discovered Alien Technology<br /><br />Your suit is equipped with the latest in damage dealing technology. It is even capable of using multiple powers at once, allowing you to deal massive Area of Effect Damage.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Behemoth', '<img src="img/Archetype_Behemoth.png" />&nbsp;The Behemoth', 'Tank', ['Constitution', 'Strength', 'Recovery'], 'The Behemoth', ['Clobber', 'Defensive Combo', 'Mighty Leap', 'Defiance', ['Roomsweeper', 'Thunderclap'], 'Enrage', 'Demolish', 'Retaliation', 'Aggressor', 'Unbreakable', ['Uppercut', 'Haymaker'], 'Shockwave'], ['Constitution', 'Protector', 'Warden'], 'You are an unstoppable juggernaut of raw strength who can take a lot of punishment. Your crushing blows send enemies flying or can Stun them into submission.<br /><br />Concepts: Exo-Skeleton, Golem, Radioactive Boost, Secret Formula, Strength Mutation<br /><br />You\\\'ve got some strong close combat powers designed to damage and knock down your opponents. You can take a lot of damage which you can turn around and use against your enemies. When you\\\'re teamed up with other heroes, a lot of them will be depending on you to soak up enemy fire so charge in and start attacking!');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Disciple', '<img src="img/Archetype_Disciple.png" />&nbsp;The Disciple', 'Melee', ['Ego', 'Recovery', 'Dexterity'], 'The Disciple', ['Ego Blade', 'Ego Weaponry', 'Ego Blade Frenzy', 'Id Mastery', 'Ego Blade Dash', 'Mental Discipline', ['Ego Blade Breach', 'Ego Choke'], 'Telekinetic Shield', 'Ego Reverberation', 'Ego Surge', ['Telekinetic Maelstrom', 'Telekinetic Eruption'], 'Ego Blade Annihilation'], ['Ego', 'Vindicator', 'Brawler'], 'You are a master of manipulating kinetic Energy. These powers primarily manifest themselves as your kinetic weaponry, but you can also summon even greater telekinetic power to shield yourself or destroy foes.<br /><br />Concepts: Telekinetic Warrior, Psychic Ninja, Psi-Assassin, Mental Mastermind, Technological Energy Blades<br /><br />You have many powerful Melee attacks, as well as close range group attacks. You have the ability to dish out tons of damage immediately around you, and can use your mental prowess to gain energy while defeating foes in combat.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Unleashed', '<img src="img/Archetype_Unleashed.png" />&nbsp;The Unleashed', 'Melee', ['Dexterity', 'Recovery', 'Strength'], 'The Unleashed', ['Rain of Steel', 'Blade Tempest', 'Storm\'s Harvest', 'Unstoppable', 'Force Snap', 'Form of the Tempest', ['Force Eruption', 'Eye of the Storm'], 'Force Shield', 'Bountiful Chi Resurgence', ['Intensity', 'Field Surge'], 'Dragon\'s Wrath', ['Containment Field', 'Force Geyser']], ['Dexterity', 'Warden', 'Vindicator'], 'You are in tune with the universe in ways few can understand. This understanding has enhanced your formidable swordsmanship with powers beyond, enabling you to knock and control your foes from a distance, allowing you to close the gap and finish them.<br /><br />Concepts: Cosmic Knight, Militant Monk, Dark Inquisitor, Eldritch Warrior, Mysterious Visitor<br /><br />You are a fearsome opponent at close range, capable of quickly dispatching multiple foes with your dual blades. You will learn to enhance your combat style with ways to knock your foes around the battle field, bringing them to you with a flick of your wrist.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Blade', '<img src="img/Archetype_Blade.png" />&nbsp;The Blade', 'Melee', ['Dexterity', 'Strength', 'Recovery'], 'The Blade', ['Reaper\'s Touch', 'Reaper\'s Caress', 'Thunderbolt Lunge', 'Way of the Warrior', 'Scything Blade', 'Form of the Swordsman', ['Shuriken Throw', 'Smoke Bomb'], 'Parry', 'Dragon\'s Bite', 'Inexorable Tides', ['Intensity', 'Masterful Dodge'], 'Reaper\'s Embrace'], ['Dexterity', 'Brawler', 'Warden'], 'You are trained in the ancient arts of martial combat and have mastered the way of the sword. You are deadly in close combat, your focused strikes swiftly cutting down any who dares stand against you.<br /><br />Concepts: Alien Gladiator, Blade Master, Mystic Knight, Ninja Warrior, Robot Assassin<br /><br />You are the master of close combat, specialized in swiftly taking down single targets. Finish your enemies before they get a chance to retaliate, as you cannot sustain a great deal of injuries yourself.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Devastator', '<img src="img/Archetype_Devastator.png" />&nbsp;The Devastator', 'Melee', ['Strength', 'Recovery', 'Constitution'], 'The Devastator', ['Bludgeon', 'Cleave', 'Eruption', 'Unstoppable', 'Decimate', 'Enrage', ['Skewer', 'Skullcrusher'], 'Guard', 'Arc of Ruin', 'Aggressor', ['Vicious Descent', 'Earth Splitter'], 'Brimstone'], ['Strength', 'Brawler', 'Warden'], 'You\\\'ve got a really big weapon, and you aren\\\'t afraid to use it. Whether it\\\'s a huge axes, sword, or hammer, you use it to crush your foes, knocking them aside if they think about giving you trouble.<br /><br />Concepts: Runic Weapon, Planar Emissary, Ancient Deity, Transdimensional Soldier, Primal Warrior<br /><br />With your strong, heavy swings you are able to take on many foes at once, utilizing the weight of your weapon to Knock your foes down and Disorient them. Striking at one foe or many, you\\\'ll make them regret getting close to you.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Fist', '<img src="img/Archetype_Fist.png" />&nbsp;The Fist', 'Melee', ['Dexterity', 'Strength', 'Recovery'], 'The Fist', ['Vicious Strikes', 'One Hundred Hands', 'Thunderbolt Lunge', 'Way of the Warrior', ['Crashing Wave Kick', 'Backhand Chop'], 'Form of the Tempest', 'Dragon Kick', 'Parry', 'Rising Knee', 'Intensity', ['Burning Chi Fist', 'Open Palm Strike'], 'Dragon Uppercut'], ['Dexterity', 'Brawler', 'Vindicator'], 'Your expertise in unarmed combat is formidable, allowing you to catch enemies off guard with your powerful strikes. Your rapid strikes make you highly dangerous up close, quickly dispatching any foe in your way.<br /><br />Concepts: Street Brawler, Mixed Martial Artist, Reflect Enhancement Experiment, Warrior Monk<br /><br />You are an up close combatant, with powers that are effective in single and multiple target situations. You have several ways to hinder your enemies during a fight, by Stunning or Knocking them down, but you won\\\'t last long with too many enemies attacking you.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Void', '<img src="img/Archetype_Void.png" />&nbsp;The Void', 'Hybrid', ['Endurance', 'Constitution', 'Ego'], 'The Void', ['Shadow Bolt', 'Shadow Blast', 'Shadow Embrace', 'Shadow Form', 'Grasping Shadows', 'Concentration', ['Void Horror', 'Ebon Rift'], 'Ebon Void', 'Spirit Reverberation', 'Shadow Shroud', ['Lifedrain', 'Summon Shadows'], 'Ebon Ruin'], ['Endurance', 'Guardian', 'Avenger'], 'You are connected to a realm of shadows and darkness. This connection allows you to channel dimensional energy to assault your foes, drawing out their fears and draining them of their essence.<br /><br />Concepts: Shadow Entity, Dark Magician, Soul Vampire, Demonic Blood, Multi-Dimensional Being<br /><br />You have a good range of mid and long range attacks, both single target and group attacks. You have the ability to lock down and weaken your foes, and can learn to summon creatures of pure shadow to assist you in combat.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Grimoire', '<img src="img/Archetype_Grimoire.png" />&nbsp;The Grimoire', 'Hybrid', ['Intelligence', 'Ego', 'Presence'], 'The Grimoire', ['Eldritch Bolts', 'Eldritch Blast', 'Sigils of the Primal Storm', 'Aura of Primal Majesty', 'Pillar of Poz', 'Concentration', ['Arcane Vitality', 'Vala\'s Light'], 'Eldritch Shield', 'Circle of Arcane Power', 'Skarn\'s Bane', ['Sigils of Arcane Runes', 'Sigils of Ebon Weakness'], 'Hex of Suffering'], ['Intelligence', 'Guardian', 'Overseer'], 'You have unlocked mysterious arcane secrets. You use this knowledge to weave powerful magic into auras, sigils, and spells designed to confound your enemies and protect your allies.<br /><br />Concepts: Dimensional Sorcerer, Master Mage, Rune Witch, Shaman, Street Wizard<br /><br />You have a good range of abilities that allow you to set up areas of control to focus your mystic powers. This allows you to heal your allies, debilitate your foes, and deal decent area effect damage.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Impulse', '<img src="img/Archetype_Impulse.png" />&nbsp;The Impulse', 'Hybrid', ['Endurance', 'Ego', 'Intelligence'], 'The Impulse', ['Force Bolts', 'Force Blast', 'Force Eruption', ['Personal Force Field', 'Kinetic Manipulation'], 'Crushing Wave', 'Inertial Dampening Field', ['Protection Field', 'Containment Field'], 'Force Shield', 'Field Surge', 'Force Snap', ['Force Detonation', 'Force Geyser'], 'Force Cascade'], ['Endurance', 'Guardian', 'Vindicator'], 'You can create powerful blasts, eruptions, and protective bubbles out of pure energy. You use these forces to knock your foes around, keeping them off balance while you pummel them from afar.<br /><br />Concepts: Force Fields, Master of Gravity, Energy Manipulation, Technological Shields, Force of Will<br /><br />Many of your powers allow you to knock foes back, keeping them away from you and preventing them from attacking while they fly through the air. You will gain the ability to shield yourself and allies, while also being able to dish out serious damage.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Specialist', '<img src="img/Archetype_Specialist.png" />&nbsp;The Specialist', 'Hybrid', ['Dexterity', 'Ego', 'Strength'], 'The Specialist', ['Gunslinger', 'Blade Tempest', 'Two-Gun Mojo', 'Lightning Reflexes', ['Bullet Beatdown', 'Storm\'s Harvest'], 'Form of the Tempest', 'Eye of the Storm', 'Parry', 'Breakaway Shot', 'Holdout Shot', ['Lock N Load', 'Masterful Dodge'], 'Lead Tempest'], ['Dexterity', 'Vindicator', 'Guardian'], 'You are an expert at taking down your target with whatever means necessary. You are well trained with pistols and swords, alternating between them in combat with deadly quickness.<br /><br />Concepts: Bounty Hunter, Cybernetic Mercenary, Techno-Ninja, Covert Ops, Military Specialist<br /><br />You excel at short and mid-range combat, whether with your swords or your pistols. Your quick reflexes allow you to avoid incoming attacks, all the while whittling away at your foes with your rapid strikes.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Savage', '<img src="img/Archetype_Savage.png" />&nbsp;The Savage', 'Hybrid', ['Strength', 'Constitution', 'Recovery'], 'The Savage', ['Bestial Fury', 'Shred', 'Frenzy', 'Regeneration', 'Pounce', 'Aspect of the Bestial', ['Bite', 'Massacre'], 'Parry', 'Supernatural Power', 'Howl', ['Resurgence', 'Aggressor'], 'Devour Essence'], ['Strength', 'Warden', 'Brawler'], 'You are a vicious hybrid of man and beast with powers far greater than either. You rip apart enemies with your razor-sharp claws and teeth while rapidly healing your own injuries.<br /><br />Concepts: Animal Mutation, Lab Experiment, Man-Animal Hybrid, Mechanical Beast, Supernatural Creature<br /><br />You\\\'ve got a good mix of close combat attack powers, and can take a fair amount of damage due to your self-healing abilities. While you don\\\'t have the same offensive or defensive capabilities as dedicated archetypes, you\\\'re a good balance of both.');
+// TODO: find proper image
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Night Avenger', '<img src="img/Archetype_Freeform.png" />&nbsp;The Night Avenger', 'Hybrid', ['Dexterity', 'Strength', 'Ego'], 'The Night Avenger', ['Hawk\'s Talons', 'Viper\'s Fangs', 'Smoke Bomb Lunge', 'Night Warrior', ['Ricochet Throw', 'Rend and Tear'], ['Form of the Tiger', 'Concentration'], 'Throwing Blades', 'Parry', 'Grapple Gun Pull', ['Dragon\'s Claws', 'Tiger\'s Bite'], ['Gas Pellets', 'Bolas'], 'Strafing Run'], ['Dexterity', 'Warden', 'Vindicator'], 'Your personal training and skills with advanced gadgets makes you a precise force for justice. You reach out from the shadows and stop villainy in its tracks, and serve as a symbol to any who need your help.<br /><br />Concepts: Vigilante, Eccentric Billionaire, Technical Genius, Vengeful Orphan, Street Warrior<br /><br />You strike from the shadows and deal heavy damage with claws and versatile gadgets. You strike swiftly and with brutal precision, prowling the night to bring justice.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Radiant', '<img src="img/Archetype_Radiant.png" />&nbsp;The Radiant', 'Support', ['Presence', 'Ego', 'Intelligence'], 'The Radiant', ['Eldritch Bolts', 'Rebuke', 'Vengeance', 'Seraphim', 'Expulse',  'Compassion', ['Circle of Radiant Glory', 'Sigils of Radiant Sanctuary'], 'Eldritch Shield', 'Arcane Vitality', ['Binding of Aratron', 'Soul Mesmerism'], 'Divine Renewal', 'Planar Fracture'], ['Presence', 'Sentry', 'Sentinel'], 'You have unlocked mysterious arcane secrets. You use this knowledge to weave powerful magic into auras, sigils, and spells designed to confound your enemies and protect your allies.<br /><br />Concepts: Dimensional Sorcerer, Master Mage, Rune Witch, Shaman, Street Wizard<br /><br />You have a good range of abilities that allow you to set up areas of control to focus your mystic powers. This allows you to heal your allies, debilitate your foes, and deal decent area effect damage.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mind', '<img src="img/Archetype_Mind.png" />&nbsp;The Mind', 'Support', ['Presence', 'Endurance', 'Ego'], 'The Mind', ['Psi Lash', 'Ego Blast', 'Ego Sprites', 'Aura of Radiant Protection', ['Psionic Healing', 'Empathic Healing'], 'Compassion', 'Ego Sleep', 'Telekinetic Shield', 'Telepathic Reverberation', 'Ego Hold', ['Ego Storm', 'Summon Nightmare'], 'Mindful Reinforcement'], ['Presence', 'Sentinel', 'Sentry'], 'You have tapped into powerful psychic energies. You use your mental might to lash out at opponents and reach into their psyches to make their darkest nightmares real.<br /><br />Concepts: Alien Overmind, Mental Mutation, Mind-Control Ray, Psionic Projector, Telepath<br /><br />You have limited Ranged attack abilities, but have a number of powers designed to lock down enemies and boost allies. You are most powerful when supporting other heroes.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inventor', '<img src="img/Archetype_Inventor.png" />&nbsp;The Inventor', 'Support', ['Intelligence', 'Presence', 'Ego'], 'The Inventor', ['Sonic Blaster', 'Experimental Blaster', 'Experimental Burst Ray', 'Medical Nanites', ['Attack Toys', 'Munitions Bots'], 'Concentration', 'Bionic Shielding', 'Energy Shield', 'Support Drones', 'Miniaturization Drive', ['Sonic Device', 'Toxic Nanites'], 'Orbital Cannon'], ['Intelligence', 'Overseer', 'Commander'], 'You are an incredibly gifted creator of advanced technology, using unconventional ideas that the average person would think impossible. Your quirky designs get the job done, with only the occasional unintended side effect.<br /><br />Concepts: Scientific Entrepreneur, Prototype Cyber Soldier, Technopath, Kid Genius, Mad Scientist<br /><br />Your set of wacky gadgets provides you with a good variety of abilities. You will learn to create personal robots to aid you in combat, and several of your gizmos will be valuable assets in assisting other heroes.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Cursed', '<img src="img/Archetype_Cursed.png" />&nbsp;The Cursed', 'Ranged', ['Recovery', 'Constitution', 'Ego'], 'The Scourge', ['Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', ['Venomous Breath', 'Vicious Cyclone'], 'Aspect of the Infernal', ['Locust Swarm', 'Crippling Coils'], 'Ebon Void', 'Supernatural Power', 'Resurgence', 'Epidemic', 'Defile'], ['Recovery', 'Overseer', 'Avenger'], 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
 
 //==============================================================================
 // Get Methods
@@ -4736,7 +5084,5 @@ getDataArchetypeGroup = function() { return dataArchetypeGroup; }
 getDataArchetype = function() { return dataArchetype; }
 
 //==============================================================================
-// End of File
+// powerhouse-data.js ends here
 //==============================================================================
-
-//  LocalWords:  PowerHouse
