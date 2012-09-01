@@ -5,25 +5,25 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-06-10 10:37:21 (kyle)>
+ * Time-stamp: <2012-08-26 15:31:13 (kyle)>
  *============================================================================*/
 
-var version = '0.9.8';
-var releaseDate = '2012-06-04';
-var buildVersion = 3;
+var version = '0.9.10';
+var releaseDate = '2012-08-24';
+var buildVersion = 5;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
 var buildUrl = siteUrl+'powerhouse.html';
 var mouseX = 0;
 var mouseY = 0;
-var clickableClasses = new Array();
+var clickableClasses = [];
 clickableClasses[0] = 'selection';
 clickableClasses[1] = 'link';
 
 // cookie variables with default values
 var cookieExpireDays = 365;
 var forumExportType = 'co';
-var prefFontFamilyList = new Array('Andale Mono', 'Arial', 'Comic Sans MS', 'Courier New', 'Garuda', 'Georgia', 'Helvetica', 'Lexia', 'Lucida Sans', 'Times New Roman', 'Trebuchet MS', 'Verdana', 'sans-serif');
+var prefFontFamilyList = ['Andale Mono', 'Arial', 'Comic Sans MS', 'Courier New', 'Garuda', 'Georgia', 'Helvetica', 'Lexia', 'Lucida Sans', 'Times New Roman', 'Trebuchet MS', 'Verdana', 'sans-serif'];
 var prefFontFamily = 'Lexia';
 var prefFontSize = 100;
 var prefPopupTips = true;
@@ -46,7 +46,7 @@ function getCookie(name)
         x = x.replace(/^\s+|\s+$/g, '');
         if (x == name) return unescape(y);
     }
-    return null;
+    return undefined;
 }
 window['getCookie'] = getCookie;
 
@@ -120,30 +120,30 @@ var dataSpecializationTree = getDataSpecializationTree();
 var dataVersionUpdate = getDataVersionUpdate();
 
 // power code lookup
-var dataPowerIdFromCode = new Array();
+var dataPowerIdFromCode = [];
 for (var i=0; i<dataPower.length; i++) {
     dataPowerIdFromCode[dataPower[i].code()] = parseInt(i);
 }
 
 // power set lookup
-var dataPowerIdFromPowerSet = new Array();
+var dataPowerIdFromPowerSet = [];
 for (var i=0; i<dataPower.length; i++) {
     var powerSet = dataPower[i].powerSet;
     if (powerSet != null) {
         if (dataPowerIdFromPowerSet[powerSet] == undefined) {
-            dataPowerIdFromPowerSet[powerSet] = new Array();
+            dataPowerIdFromPowerSet[powerSet] = [];
         }
         dataPowerIdFromPowerSet[powerSet].push(parseInt(i));
     }
 }
 
 // power framework lookup
-var dataPowerIdFromFramework = new Array();
+var dataPowerIdFromFramework = [];
 for (var i=0; i<dataPower.length; i++) {
     var framework = dataPower[i].framework;
     if (framework != null) {
         if (dataPowerIdFromFramework[framework] == undefined) {
-            dataPowerIdFromFramework[framework] = new Array();
+            dataPowerIdFromFramework[framework] = [];
         }
         dataPowerIdFromFramework[framework].push(parseInt(i));
     }
@@ -153,7 +153,7 @@ for (var i=0; i<dataPower.length; i++) {
 var phVersion = buildVersion;
 var phName = '';
 var phArchetype = dataArchetype[1];
-var phSuperStat = new Array();
+var phSuperStat = [];
 for (var i=1; i<=3; i++) {
     phSuperStat[i] = dataSuperStat[0];
 }
@@ -161,41 +161,41 @@ var phInnateTalent = Array();
 for (var i=1; i<=1; i++) {
     phInnateTalent[i] = dataInnateTalent[0];
 }
-var phTalent = new Array();
+var phTalent = [];
 for (var i=1; i<=6; i++) {
     phTalent[i] = dataTalent[0];
 }
-var phTravelPower = new Array();
+var phTravelPower = [];
 for (var i=1; i<=2; i++) {
     phTravelPower[i] = dataTravelPower[0];
 }
-var phTravelPowerAdvantage = new Array();
+var phTravelPowerAdvantage = [];
 for (var i=1; i<=2; i++) {
     phTravelPowerAdvantage[i] = 0;
 }
-var phPower = new Array();
+var phPower = [];
 for (var i=1; i<=14; i++) {
     phPower[i] = dataPower[0];
 }
-var phPowerAdvantage = new Array();
+var phPowerAdvantage = [];
 for (var i=1; i<=14; i++) {
     phPowerAdvantage[i] = 0;
 }
-var phSpecializationTree = new Array();
+var phSpecializationTree = [];
 for (var i=1; i<=4; i++) {
     phSpecializationTree[i] = dataSpecializationTree[0];
 }
-var phSpecialization = new Array();
+var phSpecialization = [];
 for (var i=1; i<=4; i++) {
     phSpecialization[i] = 0;
 }
 var phBuildLink = '';
 var phBuildLinkRef = '';
-var statFrameworkCount = new Array();
+var statFrameworkCount = [];
 for (var i=1; i<=dataFramework.length; i++) {
     statFrameworkCount[i] = 0;
 }
-var statPowerSetCount = new Array();
+var statPowerSetCount = [];
 for (var i=0; i<dataPowerSet.length; i++) {
     statPowerSetCount[i] = 0;
 }
@@ -341,9 +341,11 @@ window['updatePositionSection'] = updatePositionSection;
 
 // name functions
 function editName() {
+    var field = document.getElementById('editName');
+    field.value = phName;
     hideSection('sectionDisplayName');
     showSection('sectionEditName');
-    document.getElementById('editName').focus();
+    field.focus();
 }
 window['editName'] = editName;
 function cancelName() {
@@ -987,7 +989,7 @@ function setPower(id) {
     if (id != oldId) {
         if (id > 0) {
             for (var i=1; i<phPower.length; i++) {
-                if (i != num && phPower[i].id == id) {
+                if (i != num && phPower[i].name == dataPower[id].name) {
                     swapNum = i;
                     swapField = document.getElementById('fieldPower'+i);
                     swapAdvantageField = document.getElementById('fieldPowerAdvantage'+i);
@@ -1099,6 +1101,7 @@ function selectPowerAllowed(num, id) {
     case 4:
         //if (powerSetCount >= 10) result = 1;
         //if (powerCount >= 12 && tier4Id == 0) result = 1;
+        //if (phArchetype > 1 || num >= 13) { }
         if (tier4Id == 0) result = 1;
         else if (oldTier == 4) result = 2;
         break;
@@ -1108,7 +1111,7 @@ function selectPowerAllowed(num, id) {
         else result = 0;
     }
     for (var i=1; i<phPower.length; i++) {
-        if (phPower[i].id == id && (num != i || result == 1)) result = 2;
+        if (phPower[i].name == power.name && (num != i || result == 1)) result = 2;
     }
     return result;
 }
@@ -1472,6 +1475,7 @@ function setupSpecializations() {
         phSpecializationTree[1] = dataSpecializationTree[phSuperStat[1].id];
         phSpecialization[1] = 0;
         prevSelectedSpecializationSuperStat = phSuperStat[1].id;
+        phSpecializationTree[4] = dataSpecializationTree[0];
     }
     for (var i=1; i<=4; i++) {
         var tableSpecialization = document.getElementById('tableSpecialization'+i);
@@ -1523,6 +1527,7 @@ function setupSpecializations() {
             break;
         }
         if (i != 4) {
+            table.setAttribute('onclick', 'selectSpecialization('+i+')');
             for (var j=0; j<specializationList.length-1; j++) {
                 if (specializationPointList[j] > 0) {
                     var specialization = specializationList[j];
@@ -1844,6 +1849,9 @@ function selectSpecializationUpdate(num) {
 }
 window['selectSpecializationUpdate'] = selectSpecializationUpdate;
 function selectSpecializationClear(num) {
+    if (phArchetype.id == 1 || num == 4) {
+        phSpecializationTree[num] = dataSpecializationTree[0];
+    }
     phSpecialization[num] = 0;
     setupSpecializations();
     selectClear();
@@ -1915,12 +1923,19 @@ function setSpecializationTree(num, id) {
 }
 window['setSpecializationTree'] = setSpecializationTree;
 function setSpecializationMastery(id) {
-    phSpecializationTree[4] = phSpecializationTree[id];
-    phSpecialization[4] = id;
+    if (id == 0) phSpecializationTree[4] = dataSpecializationTree[0];
+    else phSpecializationTree[4] = phSpecializationTree[id];
     setupSpecializations();
     selectClear();
 }
 window['setSpecializationMastery'] = setSpecializationMastery;
+function getSpecializationMasteryId(id) {
+    for (var i=1; i<phSpecializationTree.length-1; i++) {
+        if (phSpecializationTree[i].id == id) return i;
+    }
+    return 0;
+}
+window['getSpecializationMasteryId'] = getSpecializationMasteryId;
 
 // archetype functions
 function setupArchtypes() {
@@ -1994,7 +2009,7 @@ function setArchetype(id) {
         document.getElementById('fieldPowerNote9').innerHTML = '23&nbsp;';
         document.getElementById('fieldPowerNote10').innerHTML = '26&nbsp;';
         document.getElementById('fieldPowerNote11').innerHTML = '29&nbsp;';
-        document.getElementById('rowPower12').style.display = '';
+        document.getElementById('fieldPowerNote12').innerHTML = '32&nbsp;';
         document.getElementById('rowPower13').style.display = '';
         document.getElementById('rowPower14').style.display = '';
     } else {
@@ -2067,11 +2082,11 @@ function setArchetype(id) {
         document.getElementById('fieldTalentNote4').innerHTML = '20&nbsp;';
         document.getElementById('fieldTalentNote5').innerHTML = '25&nbsp;';
         document.getElementById('fieldTalentNote6').innerHTML = '30&nbsp;';
-        document.getElementById('fieldPowerNote8').innerHTML = '22&nbsp;';
-        document.getElementById('fieldPowerNote9').innerHTML = '27&nbsp;';
-        document.getElementById('fieldPowerNote10').innerHTML = '32&nbsp;';
-        document.getElementById('fieldPowerNote11').innerHTML = '40&nbsp;';
-        document.getElementById('rowPower12').style.display = 'none';
+        document.getElementById('fieldPowerNote8').innerHTML = '21&nbsp;';
+        document.getElementById('fieldPowerNote9').innerHTML = '25&nbsp;';
+        document.getElementById('fieldPowerNote10').innerHTML = '30&nbsp;';
+        document.getElementById('fieldPowerNote11').innerHTML = '35&nbsp;';
+        document.getElementById('fieldPowerNote12').innerHTML = '40&nbsp;';
         document.getElementById('rowPower13').style.display = 'none';
         document.getElementById('rowPower14').style.display = 'none';
     }
@@ -2098,7 +2113,7 @@ window['applyVersionUpdate'] = applyVersionUpdate;
 // parse url for parameters
 function parseUrlParams(url) {
     var version = buildVersion;
-    var data = new Array();
+    var data = [];
     var parts = url.split('?');
     if (parts[1] != undefined) {
         var params = parts[1].split('&');
@@ -2126,16 +2141,18 @@ function parseUrlParams(url) {
     var pos = 0;
     var i = 0;
     var inc = 1;
+    var archetype = 1;
+    var specializationMasteryId = 0;
     while (i < data.length) {
         //var codeNum = urlCodeToNum(data[i]);
-        pos = applyVersionUpdate(version, 'pos', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc});
-        i = applyVersionUpdate(version, 'i', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc});
-        //codeNum = applyVersionUpdate(version, 'codeNum', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'codeNum': codeNum});
+        pos = applyVersionUpdate(version, 'pos', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
+        i = applyVersionUpdate(version, 'i', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
+        //codeNum = applyVersionUpdate(version, 'codeNum', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'codeNum': codeNum, 'archetype': archetype});
         switch (pos) {
         case 0:
             // archetype
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
-            var archetype = urlCodeToNum(code1);
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
+            archetype = urlCodeToNum(code1);
             archetype = applyVersionUpdate(version, 'archetype', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
             phArchetype = dataArchetype[archetype];
             inc = 1;
@@ -2145,23 +2162,23 @@ function parseUrlParams(url) {
         case 2:
         case 3:
             // super stats
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
             var superStat = urlCodeToNum(code1);
-            superStat = applyVersionUpdate(version, 'superStat', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'superStat': superStat});
+            superStat = applyVersionUpdate(version, 'superStat', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'superStat': superStat});
             selectSuperStat(pos);
             setSuperStat(superStat);
             inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'superStat': superStat});
+            inc = applyVersionUpdate(version, 'inc', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'superStat': superStat});
             break;
         case 4:
             // innate talent
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
             var innateTalent = urlCodeToNum(code1);
-            innateTalent = applyVersionUpdate(version, 'innateTalent', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'innateTalent': innateTalent});
+            innateTalent = applyVersionUpdate(version, 'innateTalent', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'innateTalent': innateTalent});
             selectInnateTalent(pos-3);
             setInnateTalent(innateTalent);
             inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'innateTalent': innateTalent});
+            inc = applyVersionUpdate(version, 'inc', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'innateTalent': innateTalent});
             break;
         case 5:
         case 6:
@@ -2170,29 +2187,29 @@ function parseUrlParams(url) {
         case 9:
         case 10:
             // talents
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i]});
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
             var talent = urlCodeToNum(code1);
-            talent = applyVersionUpdate(version, 'talent', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'talent': talent});
+            talent = applyVersionUpdate(version, 'talent', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'talent': talent});
             selectTalent(pos-4);
             setTalent(talent);
             inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'talent': talent});
+            inc = applyVersionUpdate(version, 'inc', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'talent': talent});
             break;
         case 11:
         case 12:
             // travel powers
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1]});
-            var code2 = applyVersionUpdate(version, 'code2', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1]});
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'archetype': archetype});
+            var code2 = applyVersionUpdate(version, 'code2', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'archetype': archetype});
             var travelPower = urlCodeToNum(code1);
-            travelPower = applyVersionUpdate(version, 'travelPower', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'travelPower': travelPower});
+            travelPower = applyVersionUpdate(version, 'travelPower', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower});
             var mask = urlCodeToNum(code2) << 1;
-            mask = applyVersionUpdate(version, 'mask', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'travelPower': travelPower, 'mask': mask});
+            mask = applyVersionUpdate(version, 'mask', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower, 'mask': mask});
             var num = pos-10;
             selectTravelPower(num);
             setTravelPower(travelPower);
             setAdvantage(2, num, mask);
             inc = 2;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'travelPower': travelPower, 'mask': mask});
+            inc = applyVersionUpdate(version, 'inc', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower, 'mask': mask});
             break;
         case 13:
         case 14:
@@ -2209,13 +2226,13 @@ function parseUrlParams(url) {
         case 25:
         case 26:
             // powers
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var code2 = applyVersionUpdate(version, 'code2', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var code3 = applyVersionUpdate(version, 'code3', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var code4 = applyVersionUpdate(version, 'code4', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var framework = applyVersionUpdate(version, 'framework', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
-            var power = applyVersionUpdate(version, 'power', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
-            var mask = applyVersionUpdate(version, 'mask', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var code2 = applyVersionUpdate(version, 'code2', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var code3 = applyVersionUpdate(version, 'code3', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var code4 = applyVersionUpdate(version, 'code4', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var framework = applyVersionUpdate(version, 'framework', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+            var power = applyVersionUpdate(version, 'power', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+            var mask = applyVersionUpdate(version, 'mask', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
             var powerCode = numToUrlCode(framework)+numToUrlCode(power);
             var powerId = dataPowerIdFromCode[powerCode];
             var num = pos-12;
@@ -2225,36 +2242,36 @@ function parseUrlParams(url) {
             //validatePower(num, powerId);
             setAdvantage(1, num, mask);
             inc = 4;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'framework': framework, 'power': power, 'mask': mask});
+            inc = applyVersionUpdate(version, 'inc', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': framework, 'power': power, 'mask': mask});
             break;
         case 27:
         case 28:
         case 29:
             // specializations
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var code2 = applyVersionUpdate(version, 'code2', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var code3 = applyVersionUpdate(version, 'code3', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
-            var code4 = applyVersionUpdate(version, 'code4', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3]});
+            var code1 = applyVersionUpdate(version, 'code1', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var code2 = applyVersionUpdate(version, 'code2', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var code3 = applyVersionUpdate(version, 'code3', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+            var code4 = applyVersionUpdate(version, 'code4', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
             var codeNum = parseInt(urlCodeToNum4(code1+code2+code3+code4));
-            var sp = codeNum >> 4;
-            var spt = codeNum & ~(sp << 4);
-            var specializationTree = applyVersionUpdate(version, 'specializationTree', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'specializationTree': spt, 'specialization': sp});
-            var specialization = applyVersionUpdate(version, 'specialization', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'specializationTree': spt, 'specialization': sp});
+            var specialization = codeNum >> 4;
+            var specializationTree = codeNum & ~(specialization << 4);
+            specializationTree = applyVersionUpdate(version, 'specializationTree', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
+            specialization = applyVersionUpdate(version, 'specialization', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
             var num = pos-26;
             if (num == 1) {
-                setSpecializationTree(4, spt);
-                setSpecialization(num, sp);
+                specializationMasteryId = specializationTree;
             } else {
-                setSpecializationTree(num, (spt == 0) ? 0 : spt+8);
-                setSpecialization(num, sp);
+                setSpecializationTree(num, (specializationTree == 0) ? 0 : specializationTree+8);
             }
+            setSpecialization(num, specialization);
             inc = 4;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'specializationTree': spt, 'specialization': sp});
+            inc = applyVersionUpdate(version, 'inc', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
             break;
         }
         i+=inc;
         pos++;
     }
+    setSpecializationMastery(specializationMasteryId);
     validatePowers();
     if (phArchetype.id > 1) setArchetype(phArchetype.id);
 }
@@ -2291,7 +2308,7 @@ function buildLink() {
     var base = window.location.href.replace(/\?.*$/, '');
     //var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&a='+phArchetype.id+'&d=';
     var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&d=';
-    var params = new Array();
+    var params = [];
     params.push(phArchetype.code());
     for (var i=1; i<phSuperStat.length; i++) {
         params.push(phSuperStat[i].code());
@@ -2312,7 +2329,7 @@ function buildLink() {
     }
     for (var i=1; i<phSpecializationTree.length-1; i++) {
         if (i == 1) {
-            params.push(numToUrlCode4(phSpecializationTree[4].id | (phSpecialization[1] << 4)));
+            params.push(numToUrlCode4(getSpecializationMasteryId(phSpecializationTree[4].id) | (phSpecialization[1] << 4)));
         } else {
             params.push(numToUrlCode4(((phSpecializationTree[i].id == 0) ? 0 : phSpecializationTree[i].id-8) | (phSpecialization[i] << 4)));
         }
@@ -2338,7 +2355,7 @@ window['buildLink'] = buildLink;
 // restore previous build (if saved to cookie)
 function restorePrevBuild() {
     var url = getCookie('buildLink');
-    if (url != null) window.open(url, '_self');
+    if (url != undefined) window.open(url, '_self');
 }
 window['restorePrevBuild'] = restorePrevBuild;
 
@@ -2399,7 +2416,7 @@ window['forumAdvantageText'] = forumAdvantageText;
 // forum preview
 function forumPreview() {
     var forumPreview = document.getElementById('forumPreview');
-    var result = new Array();
+    var result = [];
     result.push('<b><a href="'+siteUrl+'"><span class="forumHeader">'+siteName+'</span></a></b> &nbsp; ');
     result.push('<b><a href="'+phBuildLink+'"><span class="forumLink">(Link to this build)</span></a></b><br />');
     result.push('<br />');
@@ -2440,10 +2457,11 @@ function forumPreview() {
     result.push(forumEntry(1, 'Level 14:', forumName(phPower[6].name), forumAdvantageText(1, 6, phPowerAdvantage[6])));
     result.push(forumEntry(1, 'Level 17:', forumName(phPower[7].name), forumAdvantageText(1, 7, phPowerAdvantage[7])));
     if (phArchetype.id > 1) {
-        result.push(forumEntry(1, 'Level 22:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
-        result.push(forumEntry(1, 'Level 27:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
-        result.push(forumEntry(1, 'Level 32:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
-        result.push(forumEntry(1, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push(forumEntry(1, 'Level 21:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
+        result.push(forumEntry(1, 'Level 25:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
+        result.push(forumEntry(1, 'Level 30:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
+        result.push(forumEntry(1, 'Level 35:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push(forumEntry(1, 'Level 40:', forumName(phPower[12].name), forumAdvantageText(1, 12, phPowerAdvantage[12])));
         result.push('<br />');
     } else {
         result.push(forumEntry(1, 'Level 20:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
@@ -2472,7 +2490,7 @@ function forumPreview() {
         }
     }
     if (phSpecializationTree[4].id != 0) {
-        result.push(forumEntry(1, 'Mastery:', forumName(phSpecializationTree[1].name)+' Mastery', '(1/1)'));
+        result.push(forumEntry(1, 'Mastery:', forumName(phSpecializationTree[4].name)+' Mastery', '(1/1)'));
     }
     forumPreview.innerHTML = result.join('');
 }
@@ -2494,13 +2512,13 @@ window['selectForumExportType'] = selectForumExportType;
 function forumExport() {
     var forumType = getCookie('forumType');
     var forumTypeNum;
-    if (forumType == 'txt') forumTypeNum = 2;
-    else forumTypeNum = 3;
     if (forumType == undefined) forumType = forumExportType;
     setForumExportType(forumType);
+    if (forumType == 'txt') forumTypeNum = 2;
+    else forumTypeNum = 3;
     document.getElementById('exportType_'+forumType).setAttribute('class', 'selectedButton');
     var forumText = document.getElementById('forumText');
-    var result = new Array();
+    var result = [];
     //if (forumType == 'co') result.push('[font="Comic Sans MS"]');
     if (forumTypeNum == 2) {
         result.push(siteName+' '+siteUrl+'\n');
@@ -2548,10 +2566,11 @@ function forumExport() {
     result.push(forumEntry(forumTypeNum, 'Level 14:', forumName(phPower[6].name), forumAdvantageText(1, 6, phPowerAdvantage[6])));
     result.push(forumEntry(forumTypeNum, 'Level 17:', forumName(phPower[7].name), forumAdvantageText(1, 7, phPowerAdvantage[7])));
     if (phArchetype.id > 1) {
-        result.push(forumEntry(forumTypeNum, 'Level 22:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
-        result.push(forumEntry(forumTypeNum, 'Level 27:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
-        result.push(forumEntry(forumTypeNum, 'Level 32:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
-        result.push(forumEntry(forumTypeNum, 'Level 40:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push(forumEntry(forumTypeNum, 'Level 21:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
+        result.push(forumEntry(forumTypeNum, 'Level 25:', forumName(phPower[9].name), forumAdvantageText(1, 9, phPowerAdvantage[9])));
+        result.push(forumEntry(forumTypeNum, 'Level 30:', forumName(phPower[10].name), forumAdvantageText(1, 10, phPowerAdvantage[10])));
+        result.push(forumEntry(forumTypeNum, 'Level 35:', forumName(phPower[11].name), forumAdvantageText(1, 11, phPowerAdvantage[11])));
+        result.push(forumEntry(forumTypeNum, 'Level 40:', forumName(phPower[12].name), forumAdvantageText(1, 12, phPowerAdvantage[12])));
         result.push('\n');
     } else {
         result.push(forumEntry(forumTypeNum, 'Level 20:', forumName(phPower[8].name), forumAdvantageText(1, 8, phPowerAdvantage[8])));
@@ -2580,7 +2599,7 @@ function forumExport() {
         }
     }
     if (phSpecializationTree[4].id != 0) {
-        result.push(forumEntry(forumTypeNum, 'Mastery:', forumName(phSpecializationTree[1].name)+' Mastery', '(1/1)'));
+        result.push(forumEntry(forumTypeNum, 'Mastery:', forumName(phSpecializationTree[4].name)+' Mastery', '(1/1)'));
     }
     //if (forumType == 'co') result.push('[/font]');
     forumText.innerHTML = result.join('');
@@ -2637,7 +2656,7 @@ function selectPrefFontSize(change) {
 }
 window['selectPrefFontSize'] = selectPrefFontSize;
 // function populateFontList(fontList) {
-//     prefFontFamilyList = new Array();
+//     prefFontFamilyList = [];
 //     for (var key in fontList) {
 //         var fontName = fontList[key];
 //         fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
@@ -2846,5 +2865,5 @@ window['start'] = start;
 window.onload = start;
 
 //==============================================================================
-// End of File
+// powerhouse.js ends here
 //==============================================================================
