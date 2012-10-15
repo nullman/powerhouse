@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-08-26 14:56:28 (kyle)>
+ * Time-stamp: <2012-10-04 14:10:17 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -1854,7 +1854,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'U-238 Rounds', 'U-238 Rounds', 2, null, 'The use of depleted uranium-238 penetrators allows for better armor penetration with your Mini Gun. Through extensive testing, you\\\'re certain that no harmful side-effects will arise from their use. Well... You\\\'re pretty sure, at least.'));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Infrared Guidance System', 'Infrared Guidance System', 2, null, 'Increases the radius of this power to 5 feet.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Infrared Guidance System', 'Infrared Guidance System', 1, null, 'Increases the radius of this power to 5 feet.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
@@ -2284,7 +2284,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Dragon\'s Claws', '<img src="img/FightingClaws_DragonsClaws.png" />&nbsp;Dragon\'s Claws', 3, 11, pow++, 2, 'Fighting Claws, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Fighting Claws or 4 non-Energy Building powers from any framework.<br /><br />Dragon\'s Claws is a technique that is highly effective in both attacking the enemy and in setting yourself up to efficiently press your attack.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Dragon\'s Claws', '<img src="img/FightingClaws_DragonsClaws.png" />&nbsp;Dragon\'s Claws', 3, 11, pow++, 2, 'Dragon\\\'s Claws, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Fighting Claws or 4 non-Energy Building powers from any framework.<br /><br />Dragon\\\'s Claws is a technique that is highly effective in both attacking the enemy and in setting yourself up to efficiently press your attack.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -4808,7 +4808,7 @@ dataSpecializationTree[dataSpecializationTree.length] = new SpecializationTree(d
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(0, 'Ruthless', '<img src="img/HeavyWeapon_Skewer.png" />&nbsp;Ruthless', 1, 2, 'Increases your Critical Severity by 5/10%.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(1, 'Can\'t Touch This', '<img src="img/Specialization_CantTouchThis.png" />&nbsp;Can\'t Touch This', 1, 3, 'When your Energy Builder deals Damage it has a 33/67/100% chance to Daze your target for 4 seconds if they are more than 10 feet away from you. Dazed characters move 20% slower.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(2, 'Anguish', '<img src="img/Specialization_Anguish.png" />&nbsp;Anguish', 1, 2, 'Whenever you Critically Strike with a Ranged attack, you deal an additional N Penetrating Damage every 2 seconds for 6 seconds. (Penetrating Damage is only resisted by Resistance to all damage, and ignores half of that Resistance. Penetrating Damage also ignores half of the absorption provided by Shields.)'));
-dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Round \'em Up', '<img src="img/Might_IronCyclone.png" />&nbsp;Round \'em Up', 1, 3, 'Your AoE attacks cuase your targets to take 1/2/3% more Damage from further AoE attacks you make. Stacks up to 3 times and lasts 10 seconds.'));
+dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(3, 'Round \'em Up', '<img src="img/Might_IronCyclone.png" />&nbsp;Round \'em Up', 1, 3, 'Your AoE attacks cause your targets to take 1/2/3% more Damage from further AoE attacks you make. Stacks up to 3 times and lasts 10 seconds.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(4, 'Surprise Attack', '<img src="img/Electricity_Electrocute.png" />&nbsp;Surprise Attack', 2, 2, 'Your Single Target attacks now have an additional 10/20% Critical Chance on targets above 90% Health.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(5, 'Relentless Assault', '<img src="img/Supernatural_AspectOfTheInfernal.png" />&nbsp;Relentless Assault', 2, 3, 'Your Maintained attacks increase your Offense by 10/20/30 for 8 seconds. Stacks up to 5 times.'));
 dataSpecializationTree[dataSpecializationTree.length-1].specializationList.push(new Specialization(6, 'Offensive Expertise', '<img src="img/MartialArts_Intensity.png" />&nbsp;Offensive Expertise', 2, 2, 'Your Active Offense powers benefit from an additional 7/14% Power Recharge Reduction.'));

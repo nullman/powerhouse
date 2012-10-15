@@ -5,11 +5,11 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-08-26 15:31:13 (kyle)>
+ * Time-stamp: <2012-10-12 17:51:28 (kyle)>
  *============================================================================*/
 
-var version = '0.9.10';
-var releaseDate = '2012-08-24';
+var version = '0.9.11';
+var releaseDate = '2012-10-12';
 var buildVersion = 5;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -910,19 +910,40 @@ function selectFramework(framework) {
     var selectPower = document.getElementById('selectPower');
     var selectPowerLeft = document.getElementById('selectPowerLeft');
     var selectPowerRight = document.getElementById('selectPowerRight');
+    var spanLeft = document.createElement('span');
+    var spanRight = document.createElement('span');
+    spanRight.setAttribute('style', 'float: right');
     var a = document.createElement('a');
     a.setAttribute('id', 'selectPower0');
     a.setAttribute('onclick', 'setPower(0)');
     a.innerHTML = 'Clear';
-    selectPower.appendChild(a);
+    spanLeft.appendChild(a);
     var span = document.createElement('span');
     span.innerHTML = ' &nbsp; ';
-    selectPower.appendChild(span);
+    spanLeft.appendChild(span);
     var a = document.createElement('a');
     a.setAttribute('id', 'selectPowerCancel');
     a.setAttribute('onclick', 'selectClear()');
     a.innerHTML = 'Cancel';
-    selectPower.appendChild(a);
+    spanLeft.appendChild(a);
+    selectPower.appendChild(spanLeft);
+    var span = document.createElement('span');
+    span.innerHTML = ' &nbsp; ';
+    spanRight.appendChild(span);
+    var a = document.createElement('a');
+    a.setAttribute('id', 'selectPowerInsert');
+    a.setAttribute('onclick', 'selectPowerInsert('+selectedNum+')');
+    a.innerHTML = 'Insert';
+    spanRight.appendChild(a);
+    var span = document.createElement('span');
+    span.innerHTML = ' &nbsp; ';
+    spanRight.appendChild(span);
+    var a = document.createElement('a');
+    a.setAttribute('id', 'selectPowerDelete');
+    a.setAttribute('onclick', 'selectPowerDelete('+selectedNum+')');
+    a.innerHTML = 'Delete';
+    spanRight.appendChild(a);
+    selectPower.appendChild(spanRight);
     selectPower.appendChild(document.createElement('br'));
     var frameworkPowers = dataPowerIdFromFramework[framework];
     for (var i=0; i<frameworkPowers.length; i++) {
@@ -972,6 +993,8 @@ function selectPower(num) {
             selectFramework(phPower[num].framework);
         } else if (prevSelectedFramework != 0) {
             selectFramework(prevSelectedFramework);
+        } else {
+            selectFramework(0);
         }
         showPositionSection('selectionPower', false);
     }
@@ -1131,6 +1154,34 @@ function validatePowers() {
     }
 }
 window['validatePowers'] = validatePowers;
+function selectPowerInsert(num) {
+    for (var i=phPower.length-1; i>num; i--) {
+        movePower(i-1, i);
+    }
+    selectedNum = num;
+    setPower(0);
+    selectClear();
+    validatePowers();
+}
+window['selectPowerInsert'] = selectPowerInsert;
+function selectPowerDelete(num) {
+    for (var i=num+1; i<phPower.length; i++) {
+        movePower(i, i-1);
+    }
+    selectedNum = phPower.length-1;
+    setPower(0);
+    selectClear();
+    validatePowers();
+}
+window['selectPowerDelete'] = selectPowerDelete;
+function movePower(fromNum, toNum) {
+    var power = phPower[fromNum];
+    var mask = phPowerAdvantage[fromNum];
+    selectedNum = toNum;
+    setPower(power.id);
+    setAdvantage(1, toNum, mask);
+}
+window['movePower'] = movePower;
 
 // archetype power functions
 function selectArchetypePower(num) {
