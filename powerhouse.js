@@ -5,11 +5,11 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-10-12 17:51:28 (kyle)>
+ * Time-stamp: <2012-10-29 16:56:18 (kyle)>
  *============================================================================*/
 
-var version = '0.9.11';
-var releaseDate = '2012-10-12';
+var version = '0.9.12';
+var releaseDate = '2012-10-29';
 var buildVersion = 5;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -29,16 +29,14 @@ var prefFontSize = 100;
 var prefPopupTips = true;
 
 // set and get cookies
-function setCookie(name, value, expireDays)
-{
+function setCookie(name, value, expireDays) {
     var expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + expireDays);
     var cookieValue = escape(value)+((expireDays == null) ? '' : '; expires='+expireDate.toUTCString());
     document.cookie = name+'='+cookieValue;
 }
 window['setCookie'] = setCookie;
-function getCookie(name)
-{
+function getCookie(name) {
     var cookies = document.cookie.split(';');
     for (var i=0; i<cookies.length; i++) {
         var x = cookies[i].substr(0, cookies[i].indexOf('='));
@@ -2550,7 +2548,7 @@ window['forumPreview'] = forumPreview;
 // forum export
 function setForumExportType(forumType) {
     forumExportType = forumType;
-    setCookie('forumType', forumType, 30);
+    setCookie('forumType', forumType, cookieExpireDays);
 }
 window['setForumExportType'] = setForumExportType;
 function selectForumExportType(forumType) {

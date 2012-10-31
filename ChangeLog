@@ -1,4 +1,25 @@
+2012-10-31  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none: Released version 0.9.12.
+
+2012-10-25  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Fixed Specialization Trees for The Night Avenger
+        Archetype.  (Thanks to alexandercrisalex for reporting this.)
+
+        * powerhouse.html: Added help text describing the new power Insert and
+        Delete buttons.
+
 2012-10-14  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Fixed The Impulse Archetype's second
+        Specialization Tree changing it from Vindicator to Overseer.  (Thanks
+        to alexandercrisalex for reporting this.)
+
+        * powerhouse-data.js: Updated the descriptions of the following Innate
+        Talents: The Inferno, The Soldier, The Blade, The Savage, The
+        Behemoth, The Glacier, The Mind, The Grimoire, The Specialist, The
+        Marksman.  (Thanks to Charkelle for reporting this.)
 
         * none: Released version 0.9.11.
 
