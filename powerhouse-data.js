@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-10-25 10:09:45 (kyle)>
+ * Time-stamp: <2012-12-02 10:59:51 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -1665,7 +1665,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Not Without Incident', 'Not Without Incident', 2, null, '30% (100% while Concentrated or Enraged) chance to inflict AoE damage (10ft range, max of 5 targets) around your target.'));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Break the Trigger', 'Break the Trigger', 2, null, 'You pull the trigger so hard you cause the second and fourth attacks of this combo to become Melee damage.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Break the Trigger', 'Break the Trigger', 1, null, 'You pull the trigger so hard you cause the second and fourth attacks of this combo to become Melee damage.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
@@ -2094,7 +2094,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunde
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 2, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
@@ -2269,7 +2269,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunde
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 2, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
@@ -2437,7 +2437,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunde
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 2, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
@@ -2619,7 +2619,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunde
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 3, null, dataPowerAlias['Essence Assault'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Essence Assault'].name, dataPowerAlias['Essence Assault'].desc, 2, null, dataPowerAlias['Essence Assault'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
@@ -3516,7 +3516,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Reverence', 'Reverence', 2, null, 'Adds a small AoE (15 foot radius, max of 5 targets) heal component to Conviction.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Imbue', '<img src="img/Celestial_Imbue.png" />&nbsp;Imbue', 6, 19, pow++, 1, 'Celestial, Self On-Next-Hit Critical Chance Buff<br /><br />Requires 1 power from Celestial or 2 non-Energy Building powers from any framework.<br /><br />You imbue your next attack or heal with your own life force.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Imbue', '<img src="img/Celestial_Imbue.png" />&nbsp;Imbue', 6, 19, pow++, 1, 'Celestial, Active Offense Self Critical Chance Buff<br /><br />Requires 1 power from Celestial or 2 non-Energy Building powers from any framework.<br /><br />You imbue your attacks with increased vigor.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));

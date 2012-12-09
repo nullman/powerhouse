@@ -5,11 +5,11 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-10-29 16:56:18 (kyle)>
+ * Time-stamp: <2012-12-05 12:56:16 (kyle)>
  *============================================================================*/
 
-var version = '0.9.12';
-var releaseDate = '2012-10-29';
+var version = '0.9.13';
+var releaseDate = '2012-12-01';
 var buildVersion = 5;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
