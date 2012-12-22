@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-12-17 16:29:48 (kyle)>
+ * Time-stamp: <2012-12-18 14:20:53 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.14';
-var releaseDate = '2012-12-16';
+var version = '0.9.15';
+var releaseDate = '2012-12-18';
 var buildVersion = 5;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -29,6 +29,7 @@ var prefFontFamilyList = ['Andale Mono', 'Arial', 'Comic Sans MS', 'Courier New'
 var prefFontFamily = 'Lexia';
 var prefFontSize = 100;
 var prefPopupTips = true;
+var prefAnalytics = true;
 
 // set and get cookies
 function setCookie(name, value, expireDays) {
@@ -107,10 +108,12 @@ window['urlCodeToNum4'] = urlCodeToNum4;
 
 // submit google analytics
 function submitAnalytics(catagory, action, label, value) {
-    if (debug) {
-        console.log(['_trackEvent', catagory, action, label, value]);
-    } else {
-        _gaq.push(['_trackEvent', catagory, action, label, value]);
+    if (prefAnalytics) {
+        if (debug) {
+            console.log(['_trackEvent', catagory, action, label, value]);
+        } else {
+            _gaq.push(['_trackEvent', catagory, action, label, value]);
+        }
     }
 }
 window['submitAnalytics'] = submitAnalytics;
@@ -119,25 +122,19 @@ var analyticsTimeout = 2000;
 var analyticsQueue = [];
 var analyticsQueueServiceRunning = false;
 function queueAnalytics(catagory, action, label, value) {
-    // if (debug) {
-    //     console.log(['_trackEvent', catagory, action, label, value]);
-    // } else {
-    //     _gaq.push(['_trackEvent', catagory, action, label, value]);
-    // }
-    analyticsQueue.push(['_trackEvent', catagory, action, label, value]);
-    // start google analytics queue submission service
-    if (!analyticsQueueServiceRunning) analyticsQueueService();
+    if (prefAnalytics) {
+        analyticsQueue.push([catagory, action, label, value]);
+        // start google analytics queue submission service
+        if (!analyticsQueueServiceRunning) analyticsQueueService();
+    }
 }
 window['queueAnalytics'] = queueAnalytics;
 // pop submissions off of queue and submit them
 function analyticsQueueService() {
     if (analyticsQueue.length > 0) {
         analyticsQueueServiceRunning = true;
-        if (debug) {
-            console.log(analyticsQueue.shift());
-        } else {
-            _gaq.push(analyticsQueue.shift());
-        }
+        var event = analyticsQueue.shift();
+        submitAnalytics(event[0], event[1], event[2], event[3]);
         setTimeout(analyticsQueueService, analyticsTimeout);
     } else {
         analyticsQueueServiceRunning = false;
@@ -2826,6 +2823,16 @@ function selectPrefPopupTips() {
     setPrefPopupTips(!prefPopupTips);
 }
 window['selectPrefPopupTips'] = selectPrefPopupTips;
+function setPrefAnalytics(analytics) {
+    prefAnalytics = analytics;
+    setCookie('prefAnalytics', analytics, cookieExpireDays);
+    document.getElementById('prefAnalyticsValue').innerHTML = (analytics ? "On" : "Off");
+}
+window['setPrefAnalytics'] = setPrefAnalytics;
+function selectPrefAnalytics() {
+    setPrefAnalytics(!prefAnalytics);
+}
+window['selectPrefAnalytics'] = selectPrefAnalytics;
 
 // show views
 function showView(view) {
@@ -2934,6 +2941,13 @@ function dataDump() {
 }
 window['dataDump'] = dataDump;
 
+// coerce value to boolean
+function coerceToBoolean(value, defaultBoolean) {
+    if (value === 'true' || value === 1) return true;
+    if (value === 'false' || value === 0) return false;
+    return defaultBoolean;
+}
+
 // setup preferences
 function setupPrefs() {
     // font family
@@ -2947,7 +2961,13 @@ function setupPrefs() {
     // popup tips
     var popupTips = getCookie('prefPopupTips');
     if (popupTips == undefined) popupTips = prefPopupTips;
+    else popupTips = coerceToBoolean(popupTips, prefPopupTips);
     setPrefPopupTips(popupTips);
+    // analytics
+    var analytics = getCookie('prefAnalytics');
+    if (analytics == undefined) analytics = prefAnalytics;
+    else analytics = coerceToBoolean(analytics, prefAnalytics);
+    setPrefAnalytics(analytics);
 }
 window['setupPrefs'] = setupPrefs;
 

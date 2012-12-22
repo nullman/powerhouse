@@ -1,3 +1,8 @@
+2012-12-18  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js, powerhouse.html:  Added preference option to turn
+        Google Analytics submissions on/off.
+
 2012-12-17  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * powerhouse.js:  Added queue and background submission task for
