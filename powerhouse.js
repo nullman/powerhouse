@@ -5,11 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-12-05 12:56:16 (kyle)>
+ * Time-stamp: <2012-12-17 16:29:48 (kyle)>
  *============================================================================*/
 
-var version = '0.9.13';
-var releaseDate = '2012-12-01';
+var debug = false;
+var version = '0.9.14';
+var releaseDate = '2012-12-16';
 var buildVersion = 5;
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -19,6 +20,7 @@ var mouseY = 0;
 var clickableClasses = [];
 clickableClasses[0] = 'selection';
 clickableClasses[1] = 'link';
+var analyticsBuildCatagory = 'Build';
 
 // cookie variables with default values
 var cookieExpireDays = 365;
@@ -102,6 +104,46 @@ function urlCodeToNum4(code) {
     return urlCodeToNum(code[0])*226981+urlCodeToNum(code[1])*3721+urlCodeToNum(code[2])*61+urlCodeToNum(code[3]);
 }
 window['urlCodeToNum4'] = urlCodeToNum4;
+
+// submit google analytics
+function submitAnalytics(catagory, action, label, value) {
+    if (debug) {
+        console.log(['_trackEvent', catagory, action, label, value]);
+    } else {
+        _gaq.push(['_trackEvent', catagory, action, label, value]);
+    }
+}
+window['submitAnalytics'] = submitAnalytics;
+// queue google analytics for background submission
+var analyticsTimeout = 2000;
+var analyticsQueue = [];
+var analyticsQueueServiceRunning = false;
+function queueAnalytics(catagory, action, label, value) {
+    // if (debug) {
+    //     console.log(['_trackEvent', catagory, action, label, value]);
+    // } else {
+    //     _gaq.push(['_trackEvent', catagory, action, label, value]);
+    // }
+    analyticsQueue.push(['_trackEvent', catagory, action, label, value]);
+    // start google analytics queue submission service
+    if (!analyticsQueueServiceRunning) analyticsQueueService();
+}
+window['queueAnalytics'] = queueAnalytics;
+// pop submissions off of queue and submit them
+function analyticsQueueService() {
+    if (analyticsQueue.length > 0) {
+        analyticsQueueServiceRunning = true;
+        if (debug) {
+            console.log(analyticsQueue.shift());
+        } else {
+            _gaq.push(analyticsQueue.shift());
+        }
+        setTimeout(analyticsQueueService, analyticsTimeout);
+    } else {
+        analyticsQueueServiceRunning = false;
+    }
+}
+window['analyticsQueueService'] = analyticsQueueService;
 
 // get data sets (from powerhouse-data.js)
 var dataSuperStat = getDataSuperStat();
@@ -359,6 +401,7 @@ function changeName(evnt) {
     document.getElementById('fieldName').firstChild.data = phName;
     showSection('sectionDisplayName');
     changeUpdate();
+    //submitAnalytics('Set', 'Name', phName);
 }
 window['changeName'] = changeName;
 // enter key also changes name
@@ -499,11 +542,12 @@ function setSuperStat(id) {
         } else if (oldId != 0) {
             oldSelectField.setAttribute('class', 'button');
         }
+        //submitAnalytics('Set', 'SuperStat', phSuperStat[num].name);
     }
-    selectClear();
     setupInnateTalents();
     setupTalents();
     setupSpecializations();
+    selectClear();
 }
 window['setSuperStat'] = setSuperStat;
 function getSuperStatDefault(num) {
@@ -610,6 +654,7 @@ function setInnateTalent(id) {
         if (oldId != 0) {
             oldSelectField.setAttribute('class', 'selectButton');
         }
+        //submitAnalytics('Set', 'InnateTalent', phInnateTalent[num].name);
     }
     selectClear();
 }
@@ -721,6 +766,7 @@ function setTalent(id) {
         } else if (oldId != 0) {
             oldSelectField.setAttribute('class', 'button');
         }
+        //submitAnalytics('Set', 'Talent', phTalent[num].name);
     }
     selectClear();
 }
@@ -856,6 +902,7 @@ function setTravelPower(id) {
                 oldSelectField.setAttribute('class', 'button');
             }
         }
+        //submitAnalytics('Set', 'TravelPower', phTravelPower[num].name);
     }
     selectClear();
 }
@@ -1049,6 +1096,7 @@ function setPower(id) {
                 advantageField.style.display = '';
             }
         }
+        //submitAnalytics('Set', 'Power', phPower[num].name);
     }
     selectClear();
     validatePowers();
@@ -1240,6 +1288,7 @@ function setArchetypePower(id) {
         field.innerHTML = dataPower[id].desc;
         advantageField.innerHTML = advantageTextSpan(1, num, 0);
         advantageField.style.display = '';
+        //submitAnalytics('Set', 'ArchetypePower', phPower[num].name);
     }
     selectClear();
 }
@@ -1459,6 +1508,7 @@ function selectAdvantageToggle(type, num, id) {
             mask = power.addAdvantage(mask, id);
             field.checked = true;
             setAdvantage(type, num, mask);
+            //submitAnalytics('Set', 'Advantage', power.name+': '+advantage.name);
         }
     }
     selectAdvantageUpdate(type, num);
@@ -1925,6 +1975,7 @@ function selectSpecializationIncrement(num, id) {
         var newMask = specializationTree.incrSpecialization(mask, id);
         setSpecialization(num, newMask);
         selectSpecializationUpdate(num);
+        //submitAnalytics('Set', 'Specialization', specializationTree.name+': '+specialization.name, specializationPointList[id]);
     }
 }
 window['selectSpecializationIncrement'] = selectSpecializationIncrement;
@@ -1939,6 +1990,7 @@ function selectSpecializationDecrement(num, id) {
         var newMask = specializationTree.decrSpecialization(mask, id);
         setSpecialization(num, newMask);
         selectSpecializationUpdate(num);
+        //submitAnalytics('Set', 'Specialization', specializationTree.name+': '+specialization.name, specializationPointList[id]);
     }
 }
 window['selectSpecializationDecrement'] = selectSpecializationDecrement;
@@ -1968,6 +2020,7 @@ function setSpecializationTree(num, id) {
         }
         selectSpecializationRefresh(num);
         setupSpecializations();
+        //submitAnalytics('Set', 'SpecializationTree', phSpecializationTree[num].name);
     }
 }
 window['setSpecializationTree'] = setSpecializationTree;
@@ -1976,6 +2029,7 @@ function setSpecializationMastery(id) {
     else phSpecializationTree[4] = phSpecializationTree[id];
     setupSpecializations();
     selectClear();
+    //if (id > 0) submitAnalytics('Set', 'SpecializationMastery', phSpecializationTree[4].name);
 }
 window['setSpecializationMastery'] = setSpecializationMastery;
 function getSpecializationMasteryId(id) {
@@ -2142,6 +2196,7 @@ function setArchetype(id) {
     phArchetype = archetype;
     document.getElementById('fieldArchetype').innerHTML = archetype.desc;
     selectClear();
+    //submitAnalytics('Set', 'Archetype', archetype.name);
 }
 window['setArchetype'] = setArchetype;
 
@@ -2328,11 +2383,19 @@ window['parseUrlParams'] = parseUrlParams;
 
 // change updates
 function changeUpdate() {
-    advantagePoints();
-    buildLink();
     setTitle();
+    advantagePoints();
+    buildLink(false);
 }
 window['changeUpdate'] = changeUpdate;
+
+// set page title
+function setTitle() {
+    var title = siteName+': '+phName;
+    if (phName == '') title = siteName;
+    if (document.title != phName) document.title = title;
+}
+window['setTitle'] = setTitle;
 
 // update advantage points used
 function advantagePoints() {
@@ -2350,48 +2413,82 @@ window['advantagePoints'] = advantagePoints;
 
 // update build url
 var prevBuildLink;
-function buildLink() {
+function buildLink(submit) {
     var field = document.getElementById('buildLink');
     //var fieldBookmark = document.getElementById('buildLinkBookmark');
     var fieldRef = document.getElementById('buildLinkRef');
     var base = window.location.href.replace(/\?.*$/, '');
     //var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&a='+phArchetype.id+'&d=';
     var link = '?v='+phVersion+'&n='+encodeURIComponent(phName)+'&d=';
+    if (submit) queueAnalytics(analyticsBuildCatagory, 'Version', phVersion);
+    if (submit && phName != '') queueAnalytics(analyticsBuildCatagory, 'Name', phName);
     var params = [];
     params.push(phArchetype.code());
+    if (submit && phArchetype.id > 0) queueAnalytics(analyticsBuildCatagory, 'Archtype', phArchetype.name);
     for (var i=1; i<phSuperStat.length; i++) {
         params.push(phSuperStat[i].code());
+        if (submit && phSuperStat[i].id > 0) queueAnalytics(analyticsBuildCatagory, 'SuperStat', phSuperStat[i].name);
     }
     for (var i=1; i<phInnateTalent.length; i++) {
         params.push(phInnateTalent[i].code());
+        if (submit && phInnateTalent[i].id > 0) queueAnalytics(analyticsBuildCatagory, 'InnateTalent', phInnateTalent[i].name);
     }
     for (var i=1; i<phTalent.length; i++) {
         params.push(phTalent[i].code());
+        if (submit && phTalent[i].id > 0) queueAnalytics(analyticsBuildCatagory, 'Talent', phTalent[i].name);
     }
     for (var i=1; i<phTravelPower.length; i++) {
         params.push(phTravelPower[i].code());
         params.push(numToUrlCode(phTravelPowerAdvantage[i] >> 1));
+        if (submit && phTravelPower[i].id > 0) {
+            queueAnalytics(analyticsBuildCatagory, 'TravelPower', phTravelPower[i].name);
+            var advantageList = phTravelPower[i].getAdvantageList(phTravelPowerAdvantage[i]);
+            for (var j=0; j<advantageList.length; j++) {
+                queueAnalytics(analyticsBuildCatagory, 'TravelPowerAdvantage', phTravelPower[i].name+': '+advantageList[j].name);
+            }
+        }
     }
     for (var i=1; i<phPower.length; i++) {
         params.push(phPower[i].code());
         params.push(numToUrlCode2(phPowerAdvantage[i] >> 1));
+        if (submit && phPower[i].id > 0) {
+            queueAnalytics(analyticsBuildCatagory, 'Power', phPower[i].name);
+            var advantageList = phPower[i].getAdvantageList(phPowerAdvantage[i]);
+            for (var j=0; j<advantageList.length; j++) {
+                queueAnalytics(analyticsBuildCatagory, 'PowerAdvantage', phPower[i].name+': '+advantageList[j].name);
+            }
+        }
     }
     for (var i=1; i<phSpecializationTree.length-1; i++) {
         if (i == 1) {
-            params.push(numToUrlCode4(getSpecializationMasteryId(phSpecializationTree[4].id) | (phSpecialization[1] << 4)));
+            var specializationMasteryId = getSpecializationMasteryId(phSpecializationTree[4].id);
+            params.push(numToUrlCode4(specializationMasteryId | (phSpecialization[1] << 4)));
+            if (submit && specializationMasteryId> 0 && phSpecializationTree[specializationMasteryId].id > 0)
+                queueAnalytics(analyticsBuildCatagory, 'SpecializationMastery', phSpecializationTree[specializationMasteryId].name);
         } else {
             params.push(numToUrlCode4(((phSpecializationTree[i].id == 0) ? 0 : phSpecializationTree[i].id-8) | (phSpecialization[i] << 4)));
         }
+        if (submit) {
+            var specializationList = phSpecializationTree[i].specializationList;
+            var specializationPointList = phSpecializationTree[i].getSpecializationList(phSpecialization[i]);
+            for (var j=0; j<specializationList.length; j++) {
+                if (specializationPointList[j] > 0)
+                    queueAnalytics(analyticsBuildCatagory, 'Specialization', phSpecializationTree[i].name+': '+specializationList[j].name, specializationPointList[j]);
+            }
+        }
     }
-    link += params.join('');
+    var data = params.join('');
+    if (submit) submitAnalytics(analyticsBuildCatagory, 'Data', data);
+    link += data;
     phBuildLink = buildUrl+link;
     //var name = phName;
     //if (name == '') name = 'Hero';
     //name = siteName+': '+name;
     var url = base+link;
     field.href = url;
+    //field.setAttribute('onclick', 'return submitBuild()');
     //field.innerHTML = name;
-    ////fieldBookmark.setAttribute('onclick', 'addBookmark(\''+name+'\',\''+url+'\');');
+    ////fieldBookmark.setAttribute('onclick', 'addBookmark(\''+name+'\',\''+url+'\')');
     fieldRef.innerHTML = url;
     if (prevBuildLink != undefined) setCookie('buildLink', prevBuildLink, cookieExpireDays);
     prevBuildLink = url;
@@ -2408,13 +2505,12 @@ function restorePrevBuild() {
 }
 window['restorePrevBuild'] = restorePrevBuild;
 
-// set page title
-function setTitle() {
-    var title = siteName+': '+phName;
-    if (phName == '') title = siteName;
-    if (document.title != phName) document.title = title;
+// submit build to google analytics
+function submitBuild() {
+    buildLink(true);
+    return true;
 }
-window['setTitle'] = setTitle;
+window['submitBuild'] = submitBuild;
 
 // generate forum entries
 function forumEntry(type, first, second, third) {
@@ -2908,6 +3004,9 @@ function start() {
 
     // change updates
     changeUpdate();
+
+    // submit build to google analytics
+    submitBuild();
 }
 window['start'] = start;
 
