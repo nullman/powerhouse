@@ -1,3 +1,25 @@
+2013-05-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none: Released version 0.9.17.
+
+        * powerhouse-data.js:  Added correct images for some Travel Powers:
+        Electro Flight, Hyper Ball, Mystic Flight, Storm Rider, R.A.D. Sphere,
+        Aethyric Incantation, Energy Slide, Millennial Flight, Cape Glide,
+        Shadow Wings, Shadow Skull Flight, and Ninja Leaves.
+
+2013-03-24  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * Changed unrepentant.org URLs to unrepentant.com.
+
+2013-03-21  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none: Released version 0.9.16.
+
+        * powerhouse-data.js: Fixed The Radiant Archetype description.
+        (Thanks to alexandercrisalex for reporting this.)
+
+        * powerhouse.html, README: Updated copyright years to 2013.
+
 2013-01-14  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * powerhouse.js: Added check that resets fontSize if it is NaN.
@@ -9,10 +31,14 @@
 
 2012-12-18  Kyle W T Sherman  <kylewsherman@gmail.com>
 
+        * none: Released version 0.9.15.
+
         * powerhouse.js, powerhouse.html:  Added preference option to turn
         Google Analytics submissions on/off.
 
 2012-12-17  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none: Released version 0.9.14.
 
         * powerhouse.js:  Added queue and background submission task for
         Google Analytics to prevent rejections.
@@ -26,6 +52,8 @@
         * powerhouse.js, powerhouse.html:  Added Google Analytics.
 
 2012-12-01  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none: Released version 0.9.13.
 
         * powerhouse-data.js:  Updated the description of Celestial: Imbue
         Power.
