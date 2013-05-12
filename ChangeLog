@@ -1,3 +1,12 @@
+2013-01-14  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js: Added check that resets fontSize if it is NaN.
+
+2013-01-12  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js: Added new Travel Powers: Cape Glide, Shadow
+        Wings, Shadow Skull Flight, and Ninja Leaves.
+
 2012-12-18  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * powerhouse.js, powerhouse.html:  Added preference option to turn

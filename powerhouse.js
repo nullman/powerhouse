@@ -5,13 +5,14 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-12-18 14:20:53 (kyle)>
+ * Time-stamp: <2013-01-14 12:04:17 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.15';
-var releaseDate = '2012-12-18';
+var version = '0.9.16';
+var releaseDate = '2012-12-19';
 var buildVersion = 5;
+
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
 var buildUrl = siteUrl+'powerhouse.html';
@@ -20,6 +21,9 @@ var mouseY = 0;
 var clickableClasses = [];
 clickableClasses[0] = 'selection';
 clickableClasses[1] = 'link';
+
+var analyticsPrefCatagory = 'Preference';
+var analyticsSetCatagory = 'Set';
 var analyticsBuildCatagory = 'Build';
 
 // cookie variables with default values
@@ -398,7 +402,7 @@ function changeName(evnt) {
     document.getElementById('fieldName').firstChild.data = phName;
     showSection('sectionDisplayName');
     changeUpdate();
-    //submitAnalytics('Set', 'Name', phName);
+    //submitAnalytics(analyticsSetCatagory, 'Name', phName);
 }
 window['changeName'] = changeName;
 // enter key also changes name
@@ -539,7 +543,7 @@ function setSuperStat(id) {
         } else if (oldId != 0) {
             oldSelectField.setAttribute('class', 'button');
         }
-        //submitAnalytics('Set', 'SuperStat', phSuperStat[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'SuperStat', phSuperStat[num].name);
     }
     setupInnateTalents();
     setupTalents();
@@ -651,7 +655,7 @@ function setInnateTalent(id) {
         if (oldId != 0) {
             oldSelectField.setAttribute('class', 'selectButton');
         }
-        //submitAnalytics('Set', 'InnateTalent', phInnateTalent[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'InnateTalent', phInnateTalent[num].name);
     }
     selectClear();
 }
@@ -763,7 +767,7 @@ function setTalent(id) {
         } else if (oldId != 0) {
             oldSelectField.setAttribute('class', 'button');
         }
-        //submitAnalytics('Set', 'Talent', phTalent[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'Talent', phTalent[num].name);
     }
     selectClear();
 }
@@ -899,7 +903,7 @@ function setTravelPower(id) {
                 oldSelectField.setAttribute('class', 'button');
             }
         }
-        //submitAnalytics('Set', 'TravelPower', phTravelPower[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'TravelPower', phTravelPower[num].name);
     }
     selectClear();
 }
@@ -1093,7 +1097,7 @@ function setPower(id) {
                 advantageField.style.display = '';
             }
         }
-        //submitAnalytics('Set', 'Power', phPower[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'Power', phPower[num].name);
     }
     selectClear();
     validatePowers();
@@ -1285,7 +1289,7 @@ function setArchetypePower(id) {
         field.innerHTML = dataPower[id].desc;
         advantageField.innerHTML = advantageTextSpan(1, num, 0);
         advantageField.style.display = '';
-        //submitAnalytics('Set', 'ArchetypePower', phPower[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'ArchetypePower', phPower[num].name);
     }
     selectClear();
 }
@@ -1505,7 +1509,7 @@ function selectAdvantageToggle(type, num, id) {
             mask = power.addAdvantage(mask, id);
             field.checked = true;
             setAdvantage(type, num, mask);
-            //submitAnalytics('Set', 'Advantage', power.name+': '+advantage.name);
+            //submitAnalytics(analyticsSetCatagory, 'Advantage', power.name+': '+advantage.name);
         }
     }
     selectAdvantageUpdate(type, num);
@@ -1972,7 +1976,7 @@ function selectSpecializationIncrement(num, id) {
         var newMask = specializationTree.incrSpecialization(mask, id);
         setSpecialization(num, newMask);
         selectSpecializationUpdate(num);
-        //submitAnalytics('Set', 'Specialization', specializationTree.name+': '+specialization.name, specializationPointList[id]);
+        //submitAnalytics(analyticsSetCatagory, 'Specialization', specializationTree.name+': '+specialization.name, specializationPointList[id]);
     }
 }
 window['selectSpecializationIncrement'] = selectSpecializationIncrement;
@@ -1987,7 +1991,7 @@ function selectSpecializationDecrement(num, id) {
         var newMask = specializationTree.decrSpecialization(mask, id);
         setSpecialization(num, newMask);
         selectSpecializationUpdate(num);
-        //submitAnalytics('Set', 'Specialization', specializationTree.name+': '+specialization.name, specializationPointList[id]);
+        //submitAnalytics(analyticsSetCatagory, 'Specialization', specializationTree.name+': '+specialization.name, specializationPointList[id]);
     }
 }
 window['selectSpecializationDecrement'] = selectSpecializationDecrement;
@@ -2017,7 +2021,7 @@ function setSpecializationTree(num, id) {
         }
         selectSpecializationRefresh(num);
         setupSpecializations();
-        //submitAnalytics('Set', 'SpecializationTree', phSpecializationTree[num].name);
+        //submitAnalytics(analyticsSetCatagory, 'SpecializationTree', phSpecializationTree[num].name);
     }
 }
 window['setSpecializationTree'] = setSpecializationTree;
@@ -2026,7 +2030,7 @@ function setSpecializationMastery(id) {
     else phSpecializationTree[4] = phSpecializationTree[id];
     setupSpecializations();
     selectClear();
-    //if (id > 0) submitAnalytics('Set', 'SpecializationMastery', phSpecializationTree[4].name);
+    //if (id > 0) submitAnalytics(analyticsSetCatagory, 'SpecializationMastery', phSpecializationTree[4].name);
 }
 window['setSpecializationMastery'] = setSpecializationMastery;
 function getSpecializationMasteryId(id) {
@@ -2193,7 +2197,7 @@ function setArchetype(id) {
     phArchetype = archetype;
     document.getElementById('fieldArchetype').innerHTML = archetype.desc;
     selectClear();
-    //submitAnalytics('Set', 'Archetype', archetype.name);
+    //submitAnalytics(analyticsSetCatagory, 'Archetype', archetype.name);
 }
 window['setArchetype'] = setArchetype;
 
@@ -2755,6 +2759,7 @@ function setPrefFontFamily(fontFamily) {
     document.getElementById('body').style.fontFamily = fontFamily+', sans-serif';
     document.getElementById('prefFontFamilyName').innerHTML = fontFamily;
     hideSection('selectionPref');
+    submitAnalytics(analyticsPrefCatagory, 'PrefFontFamily', fontFamily);
 }
 window['setPrefFontFamily'] = setPrefFontFamily;
 function selectPrefFontFamily() {
@@ -2791,6 +2796,7 @@ function setPrefFontSize(fontSize) {
     setCookie('prefFontSize', fontSize, cookieExpireDays);
     document.getElementById('body').style.fontSize = fontSize+'%';
     document.getElementById('prefFontSize').innerHTML = fontSize+'%';
+    submitAnalytics(analyticsPrefCatagory, 'PrefFontSize', fontSize);
 }
 window['setPrefFontSize'] = setPrefFontSize;
 function selectPrefFontSize(change) {
@@ -2817,6 +2823,7 @@ function setPrefPopupTips(popupTips) {
     prefPopupTips = popupTips;
     setCookie('prefPopupTips', popupTips, cookieExpireDays);
     document.getElementById('prefPopupTipsValue').innerHTML = (popupTips ? "On" : "Off");
+    submitAnalytics(analyticsPrefCatagory, 'PrefPopupTips', (popupTips ? "On" : "Off"));
 }
 window['setPrefPopupTips'] = setPrefPopupTips;
 function selectPrefPopupTips() {
@@ -2824,9 +2831,12 @@ function selectPrefPopupTips() {
 }
 window['selectPrefPopupTips'] = selectPrefPopupTips;
 function setPrefAnalytics(analytics) {
+    if (prefAnalytics && !analytics) submitAnalytics(analyticsPrefCatagory, 'PrefAnalytics', "Off");
     prefAnalytics = analytics;
     setCookie('prefAnalytics', analytics, cookieExpireDays);
     document.getElementById('prefAnalyticsValue').innerHTML = (analytics ? "On" : "Off");
+    submitAnalytics(analyticsPrefCatagory, 'PrefAnalytics', (analytics ? "On" : "Off"));
+    if (prefAnalytics && analytics) submitAnalytics(analyticsPrefCatagory, 'PrefAnalytics', "On");
 }
 window['setPrefAnalytics'] = setPrefAnalytics;
 function selectPrefAnalytics() {
@@ -2956,7 +2966,7 @@ function setupPrefs() {
     setPrefFontFamily(fontFamily);
     // font size
     var fontSize = getCookie('prefFontSize');
-    if (fontSize == undefined) fontSize = prefFontSize;
+    if (fontSize == undefined || parseInt(fontSize) == NaN) fontSize = prefFontSize;
     setPrefFontSize(parseInt(fontSize));
     // popup tips
     var popupTips = getCookie('prefPopupTips');

@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-12-02 10:59:51 (kyle)>
+ * Time-stamp: <2013-01-12 22:03:22 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -596,6 +596,30 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 
 // TODO: find proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ninja Vanish', '<img src="img/TravelPower_Teleportation.png" />&nbsp;Ninja Vanish', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Teleportation has no speed penalty from combat.<br />+ Teleportation does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Teleportation while you are in combat is difficult to maintain, causing you to only be able to maintain Teleportation for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Teleportation, you will be affected by phase sickness and will be unable to activate Teleportation again for a short time.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Cape Glide', '<img src="img/TravelPower_Flight.png" />&nbsp;Cape Glide', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Shadow Wings', '<img src="img/TravelPower_Flight.png" />&nbsp;Shadow Wings', 'Take flight on the wings of darkest shadows.<br /><br />Tap<br />+ Grants flight with a magnificent pair of dark wings.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Shadow Skull Flight', '<img src="img/TravelPower_Flight.png" />&nbsp;Shadow Skull Flight', 'Take to the skies as a shadowy skull.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br />- Other powers cannot be used while using Shadow Skull Flight.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+
+// TODO: find proper image
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ninja Leaves', '<img src="img/TravelPower_Teleportation.png" />&nbsp;Ninja Leaves', 'By vanishing in a flurry of leaves you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Lets you vanish in a flurry of leaves.<br />+ While hidden, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the hidden state above ground, you will slowly fall to the ground.<br />+ Ninja Leaves has no speed penalty from combat.<br />+ Ninja Leaves does not affect the Energy Cost of your powers.<br />- No powers can be activated while hidden.<br />- You do not recover Health or Energy while hidden.<br />- Healing has minimal effect on you while hidden.<br />- The strain of entering a hidden state while you are in combat is difficult to maintain, causing you to only be able to maintain it for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving the hidden state, you will be affected by weakness and will be unable to activate Ninja Leaves again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
