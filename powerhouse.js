@@ -5,13 +5,13 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-03-21 22:34:33 (kyle)>
+ * Time-stamp: <2013-07-20 11:04:52 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.17';
-var releaseDate = '2013-03-21';
-var buildVersion = 5;
+var version = '0.9.18';
+var releaseDate = '2013-07-20';
+var buildVersion = 6;
 
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -32,7 +32,8 @@ var forumExportType = 'co';
 var prefFontFamilyList = ['Andale Mono', 'Arial', 'Comic Sans MS', 'Courier New', 'Garuda', 'Georgia', 'Helvetica', 'Lexia', 'Lucida Sans', 'Times New Roman', 'Trebuchet MS', 'Verdana', 'sans-serif'];
 var prefFontFamily = 'Lexia';
 var prefFontSize = 100;
-var prefPopupTips = true;
+var prefPopupTipsList = ['Off', 'When Selecting', 'On'];
+var prefPopupTips = parseInt(2);
 var prefAnalytics = true;
 
 // set and get cookies
@@ -297,34 +298,88 @@ window['setMouseXY'] = setMouseXY;
 
 // popup (tool tip)
 function popup(text) {
-    if (prefPopupTips) {
-        var x = mouseX;
-        var y = mouseY;
-        var xoffset = 20;
-        var yoffset = 10;
-        var margin = 50;
-        var tip = document.getElementById('popup');
-        var width = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth);
-        var height = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) +
+    var x = mouseX;
+    var y = mouseY;
+    var xoffset = 20;
+    var yoffset = 10;
+    var margin = 20;
+    var tip = document.getElementById('popup');
+    var width = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth);
+    var height = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) +
             (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
-        tip.innerHTML = text;
-        tip.style.display = 'block';
-        x += xoffset;
-        y += yoffset;
-        if (x > width-tip.offsetWidth-margin) x = width-tip.offsetWidth-margin;
-        if (y > height-tip.offsetHeight-margin) y = height-tip.offsetHeight-margin;
-        if (x < 0) x = 0;
-        if (y < 0) y = 0;
-        tip.style.left = x+'px';
-        tip.style.top = y+'px';
+    tip.innerHTML = text;
+    tip.style.display = 'block';
+    x += xoffset;
+    y += yoffset;
+    if (x > width-tip.offsetWidth-margin) x = width-tip.offsetWidth-margin;
+    if (x < 0) x = 0;
+    if (y > height-tip.offsetHeight-margin) y = height-tip.offsetHeight-margin;
+    if (y < 0) y = 0;
+    if (x < mouseX) {
+        var nx = mouseX-xoffset-tip.offsetWidth;
+        if (nx < margin) nx = margin;
+        if (nx+tip.offsetWidth-mouseX < mouseX-x) x = nx;
     }
+    if (y < mouseY) {
+        var ny = mouseY-yoffset-tip.offsetHeight;
+        if (ny < margin) ny = margin;
+        if (ny+tip.offsetHeight-mouseY < mouseY-y) y = ny;
+    }
+    tip.style.left = x+'px';
+    tip.style.top = y+'px';
 }
 window['popup'] = popup;
+function popupL1(text) {
+    if (prefPopupTips >= 1) {
+        popup(text);
+    }
+}
+window['popupL1'] = popupL1;
+function popupL2(text) {
+    if (prefPopupTips >= 2) {
+        popup(text);
+    }
+}
+window['popupL2'] = popupL2;
 function popout() {
     var tip = document.getElementById('popup');
     tip.style.display = 'none';
 }
 window['popout'] = popout;
+// function delayedPopup(text) {
+//     return function() {
+//         var field = this;
+//         var delay = setTimeout(popup(text), 1000);
+//         field.onmouseout = function() {
+//             clearTimeout(delay);
+//             popout();
+//         };
+//     }
+// }
+// window['delayedPopup'] = delayedPopup;
+function setOnmouseoverPopupL1(field, text) {
+    if (text != null) {
+        field.setAttribute('onmouseover', 'popupL1(\''+text+'\')');
+        field.setAttribute('onmouseout', 'popout()');
+    } else {
+        clearOnmouseoverPopup(field);
+    }
+}
+window['setOnmouseoverPopupL1'] = setOnmouseoverPopupL1;
+function setOnmouseoverPopupL2(field, text) {
+    if (text != null) {
+        field.setAttribute('onmouseover', 'popupL2(\''+text+'\')');
+        field.setAttribute('onmouseout', 'popout()');
+    } else {
+        clearOnmouseoverPopup(field);
+    }
+}
+window['setOnmouseoverPopupL2'] = setOnmouseoverPopupL2;
+function clearOnmouseoverPopup(field) {
+    field.removeAttribute('onmouseover');
+    field.removeAttribute('onmouseout');
+}
+window['clearOnmouseoverPopup'] = clearOnmouseoverPopup;
 
 // hide/show section
 function hideSection(id) {
@@ -482,11 +537,8 @@ function setupSuperStats() {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectSuperStat'+i);
             a.setAttribute('onclick', 'setSuperStat('+i+')');
-            if (dataSuperStat[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataSuperStat[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             a.innerHTML = dataSuperStat[i].desc;
+            setOnmouseoverPopupL1(a, dataSuperStat[i].tip);
             selectSuperStat.appendChild(a);
         }
         selectSuperStat.appendChild(document.createElement('br'));
@@ -529,16 +581,20 @@ function setSuperStat(id) {
         phSuperStat[num] = dataSuperStat[id];
         if (id == 0) {
             field.innerHTML = getSuperStatDefault(num);
+            clearOnmouseoverPopup(field);
         } else {
             field.innerHTML = getSuperStatDesc(id, num);
+            setOnmouseoverPopupL2(field, dataSuperStat[id].tip);
             selectField.setAttribute('class', 'takenButton');
         }
         if (swapNum > 0) {
             phSuperStat[swapNum] = dataSuperStat[oldId];
             if (oldId != 0) {
                 swapField.innerHTML = getSuperStatDesc(oldId, swapNum);
+                setOnmouseoverPopupL2(swapField, dataSuperStat[oldId].tip);
             } else {
                 swapField.innerHTML = getSuperStatDefault(swapNum);
+                clearOnmouseoverPopup(swapField);
             }
         } else if (oldId != 0) {
             oldSelectField.setAttribute('class', 'button');
@@ -608,14 +664,11 @@ function setupInnateTalents() {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectInnateTalent'+i);
             a.setAttribute('onclick', 'setInnateTalent('+i+')');
-            if (dataInnateTalent[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataInnateTalent[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             a.innerHTML = '<img src="img/Innate_Talent.png" />&nbsp;' +
                 dataInnateTalent[i].desc +
                 ((dataInnateTalent[i].extra != null) ?
                  ' <span class="selectSpec">('+highlightSuperStats(dataInnateTalent[i].extra)+')</span>' : '');
+            setOnmouseoverPopupL1(a, dataInnateTalent[i].tip);
             selectInnateTalent.appendChild(a);
         }
         selectInnateTalent.appendChild(document.createElement('br'));
@@ -648,8 +701,10 @@ function setInnateTalent(id) {
         phInnateTalent[num] = dataInnateTalent[id];
         if (id == 0) {
             field.innerHTML = getInnateTalentDefault(num);
+            clearOnmouseoverPopup(field);
         } else {
             field.innerHTML = getInnateTalentDesc(id, num);
+            setOnmouseoverPopupL2(field, dataInnateTalent[id].tip);
             selectField.setAttribute('class', 'takenButton');
         }
         if (oldId != 0) {
@@ -704,13 +759,10 @@ function setupTalents() {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTalent'+i);
             a.setAttribute('onclick', 'setTalent('+i+')');
-            // if (dataTalent[i].tip != null) {
-            //     a.setAttribute('onmouseover', 'popup(\''+dataTalent[i].tip+'\')');
-            //     a.setAttribute('onmouseout', 'popout()');
-            // }
             a.innerHTML = '<img src="img/Talent.png" />&nbsp;'+dataTalent[i].desc +
                 ((dataTalent[i].extra != null) ?
                  ' <span class="selectSpec">('+highlightSuperStats(dataTalent[i].extra)+')</span>' : '');
+            setOnmouseoverPopupL2(a, dataTalent[i].tip);
             selectTalent.appendChild(a);
         }
         selectTalent.appendChild(document.createElement('br'));
@@ -753,16 +805,20 @@ function setTalent(id) {
         phTalent[num] = dataTalent[id];
         if (id == 0) {
             field.innerHTML = getTalentDefault(num);
+            clearOnmouseoverPopup(field);
         } else {
             field.innerHTML = getTalentDesc(id);
+            setOnmouseoverPopupL2(field, dataTalent[id].tip);
             selectField.setAttribute('class', 'takenButton');
         }
         if (swapNum > 0) {
             phTalent[swapNum] = dataTalent[oldId];
             if (oldId != 0) {
                 swapField.innerHTML = getTalentDesc(oldId);
+                setOnmouseoverPopupL2(swapField, dataTalent[oldId].tip);
             } else {
                 swapField.innerHTML = getTalentDefault(swapNum);
+                clearOnmouseoverPopup(swapField);
             }
         } else if (oldId != 0) {
             oldSelectField.setAttribute('class', 'button');
@@ -816,11 +872,8 @@ function setupTravelPowers() {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTravelPower'+i);
             a.setAttribute('onclick', 'setTravelPower('+i+')');
-            if (dataTravelPower[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataTravelPower[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             a.innerHTML = dataTravelPower[i].desc;
+            setOnmouseoverPopupL1(a, dataTravelPower[i].tip);
             selectTravelPower.appendChild(a);
         }
         selectTravelPower.appendChild(document.createElement('br'));
@@ -869,15 +922,18 @@ function setTravelPower(id) {
             phTravelPower[num] = phTravelPower[swapNum];
             phTravelPowerAdvantage[num] = phTravelPowerAdvantage[swapNum];
             field.innerHTML = dataTravelPower[id].desc;
+            setOnmouseoverPopupL2(field, dataTravelPower[id].tip);
             advantageField.style.display = '';
             setAdvantage(2, num, phTravelPowerAdvantage[num]);
             phTravelPower[swapNum] = dataTravelPower[oldId];
             phTravelPowerAdvantage[swapNum] = oldAdvantage;
             if (oldId != 0) {
                 swapField.innerHTML = dataTravelPower[oldId].desc;
+                setOnmouseoverPopupL2(swapField, dataTravelPower[oldId].tip);
                 setAdvantage(2, swapNum, phTravelPowerAdvantage[swapNum]);
             } else {
                 swapField.innerHTML = getTravelPowerDefault(swapNum);
+                clearOnmouseoverPopup(swapField);
                 swapAdvantageField.style.display = 'none';
                 setAdvantage(2, swapNum, 0);
             }
@@ -889,9 +945,11 @@ function setTravelPower(id) {
             phTravelPowerAdvantage[num] = 0;
             if (id == 0) {
                 field.innerHTML = getTravelPowerDefault(num);
+                clearOnmouseoverPopup(field);
                 advantageField.style.display = 'none';
             } else {
                 field.innerHTML = dataTravelPower[id].desc;
+                setOnmouseoverPopupL2(field, dataTravelPower[id].tip);
                 advantageField.innerHTML = advantageTextSpan(2, num, 0);
                 advantageField.style.display = '';
                 selectField.setAttribute('class', 'takenButton');
@@ -930,11 +988,8 @@ function setupFrameworks() {
         var a = document.createElement('a');
         a.setAttribute('id', 'selectFramework'+i);
         a.setAttribute('onclick', 'selectFramework('+i+')');
-        if (dataFramework[i].tip != null) {
-            a.setAttribute('onmouseover', 'popup(\''+dataFramework[i].tip+'\')');
-            a.setAttribute('onmouseout', 'popout()');
-        }
         a.innerHTML = dataFramework[i].desc;
+        setOnmouseoverPopupL1(a, dataFramework[i].tip);
         td.appendChild(a);
         if (i == newRow) {
             tr = document.createElement('tr');
@@ -1012,11 +1067,8 @@ function selectFramework(framework) {
             a.setAttribute('class', 'takenButton');
             break;
         }
-        if (dataPower[powerId].tip != null) {
-            a.setAttribute('onmouseover', 'popup(\''+dataPower[powerId].tip+'\')');
-            a.setAttribute('onmouseout', 'popout()');
-        }
         a.innerHTML = dataPower[powerId].desc;
+        setOnmouseoverPopupL1(a, dataPower[powerId].tip);
         selectPower.appendChild(a);
         selectPower.appendChild(document.createElement('br'));
     }
@@ -1069,16 +1121,19 @@ function setPower(id) {
             phPower[num] = phPower[swapNum];
             phPowerAdvantage[num] = phPowerAdvantage[swapNum];
             field.innerHTML = dataPower[id].desc;
+            setOnmouseoverPopupL2(field, dataPower[id].tip);
             advantageField.style.display = '';
             setAdvantage(1, num, phPowerAdvantage[num]);
             phPower[swapNum] = dataPower[oldId];
             phPowerAdvantage[swapNum] = oldAdvantage;
             if (oldId != 0) {
                 swapField.innerHTML = dataPower[oldId].desc;
+                setOnmouseoverPopupL2(swapField, dataPower[oldId].tip);
                 swapAdvantageField.style.display = '';
                 setAdvantage(1, swapNum, phPowerAdvantage[swapNum]);
             } else {
                 swapField.innerHTML = getPowerDefault(swapNum);
+                clearOnmouseoverPopup(swapField);
                 swapAdvantageField.style.display = 'none';
                 setAdvantage(1, swapNum, 0);
             }
@@ -1090,9 +1145,11 @@ function setPower(id) {
             phPowerAdvantage[num] = 0;
             if (id == 0) {
                 field.innerHTML = getPowerDefault(num);
+                clearOnmouseoverPopup(field);
                 advantageField.style.display = 'none';
             } else {
                 field.innerHTML = dataPower[id].desc;
+                setOnmouseoverPopupL2(field, dataPower[id].tip);
                 advantageField.innerHTML = advantageTextSpan(1, num, 0);
                 advantageField.style.display = '';
             }
@@ -1265,11 +1322,8 @@ function selectArchetypePower(num) {
                 a.setAttribute('onclick', 'setArchetypePower('+powerId+')');
                 a.setAttribute('class', 'button');
             }
-            if (dataPower[powerId].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataPower[powerId].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             a.innerHTML = dataPower[powerId].desc;
+            setOnmouseoverPopupL1(a, dataPower[powerId].tip);
             selectPower.appendChild(a);
             selectPower.appendChild(document.createElement('br'));
         }
@@ -1288,6 +1342,7 @@ function setArchetypePower(id) {
         phPowerAdvantage[num] = 0;
         field.innerHTML = dataPower[id].desc;
         advantageField.innerHTML = advantageTextSpan(1, num, 0);
+        setOnmouseoverPopupL2(advantageField, advantageTip(1, num, 0));
         advantageField.style.display = '';
         //submitAnalytics(analyticsSetCatagory, 'ArchetypePower', phPower[num].name);
     }
@@ -1399,10 +1454,6 @@ function selectAdvantage(type, num) {
             tr.appendChild(td);
             var a = document.createElement('a');
             a.setAttribute('id', 'selectAdvantage'+i);
-            if (advantage.tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+advantage.tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             if (input.checked || (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
                                   advantagePoints+advantage.points <= maxAdvantagePointsPerPower &&
                                   checkAdvantageDependancyId(type, num, advantage.id))) {
@@ -1413,6 +1464,7 @@ function selectAdvantage(type, num) {
                 a.setAttribute('class', 'disabledButton');
             }
             a.innerHTML = advantage.desc;
+            setOnmouseoverPopupL1(a, advantage.tip);
             td.appendChild(a);
             var td = document.createElement('td');
             tr.appendChild(td);
@@ -1475,11 +1527,13 @@ function selectAdvantageClear(type, num) {
         }
     }
     field.innerHTML = advantageTextSpan(type, num, mask);
+    setOnmouseoverPopupL1(field, advantageTip(type, num, mask));
 }
 window['selectAdvantageClear'] = selectAdvantageClear;
 function selectAdvantageCancel(type, num, mask) {
     var field = document.getElementById(((type == 1) ? 'fieldPowerAdvantage' : 'fieldTravelPowerAdvantage')+num);
     field.innerHTML = advantageTextSpan(type, num, mask);
+    setOnmouseoverPopupL1(field, advantageTip(type, num, mask));
     setAdvantage(type, num, mask);
     selectClear();
 }
@@ -1534,6 +1588,7 @@ function setAdvantage(type, num, mask) {
         checkAdvantageDependancyMask(type, num, mask)) {
         (type == 1) ? phPowerAdvantage[num] = mask : phTravelPowerAdvantage[num] = mask;
         field.innerHTML = advantageTextSpan(type, num, mask);
+        setOnmouseoverPopupL2(field, advantageTip(type, num, mask));
     } else {
         statAdvantagePoints = oldStatAdvantagePoints;
     }
@@ -1558,8 +1613,6 @@ function advantageText(type, num, mask) {
             }
             result += ')';
         }
-    } else {
-        result = '';
     }
     return result;
 }
@@ -1568,6 +1621,28 @@ function advantageTextSpan(type, num, mask) {
     return '<span class="advantage">'+advantageText(type, num, mask)+'</span>';
 }
 window['advantageTextSpan'] = advantageTextSpan;
+function advantageTip(type, num, mask) {
+    var power = (type == 1) ? phPower[num] : phTravelPower[num];
+    var advantageList = power.advantageList;
+    var result = '';
+    if (advantageList.length > 0 && mask != 0) {
+        for (var i=1; i<advantageList.length; i++) {
+            if (power.hasAdvantage(mask, i)) {
+                var tip = advantageList[i].tip;
+                if (tip != null && tip.length > 0) {
+                    if (result.length == 0) {
+                        result = tip;
+                    } else {
+                        result += '<br /><br />'+tip;
+                    }
+                }
+            }
+        }
+    }
+    if (result.length == 0) return null;
+    else return result;
+}
+window['advantageTip'] = advantageTip;
 
 // specialization functions
 function setupSpecializations() {
@@ -1636,11 +1711,8 @@ function setupSpecializations() {
                     var td = document.createElement('td');
                     tr.appendChild(td);
                     var span = document.createElement('span');
-                    // if (specialization.tip != null) {
-                    //     span.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
-                    //     span.setAttribute('onmouseout', 'popout()');
-                    // }
                     span.innerHTML = specialization.desc;
+                    setOnmouseoverPopupL2(span, specialization.tip);
                     td.appendChild(span);
                     var td = document.createElement('td');
                     tr.appendChild(td);
@@ -1730,11 +1802,8 @@ function selectSpecializationRefresh(num) {
                     a.setAttribute('onclick', 'setSpecializationTree('+num+', '+i+')');
                     a.setAttribute('class', 'button');
                 }
-                if (dataSpecializationTree[i].tip != null) {
-                    a.setAttribute('onmouseover', 'popup(\''+dataSpecializationTree[i].tip+'\')');
-                    a.setAttribute('onmouseout', 'popout()');
-                }
                 a.innerHTML = dataSpecializationTree[i].desc;
+                setOnmouseoverPopupL1(a, dataSpecializationTree[i].tip);
                 selectSpecializationRole.appendChild(a);
                 var span = document.createElement('span');
                 span.innerHTML = ' &nbsp; ';
@@ -1798,12 +1867,9 @@ function selectSpecializationRefresh(num) {
             tr.appendChild(td);
             var span = document.createElement('span');
             span.setAttribute('id', 'selectSpecializationDescription'+i);
-            if (specialization.tip != null) {
-                span.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
-                span.setAttribute('onmouseout', 'popout()');
-            }
             //span.setAttribute('class', 'specialization');
             span.innerHTML = specialization.desc;
+            setOnmouseoverPopupL1(span, specialization.tip);
             if (totalPoints < 10 || specializationPointList[i] > 0) {
                 span.setAttribute('class', 'buttonText');
             } else {
@@ -1866,11 +1932,8 @@ function selectSpecializationRefresh(num) {
             var specialization = phSpecializationTree[1].specializationList[8];
             a.setAttribute('onclick', 'setSpecializationMastery(1)');
             a.setAttribute('class', 'selectButton');
-            if (specialization.tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             a.innerHTML = '<span>'+specialization.desc+'</span>';
+            setOnmouseoverPopupL1(a, specialization.tip);
             //a.innerHTML = '<span>'+phSpecializationTree[1].desc+' Mastery</span>';
         }
         td.appendChild(a);
@@ -1889,11 +1952,8 @@ function selectSpecializationRefresh(num) {
                 var specialization = phSpecializationTree[i].specializationList[8];
                 a.setAttribute('onclick', 'setSpecializationMastery('+i+')');
                 a.setAttribute('class', 'selectButton');
-                if (specialization.tip != null) {
-                    a.setAttribute('onmouseover', 'popup(\''+specialization.tip+'\')');
-                    a.setAttribute('onmouseout', 'popout()');
-                }
                 a.innerHTML = '<span>'+specialization.desc+'</span>';
+                setOnmouseoverPopupL1(a, specialization.tip);
                 //a.innerHTML = '<span>'+phSpecializationTree[i].desc+' Mastery</span>';
             }
             td.appendChild(a);
@@ -2067,11 +2127,8 @@ function setupArchtypes() {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectArchetype'+i);
             a.setAttribute('onclick', 'setArchetype('+i+')');
-            if (dataArchetype[i].tip != null) {
-                a.setAttribute('onmouseover', 'popup(\''+dataArchetype[i].tip+'\')');
-                a.setAttribute('onmouseout', 'popout()');
-            }
             a.innerHTML = dataArchetype[i].desc;
+            setOnmouseoverPopupL1(a, dataArchetype[i].tip);
             selectArchetype.appendChild(a);
         }
         selectArchetype.appendChild(document.createElement('br'));
@@ -2124,6 +2181,7 @@ function setArchetype(id) {
             if (id != phSuperStat[i].id) {
                 phSuperStat[i] = dataSuperStat[id];
                 field.innerHTML = getSuperStatDesc(id, i);
+                setOnmouseoverPopupL2(field, dataSuperStat[id].tip);
             }
             field.setAttribute('onclick', 'return false');
             field.setAttribute('class', 'lockedButton');
@@ -2136,6 +2194,7 @@ function setArchetype(id) {
             if (id != phInnateTalent[i].id) {
                 phInnateTalent[i] = dataInnateTalent[id];
                 field.innerHTML = getInnateTalentDesc(id, i);
+                setOnmouseoverPopupL2(field, dataInnateTalent[id].tip);
             }
             field.setAttribute('onclick', 'return false');
             field.setAttribute('class', 'lockedButton');
@@ -2160,7 +2219,9 @@ function setArchetype(id) {
                     setAdvantage(1, i, 0);
                     phPower[i] = dataPower[id];
                     field.innerHTML = dataPower[id].desc;
+                    setOnmouseoverPopupL2(field, dataPower[id].tip);
                     advantageField.innerHTML = advantageTextSpan(1, i, 0);
+                    setOnmouseoverPopupL2(advantageField, advantageTip(1, i, 0));
                 }
                 if (multiplePowers) {
                     field.setAttribute('onclick', 'selectArchetypePower('+i+')');
@@ -2174,7 +2235,9 @@ function setArchetype(id) {
                 setAdvantage(1, i, 0);
                 phPower[i] = dataPower[0];
                 field.innerHTML = getPowerDefault(i);
+                setOnmouseoverPopupL2(field, dataPower[i].tip);
                 advantageField.innerHTML = advantageTextSpan(1, i, 0);
+                setOnmouseoverPopupL2(advantageField, advantageTip(1, i, 0));
             }
         }
         for (var i=1; i<=3; i++) {
@@ -2822,12 +2885,12 @@ window['selectPrefFontSize'] = selectPrefFontSize;
 function setPrefPopupTips(popupTips) {
     prefPopupTips = popupTips;
     setCookie('prefPopupTips', popupTips, cookieExpireDays);
-    document.getElementById('prefPopupTipsValue').innerHTML = (popupTips ? "On" : "Off");
-    submitAnalytics(analyticsPrefCatagory, 'PrefPopupTips', (popupTips ? "On" : "Off"));
+    document.getElementById('prefPopupTipsValue').innerHTML = prefPopupTipsList[popupTips];
+    submitAnalytics(analyticsPrefCatagory, 'PrefPopupTips', prefPopupTipsList[popupTips]);
 }
 window['setPrefPopupTips'] = setPrefPopupTips;
 function selectPrefPopupTips() {
-    setPrefPopupTips(!prefPopupTips);
+    setPrefPopupTips((prefPopupTips+1)%3);
 }
 window['selectPrefPopupTips'] = selectPrefPopupTips;
 function setPrefAnalytics(analytics) {
@@ -2966,12 +3029,12 @@ function setupPrefs() {
     setPrefFontFamily(fontFamily);
     // font size
     var fontSize = getCookie('prefFontSize');
-    if (fontSize == undefined || parseInt(fontSize) == NaN) fontSize = prefFontSize;
+    if (fontSize == undefined || isNaN(fontSize)) fontSize = prefFontSize;
     setPrefFontSize(parseInt(fontSize));
     // popup tips
     var popupTips = getCookie('prefPopupTips');
-    if (popupTips == undefined) popupTips = prefPopupTips;
-    else popupTips = coerceToBoolean(popupTips, prefPopupTips);
+    if (popupTips == undefined || isNaN(popupTips)) popupTips = prefPopupTips;
+    else popupTips = parseInt(popupTips);
     setPrefPopupTips(popupTips);
     // analytics
     var analytics = getCookie('prefAnalytics');

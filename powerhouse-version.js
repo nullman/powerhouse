@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-08-26 15:53:18 (kyle)>
+ * Time-stamp: <2013-07-20 14:00:58 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -40,7 +40,7 @@ VersionUpdate = function(id, version, funct) {
 var dataVersionUpdate = [];
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(dataVersionUpdate.length, 0, null);
 
-// version 1
+// version 1 => 2
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 1,
     function(thing, value) {
@@ -84,7 +84,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         }
     });
 
-// version 2
+// version 2 => 3
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 2,
     function(thing, value) {
@@ -131,7 +131,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         }
     });
 
-// version 3
+// version 3 => 4
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 3,
     function(thing, value) {
@@ -376,7 +376,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     });
 
 
-// version 4
+// version 4 => 5
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 4,
     function(thing, value) {
@@ -438,6 +438,51 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             if (codeNum1 == 12 && codeNum2 > 15) power--;
             if (codeNum1 == 13 && codeNum2 == 19) return 0;
             if (codeNum1 == 13 && codeNum2 > 19) power--;
+            return power;
+        case 'mask': return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 5 => 6
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 5,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype': return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
+            // add Fire: Rimefire Burst power
+            if (codeNum1 == 2 && codeNum2 >= 9) power++;
+            // add Force: Redirected Force power
+            if (codeNum1 == 3 && codeNum2 >= 12) power++;
+            // add Telepathy: Mind Break and Shadow of Doubt powers
+            if (codeNum1 == 15 && codeNum2 >= 2) power += 2;
+            // add Telepathy: Mental Leech power
+            if (codeNum1 == 15 && codeNum2 >= 3) power++;
+            // add Telepathy: Congress of Selves power
+            if (codeNum1 == 15 && codeNum2 >= 6) power++;
+            // add Telepathy: Mental Storm power
+            if (codeNum1 == 15 && codeNum2 >= 12) power++;
+            // add Telepathy: Master of the Mind power
+            if (codeNum1 == 15 && codeNum2 >= 15) power++;
             return power;
         case 'mask': return value['mask'];
         case 'specializationTree': return value['specializationTree'];

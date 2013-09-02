@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-05-12 11:51:17 (kyle)>
+ * Time-stamp: <2013-07-20 14:00:29 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -295,6 +295,9 @@ var dataTravelPower = [];
 // Travel Power Aliases
 //------------------------------------------------------------------------------
 
+dataPowerAlias['R2TP'] = new PowerAlias('R2TP', 'Rank 2', 'Rank 2', 'Increases speed of travel power.');
+dataPowerAlias['R3TP'] = new PowerAlias('R3TP', 'Rank 3', 'Rank 3', 'Increases speed of travel power.');
+
 dataPowerAlias['Impact'] = new PowerAlias('Impact', 'Impact', 'Impact', 'While this travel power is active, you gain a damage bonus which scales with your current speed. This bonus persists for a short time upon losing speed or stopping.');
 dataPowerAlias['Versatility'] = new PowerAlias('Versatility', 'Versatility', 'Versatility', 'While this travel power is active, if you take damage you will receive a stack of Versatility, up to 5 stacks. Versatility increases your movement speed for a short time.');
 dataPowerAlias['Flippin'] = new PowerAlias('Flippin\'', 'Flippin\'', 'Flippin\'', 'While Swinging is active, you gain a bonus to your ability to dodge attacks.');
@@ -308,309 +311,309 @@ dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Flight', '<img src="img/TravelPower_Flight.png" />&nbsp;Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Superjump', '<img src="img/TravelPower_Superjump.png" />&nbsp;Superjump', 'Able to leap tall building and enormous distances in a single bound.<br /><br />Tap<br />+ Greatly increases jump height and the speed you move while jumping.<br />+ While out of combat, your jump height and speed will increase over several stages.<br />- While in combat, your jump height and speed are reduced.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum jump height and speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, 'Rebounding Resilience', 'Rebounding Resilience', 2, null, 'While Superjump is active, holds are more difficult to land on you.'));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Superspeed', '<img src="img/TravelPower_Superspeed.png" />&nbsp;Superspeed', 'Faster than a speeding bullet isn\\\'t just a metaphor in your case.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Acrobatics', '<img src="img/TravelPower_Acrobatics.png" />&nbsp;Acrobatics', 'Your natural physical gifts allow you to move in ways and at speeds most people wouldn\\\'t dream of.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Versatility'].name, dataPowerAlias['Versatility'].desc, 2, null, dataPowerAlias['Versatility'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Mach Speed', '<img src="img/TravelPower_MachSpeed.png" />&nbsp;Mach Speed', 'Faster than a speeding bullet isn\\\'t just a metaphor in your case.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Athletics', '<img src="img/TravelPower_Athletics.png" />&nbsp;Athletics', 'Your natural physical gifts allow you to move in ways and at speeds most people wouldn\\\'t dream of.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Versatility'].name, dataPowerAlias['Versatility'].desc, 2, null, dataPowerAlias['Versatility'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Teleportation', '<img src="img/TravelPower_Teleportation.png" />&nbsp;Teleportation', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Teleportation has no speed penalty from combat.<br />+ Teleportation does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Teleportation while you are in combat is difficult to maintain, causing you to only be able to maintain Teleportation for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Teleportation, you will be affected by phase sickness and will be unable to activate Teleportation again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ice Slide', '<img src="img/TravelPower_IceSlide.png" />&nbsp;Ice Slide', 'Laying out a path of ice ahead of you, you slide and glide your way through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+ Moves more slowly when moving up, but at greater speeds when moving down.<br />+ While out of combat, flight speed gradually increase over several stages.<br />- While in combat, flight speed is reduced.<br />- Less maneuverable than basic flight.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Ice Slide activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flippin'].name, dataPowerAlias['Flippin'].desc, 2, null, dataPowerAlias['Flippin'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Tunneling', '<img src="img/TravelPower_Tunneling.png" />&nbsp;Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Click<br />+ Digs you into the ground.<br />+ While underground, you are undetectable by enemies.<br />+ Tunneling allows you to move at increased speeds.<br />- Other powers cannot be used while tunneling.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Jet Boots', '<img src="img/TravelPower_JetBoots.png" />&nbsp;Jet Boots', 'With the use of sufficiently advanced technology, these Jet Boots propel you through the air with great speed.<br /><br />Click<br />+ Grants flight<br />+ Highest top speed of all flight powers.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rocket Jump', '<img src="img/TravelPower_RocketJump.png" />&nbsp;Rocket Jump', 'The high-impact propulsion system installed in your boots allows you to leap over enormous buildings and long distances in a single propulsion blast.<br /><br />Tap<br />+ Greatly increases jump height and the speed you move while jumping.<br />+ While out of combat, your jump height and speed will increase over several stages.<br />- While in combat, your jump height and speed are reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum jump height and speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Fire Flight', '<img src="img/TravelPower_FireFlight.png" />&nbsp;Fire Flight', 'You burst into flames and take to the sky like a blazing meteor.<br /><br />Tap<br />+ Grants flight in a fiery shroud.<br />+ Maneuverability equal to basic flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, you enter flight at maximum speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Hover Disk', '<img src="img/TravelPower_HoverDisk.png" />&nbsp;Hover Disk', 'You call upon your Anti-Gravitonic Repulsor Lift (Anti-G.R.L. for short) to help you reach great heights.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+  While out of combat, flight speed gradually increase over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Hover Disk activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Earth Flight', '<img src="img/TravelPower_EarthFlight.png" />&nbsp;Earth Flight', 'Your power over matter allows you to levitate other objects to keep you afloat, allowing you to have your head in the clouds while keeping your feet on the ground.<br /><br />Tap<br />+ Grants flight.<br />+ While out of combat, flight speed gradually increase over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Earth Flight activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Lightspeed', '<img src="img/TravelPower_Lightspeed.png" />&nbsp;Lightspeed', 'Approach the speed of light, and leave a trail of illumination to prove it.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rainbow Flight', '<img src="img/TravelPower_RainbowFlight.png" />&nbsp;Rainbow Flight', 'Your power over the light spectrum allows you to soar through the air while putting on a light show, dazzling all around you.<br /><br />Tap<br />+ Grants flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Rainbow Flight activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Rainbow Flight: Cloud', '<img src="img/TravelPower_RainbowFlightCloud.png" />&nbsp;Rainbow Flight: Cloud', 'Your power over the elements allows you to levitate upon a cloud, leaving behind a trail of colored light wherever you pass.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Rainbow Flight activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Phoenix Flight', '<img src="img/TravelPower_PhoenixFlight.png" />&nbsp;Phoenix Flight', 'Take flight on the wings of the phoenix. These new wings will make villains burn with envy.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Tornado Flight', '<img src="img/TravelPower_TornadoFlight.png" />&nbsp;Tornado Flight', 'Bend the elements to your will and take to the air via conjured tornado.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Magic Carpet', '<img src="img/TravelPower_MagicCarpet.png" />&nbsp;Magic Carpet', 'Your power over matter allows you to levitate other objects to keep you afloat, allowing you to have your head in the clouds while keeping your feet on the ground.<br /><br />Click<br />+ Grants flight<br />+ Highest top speed of all flight powers.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Jet Pack', '<img src="img/TravelPower_JetPack.png" />&nbsp;Jet Pack', 'Strap in and hold on! Equip the Jet Pack of your choice and take to the skies.<br /><br />Note: If you do not have a Jet Pack equipped this power will behave like Jet Boots Flight, with different FX and animations.<br /><br />Click<br />+ Grants flight<br />+ Highest top speed of all flight powers.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Heroic Flight', '<img src="img/TravelPower_HeroicFlight.png" />&nbsp;Heroic Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, 'Fanfare', 'Fanfare', 0, null, 'Adds fanfare music to the activation of the power.'));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Power Flight', '<img src="img/TravelPower_PowerFlight.png" />&nbsp;Power Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Scarab Tunneling', '<img src="img/TravelPower_ScarabTunneling.png" />&nbsp;Scarab Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Click<br />+ Digs you into the ground.<br />+ While underground, you are undetectable by enemies.<br />+ Tunneling allows you to move at increased speeds.<br />- Other powers cannot be used while tunneling.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, 'Scarab Embrace', 'Scarab Embrace', 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Blazing Speed', '<img src="img/TravelPower_BlazingSpeed.png" />&nbsp;Blazing Speed', 'You move so fast you ignite the very ground under your feet, leaving swaths of fire in your wake.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, 'Blazing Impact', 'Blazing Impact', 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Lightning Flash', '<img src="img/TravelPower_LightningFlash.png" />&nbsp;Lightning Flash', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Lightning Flash has no speed penalty from combat.<br />+ Lightning Flash does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Lightning Flash while you are in combat is difficult to maintain, causing you to only be able to maintain Lightning Flash for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Lightning Flash, you will be affected by phase sickness and will be unable to activate Lightning Flash again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Electric Arc', '<img src="img/TravelPower_ElectricArc.png" />&nbsp;Electric Arc', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Electric Arc has no speed penalty from combat.<br />+ Electric Arc does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Electric Arc while you are in combat is difficult to maintain, causing you to only be able to maintain Electric Arc for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Electric Arc, you will be affected by phase sickness and will be unable to activate Electric Arc again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Snowball Roll', '<img src="img/TravelPower_SnowballRoll.png" />&nbsp;Snowball Roll', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Superspeed', '<img src="img/TravelPower_DistortionSuperspeed.png" />&nbsp;Distortion Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Superspeed', '<img src="img/TravelPower_DisplacementSuperspeed.png" />&nbsp;Displacement Superspeed', 'You don\\\'t move around the world; the world moves around you.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Distortion Acrobatics', '<img src="img/TravelPower_DistortionAcrobatics.png" />&nbsp;Distortion Acrobatics', 'Your ability to distort the very fabric of reality allows you to move in ways incomprehensible to the average person.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Versatility'].name, dataPowerAlias['Versatility'].desc, 2, null, dataPowerAlias['Versatility'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Displacement Acrobatics', '<img src="img/TravelPower_DisplacementAcrobatics.png" />&nbsp;Displacement Acrobatics', 'Your ability to distort the very fabric of reality allows you to move in ways incomprehensible to the average person.<br /><br />Tap<br />+ Increases run speed, jump height, and the speed you move while jumping.<br />+ While out of combat, your run speed, jump height, and jump speed will increase over several stages.<br />- The run speed, jump height, and jump speed granted are not as large as the run speed granted by Superspeed or the jump height and jump speed granted by Superjump.<br />- While in combat, your run speed, jump height, and jump speed are reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Versatility'].name, dataPowerAlias['Versatility'].desc, 2, null, dataPowerAlias['Versatility'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Retractable Wings', '<img src="img/TravelPower_RetractableWings.png" />&nbsp;Retractable Wings', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Electro Flight', '<img src="img/TravelPower_ElectroFlight.png" />&nbsp;Electro Flight', 'Arcing with electricity, you take flight and soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Hyper Ball', '<img src="img/TravelPower_HyperBall.png" />&nbsp;Hyper Ball', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Mystic Flight', '<img src="img/TravelPower_MysticFlight.png" />&nbsp;Mystic Flight', 'Surrounded by mystic energy, you take flight and soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Bat Flight', '<img src="img/TravelPower_BatFlight.png" />&nbsp;Bat Flight', 'Take to the skies as a swarm of bats.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br />- Other powers cannot be used while using Bat Flight.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Scarab Flight', '<img src="img/TravelPower_ScarabFlight.png" />&nbsp;Scarab Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ooze Tunneling', '<img src="img/TravelPower_OozeTunneling.png" />&nbsp;Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Inky Ooze Tunneling', '<img src="img/TravelPower_OozeTunneling.png" />&nbsp;Inky Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Metallic Ooze Tunneling', '<img src="img/TravelPower_OozeTunneling.png" />&nbsp;Metallic Ooze Tunneling', 'You are one with the earth and able to move through the ground with amazing speed.<br /><br />Requires level 40.<br /><br />Click<br />+ Melts you into a swift puddle of ooze.<br />+ While oozing, you are undetectable by enemies.<br />+ Ozzing allows you to move at increased speeds.<br />- Other powers cannot be used while oozing.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
 // TODO: find proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Chain Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Chain Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flippin'].name, dataPowerAlias['Flippin'].desc, 2, null, dataPowerAlias['Flippin'].tip));
 
 // TODO: find proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Energy Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Energy Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flippin'].name, dataPowerAlias['Flippin'].desc, 2, null, dataPowerAlias['Flippin'].tip));
 
 // TODO: find proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Vine Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Vine Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flippin'].name, dataPowerAlias['Flippin'].desc, 2, null, dataPowerAlias['Flippin'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Storm Rider', '<img src="img/TravelPower_ElectroFlight.png" />&nbsp;Storm Rider', 'Arcing with electricity, you take flight and soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'R.A.D. Sphere', '<img src="img/TravelPower_HyperBall.png" />&nbsp;R.A.D. Sphere', 'Curl up and roll away at super speeds.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Aethyric Incantation', '<img src="img/TravelPower_MysticFlight.png" />&nbsp;Aethyric Incantation', 'Surrounded by mystic energy, you take flight and soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Energy Slide', '<img src="img/TravelPower_EnergySlide.png" />&nbsp;Energy Slide', 'Harnessing your latent energies, you glide along the ground at amazing speeds.<br /><br />Tap<br />+ While active, your movement and jump speeds are increased and you will slide along the ground.<br />+ Slightly lower top speed than Superspeed.<br />+ Slightly lower maximum jump height than Acrobatics.<br />+ While out of combat, speed gradually increase over several stages.<br />- While in combat, speed is reduced.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Energy Slide activates at maximum speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Flag Speed', '<img src="img/TravelPower_FlagSpeed.png" />&nbsp;Flag Speed', 'These colors DO run.<br /><br />Tap<br />+ Greatly increases your run speed.<br />+ While out of combat, your run speed will increase over several stages.<br />- While in combat, your run speed is reduced, but sill greater than the default run speed.<br />- While active, Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, this power activates at maximum run speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Impact'].name, dataPowerAlias['Impact'].desc, 2, null, dataPowerAlias['Impact'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Millennial Flight', '<img src="img/TravelPower_MillennialFlight.png" />&nbsp;Millennial Flight', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 // TODO: find proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ninja Vanish', '<img src="img/TravelPower_Teleportation.png" />&nbsp;Ninja Vanish', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Teleportation has no speed penalty from combat.<br />+ Teleportation does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Teleportation while you are in combat is difficult to maintain, causing you to only be able to maintain Teleportation for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Teleportation, you will be affected by phase sickness and will be unable to activate Teleportation again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Cape Glide', '<img src="img/TravelPower_CapeGlide.png" />&nbsp;Cape Glide', 'The quintessential superhero power, flight allows you to soar through the air.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Shadow Wings', '<img src="img/TravelPower_ShadowWings.png" />&nbsp;Shadow Wings', 'Take flight on the wings of darkest shadows.<br /><br />Tap<br />+ Grants flight with a magnificent pair of dark wings.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Shadow Skull Flight', '<img src="img/TravelPower_ShadowSkullFlight.png" />&nbsp;Shadow Skull Flight', 'Take to the skies as a shadowy skull.<br /><br />Tap<br />+ Grants flight.<br />+ Greatest maneuverability of any flight power.<br />+ While out of combat, flight speed gradually increases over several stages.<br />- While in combat, flight speed is reduced.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br />- Other powers cannot be used while using Shadow Skull Flight.<br /><br />Charge<br />+ When fully charged you enter flight at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ninja Leaves', '<img src="img/TravelPower_NinjaLeaves.png" />&nbsp;Ninja Leaves', 'By vanishing in a flurry of leaves you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Lets you vanish in a flurry of leaves.<br />+ While hidden, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the hidden state above ground, you will slowly fall to the ground.<br />+ Ninja Leaves has no speed penalty from combat.<br />+ Ninja Leaves does not affect the Energy Cost of your powers.<br />- No powers can be activated while hidden.<br />- You do not recover Health or Energy while hidden.<br />- Healing has minimal effect on you while hidden.<br />- The strain of entering a hidden state while you are in combat is difficult to maintain, causing you to only be able to maintain it for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving the hidden state, you will be affected by weakness and will be unable to activate Ninja Leaves again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, 'Rank 2', 'Rank 2', 1, null, null));
-dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 1, 1, null));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
+dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
 //==============================================================================
 // Power Sets
@@ -956,6 +959,14 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length] = new Power(dataPower.length, 'Thermal Reverberation', '<img src="img/Fire_ThermalReverberation.png" />&nbsp;Thermal Reverberation', 1, 2, pow++, 1, 'Fire, Self Target Innate Passive Energy Unlock<br /><br />Requires 1 power from Fire or 2 non-Energy Building powers from any framework.<br />You may only have 1 Energy Unlock power.<br /><br />Thermal Reverberation allows you to drain heat energy from the environment around you.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
 
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Rimefire Burst', '<img src="img/Fire_Fireball.png" />&nbsp;Rimefire', 1, 2, pow++, 2, 'Fire, 60 foot Ranged Single Target Damage<br /><br />Requires 3 power from Fire or 4 non-Energy Building powers from any framework.<br /><br />Blast your target with a crippling burst of fire and ice, dealing significant damage to the target and spreading to nearby foes if the target is already weakened by your attacks.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Pyre', '<img src="img/Fire_Pyre.png" />&nbsp;Pyre', 1, 2, pow++, 2, 'Fire, 25 foot Sphere PBAoE Ranged Damage and Burning DoT<br /><br />Requires 3 powers from Fire or 4 non-Energy Building powers from any framework.<br /><br />Pyre turns the area around you into a raging inferno, dealing damage to any enemies around you.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1077,6 +1088,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, 'Rank 3', 'Rank 3', 2, 1,'[ID]'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Power Swell', 'Power Swell', 2, null, 'Your Field Surge fills you with force energy, increasing your damage dealt by 15% for the duration.'));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Redirected Force', '<img src="img/Force_KineticManipulation.png" />&nbsp;Redirected Force', 1, 3, pow++, 2, 'Force, 40 foot Sphere PBAoE Ally Defense Buff<br /><br />Requires 3 powers from Force or 4 non-Energy Building powers from any framework.<br /><br />You protect your allies and bend that force to your will.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Force Cascade', '<img src="img/Force_ForceCascade.png" />&nbsp;Force Cascade', 1, 3, pow++, 3, 'Force, 100 foot Ranged 5 foot Cylinder AoE Damage and Knock Back<br /><br />Requires 5 powers from Force or 6 non-Energy Building powers from any framework.<br /><br />Force Cascade unleashes a titanic blast of crushing energy flinging aside any enemies in its path.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2928,7 +2945,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psychic Reverberations', 'Psychic Reverberations', 2, null, 'Psi Lash has a chance to Buff your Ego damage.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Blast', '<img src="img/Telepathy_EgoBlast.png" />&nbsp;Ego Blast', 4, 15, pow++, 0, 'Telepathy, 100 foot Ranged Single Target Damage and Disorient (Blast)<br /><br />');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Blast', '<img src="img/Telepathy_EgoBlast.png" />&nbsp;Ego Blast', 4, 15, pow++, 0, 'Telepathy, 100 foot Ranged Single Target Damage and Disorient (Blast)<br /><br />Ego Blast assaults your foe\\\'s mind.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -2937,6 +2954,22 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, 'Rude Awa
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(6, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mind Break', '<img src="img/Telepathy_EgoBlast.png" />&nbsp;Mind Break', 4, 15, pow++, 0, 'Telepathy, 100 foot Ranged Single Target Damage and Detonate (Blast)<br /><br />You shatter your foe\\\'s psyche.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow of Doubt', '<img src="img/SuperStat_Intelligence.png" />&nbsp;Shadow of Doubt', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Interrupt<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You plant doubts in your target\\\'s mind, weakening its mental state.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Sprites', '<img src="img/Telepathy_EgoSprites.png" />&nbsp;Ego Sprites', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 25 foot Sphere AoE DoT<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />This ability unleashes sprites composed of psychic energy to assault and harass your enemies.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -2944,6 +2977,14 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Slave Mentality', 'Slave Mentality', 2, null, 'Ego Sprites will return to you after damaging the enemy and heal you for a short time. This only occurs if the sprites dealt their full amount of damage. You can only have a maximum of 5 stacks of this heal at one time.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Leech', '<img src="img/Mentalist_MindLink.png" />&nbsp;Mental Leech', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 20 foot Sphere AoE DoT and Interrupt<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You place a heavy burden on your foe\\\'s mind, draining them of willpower.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Placate', '<img src="img/Telepathy_EgoPlacate.png" />&nbsp;Ego Placate', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged Single Target Placate<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You are able to subtly convince the target that you are not a threat, never mind that you just beat up a nearby group of their friends.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2963,6 +3004,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Empathic Amplification', 'Empathic Amplification', 2, null, 'When you heal someone else with Empathic Healing, you transfer the pain to yourself. You can then redirect this pain through your own attacks for a short period of time. Failing to redirect the pain quickly enough will cause you to take damage.'));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Congress of Selves', '<img src="img/Telekinesis_EgoForm.png" />&nbsp;Congress of Selves', 4, 15, pow++, 1, 'Telepathy, Slotted Hybrid Passive and Energy Form<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />Your mastery of your psyche has allowed you to strike deep into your foe\\\'s mind and leaving them wracked with pain.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Conditioning', 'Conditioning', 2, null, 'Congress of Selves allows control powers to apply Trauma, which reduces the effectiveness of heals on the target by 50%.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Manipulator'].name, dataPowerAlias['Manipulator'].desc, 2, 15, pow++, 1, dataPowerAlias['Manipulator'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2998,6 +3046,14 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psionic Emanation', 'Psionic Emanation', 2, null, 'Grants your Psionic Healing a chance to perform an AoE heal around the target.'));
 
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Storm', '<img src="img/Telepathy_EgoSprites.png" />&nbsp;Mental Storm', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Stun<br /><br />Requires 5 power from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />You rend your target\\\'s mind with a storm of mental energy.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Storm', '<img src="img/Telepathy_EgoStorm.png" />&nbsp;Ego Storm', 4, 15, pow++, 3, 'Telepathy, 25 foot Sphere PBAoE Ranged Damage and Incapacitate<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Summon a storm of mental energy and press it into action, damaging the foes daring enough to come close to you.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -3016,6 +3072,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Revitalizing Boost', 'Revitalizing Boost', 2, null, 'If your Mindful Reinforcement shield absorbs the full amount it restores Energy to you.'));
+
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Master of the Mind', '<img src="img/Telepathy_EgoPlacate.png" />&nbsp;Master of the Mind', 4, 15, pow++, 3, 'Telepathy, Transform and Self Buff<br /><br />Requires 5 power from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Unleash the full fury of your mind and destroy your foes.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Mind Link'].name, dataPowerAlias['Mind Link'].desc, 4, 15, pow++, 4, dataPowerAlias['Mind Link'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));

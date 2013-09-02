@@ -1,3 +1,50 @@
+2013-07-20  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js:  Added description to Telepathy Ego Blast Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Telepathy: Master
+        of the Mind Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Telepathy: Mental
+        Storm Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Telepathy:
+        Congress of Selves Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Telepathy: Mental
+        Leech Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Telepathy: Shadow
+        of Doubt Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Telepathy: Mind
+        Break Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Force: Redirected
+        Force Power.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Fire: Rimefire
+        Burst Power.
+
+2013-06-03  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js:  Added tips for Travel Power ranks.
+
+        * powerhouse.js:  Fixed bug with null tip values in Travel Powers.
+        (Thanks to alexandercrisalex for reporting this.)
+
+2013-05-28  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none: Released version 0.9.18.
+
+        * powerhouse.html:  Added my in-game handle (@Brizel) to About section.
+
+        * powerhouse.js:  Added a third option to the pop-up preferences.  The
+        options are now: Off, When Selecting, or On.  The "When Selecting"
+        mode will cause the pop-ups to work like they used to.
+
+        * powerhouse.js:  Added pop-up tips to items on the Edit page.
+
 2013-05-11  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none: Released version 0.9.17.
@@ -15,18 +62,18 @@
 
         * none: Released version 0.9.16.
 
-        * powerhouse-data.js: Fixed The Radiant Archetype description.
+        * powerhouse-data.js:  Fixed The Radiant Archetype description.
         (Thanks to alexandercrisalex for reporting this.)
 
         * powerhouse.html, README: Updated copyright years to 2013.
 
 2013-01-14  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse.js: Added check that resets fontSize if it is NaN.
+        * powerhouse.js:  Added check that resets fontSize if it is NaN.
 
 2013-01-12  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse-data.js: Added new Travel Powers: Cape Glide, Shadow
+        * powerhouse-data.js:  Added new Travel Powers: Cape Glide, Shadow
         Wings, Shadow Skull Flight, and Ninja Leaves.
 
 2012-12-18  Kyle W T Sherman  <kylewsherman@gmail.com>
