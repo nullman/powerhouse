@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-07-20 14:00:58 (kyle)>
+ * Time-stamp: <2013-09-02 15:26:42 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -483,6 +483,41 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             if (codeNum1 == 15 && codeNum2 >= 12) power++;
             // add Telepathy: Master of the Mind power
             if (codeNum1 == 15 && codeNum2 >= 15) power++;
+            return power;
+        case 'mask': return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 6 => 7
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 6,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype': return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
+            // add Power Armor: Particle Accelerator power
+            if (codeNum1 == 9 && codeNum2 >= 6) power++;
+            // add Power Armor: Particle Smash and Unified Theory powers
+            if (codeNum1 == 9 && codeNum2 >= 17) power += 2;
             return power;
         case 'mask': return value['mask'];
         case 'specializationTree': return value['specializationTree'];

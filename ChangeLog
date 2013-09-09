@@ -1,3 +1,21 @@
+2013-09-02  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js:  Added Power Armor: Unified Theory Power.
+
+        * powerhouse-data.js:  Added Power Armor: Particle Smash Power.
+
+        * powerhouse-data.js:  Added Power Armor: Particle Accelerator Power.
+
+        * powerhouse-data.js:  Updated Telepathy: Mindful Reinforcement description.
+
+        * powerhouse-data.js:  Updated Telepathy: Ego Storm description.
+
+        * powerhouse-data.js:  Updated Telepathy: Mental Storm description.
+
+        * powerhouse-data.js:  Updated Telepathy: Mental Leech description.
+
+        * powerhouse-data.js:  Updated Telepathy: Shadow of Doubt description.
+
 2013-07-20  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * powerhouse-data.js:  Added description to Telepathy Ego Blast Power.
@@ -102,8 +120,7 @@
 
         * none: Released version 0.9.13.
 
-        * powerhouse-data.js:  Updated the description of Celestial: Imbue
-        Power.
+        * powerhouse-data.js:  Updated Celestial: Imbue Power description.
 
 2012-11-08  Kyle W T Sherman  <kylewsherman@gmail.com>
 

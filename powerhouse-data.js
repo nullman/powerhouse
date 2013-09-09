@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-07-20 14:00:29 (kyle)>
+ * Time-stamp: <2013-09-02 15:24:56 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -1857,6 +1857,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Particle Acceleration', 'Particle Acceleration', 2, null, 'The plasma of your blade burns with barely controlled fury. Each strike peels away your targets defenses, increasing the Particle damage they take. This increased potency, however, causes the cost of this power to increase with every strike.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
+dataPower[dataPower.length] = new Power(dataPower.length, 'Particle Accelerator', '<img src="img/PowerArmor_ParticleAccelerator.png" />&nbsp;Particle Accelerator', 2, 9, pow++, 1, 'Power Armor, 10 foot Melee 90 degree Cone AoE Damage<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />You strike with your Laser Sword, speeding up the particles in the blade and empowering it.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Concussor Beam', '<img src="img/PowerArmor_ConcussorBeam.png" />&nbsp;Concussor Beam', 2, 9, pow++, 1, 'Power Armor, 50 foot Ranged Single Target Damage and Repel<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Concussor Beam shoots Particle beams from the palms of your hands at your target.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1922,6 +1928,18 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Overdrive', '<img src
 dataEnergyUnlockPower[dataPower.length-1] = true;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Plasma Cutter', '<img src="img/PowerArmor_PlasmaCutter.png" />&nbsp;Plasma Cutter', 2, 9, pow++, 2, 'Power Armor, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />You pull back and put all of your weight into a powerful laser thrust.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Particle Smash', '<img src="img/PowerArmor_ParticleSmash.png" />&nbsp;Particle Smash', 2, 9, pow++, 2, 'Power Armor, 35 foot Ranged 15 foot Sphere AoE Damage and Debuff<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />You launch a vicious blast of plasma at your foe, dealing damage.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Unified Theory', '<img src="img/PowerArmor_UnifiedTheory.png" />&nbsp;Unified Theory', 2, 9, pow++, 2, 'Power Armor, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />You swing with perfect focus, gaining clarity and increasing the amount of particle damage you deal.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -2963,7 +2981,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
 // TODO: find proper image
-dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow of Doubt', '<img src="img/SuperStat_Intelligence.png" />&nbsp;Shadow of Doubt', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Interrupt<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You plant doubts in your target\\\'s mind, weakening its mental state.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Shadow of Doubt', '<img src="img/SuperStat_Intelligence.png" />&nbsp;Shadow of Doubt', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Debuff<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You plant doubts in your target\\\'s mind, weakening its mental state.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -2979,7 +2997,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(5, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
 // TODO: find proper image
-dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Leech', '<img src="img/Mentalist_MindLink.png" />&nbsp;Mental Leech', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 20 foot Sphere AoE DoT and Interrupt<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You place a heavy burden on your foe\\\'s mind, draining them of willpower.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Leech', '<img src="img/Mentalist_MindLink.png" />&nbsp;Mental Leech', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 20 foot Sphere AoE DoT and Debuff<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />You place a heavy burden on your foe\\\'s mind, draining them of willpower.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -3047,14 +3065,14 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psionic Emanation', 'Psionic Emanation', 2, null, 'Grants your Psionic Healing a chance to perform an AoE heal around the target.'));
 
 // TODO: find proper image
-dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Storm', '<img src="img/Telepathy_EgoSprites.png" />&nbsp;Mental Storm', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Stun<br /><br />Requires 5 power from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />You rend your target\\\'s mind with a storm of mental energy.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Storm', '<img src="img/Telepathy_EgoSprites.png" />&nbsp;Mental Storm', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Paralyze<br /><br />Requires 5 power from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />You rend your target\\\'s mind with a storm of mental energy.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Storm', '<img src="img/Telepathy_EgoStorm.png" />&nbsp;Ego Storm', 4, 15, pow++, 3, 'Telepathy, 25 foot Sphere PBAoE Ranged Damage and Incapacitate<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Summon a storm of mental energy and press it into action, damaging the foes daring enough to come close to you.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Storm', '<img src="img/Telepathy_EgoStorm.png" />&nbsp;Ego Storm', 4, 15, pow++, 3, 'Telepathy, 25 foot Sphere PBAoE Ranged Damage and Hold<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Summon a storm of mental energy and press it into action, damaging the foes daring enough to come close to you.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -3067,7 +3085,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Consume Will', 'Consume Will', 2, null, 'Causes the entities summoned by Collective Will to Debuff their targets, lowering their resistance to Ego damage by 10%.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Mindful Reinforcement', '<img src="img/Telepathy_MindfulReinforcement.png" />&nbsp;Mindful Reinforcement', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged Single Target Shield and Heal<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Activating this power is a true statement of mind over matter, granting your target a damage absorbing shield, which can heal your target.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mindful Reinforcement', '<img src="img/Telepathy_MindfulReinforcement.png" />&nbsp;Mindful Reinforcement', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged Single Friend Shield and Heal<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Activating this power is a true statement of mind over matter, granting your target a damage absorbing shield, which can heal your target.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
