@@ -129,6 +129,11 @@
       <div id="selectionPref" class="selection" style="display:none">
       </div>
 
+      <div id="selectionConfirmation" class="selection" style="display:none">
+        <div id="selectConfirmation">
+        </div>
+      </div>
+
       <div id="viewEdit" class="edit" style="display:none">
         <div class="section">
           <div id="leftName" class="left">
@@ -412,6 +417,13 @@
         </p>
         <p>
           <a id="prefPopupTips" class="button" onclick="selectPrefPopupTips()">Popup tips:&nbsp; <span id="prefPopupTipsValue" class="buttonText"> </span></a>
+          <br />
+          <span class="note">(Set this to 'Off for touch screens.)</span>
+        </p>
+        <p>
+          <a id="prefConfirmSelections" class="button" onclick="selectPrefConfirmSelections()">Show confirmation dialog for selections:&nbsp; <span id="prefConfirmSelectionsValue" class="buttonText"> </span></a>
+          <br />
+          <span class="note">(Set this to 'On' for touch screens, if you want to see descriptions.)</span>
         </p>
         <p>
           <a id="prefAnalytics" class="button" onclick="selectPrefAnalytics()">Submit usage statistics to Google Analytics:&nbsp; <span id="prefAnalyticsValue" class="buttonText"> </span></a>

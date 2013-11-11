@@ -1,4 +1,19 @@
+2013-11-05  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.20.
+
+        * powerhouse.js, powerhouse.html:  Added preference option to show
+        confirmation dialog for selections.  (Mobile device users can now turn
+        off pop-ups and turn on confirmation dialogs for touchscreen friendly
+        usage.)
+
+2013-11-02  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js:  Changed all Close buttons to X's.
+
 2013-09-02  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.19.
 
         * powerhouse-data.js:  Added Power Armor: Unified Theory Power.
 
