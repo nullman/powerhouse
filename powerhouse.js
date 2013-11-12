@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-11-05 23:40:41 (kyle)>
+ * Time-stamp: <2013-11-11 22:17:32 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.20';
-var releaseDate = '2013-11-05';
+var version = '0.9.21';
+var releaseDate = '2013-11-11';
 var buildVersion = 7;
 
 var siteName = 'PowerHouse';
@@ -526,27 +526,33 @@ function selectConfirmation(func, name, text) {
         while (children.length > 0) {
             selectConfirmation.removeChild(children[0]);
         }
+        var spanLeft = document.createElement('span');
+        spanLeft.setAttribute('style', 'float:left');
+        var spanRight = document.createElement('span');
+        spanRight.setAttribute('style', 'float:right');
+        var spanClear = document.createElement('span');
+        spanClear.setAttribute('style', 'clear:both');
         var a = document.createElement('a');
         a.setAttribute('id', 'selectConfirmationSet');
         a.setAttribute('onclick', func+';hideSection(\'selectionConfirmation\')');
         a.innerHTML = 'Confirm Selection';
-        selectConfirmation.appendChild(a);
+        spanLeft.appendChild(a);
         var span = document.createElement('span');
-        span.setAttribute('style', 'float:right');
         span.innerHTML = ' &nbsp; ';
-        selectConfirmation.appendChild(span);
+        spanRight.appendChild(span);
         var a = document.createElement('a');
         a.setAttribute('id', 'selectConfirmationCancel');
         a.setAttribute('onclick', 'hideSection(\'selectionConfirmation\')');
         a.innerHTML = 'X';
-        span.appendChild(a);
-        var br = document.createElement('br');
-        selectConfirmation.appendChild(br);
+        spanRight.appendChild(a);
+        selectConfirmation.appendChild(spanLeft);
+        selectConfirmation.appendChild(spanRight);
+        selectConfirmation.appendChild(document.createElement('br'));
+        selectConfirmation.appendChild(spanClear);
         var span = document.createElement('span');
         span.innerHTML = name;
         selectConfirmation.appendChild(span);
-        var br = document.createElement('br');
-        selectConfirmation.appendChild(br);
+        selectConfirmation.appendChild(document.createElement('br'));
         var span = document.createElement('span');
         span.innerHTML = text;
         selectConfirmation.appendChild(span);
@@ -566,21 +572,30 @@ function setupSuperStats() {
     }
     for (var i=0; i<dataSuperStat.length; i++) {
         if (i == 0) {
+            var spanLeft = document.createElement('span');
+            spanLeft.setAttribute('style', 'float:left');
+            var spanRight = document.createElement('span');
+            spanRight.setAttribute('style', 'float:right');
+            var spanClear = document.createElement('span');
+            spanClear.setAttribute('style', 'clear:both');
             var a = document.createElement('a');
             a.setAttribute('id', 'selectSuperStat'+i);
             a.setAttribute('onclick', 'setSuperStat('+i+')');
             a.setAttribute('onclick', 'selectConfirmation(\'setSuperStat('+i+')\', \'Clear\', \'\')');
             a.innerHTML = 'Clear';
-            selectSuperStat.appendChild(a);
+            spanLeft.appendChild(a);
             var span = document.createElement('span');
-            span.setAttribute('style', 'float:right');
             span.innerHTML = ' &nbsp; ';
-            selectSuperStat.appendChild(span);
+            spanRight.appendChild(span);
             var a = document.createElement('a');
             a.setAttribute('id', 'selectSuperStatCancel');
             a.setAttribute('onclick', 'selectClear()');
             a.innerHTML = 'X';
-            span.appendChild(a);
+            spanRight.appendChild(a);
+            selectSuperStat.appendChild(spanLeft);
+            selectSuperStat.appendChild(spanRight);
+            selectSuperStat.appendChild(document.createElement('br'));
+            selectSuperStat.appendChild(spanClear);
         } else {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectSuperStat'+i);
@@ -588,8 +603,8 @@ function setupSuperStats() {
             a.innerHTML = dataSuperStat[i].desc;
             setOnmouseoverPopupL1(a, dataSuperStat[i].tip);
             selectSuperStat.appendChild(a);
+            selectSuperStat.appendChild(document.createElement('br'));
         }
-        selectSuperStat.appendChild(document.createElement('br'));
     }
     hideSection('selectionSuperStat');
 }
@@ -693,20 +708,29 @@ function setupInnateTalents() {
     var selectInnateTalentRight = document.getElementById('selectInnateTalentRight');
     for (var i=0; i<dataInnateTalent.length; i++) {
         if (i == 0) {
+            var spanLeft = document.createElement('span');
+            spanLeft.setAttribute('style', 'float:left');
+            var spanRight = document.createElement('span');
+            spanRight.setAttribute('style', 'float:right');
+            var spanClear = document.createElement('span');
+            spanClear.setAttribute('style', 'clear:both');
             var a = document.createElement('a');
             a.setAttribute('id', 'selectInnateTalent'+i);
             a.setAttribute('onclick', 'selectConfirmation(\'setInnateTalent('+i+')\', \'Clear\', \'\')');
             a.innerHTML = 'Clear';
-            selectInnateTalent.appendChild(a);
+            spanLeft.appendChild(a);
             var span = document.createElement('span');
-            span.setAttribute('style', 'float:right');
             span.innerHTML = ' &nbsp; ';
-            selectInnateTalent.appendChild(span);
+            spanRight.appendChild(span);
             var a = document.createElement('a');
             a.setAttribute('id', 'selectInnateTalentCancel');
             a.setAttribute('onclick', 'selectClear()');
             a.innerHTML = 'X';
-            span.appendChild(a);
+            spanRight.appendChild(a);
+            selectInnateTalent.appendChild(spanLeft);
+            selectInnateTalent.appendChild(spanRight);
+            selectInnateTalent.appendChild(document.createElement('br'));
+            selectInnateTalent.appendChild(spanClear);
         } else {
             if (i <= dataInnateTalent.length/2) selectInnateTalent = selectInnateTalentLeft;
             else selectInnateTalent = selectInnateTalentRight;
@@ -719,8 +743,8 @@ function setupInnateTalents() {
                  ' <span class="selectSpec">('+highlightSuperStats(dataInnateTalent[i].extra)+')</span>' : '');
             setOnmouseoverPopupL1(a, dataInnateTalent[i].tip);
             selectInnateTalent.appendChild(a);
+            selectInnateTalent.appendChild(document.createElement('br'));
         }
-        selectInnateTalent.appendChild(document.createElement('br'));
     }
     hideSection('selectionInnateTalent');
 }
@@ -789,20 +813,30 @@ function setupTalents() {
     var selectTalentRight = document.getElementById('selectTalentRight');
     for (var i=0; i<dataTalent.length; i++) {
         if (i == 0) {
+            var spanLeft = document.createElement('span');
+            spanLeft.setAttribute('style', 'float:left');
+            var spanRight = document.createElement('span');
+            spanRight.setAttribute('style', 'float:right');
+            var spanClear = document.createElement('span');
+            spanClear.setAttribute('style', 'clear:both');
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTalent'+i);
             a.setAttribute('onclick', 'selectConfirmation(\'setTalent('+i+')\', \'Clear\', \'\')');
             a.innerHTML = 'Clear';
-            selectTalent.appendChild(a);
+            spanLeft.appendChild(a);
             var span = document.createElement('span');
             span.setAttribute('style', 'float:right');
             span.innerHTML = ' &nbsp; ';
-            selectTalent.appendChild(span);
+            spanRight.appendChild(span);
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTalentCancel');
             a.setAttribute('onclick', 'selectClear()');
             a.innerHTML = 'X';
-            span.appendChild(a);
+            spanRight.appendChild(a);
+            selectTalent.appendChild(spanLeft);
+            selectTalent.appendChild(spanRight);
+            selectTalent.appendChild(document.createElement('br'));
+            selectTalent.appendChild(spanClear);
         } else {
             if (i <= dataTalent.length/2) selectTalent = selectTalentLeft;
             else selectTalent = selectTalentRight;
@@ -814,8 +848,8 @@ function setupTalents() {
                  ' <span class="selectSpec">('+highlightSuperStats(dataTalent[i].extra)+')</span>' : '');
             setOnmouseoverPopupL2(a, dataTalent[i].tip);
             selectTalent.appendChild(a);
+            selectTalent.appendChild(document.createElement('br'));
         }
-        selectTalent.appendChild(document.createElement('br'));
     }
     hideSection('selectionTalent');
 }
@@ -903,21 +937,30 @@ function setupTravelPowers() {
     var selectTravelPowerRight = document.getElementById('selectTravelPowerRight');
     for (var i=0; i<dataTravelPower.length; i++) {
         if (i == 0) {
+            var spanLeft = document.createElement('span');
+            spanLeft.setAttribute('style', 'float:left');
+            var spanRight = document.createElement('span');
+            spanRight.setAttribute('style', 'float:right');
+            var spanClear = document.createElement('span');
+            spanClear.setAttribute('style', 'clear:both');
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTravelPower'+i);
             a.setAttribute('onclick', 'setTravelPower('+i+')');
             a.setAttribute('onclick', 'selectConfirmation(\'setTravelPower('+i+')\', \'Clear\', \'\')');
             a.innerHTML = 'Clear';
-            selectTravelPower.appendChild(a);
+            spanLeft.appendChild(a);
             var span = document.createElement('span');
-            span.setAttribute('style', 'float:right');
             span.innerHTML = ' &nbsp; ';
-            selectTravelPower.appendChild(span);
+            spanRight.appendChild(span);
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTravelPowerCancel');
             a.setAttribute('onclick', 'selectClear()');
             a.innerHTML = 'X';
-            span.appendChild(a);
+            spanRight.appendChild(a);
+            selectTravelPower.appendChild(spanLeft);
+            selectTravelPower.appendChild(spanRight);
+            selectTravelPower.appendChild(document.createElement('br'));
+            selectTravelPower.appendChild(spanClear);
         } else {
             if (i <= dataTravelPower.length/2) selectTravelPower = selectTravelPowerLeft;
             else selectTravelPower = selectTravelPowerRight;
@@ -927,8 +970,8 @@ function setupTravelPowers() {
             a.innerHTML = dataTravelPower[i].desc;
             setOnmouseoverPopupL1(a, dataTravelPower[i].tip);
             selectTravelPower.appendChild(a);
+            selectTravelPower.appendChild(document.createElement('br'));
         }
-        selectTravelPower.appendChild(document.createElement('br'));
     }
     hideSection('selectionTravelPower');
     hideSection('selectionTravelPowerAdvantage');
@@ -1030,15 +1073,12 @@ function setupFrameworks() {
     while (children.length > 0) {
         selectFramework.removeChild(children[0]);
     }
-    var span = document.createElement('span');
-    span.setAttribute('style', 'float:right');
-    span.innerHTML = ' &nbsp; ';
-    selectFramework.appendChild(span);
-    var a = document.createElement('a');
-    a.setAttribute('id', 'selectPowerCancel');
-    a.setAttribute('onclick', 'selectClear()');
-    a.innerHTML = 'X';
-    span.appendChild(a);
+    var spanLeft = document.createElement('span');
+    spanLeft.setAttribute('style', 'float:left');
+    var spanRight = document.createElement('span');
+    spanRight.setAttribute('style', 'float:right');
+    var spanClear = document.createElement('span');
+    spanClear.setAttribute('style', 'clear:both');
     var table = document.createElement('table');
     var tr = document.createElement('tr');
     table.appendChild(tr);
@@ -1057,7 +1097,19 @@ function setupFrameworks() {
             table.appendChild(tr);
         }
     }
-    selectFramework.appendChild(table);
+    spanLeft.appendChild(table);
+    var span = document.createElement('span');
+    span.innerHTML = ' &nbsp; ';
+    spanRight.appendChild(span);
+    var a = document.createElement('a');
+    a.setAttribute('id', 'selectPowerCancel');
+    a.setAttribute('onclick', 'selectClear()');
+    a.innerHTML = 'X';
+    spanRight.appendChild(a);
+    selectFramework.appendChild(spanLeft);
+    selectFramework.appendChild(spanRight);
+    selectFramework.appendChild(document.createElement('br'));
+    selectFramework.appendChild(spanClear);
 }
 window['setupFrameworks'] = setupFrameworks;
 function selectFramework(framework) {
@@ -1073,8 +1125,9 @@ function selectFramework(framework) {
     var selectPowerLeft = document.getElementById('selectPowerLeft');
     var selectPowerRight = document.getElementById('selectPowerRight');
     var spanLeft = document.createElement('span');
-    var spanRight = document.createElement('span');
-    spanRight.setAttribute('style', 'float: right');
+    spanLeft.setAttribute('style', 'float:left');
+    // var spanRight = document.createElement('span');
+    // spanRight.setAttribute('style', 'float:right');
     var a = document.createElement('a');
     a.setAttribute('id', 'selectPower0');
     a.setAttribute('onclick', 'selectConfirmation(\'setPower(0)\', \'Clear\', \'\')');
@@ -1459,29 +1512,37 @@ function selectAdvantage(type, num) {
             }
         }
         var form = document.getElementById((type == 1) ? 'formPowerAdvantage' : 'formTravelPowerAdvantage');
+        var spanLeft = document.createElement('span');
+        spanLeft.setAttribute('style', 'float:left');
+        var spanRight = document.createElement('span');
+        spanRight.setAttribute('style', 'float:right');
+        var spanClear = document.createElement('span');
+        spanClear.setAttribute('style', 'clear:both');
         var a = document.createElement('a');
         a.setAttribute('id', 'selectAdvantageClear');
         a.setAttribute('onclick', 'selectAdvantageClear('+type+', '+num+')');
         a.innerHTML = 'Clear';
-        form.appendChild(a);
+        spanLeft.appendChild(a);
         var span = document.createElement('span');
         span.innerHTML = ' &nbsp; ';
-        form.appendChild(span);
+        spanLeft.appendChild(span);
         var a = document.createElement('a');
         a.setAttribute('id', 'selectAdvantageCancel');
         a.setAttribute('onclick', 'selectAdvantageCancel('+type+', '+num+', '+mask+')');
         a.innerHTML = 'Cancel';
-        form.appendChild(a);
+        spanLeft.appendChild(a);
         var span = document.createElement('span');
-        span.setAttribute('style', 'float:right');
         span.innerHTML = ' &nbsp; ';
-        form.appendChild(span);
+        spanRight.appendChild(span);
         var a = document.createElement('a');
         a.setAttribute('id', 'selectAdvantageClose');
         a.setAttribute('onclick', 'selectClear()');
         a.innerHTML = 'X';
-        span.appendChild(a);
+        spanRight.appendChild(a);
+        form.appendChild(spanLeft);
+        form.appendChild(spanRight);
         form.appendChild(document.createElement('br'));
+        form.appendChild(spanClear);
         var table = document.createElement('table');
         var advantageList = power.advantageList;
         var advantagePoints = power.getPoints(mask);
@@ -1839,15 +1900,20 @@ function selectSpecializationRefresh(num) {
             selectSpecialization.removeChild(children[0]);
         }
     }
+    var spanLeft = document.createElement('span');
+    spanLeft.setAttribute('style', 'float:left');
+    var spanRight = document.createElement('span');
+    spanRight.setAttribute('style', 'float:right');
+    var spanClear = document.createElement('span');
+    spanClear.setAttribute('style', 'clear:both');
     var span = document.createElement('span');
-    span.setAttribute('style', 'float:right');
     span.innerHTML = ' &nbsp; ';
-    selectSpecializationRole.appendChild(span);
+    spanRight.appendChild(span);
     var a = document.createElement('a');
     a.setAttribute('id', 'selectSpecializationClose');
     a.setAttribute('onclick', 'selectClear()');
     a.innerHTML = 'X';
-    span.appendChild(a);
+    spanRight.appendChild(a);
     switch (num) {
     case 1:
         var span = document.createElement('span');
@@ -1859,15 +1925,14 @@ function selectSpecializationRefresh(num) {
             //span.innerHTML = '<img src="img/blank.png" />&nbsp;'+specializationTree.desc+' ('+totalPoints+'/10)';
             span.innerHTML = specializationTree.desc+' Tree ('+totalPoints+'/10)';
         }
-        selectSpecializationRole.appendChild(span);
+        spanLeft.appendChild(span);
         break;
     case 2:
     case 3:
         if (phArchetype.id == 1) {
             for (var i=9; i<dataSpecializationTree.length; i++) {
                 if (i == 15) {
-                    var br = document.createElement('br');
-                    selectSpecializationRole.appendChild(br);
+                    spanLeft.appendChild(document.createElement('br'));
                 }
                 var a = document.createElement('a');
                 if (specializationTree.id == i) {
@@ -1883,10 +1948,10 @@ function selectSpecializationRefresh(num) {
                 }
                 a.innerHTML = dataSpecializationTree[i].desc;
                 setOnmouseoverPopupL1(a, dataSpecializationTree[i].tip);
-                selectSpecializationRole.appendChild(a);
+                spanLeft.appendChild(a);
                 var span = document.createElement('span');
                 span.innerHTML = ' &nbsp; ';
-                selectSpecializationRole.appendChild(span);
+                spanLeft.appendChild(span);
             }
         }
         if (specializationTree.id != 0) {
@@ -1894,8 +1959,7 @@ function selectSpecializationRefresh(num) {
             span.setAttribute('id', 'selectSpecialization'+num);
             span.innerHTML = specializationTree.desc+' Tree ('+totalPoints+'/10)';
             selectSpecialization.appendChild(span);
-            var br = document.createElement('br');
-            selectSpecialization.appendChild(br);
+            selectSpecialization.appendChild(document.createElement('br'));
         }
         break;
     case 4:
@@ -1909,9 +1973,13 @@ function selectSpecializationRefresh(num) {
             // span.innerHTML = '<span>'+specialization.desc+' (1/1)</span>';
             span.innerHTML = '<span>'+specializationTree.desc+' Mastery (1/1)</span>';
         }
-        selectSpecializationRole.appendChild(span);
+        spanLeft.appendChild(span);
         break;
     }
+    selectSpecializationRole.appendChild(spanLeft);
+    selectSpecializationRole.appendChild(spanRight);
+    selectSpecializationRole.appendChild(document.createElement('br'));
+    selectSpecializationRole.appendChild(spanClear);
     var a = document.createElement('a');
     a.setAttribute('id', 'selectSpecializationClear');
     a.setAttribute('onclick', 'selectSpecializationClear('+num+')');

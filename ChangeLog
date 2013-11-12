@@ -1,3 +1,9 @@
+2013-11-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js, powerhouse.html:  Fixed issue with the close buttons
+        not formatting correctly in Firefox.  (Thanks to flamingbunnyman for
+        reporting this.)
+
 2013-11-05  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none:  Released version 0.9.20.
@@ -9,7 +15,8 @@
 
 2013-11-02  Kyle W T Sherman  <kylewsherman@gmail.com>
 
-        * powerhouse.js:  Changed all Close buttons to X's.
+        * powerhouse.js:  Changed all Close buttons to X's.  (Thanks to
+        hypnobeast for suggesting this.)
 
 2013-09-02  Kyle W T Sherman  <kylewsherman@gmail.com>
 
