@@ -1,4 +1,14 @@
+2013-11-12  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.22.
+
+        * powerhouse.js:  Fixed issue with not being able to select powers
+        having apostrophes in their names.  (Thanks to blueionstormz for
+        reporting this.)
+
 2013-11-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.21.
 
         * powerhouse.js, powerhouse.html:  Fixed issue with the close buttons
         not formatting correctly in Firefox.  (Thanks to flamingbunnyman for

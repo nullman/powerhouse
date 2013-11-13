@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-11-11 22:17:32 (kyle)>
+ * Time-stamp: <2013-11-12 15:43:04 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.21';
-var releaseDate = '2013-11-11';
+var version = '0.9.22';
+var releaseDate = '2013-11-12';
 var buildVersion = 7;
 
 var siteName = 'PowerHouse';
@@ -36,6 +36,11 @@ var prefPopupTipsList = ['Off', 'When Selecting', 'On'];
 var prefPopupTips = parseInt(2);
 var prefConfirmSelections = false;
 var prefAnalytics = true;
+
+// escape quotes
+function escapeQuotes(str) {
+    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+}
 
 // set and get cookies
 function setCookie(name, value, expireDays) {
@@ -599,7 +604,7 @@ function setupSuperStats() {
         } else {
             var a = document.createElement('a');
             a.setAttribute('id', 'selectSuperStat'+i);
-            a.setAttribute('onclick', 'selectConfirmation(\'setSuperStat('+i+')\', \''+dataSuperStat[i].desc+'\', \''+dataSuperStat[i].tip+'\')');
+            a.setAttribute('onclick', 'selectConfirmation(\'setSuperStat('+i+')\', \''+escapeQuotes(dataSuperStat[i].desc)+'\', \''+dataSuperStat[i].tip+'\')');
             a.innerHTML = dataSuperStat[i].desc;
             setOnmouseoverPopupL1(a, dataSuperStat[i].tip);
             selectSuperStat.appendChild(a);
@@ -736,7 +741,7 @@ function setupInnateTalents() {
             else selectInnateTalent = selectInnateTalentRight;
             var a = document.createElement('a');
             a.setAttribute('id', 'selectInnateTalent'+i);
-            a.setAttribute('onclick', 'selectConfirmation(\'setInnateTalent('+i+')\', \''+dataInnateTalent[i].desc+'\', \''+dataInnateTalent[i].tip+'\')');
+            a.setAttribute('onclick', 'selectConfirmation(\'setInnateTalent('+i+')\', \''+escapeQuotes(dataInnateTalent[i].desc)+'\', \''+dataInnateTalent[i].tip+'\')');
             a.innerHTML = '<img src="img/Innate_Talent.png" />&nbsp;' +
                 dataInnateTalent[i].desc +
                 ((dataInnateTalent[i].extra != null) ?
@@ -842,7 +847,7 @@ function setupTalents() {
             else selectTalent = selectTalentRight;
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTalent'+i);
-            a.setAttribute('onclick', 'selectConfirmation(\'setTalent('+i+')\', \''+dataTalent[i].desc+'\', \''+dataTalent[i].tip+'\')');
+            a.setAttribute('onclick', 'selectConfirmation(\'setTalent('+i+')\', \''+escapeQuotes(dataTalent[i].desc)+'\', \'\')');
             a.innerHTML = '<img src="img/Talent.png" />&nbsp;'+dataTalent[i].desc +
                 ((dataTalent[i].extra != null) ?
                  ' <span class="selectSpec">('+highlightSuperStats(dataTalent[i].extra)+')</span>' : '');
@@ -966,7 +971,7 @@ function setupTravelPowers() {
             else selectTravelPower = selectTravelPowerRight;
             var a = document.createElement('a');
             a.setAttribute('id', 'selectTravelPower'+i);
-            a.setAttribute('onclick', 'selectConfirmation(\'setTravelPower('+i+')\', \''+dataTravelPower[i].desc+'\', \''+dataTravelPower[i].tip+'\')');
+            a.setAttribute('onclick', 'selectConfirmation(\'setTravelPower('+i+')\', \''+escapeQuotes(dataTravelPower[i].desc)+'\', \''+dataTravelPower[i].tip+'\')');
             a.innerHTML = dataTravelPower[i].desc;
             setOnmouseoverPopupL1(a, dataTravelPower[i].tip);
             selectTravelPower.appendChild(a);
@@ -1164,11 +1169,11 @@ function selectFramework(framework) {
             a.setAttribute('class', 'disabledButton');
             break;
         case 1:
-            a.setAttribute('onclick', 'selectConfirmation(\'setPower('+powerId+')\', \''+dataPower[powerId].desc+'\', \''+dataPower[powerId].tip+'\')');
+            a.setAttribute('onclick', 'selectConfirmation(\'setPower('+powerId+')\', \''+escapeQuotes(dataPower[powerId].desc)+'\', \''+dataPower[powerId].tip+'\')');
             a.setAttribute('class', 'button');
             break;
         case 2:
-            a.setAttribute('onclick', 'selectConfirmation(\'setPower('+powerId+')\', \''+dataPower[powerId].desc+'\', \''+dataPower[powerId].tip+'\')');
+            a.setAttribute('onclick', 'selectConfirmation(\'setPower('+powerId+')\', \''+escapeQuotes(dataPower[powerId].desc)+'\', \''+dataPower[powerId].tip+'\')');
             a.setAttribute('class', 'takenButton');
             break;
         }
@@ -1428,7 +1433,7 @@ function selectArchetypePower(num) {
             if (powerId == phPower[num].id) {
                 a.setAttribute('class', 'disabledButton');
             } else {
-                a.setAttribute('onclick', 'selectConfirmation(\'setArchetypePower('+powerId+')\', \''+dataPower[powerId].desc+'\', \''+dataPower[powerId].tip+'\')');
+                a.setAttribute('onclick', 'selectConfirmation(\'setArchetypePower('+powerId+')\', \''+escapeQuotes(dataPower[powerId].desc)+'\', \''+dataPower[powerId].tip+'\')');
                 a.setAttribute('class', 'button');
             }
             a.innerHTML = dataPower[powerId].desc;
@@ -1566,7 +1571,7 @@ function selectAdvantage(type, num) {
                 if (input.checked) {
                     input.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
                 } else {
-                    input.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+advantage.desc+'\', \''+advantage.tip+'\')');
+                    input.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+escapeQuotes(advantage.desc)+'\', \''+advantage.tip+'\')');
                 }
             } else {
                 input.setAttribute('onclick', 'return false');
@@ -1582,7 +1587,7 @@ function selectAdvantage(type, num) {
                 if (input.checked) {
                     a.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
                 } else {
-                    a.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+advantage.desc+'\', \''+advantage.tip+'\')');
+                    a.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+escapeQuotes(advantage.desc)+'\', \''+advantage.tip+'\')');
                 }
                 a.setAttribute('class', 'selectButton');
             } else {
@@ -1625,8 +1630,8 @@ function selectAdvantageUpdate(type, num) {
                 checkboxAdvantage.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
                 selectAdvantage.setAttribute('onclick', 'selectAdvantageToggle('+type+', '+num+', '+i+')');
             } else {
-                checkboxAdvantage.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+advantage.desc+'\', \''+advantage.tip+'\')');
-                selectAdvantage.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+advantage.desc+'\', \''+advantage.tip+'\')');
+                checkboxAdvantage.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+escapeQuotes(advantage.desc)+'\', \''+advantage.tip+'\')');
+                selectAdvantage.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+escapeQuotes(advantage.desc)+'\', \''+advantage.tip+'\')');
             }
             selectAdvantage.setAttribute('class', 'selectButton');
         } else {
@@ -1650,7 +1655,7 @@ function selectAdvantageClear(type, num) {
         checkboxAdvantage.checked = false;
         if (statAdvantagePoints+advantage.points <= maxAdvantagePointsTotal &&
             checkAdvantageDependancyId(type, num, advantage.id)) {
-            selectAdvantage.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+advantage.desc+'\', \''+advantage.tip+'\')');
+            selectAdvantage.setAttribute('onclick', 'selectConfirmation(\'selectAdvantageToggle('+type+', '+num+', '+i+')\', \''+escapeQuotes(advantage.desc)+'\', \''+advantage.tip+'\')');
             selectAdvantage.setAttribute('class', 'selectButton');
         } else {
             selectAdvantage.setAttribute('onclick', 'return false');
@@ -2047,7 +2052,7 @@ function selectSpecializationRefresh(num) {
                 specializationPointList[i] < specialization.maxPoints &&
                (i < 4 || tier1Points >= 5)) {
                 if (specializationPointList[i] == 0) {
-                    a.setAttribute('onclick', 'selectConfirmation(\'selectSpecializationIncrement('+num+', '+i+')\', \''+specialization.desc+'\', \''+specialization.tip+'\')');
+                    a.setAttribute('onclick', 'selectConfirmation(\'selectSpecializationIncrement('+num+', '+i+')\', \''+escapeQuotes(specialization.desc)+'\', \''+specialization.tip+'\')');
                 } else {
                     a.setAttribute('onclick', 'selectSpecializationIncrement('+num+','+i+')');
                 }
@@ -2143,7 +2148,7 @@ function selectSpecializationUpdate(num) {
             specializationPointList[i] < specialization.maxPoints &&
             (i < 4 || tier1Points >= 5)) {
             if (specializationPointList[i] == 0) {
-                selectSpecializationIncrement.setAttribute('onclick', 'selectConfirmation(\'selectSpecializationIncrement('+num+', '+i+')\', \''+specialization.desc+'\', \''+specialization.tip+'\')');
+                selectSpecializationIncrement.setAttribute('onclick', 'selectConfirmation(\'selectSpecializationIncrement('+num+', '+i+')\', \''+escapeQuotes(specialization.desc)+'\', \''+specialization.tip+'\')');
             } else {
                 selectSpecializationIncrement.setAttribute('onclick', 'selectSpecializationIncrement('+num+','+i+')');
             }
