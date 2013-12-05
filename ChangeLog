@@ -1,3 +1,10 @@
+2013-11-26  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.23.
+
+        * powerhouse-data.js:  Fixed Fighting Claws: Tiger's Bite tool-tip
+        text.  (Thanks to alexandercrisalex for reporting this.)
+
 2013-11-12  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none:  Released version 0.9.22.

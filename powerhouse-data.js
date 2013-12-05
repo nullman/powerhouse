@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-09-02 15:24:56 (kyle)>
+ * Time-stamp: <2013-11-29 14:08:03 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -2368,7 +2368,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Unfettered Strikes'].name, dataPowerAlias['Unfettered Strikes'].desc, 2, null, dataPowerAlias['Unfettered Strikes'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Tiger\'s Bite', '<img src="img/FightingClaws_TigersBite.png" />&nbsp;Tiger\'s Bite', 3, 11, pow++, 3, 'Fighting Claws, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Fighting Claws or 4 non-Energy Building powers from any framework.<br /><br />Tiger\'s Bite is a powerful slashing attack capable of taking advantage of openings left by your other claw attacks.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Tiger\'s Bite', '<img src="img/FightingClaws_TigersBite.png" />&nbsp;Tiger\'s Bite', 3, 11, pow++, 3, 'Fighting Claws, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Fighting Claws or 4 non-Energy Building powers from any framework.<br /><br />Tiger\\\'s Bite is a powerful slashing attack capable of taking advantage of openings left by your other claw attacks.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
