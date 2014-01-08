@@ -1,3 +1,11 @@
+2013-12-07  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.24.
+
+        * powerhouse-data.js:  Fixed Shadow of Doubt advantages by swapping
+        Challenging Strikes for Crippling Challenge.  (Thanks to superalfgorn
+        for reporting this.)
+
 2013-11-26  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none:  Released version 0.9.23.
