@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-09-02 15:26:42 (kyle)>
+ * Time-stamp: <2013-12-21 16:36:35 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -33,7 +33,7 @@ VersionUpdate = function(id, version, funct) {
 // function must handle the following values for 'thing': pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask, specializationTree, specialization
 // valid values: type, pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask, specializationTree, specialization
 // valid types: start, archetype, superStat, innateTalent, talent, travelPower, power, specialization
-// valid
+//
 // mask modifications:
 //   advantageId:   0 1 2 3 4  5  6  7   8   9   10
 //   decimal value: 1 2 4 8 16 32 64 128 256 512 1024
@@ -44,8 +44,8 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(dataVersionUpdat
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 1,
     function(thing, value) {
-        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
-        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
@@ -88,8 +88,8 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 2,
     function(thing, value) {
-        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
-        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
@@ -135,8 +135,8 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 3,
     function(thing, value) {
-        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
-        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
@@ -380,8 +380,8 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 4,
     function(thing, value) {
-        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
-        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
@@ -449,8 +449,8 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 5,
     function(thing, value) {
-        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
-        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
@@ -494,8 +494,8 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
     dataVersionUpdate.length, 6,
     function(thing, value) {
-        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']);
-        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']);
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
@@ -518,6 +518,39 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             if (codeNum1 == 9 && codeNum2 >= 6) power++;
             // add Power Armor: Particle Smash and Unified Theory powers
             if (codeNum1 == 9 && codeNum2 >= 17) power += 2;
+            return power;
+        case 'mask': return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 7 => 8
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 7,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype': return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
+            // add Earth: Earth Form power
+            if (codeNum1 == 17 && codeNum2 >= 4) power++;
             return power;
         case 'mask': return value['mask'];
         case 'specializationTree': return value['specializationTree'];
