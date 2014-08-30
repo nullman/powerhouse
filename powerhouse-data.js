@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-01-19 19:50:30 (kyle)>
+ * Time-stamp: <2014-08-24 20:29:50 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -770,6 +770,10 @@ var dataRequireGroup = [];
 // require group power data
 var dataRequireGroupPower = [];
 
+// replace power
+var dataReplacePower = [];
+var DATAREPLACEPOWER_CONCENTRATION = -1;
+
 //------------------------------------------------------------------------------
 // Power Global Aliases
 //------------------------------------------------------------------------------
@@ -1337,7 +1341,7 @@ dataRequireGroup['technology'] = [];
 dataPowerAlias['Implosion Engine'] = new PowerAlias('Implosion Engine', 'Implosion Engine', '<img src="img/Technology_ImplosionEngine.png" />&nbsp;Implosion Engine', 'Technology, 100 foot Ranged AoE Damage and Reverse Repel and Snare<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />You throw an Implosion Engine, a device that generates a massive gravitational vortex in a very small area, sucking in nearby matter, and dealing significant Dimensional damage.');
 dataPowerAlias['Inverse Polarization Field'] = new PowerAlias('Inverse Polarization Field', 'Inverse Polarization Field', 'Inverse Polarization Field', 'Just before self-destructing, the polarity of the gravitational field created by Implosion Engine will reverse, sending all affected enemies flying.');
 // dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Technology or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.<br /><br />Toggle<br />+ Activating this power grants a stack of the Concentration Buff, increasing your Ranged Damage, slightly increasing Melee Damage, and granting you a small amount of Energy. This Energy gain scales with your Ego or Intelligence (whichever is higher) and you may gain Energy in this way at most once every 4 seconds.<br />+ While you maintain this Form, you gain another instance of Concentration whenever you fully charge or maintain a ranged power. You can gain up to eight stacks of this Buff.<br />+ At Rank 2, two instances of the Concentration Buff are granted at activation. At Rank 3, you gain three instances on activation.<br /><br />- You must fully charge this power to activate it, and taking any damage will interrupt your concentration, canceling the charge.<br />- While this power is active, the Energy Cost of all of your powers is slightly increased.<br />- You may only have one Form power active at a time. Activating a Form power immediately ends any pre-existing Forms.');
-dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Technology or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
+dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
 // Power Framework: Archery
@@ -1389,6 +1393,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'technology';
+dataReplacePower[dataPower.length-1] = DATAREPLACEPOWER_CONCENTRATION;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Evasive Maneuvers', '<img src="img/Archery_EvasiveManeuvers.png" />&nbsp;Evasive Maneuvers', 2, 6, pow++, 1, 'Archery, Self Buff<br /><br />Requires 1 power from Archery or 2 non-Energy Building powers from any framework.<br /><br />Evasive Maneuvers causes you to lunge backwards to put distance between you and your foe.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1562,6 +1567,11 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'technology';
+dataReplacePower[dataPower.length-1] = dataPower.length-1;
+for (var i=0; i<dataReplacePower.length; i++) {
+    if (dataReplacePower[i] == DATAREPLACEPOWER_CONCENTRATION) dataReplacePower[i] = dataPower.length-1;
+}
+DATAREPLACEPOWER_CONCENTRATION = dataPower.length-1;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Molecular Self-Assembly', '<img src="img/Gadgeteering_MolecularSelfAssembly.png" />&nbsp;Molecular Self-Assembly', 2, 7, pow++, 1, 'Gadgeteering, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Each time your abilities become ready to use you receive a rush of Energy in anticipation of the coming fight.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
@@ -1733,6 +1743,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'technology';
+dataReplacePower[dataPower.length-1] = DATAREPLACEPOWER_CONCENTRATION;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Killer Instinct', '<img src="img/Munitions_KillerInstinct.png" />&nbsp;Killer Instinct', 2, 8, pow++, 1, 'Munitions, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Munitions or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Killer Instinct drives you through the battle, granting you a burst of Energy every time you land a Critical Hit.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
@@ -1878,6 +1889,14 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, '20/20 Fi
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 
 // TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Rocket Punch', '<img src="img/PowerArmor_PowerGauntlet.png" />&nbsp;Rocket Punch', 2, 9, pow++, 1, 'Power Armor, 100 foot Ranged 1 foot Cylinder AoE Damage (Blast)<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Fire a rocket powered fist at your target.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Blast Wave', 'Blast Wave', 1, null, 'Rocket Punch now knocks targets back when charged at least half way.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+// TODO: find proper image
 dataPower[dataPower.length] = new Power(dataPower.length, 'Lightwave Slash', '<img src="img/SingleBlade_ScythingBlade.png" />&nbsp;Lightwave Slash', 2, 9, pow++, 1, 'Power Armor, 10 foot Melee 120 degree Cone AoE Damage<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Lightwave Slash delivers a powerful laser slash to your targets, leaving them burning long after the initial attack.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1903,11 +1922,18 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
+// TODO: find proper image
+dataPower[dataPower.length] = new Power(dataPower.length, 'Aspect of the Machine', '<img src="img/Specialization_PowerSwell.png" />&nbsp;Aspect of the Machine', 2, 9, pow++, 1, 'Power Armor, Self Buff Form<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Awaken the machine inside you and lay waste to your foes.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Concentration'].name, dataPowerAlias['Concentration'].desc, 2, 9, pow++, 1, dataPowerAlias['Concentration'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'technology';
+dataReplacePower[dataPower.length-1] = DATAREPLACEPOWER_CONCENTRATION;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Energy Shield', '<img src="img/PowerArmor_EnergyShield.png" />&nbsp;Energy Shield', 2, 9, pow++, 1, 'Power Armor, Block<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />Energy Shield utilizes a sophisticated energy projector to generate a protective barrier in front of you.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -5192,6 +5218,8 @@ dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The R
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mind', '<img src="img/Archetype_Mind.png" />&nbsp;The Mind', 'Support', ['Presence', 'Endurance', 'Ego'], 'The Mind', ['Psi Lash', 'Ego Blast', 'Ego Sprites', 'Aura of Radiant Protection', ['Psionic Healing', 'Empathic Healing'], 'Compassion', 'Ego Sleep', 'Telekinetic Shield', 'Telepathic Reverberation', 'Ego Hold', ['Ego Storm', 'Summon Nightmare'], 'Mindful Reinforcement'], ['Presence', 'Sentinel', 'Sentry'], 'You have tapped into powerful psychic energies. You use your mental might to lash out at opponents and reach into their psyches to make their darkest nightmares real.<br /><br />Concepts: Alien Overmind, Mental Mutation, Mind-Control Ray, Psionic Projector, Telepath<br /><br />You have limited Ranged attack abilities, but have a number of powers designed to lock down enemies and boost allies. You are most powerful when supporting other heroes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inventor', '<img src="img/Archetype_Inventor.png" />&nbsp;The Inventor', 'Support', ['Intelligence', 'Presence', 'Ego'], 'The Inventor', ['Sonic Blaster', 'Experimental Blaster', 'Experimental Burst Ray', 'Medical Nanites', ['Attack Toys', 'Munitions Bots'], 'Concentration', 'Bionic Shielding', 'Energy Shield', 'Support Drones', 'Miniaturization Drive', ['Sonic Device', 'Toxic Nanites'], 'Orbital Cannon'], ['Intelligence', 'Overseer', 'Commander'], 'You are an incredibly gifted creator of advanced technology, using unconventional ideas that the average person would think impossible. Your quirky designs get the job done, with only the occasional unintended side effect.<br /><br />Concepts: Scientific Entrepreneur, Prototype Cyber Soldier, Technopath, Kid Genius, Mad Scientist<br /><br />Your set of wacky gadgets provides you with a good variety of abilities. You will learn to create personal robots to aid you in combat, and several of your gizmos will be valuable assets in assisting other heroes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Cursed', '<img src="img/Archetype_Cursed.png" />&nbsp;The Cursed', 'Ranged', ['Recovery', 'Constitution', 'Ego'], 'The Scourge', ['Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', ['Venomous Breath', 'Vicious Cyclone'], 'Aspect of the Infernal', ['Locust Swarm', 'Crippling Coils'], 'Ebon Void', 'Supernatural Power', 'Resurgence', 'Epidemic', 'Defile'], ['Recovery', 'Overseer', 'Avenger'], 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
+// TODO: find proper image
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Automaton', '<img src="img/Archetype_Freeform.png" />&nbsp;The Automaton', 'Ranged', ['Ego', 'Recovery', 'Constitution'], 'The Scourge', ['Wrist Bolter', 'Power Gauntlet', 'Rocket Punch', 'Targeting Computer', ['Gauntlet Chainsaw', 'Chest Beam'], 'Aspect of the Machine', 'Bolas', 'Reconstruction Circuits', 'Overdrive', ['Lock N Load', 'Ego Surge'], ['Orbital Cannon', 'Energy Wave'], 'Implosion Engine'], ['Ego', 'Overseer', 'Vindicator'], 'Reawakened archetypes become available once you have leveled a character to 40. Level the reawakened archetype to 40 to unlock its skills in freeform.<br /><br />You are the most technologically advanced machine known to man. You assess targets and terminate them without hesitation.<br /><br />Concepts: Advanced Robot, Tactical Mastermind, Supercomputer Processing, Mechanized Brawler, Perfect Targeting<br /><br />You are a sentient offensive weapons platform with a shoot-first attitude. While proficient at ranged combat, you possess options for melee engagements and in-combat recovery.');
 
 //==============================================================================
 // Get Methods

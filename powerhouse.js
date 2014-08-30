@@ -5,13 +5,13 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-01-19 19:20:57 (kyle)>
+ * Time-stamp: <2014-08-24 21:18:34 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.26';
-var releaseDate = '2014-01-19';
-var buildVersion = 9;
+var version = '0.9.27';
+var releaseDate = '2014-08-23';
+var buildVersion = 10;
 
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -1209,6 +1209,7 @@ function selectPower(num) {
 }
 window['selectPower'] = selectPower;
 function setPower(id) {
+    if (dataReplacePower[id] != undefined) id = dataReplacePower[id];
     var num = selectedNum;
     var field = document.getElementById('fieldPower'+num);
     var advantageField = document.getElementById('fieldPowerAdvantage'+num);

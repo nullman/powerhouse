@@ -1,8 +1,28 @@
+2014-08-24  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js, powerhouse-data.js, powerhouse-version.js:  Fixed an
+        issue where each Power Set in the Technology Framework had its own
+        version of the Concentration Power, when they should all act like they
+        are from the Gadgeteering Power Set.  (Thanks to tdits for reporting
+        this.)
+
+2014-08-23  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.27.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Power Armor:
+        Aspect of the Machine Power (image needed).
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Power Armor:
+        Rocket Punch Power (image needed).
+
+        * powerhouse-data.js:  Added Archetype: The Automaton (image needed).
+
 2014-01-19  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none:  Released version 0.9.26.
 
-        * powerhouse.html, README: Updated copyright years to 2014.
+        * powerhouse.html, README:  Updated copyright years to 2014.
 
         * powerhouse-data.js, powerhouse-version.js:  Added Martial Arts:
         Fluidity Power.  (Thanks to alexandercrisalex for reporting this.)
