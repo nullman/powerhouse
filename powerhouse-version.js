@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-12-21 16:36:35 (kyle)>
+ * Time-stamp: <2014-01-19 19:36:17 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -553,6 +553,42 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             if (codeNum1 == 17 && codeNum2 >= 4) power++;
             return power;
         case 'mask': return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 8 => 9
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 8,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype': return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
+            // add Martial Arts: Fluidity power
+            if (codeNum1 >= 10 && codeNum1 <= 13 && codeNum2 >= 12) power++;
+            return power;
+        case 'mask':
+            // remove Radiant Sorcery: Aura of Radiant Protection: Runic Glow advantage
+            if (value['type'] == 'power' && codeNum1 == 24 && codeNum2 == 4) return value['mask']&~8;
+            return value['mask'];
         case 'specializationTree': return value['specializationTree'];
         case 'specialization': return value['specialization'];
         }

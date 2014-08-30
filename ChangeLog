@@ -1,3 +1,17 @@
+2014-01-19  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.26.
+
+        * powerhouse.html, README: Updated copyright years to 2014.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Martial Arts:
+        Fluidity Power.  (Thanks to alexandercrisalex for reporting this.)
+
+2014-01-11  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse-data.js, powerhouse-version.js:  Removed Radiant Sorcery:
+        Aura of Radiant Protection: Runic Glow Advantage.
+
 2013-12-21  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none:  Released version 0.9.25.

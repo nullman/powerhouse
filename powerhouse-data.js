@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2013-12-21 16:45:13 (kyle)>
+ * Time-stamp: <2014-01-19 19:50:30 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -2027,6 +2027,9 @@ dataPowerAlias['Night Warrior'] = new PowerAlias('Night Warrior', 'Night Warrior
 dataPowerAlias['Silent Running'] = new PowerAlias('Silent Running', 'Silent Running', 'Silent Running', 'Increases your movement speed while sneaking.');
 dataPowerAlias['Parry'] = new PowerAlias('Parry', 'Parry', '<img src="img/MartialArts_Parry.png" />&nbsp;Parry', 'Martial Arts, Block<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Parry is an enhanced block power that allows you to, with careful timing, return some damage to an attacker.');
 dataPowerAlias['The Elusive Monk'] = new PowerAlias('The Elusive Monk', 'The Elusive Monk', 'The Elusive Monk', 'If you have the Parry power slotted, this advantage will cause it to activate when you make a Melee attack, increasing your Dodge Rating, Avoidance Rating, and Knock Resistance for a few seconds, but slightly lowering the attack\\\'s damage.');
+// TODO: find proper image
+dataPowerAlias['Fluidity'] = new PowerAlias('Fluidity', 'Fluidity', '<img src="img/MartialArts_MasterfulDodge.png" />&nbsp;Fluidity', 'Martial Arts, Block<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Fluidity increases your chance to Dodge and improves your Avoidance.');
+dataPowerAlias['Flowing Like the River'] = new PowerAlias('Flowing Like the River', 'Flowing Like the River', 'Flowing Like the River', 'If you maintain Fluidity for at least 2 seconds, its bonuses will decay over 10 seconds after you stop maintaining it.');
 dataPowerAlias['Thunderbolt Lunge'] = new PowerAlias('Thunderbolt Lunge', 'Thunderbolt Lunge', '<img src="img/MartialArts_ThunderboltLunge.png" />&nbsp;Thunderbolt Lunge', 'Martial Arts, 60 foot Lunge and Snare and Root<br /><br />Requires 1 power from Martial Arts or 2 non-Energy Building powers from any framework.<br /><br />Thunderbolt Lunge allows you to quickly close distance with your target.');
 // TODO: find proper image
 dataPowerAlias['Essence Assault'] = new PowerAlias('Essence Assault', 'Essence Assault', 'Essence Assault', 'Thunderbolt Lunge will also Stun your target for a few seconds if you lunge more than 20 feet and they aren\\\'t already controlled.');
@@ -2135,6 +2138,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['The Elusive Monk'].name, dataPowerAlias['The Elusive Monk'].desc, 3, null, dataPowerAlias['The Elusive Monk'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Fluidity'].name, dataPowerAlias['Fluidity'].desc, 3, 10, pow++, 1, dataPowerAlias['Fluidity'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flowing Like the River'].name, dataPowerAlias['Flowing Like the River'].desc, 3, null, dataPowerAlias['Flowing Like the River'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunderbolt Lunge'].name, dataPowerAlias['Thunderbolt Lunge'].desc, 3, 10, pow++, 1, dataPowerAlias['Thunderbolt Lunge'].tip);
@@ -2312,6 +2322,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['The Elusive Monk'].name, dataPowerAlias['The Elusive Monk'].desc, 3, null, dataPowerAlias['The Elusive Monk'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Fluidity'].name, dataPowerAlias['Fluidity'].desc, 3, 11, pow++, 1, dataPowerAlias['Fluidity'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flowing Like the River'].name, dataPowerAlias['Flowing Like the River'].desc, 3, null, dataPowerAlias['Flowing Like the River'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunderbolt Lunge'].name, dataPowerAlias['Thunderbolt Lunge'].desc, 3, 11, pow++, 1, dataPowerAlias['Thunderbolt Lunge'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -2478,6 +2495,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['The Elusive Monk'].name, dataPowerAlias['The Elusive Monk'].desc, 3, null, dataPowerAlias['The Elusive Monk'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Fluidity'].name, dataPowerAlias['Fluidity'].desc, 3, 12, pow++, 1, dataPowerAlias['Fluidity'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flowing Like the River'].name, dataPowerAlias['Flowing Like the River'].desc, 3, null, dataPowerAlias['Flowing Like the River'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunderbolt Lunge'].name, dataPowerAlias['Thunderbolt Lunge'].desc, 3, 12, pow++, 1, dataPowerAlias['Thunderbolt Lunge'].tip);
@@ -2660,6 +2684,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['The Elusive Monk'].name, dataPowerAlias['The Elusive Monk'].desc, 3, null, dataPowerAlias['The Elusive Monk'].tip));
+dataRequireGroupPower[dataPower.length-1] = 'martial arts';
+
+dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Fluidity'].name, dataPowerAlias['Fluidity'].desc, 3, 13, pow++, 1, dataPowerAlias['Fluidity'].tip);
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flowing Like the River'].name, dataPowerAlias['Flowing Like the River'].desc, 3, null, dataPowerAlias['Flowing Like the River'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'martial arts';
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Thunderbolt Lunge'].name, dataPowerAlias['Thunderbolt Lunge'].desc, 3, 13, pow++, 1, dataPowerAlias['Thunderbolt Lunge'].tip);
@@ -4254,7 +4285,6 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Radiant Prote
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Runic Glow', 'Runic Glow', 0, null, 'Grants your Aura of Radiant Protection the appearance of magical rune circles floating around you.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Compassion'].name, dataPowerAlias['Compassion'].desc, 2, 24, pow++, 1, dataPowerAlias['Compassion'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
