@@ -1,0 +1,1 @@
+PowerHouse is an HTML/Javascript character builder for Champions Online™ players. It allows for the planning of innate talent, super stats, talents, powers, and advantages. Builds are saved by bookmarking a save link. And there is a forum export option.
