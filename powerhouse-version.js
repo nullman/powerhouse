@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-09-24 00:42:27 (kyle)>
+ * Time-stamp: <2014-10-01 09:36:12 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -640,8 +640,40 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             if (codeNum1 == 9 && codeNum2 >= 9) power++;
             // add Added Power Armor: Aspect of the Machine power
             if (codeNum1 == 9 && codeNum2 >= 13) power++;
+            return power;
+        case 'mask': return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 10 => 11
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 10,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'data': return value['data'];
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype': return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
             // add Added Power Armor: Binding Shot power
-            if (codeNum1 == 9 && codeNum2 >= 17) power++;
+            if (codeNum1 == 9 && codeNum2 >= 19) power++;
             return power;
         case 'mask': return value['mask'];
         case 'specializationTree': return value['specializationTree'];

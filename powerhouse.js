@@ -5,13 +5,13 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-09-24 23:15:44 (kyle)>
+ * Time-stamp: <2014-09-29 10:18:17 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.28';
-var releaseDate = '2014-09-24';
-var buildVersion = 10;
+var version = '0.9.29';
+var releaseDate = '2014-09-29';
+var buildVersion = 11;
 
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
