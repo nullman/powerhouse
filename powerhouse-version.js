@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-08-24 22:08:59 (kyle)>
+ * Time-stamp: <2014-09-24 00:42:27 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -30,9 +30,9 @@ VersionUpdate = function(id, version, funct) {
 }
 
 // version update data
-// function must handle the following values for 'thing': pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask, specializationTree, specialization
+// function must handle the following values for 'thing': data, pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask, specializationTree, specialization
 // valid values: type, pos, i, inc, code1, code2, code3, code4, archetype, superStat, innateTalent, talent, travelPower, framework, power, mask, specializationTree, specialization
-// valid types: start, archetype, superStat, innateTalent, talent, travelPower, power, specialization
+// valid types: init, start, archetype, superStat, innateTalent, talent, travelPower, power, specialization
 //
 // mask modifications:
 //   advantageId:   0 1 2 3 4  5  6  7   8   9   10
@@ -49,25 +49,35 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data':
+            var data = value['data'];
+            if (value['type'] == 'init') {
+                // add archetype to start of data
+                data.splice(0, 0, numToUrlCode(value['archetype']));
+                // advantages now use two characters
+                // powers start at position 16, are going from 3 to 4 characters, and there are 14 of them
+                for (var i = 17+13*3; i >= 17; i -= 3) {
+                    data.splice(i, 0, '0');
+                }
+                // add specializations to end of data
+                for (var i = 0; i < 3*4; i++) {
+                    data.splice(data.length, 0, '0');
+                }
+            }
+            return data;
         case 'pos':
             // add archetype to start of data
             if (value['type'] == 'start' && value['pos'] == 0) return 1;
             return value['pos'];
-        case 'i': return value['i'];
-        case 'inc':
-            // advantages now use two digits
-            if (value['type'] == 'power') return value['inc']-1;
-            return value['inc'];
+        case 'i':
+            // add archetype to start of data
+            if (value['type'] == 'start' && value['i'] == 0) return 1;
+            return value['i'];
+        case 'inc': return value['inc'];
         case 'code1': return value['code1'];
         case 'code2': return value['code2'];
-        case 'code3':
-            // advantages now use two characters
-            if (value['type'] == 'power') return numToUrlCode(0);
-            return value['code3'];
-        case 'code4':
-            // advantages now use two characters
-            if (value['type'] == 'power') return value['code3'];
-            return value['code4'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
         case 'archetype': return value['archetype'];
         case 'superStat': return value['superStat'];
         case 'innateTalent': return value['innateTalent'];
@@ -93,6 +103,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
@@ -140,6 +151,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos':
             // all archetypes get an extra power at level 14 (6th power)
             if (value['type'] == 'start' && value['archetype'] > 1 && value['pos'] == 26) return 27;
@@ -385,6 +397,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
@@ -454,6 +467,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
@@ -499,6 +513,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
@@ -534,6 +549,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
@@ -567,6 +583,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
@@ -596,30 +613,19 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 
 // version 9 => 10
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
-    dataVersionUpdate.length, 8,
+    dataVersionUpdate.length, 9,
     function(thing, value) {
         var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
         var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
         // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
         // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
         switch (thing) {
+        case 'data': return value['data'];
         case 'pos': return value['pos'];
         case 'i': return value['i'];
         case 'inc': return value['inc'];
-        case 'code1':
-            var code1 = value['code1'];
-            // switch all Concentration powers to be the Gadgeteering one
-            if (codeNum1 == 6 && codeNum2 == 5) code1 = numToUrlCode(7);
-            if (codeNum1 == 8 && codeNum2 == 8) code1 = numToUrlCode(7);
-            if (codeNum1 == 9 && codeNum2 == 15) code1 = numToUrlCode(7);
-            return code1;
-        case 'code2':
-            var code2 = value['code2'];
-            // switch all Concentration powers to be the Gadgeteering one
-            if (codeNum1 == 6 && codeNum2 == 5) code2 = numToUrlCode(15);
-            if (codeNum1 == 8 && codeNum2 == 8) code2 = numToUrlCode(15);
-            if (codeNum1 == 9 && codeNum2 == 15) code2 = numToUrlCode(15);
-            return code2;
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
         case 'code3': return value['code3'];
         case 'code4': return value['code4'];
         case 'archetype': return value['archetype'];
@@ -631,9 +637,11 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'power':
             var power = value['power'];
             // add Added Power Armor: Rocket Punch power
-            if (codeNum1 >= 9 && codeNum2 >= 9) power++;
+            if (codeNum1 == 9 && codeNum2 >= 9) power++;
             // add Added Power Armor: Aspect of the Machine power
-            if (codeNum1 >= 9 && codeNum2 >= 13) power++;
+            if (codeNum1 == 9 && codeNum2 >= 13) power++;
+            // add Added Power Armor: Binding Shot power
+            if (codeNum1 == 9 && codeNum2 >= 17) power++;
             return power;
         case 'mask': return value['mask'];
         case 'specializationTree': return value['specializationTree'];

@@ -1,3 +1,16 @@
+2014-09-24  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.28.
+
+        * powerhouse-data.js, powerhouse-version.js:  Added Power Armor:
+        Binding Shot Power.  (Thanks to alexandercrisalex for reporting this.)
+
+2014-09-21  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * powerhouse.js, powerhouse-data.js, powerhouse-version.js:  Fixed a
+        bug with how version updates worked.  They would break when multiple
+        updates occurred at the same time that had overlapping data changes.
+
 2014-08-24  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * powerhouse.js, powerhouse-data.js, powerhouse-version.js:  Fixed an

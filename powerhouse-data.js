@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-08-24 20:29:50 (kyle)>
+ * Time-stamp: <2014-09-26 23:00:14 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -1568,7 +1568,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'technology';
 dataReplacePower[dataPower.length-1] = dataPower.length-1;
-for (var i=0; i<dataReplacePower.length; i++) {
+for (var i in dataReplacePower) {
     if (dataReplacePower[i] == DATAREPLACEPOWER_CONCENTRATION) dataReplacePower[i] = dataPower.length-1;
 }
 DATAREPLACEPOWER_CONCENTRATION = dataPower.length-1;
@@ -1952,6 +1952,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPower
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Overdrive', '<img src="img/PowerArmor_Overdrive.png" />&nbsp;Overdrive', 2, 9, pow++, 1, 'Power Armor, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Power Armor or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Rewire your weapon systems, allowing efficient use of one power to fuel the use of other powers.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Binding Shot', '<img src="img/Gadgeteering_TanglecoilLauncher.png" />&nbsp;Binding Shot', 2, 9, pow++, 2, 'Power Armor, 50 foot Single Target Hold<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />Binding Shot fires a projectile thats binds your foe, crushing them and preventing any actions.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['NG'].name, dataPowerAlias['NG'].desc, 2, null, dataPowerAlias['NG'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Plasma Cutter', '<img src="img/PowerArmor_PlasmaCutter.png" />&nbsp;Plasma Cutter', 2, 9, pow++, 2, 'Power Armor, 10 foot Melee Single Target Damage<br /><br />Requires 3 powers from Power Armor or 4 non-Energy Building powers from any framework.<br /><br />You pull back and put all of your weight into a powerful laser thrust.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -5219,7 +5225,7 @@ dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The M
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inventor', '<img src="img/Archetype_Inventor.png" />&nbsp;The Inventor', 'Support', ['Intelligence', 'Presence', 'Ego'], 'The Inventor', ['Sonic Blaster', 'Experimental Blaster', 'Experimental Burst Ray', 'Medical Nanites', ['Attack Toys', 'Munitions Bots'], 'Concentration', 'Bionic Shielding', 'Energy Shield', 'Support Drones', 'Miniaturization Drive', ['Sonic Device', 'Toxic Nanites'], 'Orbital Cannon'], ['Intelligence', 'Overseer', 'Commander'], 'You are an incredibly gifted creator of advanced technology, using unconventional ideas that the average person would think impossible. Your quirky designs get the job done, with only the occasional unintended side effect.<br /><br />Concepts: Scientific Entrepreneur, Prototype Cyber Soldier, Technopath, Kid Genius, Mad Scientist<br /><br />Your set of wacky gadgets provides you with a good variety of abilities. You will learn to create personal robots to aid you in combat, and several of your gizmos will be valuable assets in assisting other heroes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Cursed', '<img src="img/Archetype_Cursed.png" />&nbsp;The Cursed', 'Ranged', ['Recovery', 'Constitution', 'Ego'], 'The Scourge', ['Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', ['Venomous Breath', 'Vicious Cyclone'], 'Aspect of the Infernal', ['Locust Swarm', 'Crippling Coils'], 'Ebon Void', 'Supernatural Power', 'Resurgence', 'Epidemic', 'Defile'], ['Recovery', 'Overseer', 'Avenger'], 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');
 // TODO: find proper image
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Automaton', '<img src="img/Archetype_Freeform.png" />&nbsp;The Automaton', 'Ranged', ['Ego', 'Recovery', 'Constitution'], 'The Scourge', ['Wrist Bolter', 'Power Gauntlet', 'Rocket Punch', 'Targeting Computer', ['Gauntlet Chainsaw', 'Chest Beam'], 'Aspect of the Machine', 'Bolas', 'Reconstruction Circuits', 'Overdrive', ['Lock N Load', 'Ego Surge'], ['Orbital Cannon', 'Energy Wave'], 'Implosion Engine'], ['Ego', 'Overseer', 'Vindicator'], 'Reawakened archetypes become available once you have leveled a character to 40. Level the reawakened archetype to 40 to unlock its skills in freeform.<br /><br />You are the most technologically advanced machine known to man. You assess targets and terminate them without hesitation.<br /><br />Concepts: Advanced Robot, Tactical Mastermind, Supercomputer Processing, Mechanized Brawler, Perfect Targeting<br /><br />You are a sentient offensive weapons platform with a shoot-first attitude. While proficient at ranged combat, you possess options for melee engagements and in-combat recovery.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Automaton', '<img src="img/Archetype_Freeform.png" />&nbsp;The Automaton', 'Ranged', ['Ego', 'Recovery', 'Constitution'], 'The Scourge', ['Wrist Bolter', 'Power Gauntlet', 'Rocket Punch', 'Targeting Computer', ['Gauntlet Chainsaw', 'Chest Beam'], 'Aspect of the Machine', 'Binding Shot', 'Reconstruction Circuits', 'Overdrive', ['Lock N Load', 'Ego Surge'], ['Orbital Cannon', 'Energy Wave'], 'Implosion Engine'], ['Ego', 'Overseer', 'Vindicator'], 'Reawakened archetypes become available once you have leveled a character to 40. Level the reawakened archetype to 40 to unlock its skills in freeform.<br /><br />You are the most technologically advanced machine known to man. You assess targets and terminate them without hesitation.<br /><br />Concepts: Advanced Robot, Tactical Mastermind, Supercomputer Processing, Mechanized Brawler, Perfect Targeting<br /><br />You are a sentient offensive weapons platform with a shoot-first attitude. While proficient at ranged combat, you possess options for melee engagements and in-combat recovery.');
 
 //==============================================================================
 // Get Methods

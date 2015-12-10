@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-08-24 21:18:34 (kyle)>
+ * Time-stamp: <2014-09-24 23:15:44 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.27';
-var releaseDate = '2014-08-23';
+var version = '0.9.28';
+var releaseDate = '2014-09-24';
 var buildVersion = 10;
 
 var siteName = 'PowerHouse';
@@ -1209,7 +1209,6 @@ function selectPower(num) {
 }
 window['selectPower'] = selectPower;
 function setPower(id) {
-    if (dataReplacePower[id] != undefined) id = dataReplacePower[id];
     var num = selectedNum;
     var field = document.getElementById('fieldPower'+num);
     var advantageField = document.getElementById('fieldPowerAdvantage'+num);
@@ -1290,6 +1289,8 @@ function selectPowerAllowed(num, id) {
     var tier4Id = 0;
     for (var i=1; i<phPower.length; i++) {
         var p = phPower[i];
+        // some framework powers act like they belong to a specific power set for the purposes of calculating counts
+        if (dataReplacePower[p.id] != undefined) p = dataPower[dataReplacePower[p.id]];
         if (i<num) {
             if (p.tier == -1) {
                 // eb counts for framework, but not powerSet or otherCount
@@ -2425,12 +2426,14 @@ window['setArchetype'] = setArchetype;
 // apply version update
 function applyVersionUpdate(version, thing, value) {
     var result = value[thing];
-    for (var i=version; i<phVersion; i++) {
-        if (i<dataVersionUpdate.length) {
-            var funct = dataVersionUpdate[i].funct;
-            result = funct(thing, value);
-            value[thing] = result;
-        }
+    var orig = result;
+    if (version<phVersion && version<dataVersionUpdate.length) {
+        var funct = dataVersionUpdate[version].funct;
+        result = funct(thing, value);
+        value[thing] = result;
+    }
+    if (debug && result != orig && thing != 'inc') {
+        console.log("applyVersionUpdate: version="+version+", thing="+thing+", value="+orig+", result="+result);
     }
     return result;
 }
@@ -2459,147 +2462,188 @@ function parseUrlParams(url) {
                 //document.getElementById('fieldArchetype').firstChild.data = phArchetype.name;
                 break;
             case 'd':
-                data = pair[1];
+                data = pair[1].split('');
                 break;
             }
         }
     }
-    var pos = 0;
-    var i = 0;
-    var inc = 1;
-    var archetype = 1;
-    var specializationMasteryId = 0;
-    while (i < data.length) {
-        //var codeNum = urlCodeToNum(data[i]);
-        pos = applyVersionUpdate(version, 'pos', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
-        i = applyVersionUpdate(version, 'i', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
-        //codeNum = applyVersionUpdate(version, 'codeNum', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'codeNum': codeNum, 'archetype': archetype});
-        switch (pos) {
-        case 0:
-            // archetype
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
-            archetype = urlCodeToNum(code1);
-            archetype = applyVersionUpdate(version, 'archetype', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
-            phArchetype = dataArchetype[archetype];
-            inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
-            break;
-        case 1:
-        case 2:
-        case 3:
-            // super stats
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
-            var superStat = urlCodeToNum(code1);
-            superStat = applyVersionUpdate(version, 'superStat', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'superStat': superStat});
-            selectSuperStat(pos);
-            setSuperStat(superStat);
-            inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'superStat': superStat});
-            break;
-        case 4:
-            // innate talent
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
-            var innateTalent = urlCodeToNum(code1);
-            innateTalent = applyVersionUpdate(version, 'innateTalent', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'innateTalent': innateTalent});
-            selectInnateTalent(pos-3);
-            setInnateTalent(innateTalent);
-            inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'innateTalent': innateTalent});
-            break;
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10:
-            // talents
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
-            var talent = urlCodeToNum(code1);
-            talent = applyVersionUpdate(version, 'talent', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'talent': talent});
-            selectTalent(pos-4);
-            setTalent(talent);
-            inc = 1;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'talent': talent});
-            break;
-        case 11:
-        case 12:
-            // travel powers
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'archetype': archetype});
-            var code2 = applyVersionUpdate(version, 'code2', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'archetype': archetype});
-            var travelPower = urlCodeToNum(code1);
-            travelPower = applyVersionUpdate(version, 'travelPower', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower});
-            var mask = urlCodeToNum(code2) << 1;
-            mask = applyVersionUpdate(version, 'mask', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower, 'mask': mask});
-            var num = pos-10;
-            selectTravelPower(num);
-            setTravelPower(travelPower);
-            setAdvantage(2, num, mask);
-            inc = 2;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower, 'mask': mask});
-            break;
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-        case 17:
-        case 18:
-        case 19:
-        case 20:
-        case 21:
-        case 22:
-        case 23:
-        case 24:
-        case 25:
-        case 26:
-            // powers
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var code2 = applyVersionUpdate(version, 'code2', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var code3 = applyVersionUpdate(version, 'code3', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var code4 = applyVersionUpdate(version, 'code4', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var framework = applyVersionUpdate(version, 'framework', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
-            var power = applyVersionUpdate(version, 'power', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
-            var mask = applyVersionUpdate(version, 'mask', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
-            var powerCode = numToUrlCode(framework)+numToUrlCode(power);
-            var powerId = dataPowerIdFromCode[powerCode];
-            var num = pos-12;
-            selectFramework(framework);
-            selectPower(num);
-            setPower(powerId);
-            //validatePower(num, powerId);
-            setAdvantage(1, num, mask);
-            inc = 4;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': framework, 'power': power, 'mask': mask});
-            break;
-        case 27:
-        case 28:
-        case 29:
-            // specializations
-            var code1 = applyVersionUpdate(version, 'code1', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var code2 = applyVersionUpdate(version, 'code2', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var code3 = applyVersionUpdate(version, 'code3', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var code4 = applyVersionUpdate(version, 'code4', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
-            var codeNum = parseInt(urlCodeToNum4(code1+code2+code3+code4));
-            var specialization = codeNum >> 4;
-            var specializationTree = codeNum & ~(specialization << 4);
-            specializationTree = applyVersionUpdate(version, 'specializationTree', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
-            specialization = applyVersionUpdate(version, 'specialization', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
-            var num = pos-26;
-            if (num == 1) {
-                specializationMasteryId = specializationTree;
-            } else {
-                setSpecializationTree(num, (specializationTree == 0) ? 0 : specializationTree+8);
-            }
-            setSpecialization(num, specialization);
-            inc = 4;
-            inc = applyVersionUpdate(version, 'inc', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
-            break;
+    while (version <= buildVersion) {
+        var finalVersion = (version == buildVersion);
+        var pos = 0;
+        var i = 0;
+        var inc = 1;
+        var archetype = (phArchetype && phArchetype.id) || 1;
+        var specializationMasteryId = 0;
+        if (debug) {
+            console.log("parseUrlParams: data="+data);
         }
-        i+=inc;
-        pos++;
+        data = applyVersionUpdate(version, 'data', {'type': 'init', 'data': data, 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
+        while (i < data.length) {
+            //var codeNum = urlCodeToNum(data[i]);
+            pos = applyVersionUpdate(version, 'pos', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
+            i = applyVersionUpdate(version, 'i', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'archetype': archetype});
+            //codeNum = applyVersionUpdate(version, 'codeNum', {'type': 'start', 'pos': pos, 'i': i, 'inc': inc, 'codeNum': codeNum, 'archetype': archetype});
+            switch (pos) {
+            case 0:
+                // archetype
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
+                archetype = urlCodeToNum(code1);
+                archetype = applyVersionUpdate(version, 'archetype', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
+                data[i] = numToUrlCode(archetype);
+                if (finalVersion) {
+                    phArchetype = dataArchetype[archetype];
+                }
+                inc = 1;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'archetype', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype});
+                break;
+            case 1:
+            case 2:
+            case 3:
+                // super stats
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
+                var superStat = urlCodeToNum(code1);
+                superStat = applyVersionUpdate(version, 'superStat', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'superStat': superStat});
+                data[i] = numToUrlCode(superStat);
+                if (finalVersion) {
+                    selectSuperStat(pos);
+                    setSuperStat(superStat);
+                }
+                inc = 1;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'superStat', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'superStat': superStat});
+                break;
+            case 4:
+                // innate talent
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
+                var innateTalent = urlCodeToNum(code1);
+                innateTalent = applyVersionUpdate(version, 'innateTalent', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'innateTalent': innateTalent});
+                data[i] = numToUrlCode(innateTalent);
+                if (finalVersion) {
+                    selectInnateTalent(pos-3);
+                    setInnateTalent(innateTalent);
+                }
+                inc = 1;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'innateTalent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'innateTalent': innateTalent});
+                break;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                // talents
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'archetype': archetype});
+                var talent = urlCodeToNum(code1);
+                talent = applyVersionUpdate(version, 'talent', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'talent': talent});
+                data[i] = numToUrlCode(talent);
+                if (finalVersion) {
+                    selectTalent(pos-4);
+                    setTalent(talent);
+                }
+                inc = 1;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'talent', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'archetype': archetype, 'talent': talent});
+                break;
+            case 11:
+            case 12:
+                // travel powers
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'archetype': archetype});
+                var code2 = applyVersionUpdate(version, 'code2', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'archetype': archetype});
+                var travelPower = urlCodeToNum(code1);
+                travelPower = applyVersionUpdate(version, 'travelPower', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower});
+                var mask = urlCodeToNum(code2) << 1;
+                mask = applyVersionUpdate(version, 'mask', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower, 'mask': mask});
+                data[i] = numToUrlCode(travelPower);
+                data[i+1] = numToUrlCode(mask >> 1);
+                if (finalVersion) {
+                    var num = pos-10;
+                    selectTravelPower(num);
+                    setTravelPower(travelPower);
+                    setAdvantage(2, num, mask);
+                }
+                inc = 2;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'travelPower', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'archetype': archetype, 'travelPower': travelPower, 'mask': mask});
+                break;
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+                // powers
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var code2 = applyVersionUpdate(version, 'code2', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var code3 = applyVersionUpdate(version, 'code3', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var code4 = applyVersionUpdate(version, 'code4', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var framework = applyVersionUpdate(version, 'framework', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+                var power = applyVersionUpdate(version, 'power', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+                var mask = applyVersionUpdate(version, 'mask', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': parseInt(urlCodeToNum(code1)), 'power': parseInt(urlCodeToNum(code2)), 'mask': urlCodeToNum2(code3+code4) << 1});
+                var powerCode = numToUrlCode(framework)+numToUrlCode(power);
+                var powerId = dataPowerIdFromCode[powerCode];
+                var num = pos-12;
+                data[i] = numToUrlCode(framework);
+                data[i+1] = numToUrlCode(power);
+                var maskCode = numToUrlCode2(mask >> 1);
+                data[i+2] = maskCode[0];
+                data[i+3] = maskCode[1];
+                if (finalVersion) {
+                    selectFramework(framework);
+                    selectPower(num);
+                    setPower(powerId);
+                    //validatePower(num, powerId);
+                    setAdvantage(1, num, mask);
+                }
+                inc = 4;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'power', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'framework': framework, 'power': power, 'mask': mask});
+                break;
+            case 27:
+            case 28:
+            case 29:
+                // specializations
+                var code1 = applyVersionUpdate(version, 'code1', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var code2 = applyVersionUpdate(version, 'code2', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var code3 = applyVersionUpdate(version, 'code3', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var code4 = applyVersionUpdate(version, 'code4', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': data[i], 'code2': data[i+1], 'code3': data[i+2], 'code4': data[i+3], 'archetype': archetype});
+                var codeNum = parseInt(urlCodeToNum4(code1+code2+code3+code4));
+                var specialization = codeNum >> 4;
+                var specializationTree = codeNum & ~(specialization << 4);
+                specializationTree = applyVersionUpdate(version, 'specializationTree', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
+                specialization = applyVersionUpdate(version, 'specialization', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
+                var specializationCode = numToUrlCode4((specialization << 4) + specializationTree);
+                data[i] = specializationCode[0];
+                data[i+1] = specializationCode[1];
+                data[i+2] = specializationCode[2];
+                data[i+3] = specializationCode[3];
+                if (finalVersion) {
+                    var num = pos-26;
+                    if (num == 1) {
+                        specializationMasteryId = specializationTree;
+                    } else {
+                        setSpecializationTree(num, (specializationTree == 0) ? 0 : specializationTree+8);
+                    }
+                    setSpecialization(num, specialization);
+                }
+                inc = 4;
+                inc = applyVersionUpdate(version, 'inc', {'type': 'specialization', 'pos': pos, 'i': i, 'inc': inc, 'code1': code1, 'code2': code2, 'code3': code3, 'code4': code4, 'archetype': archetype, 'specializationTree': specializationTree, 'specialization': specialization});
+                break;
+            }
+            i += inc;
+            pos++;
+        }
+        if (finalVersion) {
+            setSpecializationMastery(specializationMasteryId);
+            validatePowers();
+            if (phArchetype.id > 1) setArchetype(phArchetype.id);
+        }
+        // loop until all version updates have been applied
+        version++;
     }
-    setSpecializationMastery(specializationMasteryId);
-    validatePowers();
-    if (phArchetype.id > 1) setArchetype(phArchetype.id);
 }
 window['parseUrlParams'] = parseUrlParams;
 
