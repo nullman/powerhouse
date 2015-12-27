@@ -1,3 +1,95 @@
+2015-12-23  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+		* none:  Released version 0.9.31.  (Special thanks to
+		alexandercrisalex for giving me detailed descriptions of the changes
+		that were needed for this update, plus a bunch of images, help
+		testing, and some good suggestions.)
+
+		* none: Updated various images with proper transparent backgrounds:
+		Heavy Weapons (All of them), Force: Force Shield, Celestial:
+		Conviction, Power Armor: Energy Wave, Power Armor: Particle Smash,
+		Power Armor: Particle Accelerator, Power Armor: Unified Theory, Travel
+		Power: Ooze Tunneling, Telekinesis: Ego Form, Telekinesis: Ego
+		Reverberation, and Invincible Archetype.
+
+		* powerhouse-data.js:  Added some missing images for Powers:  Fire:
+		Rimefire Burst, Force: Redirected Force, Gadgeterring: Gas Pellets,
+		Gadgeterring: Bolas, Gadgeterring: Strafing Run, Power Armor: Laser
+		Edge, Power Armor: Rocket Punch, Power Armor: Lighwave Slash, Power
+		Armor: Aspect of the Machine, Power Armor: Lightspeed Dash, Martial
+		Arts: Fluidity, Telekinesis: Mental Discipline, Telepathy: Mind Break,
+		Telepathy: Shadow of Doubt, Telepathy: Mental Leech, Telepathy:
+		Congress of Selves, Telepathy: Mental Storm, Telepathy: Master of the
+		Mind, and Earth: Earth Form.
+
+		* powerhouse-data.js, powerhouse-version.js:  Added Villain Onslaught
+		Powers:  Force:  Gravitic Ripple, Telekinesis: Lance Rain, and Might:
+		Nuclear Shockwave.
+
+		* powerhouse-data.js:  Added Ultimate Power extended descriptions:
+		Energy Projector:  Energy Storm, Gadgeteer: Implosion Engine, Martial
+		Arts:  Fury of the Blades, Mentalist: Mind Link, Brick: Unleashed
+		Rage, and Mystic: Planar Fracture.
+
+		* powerhouse-data.js:  Added Ultimate Powers:  Energy Projector:
+		Gravity Driver, Energy Projector: Fractal Aegis, Mystic: Endbringer's
+		Grasp
+
+		* powerhouse-data.js:  Added Travel Powers:  Flag Flight, Canadian
+		Flag Flight, and Hoverboard.
+
+		* powerhouse-data.js:  Updated Gadgeteering: Boomerang Toss
+		description.
+
+		* powerhouse.js:  Add font colors back into Export Type: CO.  (Thanks
+		to flowcyto, raighn, and pantagruel01 for showing me how to do this.)
+
+		* powerhouse-data.js:  Added The Icicle Archetype to Power Set: Ice
+		description.  Added The Night Avenger and The Automaton Archetypes to
+		Power Set: Gadgeteering description.  Added The Automaton Archetype to
+		Power Set: Power Armor description.  Added The Night Avenger Archetype
+		to Power Set: Fighting Claws description.  Added The Radiant Archetype
+		to Power Set: Radiant Sorcery description.
+
+		* powerhouse-data.js:  Updated Archetype: The Glacier's level 25th
+		power to be a selection between Ice: Shatter and Ice: Icy Embrace.
+
+		* powerhouse-data.js:  Updated Fire: Rimefire Burst Power name to
+		include the Burst part.
+
+		* powerhouse-data.js, powerhouse-version.js:  Added Ice: Chilled Form,
+		Ice: Icy Embrace, and Ice: Icicle Spear Powers.
+
+		* powerhouse-data.js:  Updated Ice: Ice Barrier Power description from
+		Self Buff to Active Defense.
+
+		* powerhouse-data.js:  Updated Ice: Shatter Power description from 90
+		degree cone to 180 degree cone.
+
+		* powerhouse-data.js:  Updated Ice: Ice Blast: Hard Frost Advantage
+		description, it now applies a cold damage resistance debuff to Chilled
+		targets.
+
+		* powerhouse-data.js, powerhouse-version.js:  Added Ice: Ice Blast:
+		Frost Bite Advantage.
+
+		* powerhouse-data.js:  Added The Chiller Innate Talent.
+
+		* powerhouse-data.js, powerhouse-version.js:  Added images for The
+		Automaton and Night Avenger Archetypes.  (Thanks to alexandercrisalex
+		for the initial images, however, I had to make new ones for consistent
+		resolution and look.)
+
+		* powerhouse-data.js, powerhouse-version.js:  Added Archetype: The
+		Icicle.
+
+2015-12-10  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+        * none:  Released version 0.9.30.
+
+		* powerhouse.js:  Updated Export Type: CO to use simple HTML that the
+		Arc forums use.
+
 2014-09-29  Kyle W T Sherman  <kylewsherman@gmail.com>
 
         * none:  Released version 0.9.29.

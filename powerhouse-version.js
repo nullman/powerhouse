@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2014-10-01 09:36:12 (kyle)>
+ * Time-stamp: <2015-12-23 22:25:46 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -636,9 +636,9 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'framework': return value['framework'];
         case 'power':
             var power = value['power'];
-            // add Added Power Armor: Rocket Punch power
+            // add Power Armor: Rocket Punch power
             if (codeNum1 == 9 && codeNum2 >= 9) power++;
-            // add Added Power Armor: Aspect of the Machine power
+            // add Power Armor: Aspect of the Machine power
             if (codeNum1 == 9 && codeNum2 >= 13) power++;
             return power;
         case 'mask': return value['mask'];
@@ -672,10 +672,60 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'framework': return value['framework'];
         case 'power':
             var power = value['power'];
-            // add Added Power Armor: Binding Shot power
+            // add Power Armor: Binding Shot power
             if (codeNum1 == 9 && codeNum2 >= 19) power++;
             return power;
         case 'mask': return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 11 => 12
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 10,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'data': return value['data'];
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype':
+            // add Archetype: The Icicle
+            if (value['archetype'] > 5) return value['archetype']+1;
+            return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
+            // add Force: Gravitic Ripple
+            if (codeNum1 == 3 && codeNum2 >= 13) power++;
+            // add Ice: Chilled Form power
+            if (codeNum1 == 5 && codeNum2 >= 8) power++;
+            // add Ice: Icy Embrace power
+            if (codeNum1 == 5 && codeNum2 >= 9) power++;
+            // add Ice: Icicle Spear power
+            if (codeNum1 == 5 && codeNum2 >= 12) power++;
+            // add Telekinesis: Lance Rain
+            if (codeNum1 == 14 && codeNum2 >= 23) power++;
+            // add Might: Nuclear Shockwave
+            if (codeNum1 == 18 && codeNum2 >= 21) power++;
+            return power;
+        case 'mask':
+            // add Ice: Ice Blast: Frost Bite advantage
+            if (value['type'] == 'power' && codeNum1 == 5 && codeNum2 == 1) return value['mask']+(value['mask']&48);
+            return value['mask'];
         case 'specializationTree': return value['specializationTree'];
         case 'specialization': return value['specialization'];
         }

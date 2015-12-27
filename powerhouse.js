@@ -5,13 +5,13 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2015-12-10 01:14:45 (kyle)>
+ * Time-stamp: <2015-12-13 23:34:29 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.30';
-var releaseDate = '2015-12-10';
-var buildVersion = 11;
+var version = '0.9.31';
+var releaseDate = '2015-12-13';
+var buildVersion = 12;
 
 var siteName = 'PowerHouse';
 var siteUrl = 'http://powerhouse.nullware.com/';
@@ -2808,13 +2808,15 @@ function forumEntry(type, first, second, third) {
         }
         break;
     case 2:
-        result += '<b>'+first+'</b>';
+        result += '<b>';
+        result += '<font color=#f78112>'+first+'</font>';
         if (second) {
-            result += ' <b>'+second+'</b>';
+            result += ' <font color=#fec530>'+second+'</font>';
             if (third) {
-                result += ' <b>'+third+'</b>';
+                result += ' <font color=#ce6c10 size=-1>'+third+'</font>';
             }
         }
+        result += '</b>';
         break;
     case 3:
         result += first;
@@ -2962,8 +2964,8 @@ function forumExport() {
     var result = [];
     switch (forumTypeNum) {
     case 2:
-        result.push('<b><a href="'+siteUrl+'">'+siteName+'</a></b> &nbsp; ');
-        result.push('<b><a href="'+phBuildLink+'">(Link to this build)</a></b>'+forumNewline(forumTypeNum));
+        result.push('<b><a href="'+siteUrl+'"><font color=#f78112>'+siteName+'</font></a></b> &nbsp; ');
+        result.push('<b><a href="'+phBuildLink+'"><font color=#8dcdff>(Link to this build)</font></a></b>'+forumNewline(forumTypeNum));
         break;
     case 3:
         result.push(siteName+' '+siteUrl+forumNewline(forumTypeNum));
