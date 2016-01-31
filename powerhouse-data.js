@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2015-12-23 21:37:38 (kyle)>
+ * Time-stamp: <2016-01-31 01:42:35 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -27,7 +27,7 @@ SuperStat = function(id, name, desc, abbrev, tip) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', abbrev=\''+this.abbrev+'\', tip=\''+this.tip+'\', code='+this.code()+']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', abbrev=\'' + this.abbrev + '\', tip=\'' + this.tip + '\', code=' + this.code() + ']';
     }
 }
 
@@ -62,7 +62,7 @@ InnateTalent = function(id, name, desc, extra, tip) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', extra=\''+this.extra+'\', tip=\''+this.tip+'\', code='+this.code()+']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', extra=\'' + this.extra + '\', tip=\'' + this.tip + '\', code=' + this.code() + ']';
     }
 }
 
@@ -132,7 +132,7 @@ Talent = function(id, name, desc, extra) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', extra=\''+this.extra+'\', code='+this.code()+']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', extra=\'' + this.extra + '\', code=' + this.code() + ']';
     }
 }
 
@@ -201,7 +201,7 @@ PowerAlias = function(id, name, desc, tip) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', tip=\''+this.tip+'\']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', tip=\'' + this.tip + '\']';
     }
 }
 
@@ -222,7 +222,7 @@ PowerAdvantage = function(id, name, desc, points, dependency, tip) {
     this.dependency = dependency;
     this.tip = tip;
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', points='+this.points+', dependency='+this.dependency+', tip=\''+this.tip+'\']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', points=' + this.points + ', dependency=' + this.dependency + ', tip=\'' + this.tip + '\']';
     }
 }
 
@@ -244,7 +244,7 @@ TravelPower = function(id, name, desc, tip) {
     this.getAdvantageList = function(mask) {
         var advantageList = [];
         if (mask > 0) {
-            for (var i=1; i<this.advantageList.length; i++) {
+            for (var i = 1; i < this.advantageList.length; i++) {
                 var test = Math.pow(2, i);
                 if ((mask & test) == test) {
                     advantageList.push(this.advantageList[i]);
@@ -256,7 +256,7 @@ TravelPower = function(id, name, desc, tip) {
     this.getPoints = function(mask) {
         var points = 0;
         if (mask > 0) {
-            for (var i=1; i<this.advantageList.length; i++) {
+            for (var i = 1; i < this.advantageList.length; i++) {
                 var test = Math.pow(2, i);
                 if ((mask & test) == test) {
                     points += this.advantageList[i].points;
@@ -280,12 +280,12 @@ TravelPower = function(id, name, desc, tip) {
     }
     this.toString = function() {
         var advantageList = '[';
-        for (var i=1; i<this.advantageList.length; i++) {
-            if (i > 1) advantageList = advantageList+',';
-            advantageList = advantageList+'<br /> &nbsp;&nbsp;&nbsp;&nbsp; '+this.advantageList[i].toString();
+        for (var i = 1; i < this.advantageList.length; i++) {
+            if (i > 1) advantageList = advantageList + ',';
+            advantageList = advantageList + '<br /> &nbsp;&nbsp;&nbsp;&nbsp; ' + this.advantageList[i].toString();
         }
-        advantageList = advantageList+'<br />]';
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', tip=\''+this.tip+'\', advantageList='+advantageList+', code='+this.code()+']';
+        advantageList = advantageList + '<br />]';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', tip=\'' + this.tip + '\', advantageList=' + advantageList + ', code=' + this.code() + ']';
     }
 }
 
@@ -382,7 +382,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
-dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Hover Disk', '<img src="img/TravelPower_HoverDisk.png" />&nbsp;Hover Disk', 'You call upon your Anti-Gravitonic Repulsor Lift (Anti-G.R.L. for short) to help you reach great heights.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+  While out of combat, flight speed gradually increase over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Hover Disk activates at maximum flight speed.');
+dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Hover Disk', '<img src="img/TravelPower_HoverDisk.png" />&nbsp;Hover Disk', 'You call upon your Anti-Gravitonic Repulsor Lift (Anti-G.R.L. for short) to help you reach great heights.<br /><br />Tap<br />+ Grants flight.<br />+ Slightly higher top speed than basic flight.<br />+ While out of combat, flight speed gradually increase over several stages.<br />- While in combat, flight speed is reduced.<br />- Slightly less maneuverability than basic flight.<br />- While active, the Energy Cost of all powers is increased and your Energy Generation is reduced.<br /><br />Charge<br />+ When fully charged, Hover Disk activates at maximum flight speed.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
@@ -538,21 +538,21 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Earthen Embrace'].name, dataPowerAlias['Earthen Embrace'].desc, 2, null, dataPowerAlias['Earthen Embrace'].tip));
 
-// TODO: find proper image
+// TODO: get proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Chain Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Chain Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flippin'].name, dataPowerAlias['Flippin'].desc, 2, null, dataPowerAlias['Flippin'].tip));
 
-// TODO: find proper image
+// TODO: get proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Energy Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Energy Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Flippin'].name, dataPowerAlias['Flippin'].desc, 2, null, dataPowerAlias['Flippin'].tip));
 
-// TODO: find proper image
+// TODO: get proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Vine Swinging', '<img src="img/TravelPower_Swinging.png" />&nbsp;Vine Swinging', 'The world is your playground, you are able to swing to wherever you need to go.<br /><br />Tap<br />+ Replaces jump while you are in the air.<br />+ Shoots a line of tensile material towards the closest stabilizing object.<br />+ While swinging, you will move more quickly along the downswing and slow down on the upswing.<br />+ Tapping jump while swinging will release the line and grant you a small burst of speed.<br />- While active the Energy Cost of all powers is increased and your Energy Generation is reduced.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
@@ -590,7 +590,7 @@ dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3TP'].name, dataPowerAlias['R3TP'].desc, 1, 1, dataPowerAlias['R3TP'].tip));
 
-// TODO: find proper image
+// TODO: get proper image
 dataTravelPower[dataTravelPower.length] = new TravelPower(dataTravelPower.length, 'Ninja Vanish', '<img src="img/TravelPower_Teleportation.png" />&nbsp;Ninja Vanish', 'By phasing yourself out of the normal plane of existence you are able to move between two points in nearly the blink of an eye.<br /><br />Click<br />+ Phases you out of the normal plane of existence.<br />+ While phased, you are able to move at high speeds in any direction for several seconds.<br />+ If you exit the phased state above ground, you will slowly fall to the ground.<br />+ Teleportation has no speed penalty from combat.<br />+ Teleportation does not affect the Energy Cost of your powers.<br />- No powers can be activated while phased.<br />- You do not recover Health or Energy while phased.<br />- Healing has minimal effect on you while phased.<br />- The strain of entering Teleportation while you are in combat is difficult to maintain, causing you to only be able to maintain Teleportation for 2 seconds if you enter during combat.<br />- If you enter combat within 60 seconds of leaving Teleportation, you will be affected by phase sickness and will be unable to activate Teleportation again for a short time.');
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataTravelPower[dataTravelPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2TP'].name, dataPowerAlias['R2TP'].desc, 1, null, dataPowerAlias['R2TP'].tip));
@@ -642,7 +642,7 @@ PowerSet = function(id, name, desc) {
     this.name = name;
     this.desc = desc;
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\']';
     }
 }
 
@@ -667,7 +667,7 @@ Framework = function(id, name, desc, tip) {
     this.desc = desc;
     this.tip = tip;
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', tip=\''+this.tip+'\']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', tip=\'' + this.tip + '\']';
     }
 }
 
@@ -723,12 +723,12 @@ Power = function(id, name, desc, powerSet, framework, power, tier, tip) {
     this.tip = tip;
     this.advantageList = [];
     this.code = function() {
-        return numToUrlCode(this.framework)+numToUrlCode(this.power);
+        return numToUrlCode(this.framework) + numToUrlCode(this.power);
     }
     this.getAdvantageList = function(mask) {
         var advantageList = [];
         if (mask > 0) {
-            for (var i=1; i<this.advantageList.length; i++) {
+            for (var i = 1; i < this.advantageList.length; i++) {
                 var test = Math.pow(2, i);
                 if ((mask & test) == test) {
                     advantageList.push(this.advantageList[i]);
@@ -740,7 +740,7 @@ Power = function(id, name, desc, powerSet, framework, power, tier, tip) {
     this.getPoints = function(mask) {
         var points = 0;
         if (mask > 0) {
-            for (var i=1; i<this.advantageList.length; i++) {
+            for (var i = 1; i < this.advantageList.length; i++) {
                 var test = Math.pow(2, i);
                 if ((mask & test) == test) {
                     points += this.advantageList[i].points;
@@ -764,12 +764,12 @@ Power = function(id, name, desc, powerSet, framework, power, tier, tip) {
     }
     this.toString = function() {
         var advantageList = '[';
-        for (var i=1; i<this.advantageList.length; i++) {
-            if (i > 1) advantageList = advantageList+',';
-            advantageList = advantageList+'<br /> &nbsp;&nbsp;&nbsp;&nbsp; '+this.advantageList[i].toString();
+        for (var i = 1; i < this.advantageList.length; i++) {
+            if (i > 1) advantageList = advantageList + ',';
+            advantageList = advantageList + '<br /> &nbsp;&nbsp;&nbsp;&nbsp; ' + this.advantageList[i].toString();
         }
-        advantageList = advantageList+'<br />]';
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', powerSet='+this.powerSet+', framework='+this.framework+', power='+this.power+', tier='+this.tier+', tip='+this.tip+', advantageList='+this.advantageList+', code='+this.code()+']';
+        advantageList = advantageList + '<br />]';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', powerSet=' + this.powerSet + ', framework=' + this.framework + ', power=' + this.power + ', tier=' + this.tier + ', tip=' + this.tip + ', advantageList=' + this.advantageList + ', code=' + this.code() + ']';
     }
 }
 
@@ -888,6 +888,13 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Superconductor', 'Superconductor', 2, null, 'Places a stacking Debuff on the target of Electrocute which increases all Electrical damage dealt to the target by a scaling value for 20 seconds.'));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+
+dataPower[dataPower.length] = new Power(dataPower.length, 'Neuroelectric Pulse', '<img src="img/Electricity_NeuroelectricPulse.png" />&nbsp;Neuroelectric Pulse', 1, 1, pow++, 2, 'Electricity, 15 foot Sphere PBAoE Damage and Energy Gain and Energy Siphon and Root<br /><br />Requires 3 powers from Electricity or 4 non-Energy Building powers from any framework.<br /><br />When activated, an electrical pulse will damage and Root most adjacent foes. Leaves behind a Static Field that grants nearby players Energy and siphons power from foes. The amount it grants scales off of your Recovery. Many enemies are not affected by Power Siphon.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CS'].name, dataPowerAlias['CS'].desc, 1, null, dataPowerAlias['CS'].tip));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ball Lightning', '<img src="img/Electricity_BallLightning.png" />&nbsp;Ball Lightning', 1, 1, pow++, 3, 'Electricity, 100 foot Ranged AoE Damage<br /><br />Requires 5 powers from Electricity or 6 non-Energy Building powers from any framework.<br /><br />Ball Lightning summons a sphere of electrical energy to fight your foe. The sphere will chase them down, and deal damage to other nearby enemies as well.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -1349,7 +1356,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, nul
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 
-// TODO: look for correct description
+// TODO: get correct description
 dataPower[dataPower.length] = new Power(dataPower.length, 'Chilled Form', '<img src="img/Ice_ChilledForm.png" />&nbsp;Chilled Form', 1, 5, pow++, 1, 'Ice, Self Buff Form<br /><br />Requires 1 power from Ice or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -1361,7 +1368,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Frigid Air', 'Frigid Air', 2, null, 'Allows the Chill effect from Ice Shield to be applied up to a 50 foot range, instead of just in Melee range.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Icy Embrace', '<img src="img/Ice_IcyEmbrace.png" />&nbsp;Icy Embrace', 1, 5, pow++, 1, 'Ice, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Ice or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Thermal Reverberation allows you to drain heat energy from the environment around you.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Icy Embrace', '<img src="img/Ice_IcyEmbrace.png" />&nbsp;Icy Embrace', 1, 5, pow++, 1, 'Ice, Innate Passive Secondary Energy Unlock<br /><br />Requires 1 power from Ice or 2 non-Energy Building powers from any framework.<br /><br />You may only have 1 Energy Unlock power.<br /><br />Icy Embrace allows you to drain cold energy from the environment around you.');
 dataEnergyUnlockPower[dataPower.length-1] = true;
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Ice Burst', '<img src="img/Ice_IceBurst.png" />&nbsp;Ice Burst', 1, 5, pow++, 2, 'Ice, 50 foot Ranged 25 foot Sphere AoE Damage and Knock Back<br /><br />Requires 3 powers from Ice or 4 non-Energy Building powers from any framework.<br /><br />Ice Burst creates a spire of ice under your target, lifting them into the air. The column can be destroyed, causing it to detonate violently dealing damage to any enemies around it.');
@@ -1435,6 +1442,7 @@ dataRequireGroup['technology'] = [];
 dataPowerAlias['Implosion Engine'] = new PowerAlias('Implosion Engine', 'Implosion Engine', '<img src="img/Technology_ImplosionEngine.png" />&nbsp;Implosion Engine', 'Technology, 100 foot Ranged AoE Damage and Reverse Repel and Snare<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />You throw an Implosion Engine, a device that generates a massive gravitational vortex in a very small area, sucking in nearby matter, and dealing significant Dimensional damage.<br /><br />CLICK<br />+ Create and throw an Implosion Engine at your target, dealing Crushing damage from the massive gravity waves, pulling them toward the Engine.<br />- This power is incapable of getting a Critical Hit.');
 dataPowerAlias['Inverse Polarization Field'] = new PowerAlias('Inverse Polarization Field', 'Inverse Polarization Field', 'Inverse Polarization Field', 'Just before self-destructing, the polarity of the gravitational field created by Implosion Engine will reverse, sending all affected enemies flying.');
 // dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Technology or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.<br /><br />Toggle<br />+ Activating this power grants a stack of the Concentration Buff, increasing your Ranged Damage, slightly increasing Melee Damage, and granting you a small amount of Energy. This Energy gain scales with your Ego or Intelligence (whichever is higher) and you may gain Energy in this way at most once every 4 seconds.<br />+ While you maintain this Form, you gain another instance of Concentration whenever you fully charge or maintain a ranged power. You can gain up to eight stacks of this Buff.<br />+ At Rank 2, two instances of the Concentration Buff are granted at activation. At Rank 3, you gain three instances on activation.<br /><br />- You must fully charge this power to activate it, and taking any damage will interrupt your concentration, canceling the charge.<br />- While this power is active, the Energy Cost of all of your powers is slightly increased.<br />- You may only have one Form power active at a time. Activating a Form power immediately ends any pre-existing Forms.');
+// TODO: does not count towards unlocking in-framework power tiers
 dataPowerAlias['Concentration'] = new PowerAlias('Concentration', 'Concentration', '<img src="img/Technology_Concentration.png" />&nbsp;Concentration', 'Technology, Self Buff Form<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
@@ -1638,7 +1646,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Overloaded Circuits', 'Overloaded Circuits', 2, null, 'Places an active defense system in your bionic shielding, dealing Electrical damage to anyone who triggers your shield. Damage dealt is based on incoming damage.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Medical Nanites', '<img src="img/Gadgeteering_MedicalNanites.png" />&nbsp;Medical Nanites', 2, 7, pow++, 1, 'Gadgeteering, Slotted Support Passive and HoT<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />You control a swarm of Medical Nanites. Invisible to the naked eye, these nanites work to keep you healthy, and you can even control them to assist nearby allies.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Medical Nanites', '<img src="img/Gadgeteering_MedicalNanites.png" />&nbsp;Medical Nanites', 2, 7, pow++, 1, 'Gadgeteering, Slotted Support Passive and HoT, 100 foot PBAoE Friend HoT<br /><br />Requires 1 power from Gadgeteering or 2 non-Energy Building powers from any framework.<br /><br />You control a swarm of Medical Nanites. Invisible to the naked eye, these nanites work to keep you healthy, and you can even control them to assist nearby allies.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -1693,7 +1701,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Gas Pellets', '<img s
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Oversized Pellet Bag', 'Oversized Pellet Bag', 2, null, 'Always throw the maximum number of Gas Pellets, regardless of whether you are in stealth or not.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Oversized Pellet Bag', 'Oversized Pellet Bag', 2, null, 'Your Gas Pellets now have a chance to apply poison.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, 'Tanglecoil Launcher', '<img src="img/Gadgeteering_TanglecoilLauncher.png" />&nbsp;Tanglecoil Launcher', 2, 7, pow++, 2, 'Gadgeteering, 50 foot Single Target Hold<br /><br />Requires 3 powers from Gadgeteering or 4 non-Energy Building powers from any framework.<br /><br />Tanglecoil fires a projectile thats binds your foe, crushing them and preventing any actions.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -2920,7 +2928,8 @@ dataRequireGroup['mentalist'] = [];
 
 dataPowerAlias['Mind Link'] = new PowerAlias('Mind Link', 'Mind Link', '<img src="img/Mentalist_MindLink.png" />&nbsp;Mind Link', 'Mentalist, 50 foot Sphere PBAoE Triggered Damage<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />This telepathic link allows you to share pain amongst the enemies around you by forging a psychic bond that forces them to feel the pain of others.<br /><br />MAINTAIN<br />+ A portion of any damage dealt to you or nearby foes while you maintain this power is immediately dealt as Ego damage to all targets in range, up to a maximum of your Ego x 4.<br />+ Damage from this effect causes very little threat.<br />- This effect only occurs once every half second.<br />Increasing the rank of this power increases the maximum damage dealt.<br />+ At Rank 2, this power deals a maximum of Ego x 5 damage.<br />+ At Rank 3, this power deals a maximum of Ego x 6 damage.');
 dataPowerAlias['Aggression Inhibitor'] = new PowerAlias('Aggression Inhibitor', 'Aggression Inhibitor', 'Aggression Inhibitor', 'All damage you take while maintaining this power is reduced by 20%.');
-// TODO: look for correct description
+// TODO: get correct description
+// TODO: does not count towards unlocking in-framework power tiers
 dataPowerAlias['Manipulator'] = new PowerAlias('Manipulator', 'Manipulator', '<img src="img/Mentalist_Manipulation.png" />&nbsp;Manipulator', 'Mentalist, Self Buff Form<br /><br />Requires 1 power from Mentalist or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
@@ -3137,7 +3146,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['AM'].name, dataPowerAlias['AM'].desc, 1, null, dataPowerAlias['AM'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(4, dataPowerAlias['CC'].name, dataPowerAlias['CC'].desc, 3, null, dataPowerAlias['CC'].tip));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Sprites', '<img src="img/Telepathy_EgoSprites.png" />&nbsp;Ego Sprites', 4, 15, pow++, 1, 'Telepathy, 50 foot Ranged 25 foot Sphere AoE DoT<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />This ability unleashes sprites composed of psychic energy to assault and harass your enemies.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Ego Sprites', '<img src="img/Telepathy_EgoSprites.png" />&nbsp;Ego Sprites', 4, 15, pow++, 1, 'Telepathy, 25 foot Sphere PBAoE DoT<br /><br />Requires 1 power from Telepathy or 2 non-Energy Building powers from any framework.<br /><br />This ability unleashes sprites composed of psychic energy to assault and harass your enemies.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -3198,6 +3207,12 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Single Minded', 'Single Minded', 2, null, 'Targets who are close to the Psychic Vortex have a chance to be Stunned.'));
 
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mind Control', '<img src="img/Telepathy_MindControl.png" />&nbsp;Mind Control', 4, 15, pow++, 2, 'Telepathy, 100 foot Ranged Single Target Debuff<br /><br />Requires 3 powers from Telepathy or 4 non-Energy Building powers from any framework.<br /><br />You are able to bend weak minded individuals to server you.');
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Bewilder', 'Bewilder', 2, null, 'Mind Control now Disorients high ranking foes.'));
+
 dataPower[dataPower.length] = new Power(dataPower.length, 'Summon Nightmare', '<img src="img/Telepathy_SummonNightmare.png" />&nbsp;Summon Nightmare', 4, 15, pow++, 2, 'Telepathy, Uncontrolled Pet<br /><br />Requires 3 powers from Telepathy or 4 non-Energy Building powers from any framework.<br /><br />You manifest a psychokinetic nightmare that assaults your target with haunting and brutal attacks.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
@@ -3211,7 +3226,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Psionic Emanation', 'Psionic Emanation', 2, null, 'Grants your Psionic Healing a chance to perform an AoE heal around the target.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Storm', '<img src="img/Telepathy_MentalStorm.png" />&nbsp;Mental Storm', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Paralyze<br /><br />Requires 5 power from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />You rend your target\\\'s mind with a storm of mental energy.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Mental Storm', '<img src="img/Telepathy_MentalStorm.png" />&nbsp;Mental Storm', 4, 15, pow++, 3, 'Telepathy, 50 foot Ranged 10 foot Sphere AoE DoT and Paralyze<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />You rend your target\\\'s mind with a storm of mental energy.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -3237,7 +3252,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Revitalizing Boost', 'Revitalizing Boost', 2, null, 'If your Mindful Reinforcement shield absorbs the full amount it restores Energy to you.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Master of the Mind', '<img src="img/Telepathy_MasterOfTheMind.png" />&nbsp;Master of the Mind', 4, 15, pow++, 3, 'Telepathy, Transform and Self Buff<br /><br />Requires 5 power from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Unleash the full fury of your mind and destroy your foes.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Master of the Mind', '<img src="img/Telepathy_MasterOfTheMind.png" />&nbsp;Master of the Mind', 4, 15, pow++, 3, 'Telepathy, Transform and Self Buff<br /><br />Requires 5 powers from Telepathy or 6 non-Energy Building powers from any framework.<br /><br />Unleash the full fury of your mind and destroy your foes.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -3261,7 +3276,7 @@ dataPowerAlias['Unstoppable'] = new PowerAlias('Unstoppable', 'Unstoppable', '<i
 dataPowerAlias['Enrage'] = new PowerAlias('Enrage', 'Enrage', '<img src="img/Brick_Enrage.png" />&nbsp;Enrage', 'Brick, Self Buff<br /><br />Requires 3 powers from Brick or 4 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced angry posture.');
 dataPowerAlias['Endorphin Rush'] = new PowerAlias('Endorphin Rush', 'Endorphin Rush', 'Endorphin Rush', 'Activating Enrage will heal you over time. The duration of this heal is based on the number of stacks of Defiant on you. The amount healed is based on your Constitution.');
 dataPowerAlias['Giant Growth'] = new PowerAlias('Giant Growth', 'Giant Growth', 'Giant Growth', 'Purchasing this advantage adds a growth effect to Enraged.');
-dataPowerAlias['Aggressor'] = new PowerAlias('Aggressor', 'Aggressor', '<img src="img/Brick_Aggressor.png" />&nbsp;Aggressor', 'Brick, Self Buff Form<br /><br />Requires 3 powers from Brick or 4 non-Energy Building powers from any framework.<br /><br />Your aggressive stance increases your damage.');
+dataPowerAlias['Aggressor'] = new PowerAlias('Aggressor', 'Aggressor', '<img src="img/Brick_Aggressor.png" />&nbsp;Aggressor', 'Brick, Active Offense<br /><br />Requires 3 powers from Brick or 4 non-Energy Building powers from any framework.<br /><br />Your aggressive stance increases your damage.');
 
 //------------------------------------------------------------------------------
 // Power Framework: Heavy Weapon
@@ -3712,6 +3727,7 @@ dataRequireGroup['mystic'] = [];
 dataPowerAlias['Planar Fracture'] = new PowerAlias('Planar Fracture', 'Planar Fracture', '<img src="img/Mystic_PlanarFracture.png" />&nbsp;Planar Fracture', 'Mystic, 50 foot Ranged Single Target Damage and DoT and Debuff<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />Planar Fracture creates a tear in time and space, linking this plane with another. Chaotic energy pours forth from the fracture, causing random damage and status effects on your foes.<br /><br />CHARGE<br />+ Creates a Planar Fracture near your target.<br />+ Planar Fracture deals Dimensional damage to targets close to it.<br />+ The chaotic energies flowing from the Planar Fracture create random status effects on nearby enemies.<br />- Must be fully charged.<br />- This power is incapable of getting a Critical Hit.');
 dataPowerAlias['Double Vortex'] = new PowerAlias('Double Vortex', 'Double Vortex', 'Double Vortex', 'Your Planar Fracture now causes 2 random Debuffs on each target instead of 1.');
 dataPowerAlias['Endbringers Grasp'] = new PowerAlias('Endbringer\'s Grasp', 'Endbringer\'s Grasp', '<img src="img/Mystic_EndbringersGrasp.png" />&nbsp;Endbringer\'s Grasp', 'Mystic, 50 foot Ranged AoE Damage and Darkness<br /><br />Requires level 35<br />You may only own 1 Ultimate Power<br /><br />Open a Qliphotic portal, its horrifying power eating away at the sanity of your foes.<br /><br /><b>This power can be unlocked from a Villain Lockbox drop.</b><br /><br />CHARGE<br />+ Open a portal that deals dimensional damage to foes.<br />+ Foes are periodically afflicted with Fear.<br />+ Foes who are afflicted by Fear are periodically corrupted and forced to fight for you.');
+// TODO: does not count towards unlocking in-framework power tiers
 dataPowerAlias['Compassion'] = new PowerAlias('Compassion', 'Compassion', '<img src="img/Mystic_Compassion.png" />&nbsp;Compassion', 'Mystic, Self Buff Form<br /><br />Requires 1 power from Mystic or 2 non-Energy Building powers from any framework.<br /><br />With a few moments of concentration and preparation, you may adopt an advanced martial posture.');
 
 //------------------------------------------------------------------------------
@@ -3770,7 +3786,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Illusive', 'Illusive', 2, null, 'Activating Imbue will cause you to generate less threat for 10 seconds.'));
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Seraphim', '<img src="img/Celestial_Seraphim.png" />&nbsp;Seraphim', 6, 19, pow++, 1, 'Celestial, Slotted Support Passive and Energy Form<br /><br />Requires 1 power from Celestial or 2 non-Energy Building powers from any framework.<br /><br />You are one with the dimensional energies you control enhancing your ability to use them for your will.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Seraphim', '<img src="img/Celestial_Seraphim.png" />&nbsp;Seraphim', 6, 19, pow++, 1, 'Celestial, Slotted Support Passive and HoT and Energy Form, 100 foot PBAoE Friend HoT<br /><br />Requires 1 power from Celestial or 2 non-Energy Building powers from any framework.<br /><br />You are one with the dimensional energies you control enhancing your ability to use them for your will.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -3818,7 +3834,7 @@ dataPower[dataPower.length] = new Power(dataPower.length, 'Ascension', '<img src
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
-dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Judgment', 'Judgment', 2, null, 'All Illuminations within 25 feet are consumed. Friendly targets who were Illuminated are healed. Enemy targets who were Illuminated take damage.'));
+dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, 'Judgment', 'Judgment', 2, null, 'All Illuminations within 100 feet are consumed. Friendly targets who were Illuminated are healed. Enemy targets who were Illuminated take damage.'));
 
 dataPower[dataPower.length] = new Power(dataPower.length, dataPowerAlias['Planar Fracture'].name, dataPowerAlias['Planar Fracture'].desc, 6, 19, pow++, 4, dataPowerAlias['Planar Fracture'].tip);
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
@@ -4030,7 +4046,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Tenable Bonds'].name, dataPowerAlias['Tenable Bonds'].desc, 2, null, dataPowerAlias['Tenable Bonds'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'sorcery';
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Arcane Clarity', '<img src="img/Sorcery_AuraOfArcaneClarity.png" />&nbsp;Aura of Arcane Clarity', 6, 21, pow++, 1, 'Arcane Sorcery, Slotted Support Passive, 50 foot PBAoE Friend Aura<br /><br />Requires 1 power from Arcane Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Arcane Clarity reduces combat fatigue in your allies, allowing them to recover faster and fight harder.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Arcane Clarity', '<img src="img/Sorcery_AuraOfArcaneClarity.png" />&nbsp;Aura of Arcane Clarity', 6, 21, pow++, 1, 'Arcane Sorcery, Slotted Support Passive, 100 foot PBAoE Friend Aura<br /><br />Requires 1 power from Arcane Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Arcane Clarity reduces combat fatigue in your allies, allowing them to recover faster and fight harder.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -4164,7 +4180,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Tenable Bonds'].name, dataPowerAlias['Tenable Bonds'].desc, 2, null, dataPowerAlias['Tenable Bonds'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'sorcery';
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Primal Majesty', '<img src="img/Sorcery_AuraOfPrimalMajesty.png" />&nbsp;Aura of Primal Majesty', 6, 22, pow++, 1, 'Primal Sorcery, Slotted Support Passive, 50 foot PBAoE Friend Aura<br /><br />Requires 1 power from Primal Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Primal Majesty inspires your allies and drives them beyond their normal abilities.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Primal Majesty', '<img src="img/Sorcery_AuraOfPrimalMajesty.png" />&nbsp;Aura of Primal Majesty', 6, 22, pow++, 1, 'Primal Sorcery, Slotted Support Passive, 100 foot PBAoE Friend Aura<br /><br />Requires 1 power from Primal Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Primal Majesty inspires your allies and drives them beyond their normal abilities.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -4298,7 +4314,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Tenable Bonds'].name, dataPowerAlias['Tenable Bonds'].desc, 2, null, dataPowerAlias['Tenable Bonds'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'sorcery';
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Ebon Destruction', '<img src="img/Sorcery_AuraOfEbonDestruction.png" />&nbsp;Aura of Ebon Destruction', 6, 23, pow++, 1, 'Ebon Sorcery, Slotted Support Passive, 50 foot PBAoE Friend Aura<br /><br />Requires 1 power from Ebon Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Ebon Destruction drives your allies to fight all out against your enemies.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Ebon Destruction', '<img src="img/Sorcery_AuraOfEbonDestruction.png" />&nbsp;Aura of Ebon Destruction', 6, 23, pow++, 1, 'Ebon Sorcery, Slotted Support Passive, 100 foot PBAoE Friend Aura<br /><br />Requires 1 power from Ebon Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Ebon Destruction drives you and your allies to fight all out against your enemies.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -4425,7 +4441,7 @@ dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPower
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(3, dataPowerAlias['Tenable Bonds'].name, dataPowerAlias['Tenable Bonds'].desc, 2, null, dataPowerAlias['Tenable Bonds'].tip));
 dataRequireGroupPower[dataPower.length-1] = 'sorcery';
 
-dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Radiant Protection', '<img src="img/Sorcery_AuraOfRadiantProtection.png" />&nbsp;Aura of Radiant Protection', 6, 24, pow++, 1, 'Radiant Sorcery, Slotted Support Passive, 50 foot PBAoE Friend Aura<br /><br />Requires 1 power from Radiant Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Radiant Protection uses your mere presence to bolster your allies\\\' defenses.');
+dataPower[dataPower.length] = new Power(dataPower.length, 'Aura of Radiant Protection', '<img src="img/Sorcery_AuraOfRadiantProtection.png" />&nbsp;Aura of Radiant Protection', 6, 24, pow++, 1, 'Radiant Sorcery, Slotted Support Passive, 100 foot PBAoE Friend Aura<br /><br />Requires 1 power from Radiant Sorcery or 2 non-Energy Building powers from any framework.<br /><br />Aura of Radiant Protection uses your mere presence to bolster your allies\\\' defenses.');
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(0, null, null, null, null, null));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(1, dataPowerAlias['R2'].name, dataPowerAlias['R2'].desc, 2, null, dataPowerAlias['R2'].tip));
 dataPower[dataPower.length-1].advantageList.push(new PowerAdvantage(2, dataPowerAlias['R3'].name, dataPowerAlias['R3'].desc, 2, 1, dataPowerAlias['R3'].tip));
@@ -4856,7 +4872,7 @@ Specialization = function(id, name, desc, tier, maxPoints, tip) {
         var points = 0;
         if (mask > 0) {
             var test1 = Math.pow(2, this.id*2);
-            var test2 = Math.pow(2, this.id*2+1);
+            var test2 = Math.pow(2, this.id*2 + 1);
             if ((mask & test1) == test1) points += 1;
             if ((mask & test2) == test2) points += 2;
         }
@@ -4866,7 +4882,7 @@ Specialization = function(id, name, desc, tier, maxPoints, tip) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', maxPoints='+this.maxPoints+', tip=\''+this.tip+'\', code='+this.code()+']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', maxPoints=' + this.maxPoints + ', tip=\'' + this.tip + '\', code=' + this.code() + ']';
     }
 }
 
@@ -4876,7 +4892,7 @@ Specialization = function(id, name, desc, tier, maxPoints, tip) {
 
 // helper lookup functions
 var dataSuperStatIdFromName = [];
-for (var i=0; i<dataSuperStat.length; i++) {
+for (var i = 0; i < dataSuperStat.length; i++) {
     dataSuperStatIdFromName[dataSuperStat[i].name] = dataSuperStat[i].id;
 }
 
@@ -4894,10 +4910,10 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
     }
     this.getSpecializationList = function(mask) {
         var specializationList = [];
-        for (var i=0; i<this.specializationList.length; i++) {
+        for (var i = 0; i < this.specializationList.length; i++) {
             if (mask > 0) {
                 var test1 = Math.pow(2, i*2);
-                var test2 = Math.pow(2, i*2+1);
+                var test2 = Math.pow(2, i*2 + 1);
                 var num = 0;
                 if ((mask & test1) == test1) num += 1;
                 if ((mask & test2) == test2) num += 2;
@@ -4912,7 +4928,7 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
         var points = 0;
         if (mask > 0) {
             var specializationList = this.getSpecializationList(mask);
-            for (var i=0; i<specializationList.length; i++) {
+            for (var i = 0; i < specializationList.length; i++) {
                 points += specializationList[i];
             }
         }
@@ -4922,7 +4938,7 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
         var points = 0;
         if (mask > 0) {
             var specializationList = this.getSpecializationList(mask);
-            for (var i=0; i<specializationList.length; i++) {
+            for (var i = 0; i < specializationList.length; i++) {
                 if (this.specializationList[i].tier == tier) points += specializationList[i];
             }
         }
@@ -4930,19 +4946,19 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
     }
     this.hasSpecialization = function(mask, id) {
         var test1 = Math.pow(2, id*2);
-        var test2 = Math.pow(2, id*2+1);
+        var test2 = Math.pow(2, id*2 + 1);
         return (mask > 0 && ((mask & test1) == test1) || ((mask & test2) == test2));
     }
     this.incrSpecialization = function(mask, id) {
         var points = this.specializationList[id].getPoints(mask);
         if (points < this.specializationList[id].maxPoints) {
             points++;
-            var base = mask & ~Math.pow(2, id*2) & ~Math.pow(2, id*2+1);
+            var base = mask & ~Math.pow(2, id*2) & ~Math.pow(2, id*2 + 1);
             switch (points) {
             case 0: return base; break;
             case 1: return base | Math.pow(2, id*2); break;
-            case 2: return base | Math.pow(2, id*2+1); break;
-            case 3: return base | Math.pow(2, id*2) | Math.pow(2, id*2+1); break;
+            case 2: return base | Math.pow(2, id*2 + 1); break;
+            case 3: return base | Math.pow(2, id*2) | Math.pow(2, id*2 + 1); break;
             }
         } else {
             return mask;
@@ -4952,12 +4968,12 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
         var points = this.specializationList[id].getPoints(mask);
         if (points > 0) {
             points--;
-            var base = mask & ~Math.pow(2, id*2) & ~Math.pow(2, id*2+1);
+            var base = mask & ~Math.pow(2, id*2) & ~Math.pow(2, id*2 + 1);
             switch (points) {
             case 0: return base; break;
             case 1: return base | Math.pow(2, id*2); break;
-            case 2: return base | Math.pow(2, id*2+1); break;
-            case 3: return base | Math.pow(2, id*2) | Math.pow(2, id*2+1); break;
+            case 2: return base | Math.pow(2, id*2 + 1); break;
+            case 3: return base | Math.pow(2, id*2) | Math.pow(2, id*2 + 1); break;
             }
         } else {
             return mask;
@@ -4968,12 +4984,12 @@ SpecializationTree = function(id, name, desc, superStat, tip) {
     }
     this.toString = function() {
         var specializationList = '[';
-        for (var i=1; i<this.specializationList.length; i++) {
-            if (i > 1) specializationList = specializationList+',';
-            specializationList = specializationList+'<br /> &nbsp;&nbsp;&nbsp;&nbsp; '+this.specializationList[i].toString();
+        for (var i = 1; i < this.specializationList.length; i++) {
+            if (i > 1) specializationList = specializationList + ',';
+            specializationList = specializationList + '<br /> &nbsp;&nbsp;&nbsp;&nbsp; ' + this.specializationList[i].toString();
         }
-        specializationList = specializationList+'<br />]';
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', superStat=\''+((this.superStat == null) ? 'null' : dataSuperStat[this.superStat].name)+'\', tip=\''+this.tip+'\', specializationList='+specializationList+', code='+this.code()+']';
+        specializationList = specializationList + '<br />]';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', superStat=\'' + ((this.superStat == null) ? 'null' : dataSuperStat[this.superStat].name) + '\', tip=\'' + this.tip + '\', specializationList=' + specializationList + ', code=' + this.code() + ']';
     }
 }
 
@@ -5208,7 +5224,7 @@ ArchetypeGroup = function(id, name, desc, tip) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', tip=\''+this.tip+'\', code='+this.code()+']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', tip=\'' + this.tip + '\', code=' + this.code() + ']';
     }
 }
 
@@ -5228,23 +5244,23 @@ dataArchetypeGroup[dataArchetypeGroup.length] = new ArchetypeGroup(dataArchetype
 
 // helper lookup functions
 var dataArchetypeGroupIdFromName = [];
-for (var i=0; i<dataArchetypeGroup.length; i++) {
+for (var i = 0; i < dataArchetypeGroup.length; i++) {
     dataArchetypeGroupIdFromName[dataArchetypeGroup[i].name] = dataArchetypeGroup[i].id;
 }
 var dataSuperStatIdFromName = [];
-for (var i=0; i<dataSuperStat.length; i++) {
+for (var i = 0; i < dataSuperStat.length; i++) {
     dataSuperStatIdFromName[dataSuperStat[i].name] = dataSuperStat[i].id;
 }
 var dataInnateTalentIdFromName = [];
-for (var i=0; i<dataInnateTalent.length; i++) {
+for (var i = 0; i < dataInnateTalent.length; i++) {
     dataInnateTalentIdFromName[dataInnateTalent[i].name] = dataInnateTalent[i].id;
 }
 var dataPowerIdFromName = [];
-for (var i=0; i<dataPower.length; i++) {
+for (var i = 0; i < dataPower.length; i++) {
     dataPowerIdFromName[dataPower[i].name] = dataPower[i].id;
 }
 var dataSpecializationTreeIdFromName = [];
-for (var i=0; i<dataSpecializationTree.length; i++) {
+for (var i = 0; i < dataSpecializationTree.length; i++) {
     dataSpecializationTreeIdFromName[dataSpecializationTree[i].name] = dataSpecializationTree[i].id;
 }
 
@@ -5257,28 +5273,28 @@ Archetype = function(id, name, desc, group, superStatList, innateTalent, powerLi
     this.group = dataArchetypeGroupIdFromName[group];
     this.superStatList = [];
     if (superStatList != null) {
-        for (var i=0; i<superStatList.length; i++) {
-            this.superStatList[i+1] = dataSuperStatIdFromName[superStatList[i]];
+        for (var i = 0; i < superStatList.length; i++) {
+            this.superStatList[i + 1] = dataSuperStatIdFromName[superStatList[i]];
         }
     }
     this.innateTalent = dataInnateTalentIdFromName[innateTalent];
     this.powerList = [];
     if (powerList != null) {
-        for (var i=0; i<powerList.length; i++) {
+        for (var i = 0; i < powerList.length; i++) {
             if (powerList[i] instanceof Array) {
-                this.powerList[i+1] = [];
-                for (var j=0; j<powerList[i].length; j++) {
-                    this.powerList[i+1][j+1] = dataPowerIdFromName[powerList[i][j]];
+                this.powerList[i + 1] = [];
+                for (var j = 0; j < powerList[i].length; j++) {
+                    this.powerList[i + 1][j + 1] = dataPowerIdFromName[powerList[i][j]];
                 }
             } else {
-                this.powerList[i+1] = dataPowerIdFromName[powerList[i]];
+                this.powerList[i + 1] = dataPowerIdFromName[powerList[i]];
             }
         }
     }
     this.specializationTreeList = [];
     if (specializationTreeList != null) {
-        for (var i=0; i<specializationTreeList.length; i++) {
-            this.specializationTreeList[i+1] = dataSpecializationTreeIdFromName[specializationTreeList[i]];
+        for (var i = 0; i < specializationTreeList.length; i++) {
+            this.specializationTreeList[i + 1] = dataSpecializationTreeIdFromName[specializationTreeList[i]];
         }
     }
     this.tip = tip;
@@ -5290,33 +5306,33 @@ Archetype = function(id, name, desc, group, superStatList, innateTalent, powerLi
     }
     this.toString = function() {
         var superStatList = '[';
-        for (var i=1; i<this.superStatList.length; i++) {
-            if (i > 1) superStatList = superStatList+', ';
-            superStatList = superStatList+this.superStatList[i]+' ('+dataSuperStat[this.superStatList[i]].name+')';
+        for (var i = 1; i < this.superStatList.length; i++) {
+            if (i > 1) superStatList = superStatList + ', ';
+            superStatList = superStatList + this.superStatList[i] + ' (' + dataSuperStat[this.superStatList[i]].name + ')';
         }
-        superStatList = superStatList+']';
+        superStatList = superStatList + ']';
         powerList = '[';
-        for (var i=1; i<this.powerList.length; i++) {
-            if (i > 1) powerList = powerList+', ';
+        for (var i = 1; i < this.powerList.length; i++) {
+            if (i > 1) powerList = powerList + ', ';
             if (this.powerList[i] instanceof Array) {
-                powerList = powerList+'[';
-                for (var j=1; j<this.powerList[i].length; j++) {
-                    if (j > 1) powerList = powerList+', ';
-                    powerList = powerList+this.powerList[i][j]+' ('+dataPower[this.powerList[i][j]].name+')';
+                powerList = powerList + '[';
+                for (var j = 1; j < this.powerList[i].length; j++) {
+                    if (j > 1) powerList = powerList + ', ';
+                    powerList = powerList + this.powerList[i][j] + ' (' + dataPower[this.powerList[i][j]].name + ')';
                 }
-                powerList = powerList+']';
+                powerList = powerList + ']';
             } else {
-                powerList = powerList+this.powerList[i]+' ('+dataPower[this.powerList[i]].name+')';
+                powerList = powerList + this.powerList[i] + ' (' + dataPower[this.powerList[i]].name + ')';
             }
         }
         powerList = powerList + ']';
         var specializationTreeList = '[';
-        for (var i=1; i<this.specializationTreeList.length; i++) {
-            if (i > 1) specializationTreeList = specializationTreeList+', ';
-            specializationTreeList = specializationTreeList+this.specializationTreeList[i]+' ('+dataSpecializationTree[this.specializationTreeList[i]].name+')';
+        for (var i = 1; i < this.specializationTreeList.length; i++) {
+            if (i > 1) specializationTreeList = specializationTreeList + ', ';
+            specializationTreeList = specializationTreeList + this.specializationTreeList[i] + ' (' + dataSpecializationTree[this.specializationTreeList[i]].name + ')';
         }
-        specializationTreeList = specializationTreeList+']';
-        return '[id='+this.id+', name=\''+this.name+'\', desc=\''+this.desc+'\', group='+this.group+' ('+dataArchetypeGroup[this.group].name+'), superStatList='+superStatList+', innateTalent='+this.innateTalent+' ('+dataInnateTalent[this.innateTalent].name+'), powerList='+powerList+', specializationTreeList='+specializationTreeList+', tip=\''+this.tip+'\', code='+this.code()+']';
+        specializationTreeList = specializationTreeList + ']';
+        return '[id=' + this.id + ', name=\'' + this.name + '\', desc=\'' + this.desc + '\', group=' + this.group + ' (' + dataArchetypeGroup[this.group].name + '), superStatList=' + superStatList + ', innateTalent=' + this.innateTalent + ' (' + dataInnateTalent[this.innateTalent].name + '), powerList=' + powerList + ', specializationTreeList=' + specializationTreeList + ', tip=\'' + this.tip + '\', code=' + this.code() + ']';
     }
 }
 
@@ -5347,7 +5363,7 @@ dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The I
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Specialist', '<img src="img/Archetype_Specialist.png" />&nbsp;The Specialist', 'Hybrid', ['Dexterity', 'Ego', 'Strength'], 'The Specialist', ['Gunslinger', 'Blade Tempest', 'Two-Gun Mojo', 'Lightning Reflexes', ['Bullet Beatdown', 'Storm\'s Harvest'], 'Form of the Tempest', 'Eye of the Storm', 'Parry', 'Breakaway Shot', 'Holdout Shot', ['Lock N Load', 'Masterful Dodge'], 'Lead Tempest'], ['Dexterity', 'Vindicator', 'Guardian'], 'You are an expert at taking down your target with whatever means necessary. You are well trained with pistols and swords, alternating between them in combat with deadly quickness.<br /><br />Concepts: Bounty Hunter, Cybernetic Mercenary, Techno-Ninja, Covert Ops, Military Specialist<br /><br />You excel at short and mid-range combat, whether with your swords or your pistols. Your quick reflexes allow you to avoid incoming attacks, all the while whittling away at your foes with your rapid strikes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Savage', '<img src="img/Archetype_Savage.png" />&nbsp;The Savage', 'Hybrid', ['Strength', 'Constitution', 'Recovery'], 'The Savage', ['Bestial Fury', 'Shred', 'Frenzy', 'Regeneration', 'Pounce', 'Aspect of the Bestial', ['Bite', 'Massacre'], 'Parry', 'Supernatural Power', 'Howl', ['Resurgence', 'Aggressor'], 'Devour Essence'], ['Strength', 'Warden', 'Brawler'], 'You are a vicious hybrid of man and beast with powers far greater than either. You rip apart enemies with your razor-sharp claws and teeth while rapidly healing your own injuries.<br /><br />Concepts: Animal Mutation, Lab Experiment, Man-Animal Hybrid, Mechanical Beast, Supernatural Creature<br /><br />You\\\'ve got a good mix of close combat attack powers, and can take a fair amount of damage due to your self-healing abilities. While you don\\\'t have the same offensive or defensive capabilities as dedicated archetypes, you\\\'re a good balance of both.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Night Avenger', '<img src="img/Archetype_NightAvenger.png" />&nbsp;The Night Avenger', 'Hybrid', ['Dexterity', 'Strength', 'Ego'], 'The Night Avenger', ['Hawk\'s Talons', 'Viper\'s Fangs', 'Smoke Bomb Lunge', 'Night Warrior', ['Ricochet Throw', 'Rend and Tear'], ['Form of the Tiger', 'Concentration'], 'Throwing Blades', 'Parry', 'Grapple Gun Pull', ['Dragon\'s Claws', 'Tiger\'s Bite'], ['Gas Pellets', 'Bolas'], 'Strafing Run'], ['Dexterity', 'Guardian', 'Vindicator'], 'Your personal training and skills with advanced gadgets makes you a precise force for justice. You reach out from the shadows and stop villainy in its tracks, and serve as a symbol to any who need your help.<br /><br />Concepts: Vigilante, Eccentric Billionaire, Technical Genius, Vengeful Orphan, Street Warrior<br /><br />You strike from the shadows and deal heavy damage with claws and versatile gadgets. You strike swiftly and with brutal precision, prowling the night to bring justice.');
-dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Radiant', '<img src="img/Archetype_Radiant.png" />&nbsp;The Radiant', 'Support', ['Presence', 'Ego', 'Intelligence'], 'The Radiant', ['Eldritch Bolts', 'Rebuke', 'Vengeance', 'Seraphim', 'Expulse',  'Compassion', ['Circle of Radiant Glory', 'Sigils of Radiant Sanctuary'], 'Eldritch Shield', 'Arcane Vitality', ['Binding of Aratron', 'Soul Mesmerism'], 'Divine Renewal', 'Planar Fracture'], ['Presence', 'Sentry', 'Sentinel'], 'You have been blessed with the powers of light. You inflict damage on your opponents while healing the wounds of those who fight alongside you.  You possess the power to revive your fallen allies, making you an invaluable asset.<br /><br />Concepts: Radiant Sorcerer, Solar Guardian, Archangel, Luminescent Warrior, Disciple of the Dawn<br /><br />Your wide array of light based powers allow you to heal your allies in addition to damaging your enemies. In times of need you can paralyze your foes and even revive your fallen allies.');
+dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Radiant', '<img src="img/Archetype_Radiant.png" />&nbsp;The Radiant', 'Support', ['Presence', 'Ego', 'Intelligence'], 'The Radiant', ['Eldritch Bolts', 'Rebuke', 'Vengeance', 'Seraphim', 'Expulse',  'Compassion', ['Circle of Radiant Glory', 'Sigils of Radiant Sanctuary'], 'Eldritch Shield', 'Arcane Vitality', ['Binding of Aratron', 'Soul Mesmerism'], 'Divine Renewal', 'Planar Fracture'], ['Presence', 'Sentry', 'Sentinel'], 'You have been blessed with the powers of light. You inflict damage on your opponents while healing the wounds of those who fight alongside you. You possess the power to revive your fallen allies, making you an invaluable asset.<br /><br />Concepts: Radiant Sorcerer, Solar Guardian, Archangel, Luminescent Warrior, Disciple of the Dawn<br /><br />Your wide array of light based powers allow you to heal your allies in addition to damaging your enemies. In times of need you can paralyze your foes and even revive your fallen allies.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Mind', '<img src="img/Archetype_Mind.png" />&nbsp;The Mind', 'Support', ['Presence', 'Endurance', 'Ego'], 'The Mind', ['Psi Lash', 'Ego Blast', 'Ego Sprites', 'Aura of Radiant Protection', ['Psionic Healing', 'Empathic Healing'], 'Compassion', 'Ego Sleep', 'Telekinetic Shield', 'Telepathic Reverberation', 'Ego Hold', ['Ego Storm', 'Summon Nightmare'], 'Mindful Reinforcement'], ['Presence', 'Sentinel', 'Sentry'], 'You have tapped into powerful psychic energies. You use your mental might to lash out at opponents and reach into their psyches to make their darkest nightmares real.<br /><br />Concepts: Alien Overmind, Mental Mutation, Mind-Control Ray, Psionic Projector, Telepath<br /><br />You have limited Ranged attack abilities, but have a number of powers designed to lock down enemies and boost allies. You are most powerful when supporting other heroes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Inventor', '<img src="img/Archetype_Inventor.png" />&nbsp;The Inventor', 'Support', ['Intelligence', 'Presence', 'Ego'], 'The Inventor', ['Sonic Blaster', 'Experimental Blaster', 'Experimental Burst Ray', 'Medical Nanites', ['Attack Toys', 'Munitions Bots'], 'Concentration', 'Bionic Shielding', 'Energy Shield', 'Support Drones', 'Miniaturization Drive', ['Sonic Device', 'Toxic Nanites'], 'Orbital Cannon'], ['Intelligence', 'Overseer', 'Commander'], 'You are an incredibly gifted creator of advanced technology, using unconventional ideas that the average person would think impossible. Your quirky designs get the job done, with only the occasional unintended side effect.<br /><br />Concepts: Scientific Entrepreneur, Prototype Cyber Soldier, Technopath, Kid Genius, Mad Scientist<br /><br />Your set of wacky gadgets provides you with a good variety of abilities. You will learn to create personal robots to aid you in combat, and several of your gizmos will be valuable assets in assisting other heroes.');
 dataArchetype[dataArchetype.length] = new Archetype(dataArchetype.length, 'The Cursed', '<img src="img/Archetype_Cursed.png" />&nbsp;The Cursed', 'Ranged', ['Recovery', 'Constitution', 'Ego'], 'The Scourge', ['Infernal Bolts', 'Infernal Blast', 'Condemn', 'Pestilence', ['Venomous Breath', 'Vicious Cyclone'], 'Aspect of the Infernal', ['Locust Swarm', 'Crippling Coils'], 'Ebon Void', 'Supernatural Power', 'Resurgence', 'Epidemic', 'Defile'], ['Recovery', 'Overseer', 'Avenger'], 'Your power comes from somewhere beyond this mortal realm, allowing you to infest your foes with toxic energy. You use these infernal powers as you see fit, leaving your foes gasping through an onslaught of poison.<br /><br />Concepts: Toxic Mutant, Demonic Gift, Ancient Curse, Nightmare Creature, Remorseful Demon<br /><br />Many of your powers poison your foes, and your strength increases as your poisons wither them away. Your pestilent clouds will weaken your foes as you press the attack, and you\\\'ll have some ability to hinder your opponents\\\' mobility.');

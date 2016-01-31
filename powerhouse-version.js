@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2015-12-23 22:25:46 (kyle)>
+ * Time-stamp: <2016-01-30 20:06:47 (kyle)>
  *============================================================================*/
 
 //==============================================================================
@@ -25,7 +25,7 @@ VersionUpdate = function(id, version, funct) {
         return (typeof(this) == typeof(obj) && this.id == obj.id);
     }
     this.toString = function() {
-        return '[id='+this.id+', version=\''+this.version+'\', funct=\''+this.funct+'\', code='+this.code()+']';
+        return '[id=' + this.id + ', version=\'' + this.version + '\', funct=\'' + this.funct + '\', code=' + this.code() + ']';
     }
 }
 
@@ -56,11 +56,11 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
                 data.splice(0, 0, numToUrlCode(value['archetype']));
                 // advantages now use two characters
                 // powers start at position 16, are going from 3 to 4 characters, and there are 14 of them
-                for (var i = 17+13*3; i >= 17; i -= 3) {
+                for (var i = 17 + 13 * 3; i >= 17; i -= 3) {
                     data.splice(i, 0, '0');
                 }
                 // add specializations to end of data
-                for (var i = 0; i < 3*4; i++) {
+                for (var i = 0; i < 3 * 4; i++) {
                     data.splice(data.length, 0, '0');
                 }
             }
@@ -87,7 +87,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'power': return value['power'];
         case 'mask':
             // add Munitions: Bullet Beatdown: Break the Trigger advantage
-            if (value['type'] == 'power' && codeNum1 == 8 && codeNum2 == 3) return value['mask']+(value['mask']&48);
+            if (value['type'] == 'power' && codeNum1 == 8 && codeNum2 == 3) return value['mask'] + (value['mask']&48);
             return value['mask'];
         case 'specializationTree': return value['specializationTree'];
         case 'specialization': return value['specialization'];
@@ -117,25 +117,25 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'talent': return value['talent'];
         case 'travelPower':
             // move Mach Speed and Athletics travel powers to their new positions (following Acrobatics)
-            if (codeNum1 >= 5 && codeNum1 <= 31) return value['travelPower']+2;
+            if (codeNum1 >= 5 && codeNum1 <= 31) return value['travelPower'] + 2;
             if (codeNum1 >= 32 && codeNum1 <= 33) return value['travelPower']-27;
             return value['travelPower'];
         case 'framework': return value['framework'];
         case 'power': return value['power'];
         case 'mask':
             // add Fire: Fire Strike: Kindling advantage
-            if (value['type'] == 'power' && codeNum1 == 2 && codeNum2 == 1) return value['mask']+(value['mask']&48);
+            if (value['type'] == 'power' && codeNum1 == 2 && codeNum2 == 1) return value['mask'] + (value['mask']&48);
             // add Martial Arts: Shuriken Storm: Strong Arm advantage
-            if (value['type'] == 'power' && codeNum1 == 10 && codeNum2 == 19) return value['mask']+(value['mask']&16);
-            if (value['type'] == 'power' && codeNum1 == 11 && codeNum2 == 18) return value['mask']+(value['mask']&16);
-            if (value['type'] == 'power' && codeNum1 == 12 && codeNum2 == 18) return value['mask']+(value['mask']&16);
-            if (value['type'] == 'power' && codeNum1 == 13 && codeNum2 == 24) return value['mask']+(value['mask']&16);
+            if (value['type'] == 'power' && codeNum1 == 10 && codeNum2 == 19) return value['mask'] + (value['mask']&16);
+            if (value['type'] == 'power' && codeNum1 == 11 && codeNum2 == 18) return value['mask'] + (value['mask']&16);
+            if (value['type'] == 'power' && codeNum1 == 12 && codeNum2 == 18) return value['mask'] + (value['mask']&16);
+            if (value['type'] == 'power' && codeNum1 == 13 && codeNum2 == 24) return value['mask'] + (value['mask']&16);
             // add Might: Clobber: It's That Time advantage
-            if (value['type'] == 'power' && codeNum1 == 18 && codeNum2 == 0) return value['mask']+(value['mask']&16);
+            if (value['type'] == 'power' && codeNum1 == 18 && codeNum2 == 0) return value['mask'] + (value['mask']&16);
             // add Might: Hurl: Strong Arm advantage
-            if (value['type'] == 'power' && codeNum1 == 18 && codeNum2 == 4) return value['mask']+(value['mask']&112);
+            if (value['type'] == 'power' && codeNum1 == 18 && codeNum2 == 4) return value['mask'] + (value['mask']&112);
             // add Single Blade: Reaper's Caress: Accelerated Metabolism advantage
-            if (value['type'] == 'power' && codeNum1 == 12 && codeNum2 == 1) return value['mask']+(value['mask']&16);
+            if (value['type'] == 'power' && codeNum1 == 12 && codeNum2 == 1) return value['mask'] + (value['mask']&16);
             return value['mask'];
         case 'specializationTree': return value['specializationTree'];
         case 'specialization': return value['specialization'];
@@ -171,7 +171,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'code4': return value['code4'];
         case 'archetype':
             // add The Invincible archetype
-            if (value['type'] == 'archetype' && value['archetype'] >= 11) return value['archetype']+1;
+            if (value['type'] == 'archetype' && value['archetype'] >= 11) return value['archetype'] + 1;
             return value['archetype'];
         case 'superStat': return value['superStat'];
         case 'innateTalent': return value['innateTalent'];
@@ -354,7 +354,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             }
             // move The Savage: Devour Essence archtype power from level 32 (10th now 11th power) to level 40 (12th power)
             if (value['type'] == 'power' && archetype == 22 && pos == 23 && framework == 26 && power == 3) {
-                var powerCode = numToUrlCode(framework)+numToUrlCode(power);
+                var powerCode = numToUrlCode(framework) + numToUrlCode(power);
                 var powerId = dataPowerIdFromCode[powerCode];
                 var num = 12;
                 selectFramework(framework);
@@ -374,7 +374,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
                 return 0;
             }
             // add Power Armor: Mini Gun: Infrared Guidance System advantage
-            if (value['type'] == 'power' && codeNum1 == 9 && codeNum2 == 8) return value['mask']+(value['mask']&48);
+            if (value['type'] == 'power' && codeNum1 == 9 && codeNum2 == 8) return value['mask'] + (value['mask']&48);
             return value['mask'];
         case 'specializationTree':
             // fix bug with version 3 corrupting the specializaton mastery value by resetting or clearing the value
@@ -407,7 +407,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'code4': return value['code4'];
         case 'archetype':
             // add Archetype: The Night Avenger
-            if (value['archetype'] > 22) return value['archetype']+1;
+            if (value['archetype'] > 22) return value['archetype'] + 1;
             return value['archetype'];
         case 'superStat': return value['superStat'];
         case 'innateTalent': return value['innateTalent'];
@@ -683,7 +683,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
 
 // version 11 => 12
 dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
-    dataVersionUpdate.length, 10,
+    dataVersionUpdate.length, 11,
     function(thing, value) {
         var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
         var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
@@ -700,7 +700,7 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
         case 'code4': return value['code4'];
         case 'archetype':
             // add Archetype: The Icicle
-            if (value['archetype'] > 5) return value['archetype']+1;
+            if (value['archetype'] > 5) return value['archetype'] + 1;
             return value['archetype'];
         case 'superStat': return value['superStat'];
         case 'innateTalent': return value['innateTalent'];
@@ -724,8 +724,44 @@ dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
             return power;
         case 'mask':
             // add Ice: Ice Blast: Frost Bite advantage
-            if (value['type'] == 'power' && codeNum1 == 5 && codeNum2 == 1) return value['mask']+(value['mask']&48);
+            if (value['type'] == 'power' && codeNum1 == 5 && codeNum2 == 1) return value['mask'] + (value['mask']&48);
             return value['mask'];
+        case 'specializationTree': return value['specializationTree'];
+        case 'specialization': return value['specialization'];
+        }
+    });
+
+// version 12 => 13
+dataVersionUpdate[dataVersionUpdate.length] = new VersionUpdate(
+    dataVersionUpdate.length, 12,
+    function(thing, value) {
+        var codeNum1 = (value['code1'] == undefined) ? 0 : urlCodeToNum(value['code1']); // framework
+        var codeNum2 = (value['code2'] == undefined) ? 0 : urlCodeToNum(value['code2']); // power
+        // var codeNum3 = (value['code3'] == undefined) ? 0 : urlCodeToNum(value['code3']);
+        // var codeNum4 = (value['code4'] == undefined) ? 0 : urlCodeToNum(value['code4']);
+        switch (thing) {
+        case 'data': return value['data'];
+        case 'pos': return value['pos'];
+        case 'i': return value['i'];
+        case 'inc': return value['inc'];
+        case 'code1': return value['code1'];
+        case 'code2': return value['code2'];
+        case 'code3': return value['code3'];
+        case 'code4': return value['code4'];
+        case 'archetype': return value['archetype'];
+        case 'superStat': return value['superStat'];
+        case 'innateTalent': return value['innateTalent'];
+        case 'talent': return value['talent'];
+        case 'travelPower': return value['travelPower'];
+        case 'framework': return value['framework'];
+        case 'power':
+            var power = value['power'];
+            // add Electricity: Neuroelectric Pulse
+            if (codeNum1 == 1 && codeNum2 >= 10) power++;
+            // add Telepathy: Mind Control
+            if (codeNum1 == 15 && codeNum2 >= 14) power++;
+            return power;
+        case 'mask': return value['mask'];
         case 'specializationTree': return value['specializationTree'];
         case 'specialization': return value['specialization'];
         }

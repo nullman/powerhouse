@@ -1,3 +1,50 @@
+2016-01-30  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+		* none:  Released version 0.9.32.  (Special thanks to carrionbaggage
+		for giving me the Mind Control unlock on the PTS so I could properly
+		add that power.)
+
+		* powerhouse-data.js:  Updated Gadgeteering: Gas Pellets: Oversized
+		Pellet Bag description.
+
+		* powerhouse-data.js:  Updated Celestial: Ascension: Judgment to have
+		a 100 foot range.
+
+		* powerhouse-data.js:  Updated Gadgeteering: Medical Nanites to have a
+		100 foot Friend HoT.
+
+		* powerhouse-data.js:  Updated Celestial: Seraphim to have a 100 foot
+		Friend HoT.
+
+		* powerhouse-data.js:  Updated Telepathy: Ego Sprites to be a 25 foot
+		PBAoE Dot instead of a 50 foot ranged AoE DoT.
+
+		* powerhouse-data.js:  Updated all Sorcery Slotted Support Passives to
+		have 100 foot range instead of 50 foot.
+
+		* powerhouse-data.js:  Updated Ice: Icy Embrace description.
+
+		* powerhouse-data.js, powerhouse-version.js:  Added Electricity:
+		Neuroelectric Pulse Power.
+
+		* powerhouse-data.js, powerhouse-version.js:  Added Telepathy: Mind
+		Control Power.
+
+		* powerhouse.js, powerhouse.css:  Added a border around selected
+		framework to make it easier to know which one is active.
+
+		* powerhouse.html, README:  Updated copyright years.
+
+2015-12-31  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+		* powerhouse.js, powerhouse.html:  Name, Archetype, and Specialization
+		headers now stay highlighted when selected.
+
+2015-12-30  Kyle W T Sherman  <kylewsherman@gmail.com>
+
+		* powerhouse.js:  Fixed bug with setTitle() setting the title even if
+		it has not change.
+
 2015-12-23  Kyle W T Sherman  <kylewsherman@gmail.com>
 
 		* none:  Released version 0.9.31.  (Special thanks to
@@ -23,7 +70,7 @@
 		Mind, and Earth: Earth Form.
 
 		* powerhouse-data.js, powerhouse-version.js:  Added Villain Onslaught
-		Powers:  Force:  Gravitic Ripple, Telekinesis: Lance Rain, and Might:
+		Powers:  Force: Gravitic Ripple, Telekinesis: Lance Rain, and Might:
 		Nuclear Shockwave.
 
 		* powerhouse-data.js:  Added Ultimate Power extended descriptions:

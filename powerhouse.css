@@ -5,7 +5,7 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2012-08-21 21:24:02 (kyle)>
+ * Time-stamp: <2016-01-30 11:47:59 (kyle)>
  */
 
 @font-face {
@@ -24,7 +24,7 @@ body {
     /* background-color: #0D3E7F;          /\* dark blue *\/ */
     /* background-color: #0E162B;          /\* dark blue *\/ */
     color: #FEC530;                     /* yellow */
-    font-family: Lexia, sans-serif;
+    font-family: Lexia, Verdana, Arial, sans-serif;
     /* font-size: 1.1em; */
     font-size: 100%;
     /* margin: 0 1em 0 1em; */
@@ -36,14 +36,15 @@ body {
 }
 
 div#viewHelp {
-    font-family: sans-serif;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 div#viewAbout {
-    font-family: sans-serif;
+    font-family: Verdana, Arial, sans-serif;
 }
 
-.main { }
+.main {
+}
 
 .title {
     font-size: xx-large;
@@ -74,7 +75,8 @@ img {
     width: auto;
 }
 
-.image { }
+.image {
+}
 
 .image img {
     border: 0;
@@ -83,7 +85,8 @@ img {
     width: auto;
 }
 
-.right-img { }
+.right-img {
+}
 
 .right-img img {
     border: 0;
@@ -104,7 +107,7 @@ img {
     background-color: #FEF5C0;          /* light yellow */
     color: #000000;                     /* black */
     border: 1px solid #000000;
-    font-family: sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     font-size: 0.8em;
     margin: 1em 0 0 0;
     max-width: 480px;
@@ -165,14 +168,13 @@ img {
     width: 24px;
 }
 
-/* td.selectionNormal { */
-/*     width: 100%; */
-/* } */
+.selectionNormal {
+    border: 2px solid #0D3E7F;          /* dark blue (background color) */
+}
 
-/* td.selectionHighlight { */
-/*     background-color: #3D6E8F; */
-/*     width: 100%; */
-/* } */
+.selectionHighlighted {
+    border: 2px solid #CE6C10;          /* dark orange */
+}
 
 #selectFramework img {
     border: 0;
@@ -222,7 +224,8 @@ td {
     min-width: 1.5em;
 }
 
-.edit { }
+.edit {
+}
 
 .edit img {
     border: 0;
@@ -232,7 +235,8 @@ td {
     width: 24px;
 }
 
-.prefs { }
+.prefs {
+}
 
 .prefs img {
     border: 0;
@@ -410,7 +414,7 @@ textarea {
 
 .preview {
     border: 1px solid black;
-    font-family: sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     /* font-family: comic-font, sans-serif; */
     font-size: 1em;
     /* height: 44em; */
@@ -455,7 +459,7 @@ textarea {
         display: none;
     }
     html {
-        font-family: Calibri, Tahoma, Arial, sans-serif;
+        font-family: Calibri, Tahoma, Verdana, Arial, sans-serif;
         font-size: 0.8em;
     }
     body {
@@ -470,7 +474,7 @@ textarea {
         font-size: smaller;
     }
     .preview {
-        font-family: Calibri, Tahoma, Arial, sans-serif;
+        font-family: Calibri, Tahoma, Verdana, Arial, sans-serif;
         font-size: 0.8em;
     }
     .forumHeader {
