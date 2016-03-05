@@ -5,12 +5,12 @@
  *
  * Author: Kyle W T Sherman
  *
- * Time-stamp: <2016-01-31 01:49:13 (kyle)>
+ * Time-stamp: <2016-02-17 22:55:12 (kyle)>
  *============================================================================*/
 
 var debug = false;
-var version = '0.9.32';
-var releaseDate = '2016-01-31';
+var version = '0.9.33';
+var releaseDate = '2016-02-17';
 var buildVersion = 13;
 
 var siteName = 'PowerHouse';
@@ -701,7 +701,7 @@ function getSuperStatDesc(id, num) {
 window['getSuperStatDesc'] = getSuperStatDesc;
 function highlightSuperStats(str) {
     for (var i = 1; i < phSuperStat.length; i++) {
-        var regex = new RegExp('(' + phSuperStat[i].abbrev + ': \\d + )');
+        var regex = new RegExp('(' + phSuperStat[i].abbrev + ': \\d+)');
         if (regex != null) {
             str = str.replace(regex, '<span class="specHighlight">$1</span>');
         }
